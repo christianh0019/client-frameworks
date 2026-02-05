@@ -1,7 +1,24 @@
 import { useState } from 'react';
-import { Search, FileText, Play, Clock, ArrowRight, LayoutGrid, List } from 'lucide-react';
+import { Search, FileText, Play, Clock, ArrowRight, LayoutGrid, List, ArrowLeft, ChevronRight, CheckSquare } from 'lucide-react';
 
-// SaaS-style Components
+// Types
+type ViewState = 'library' | 'sop-detail' | 'video-detail';
+
+interface SOP {
+    title: string;
+    description: string;
+    category: string;
+    content?: string[]; // Mock content for the detail view
+}
+
+interface Video {
+    title: string;
+    duration: string;
+    category: string;
+    src?: string; // Placeholder for video source
+}
+
+// Components
 
 const TabNav = ({ active, onChange }: { active: string, onChange: (val: string) => void }) => (
     <div className="flex items-center space-x-6 border-b border-saas-border mb-6">
@@ -10,8 +27,8 @@ const TabNav = ({ active, onChange }: { active: string, onChange: (val: string) 
                 key={tab}
                 onClick={() => onChange(tab)}
                 className={`pb-3 text-sm font-medium border-b-2 transition-colors ${active === tab
-                    ? 'border-saas-blue text-saas-blue'
-                    : 'border-transparent text-saas-text-secondary hover:text-saas-text-primary hover:border-gray-300'
+                        ? 'border-saas-blue text-saas-blue'
+                        : 'border-transparent text-saas-text-secondary hover:text-saas-text-primary hover:border-gray-300'
                     }`}
             >
                 {tab}
@@ -20,30 +37,30 @@ const TabNav = ({ active, onChange }: { active: string, onChange: (val: string) 
     </div>
 );
 
-const SOPCard = ({ title, description, category }: { title: string, description: string, category: string }) => (
-    <div className="bg-white border border-saas-border rounded-lg p-5 hover:shadow-card hover:border-gray-300 transition-all cursor-pointer group flex flex-col h-full">
+const SOPCard = ({ sop, onClick }: { sop: SOP, onClick: () => void }) => (
+    <div onClick={onClick} className="bg-white border border-saas-border rounded-lg p-5 hover:shadow-card hover:border-gray-300 transition-all cursor-pointer group flex flex-col h-full">
         <div className="flex justify-between items-start mb-3">
             <div className="flex items-center space-x-2">
                 <div className="p-1.5 bg-blue-50 rounded text-saas-blue">
                     <FileText size={18} />
                 </div>
-                <span className="text-xs font-medium text-saas-text-secondary uppercase tracking-wider">{category}</span>
+                <span className="text-xs font-medium text-saas-text-secondary uppercase tracking-wider">{sop.category}</span>
             </div>
         </div>
-        <h3 className="text-lg font-semibold text-saas-text-primary mb-2 group-hover:text-saas-blue transition-colors line-clamp-1">{title}</h3>
-        <p className="text-sm text-saas-text-secondary mb-4 flex-grow whitespace-pre-line">{description}</p>
+        <h3 className="text-lg font-semibold text-saas-text-primary mb-2 group-hover:text-saas-blue transition-colors line-clamp-1">{sop.title}</h3>
+        <p className="text-sm text-saas-text-secondary mb-4 flex-grow whitespace-pre-line line-clamp-3">{sop.description}</p>
 
         <div className="flex items-center justify-end pt-4 border-t border-gray-100 mt-auto">
             <div className="flex items-center text-sm font-medium text-saas-blue opacity-0 group-hover:opacity-100 transition-opacity">
-                View
+                Read SOP
                 <ArrowRight size={14} className="ml-1" />
             </div>
         </div>
     </div>
 );
 
-const VideoCard = ({ title, duration, category }: { title: string, duration: string, category: string }) => (
-    <div className="bg-white border border-saas-border rounded-lg overflow-hidden hover:shadow-card hover:border-gray-300 transition-all cursor-pointer group">
+const VideoCard = ({ video, onClick }: { video: Video, onClick: () => void }) => (
+    <div onClick={onClick} className="bg-white border border-saas-border rounded-lg overflow-hidden hover:shadow-card hover:border-gray-300 transition-all cursor-pointer group">
         <div className="relative aspect-video bg-gray-100 flex items-center justify-center overflow-hidden">
             <div className="absolute inset-0 bg-gray-200"></div> {/* Placeholder for thumbnail */}
             <div className="absolute inset-0 flex items-center justify-center">
@@ -53,14 +70,131 @@ const VideoCard = ({ title, duration, category }: { title: string, duration: str
             </div>
             <div className="absolute bottom-2 right-2 px-1.5 py-0.5 bg-black/60 rounded text-[10px] font-medium text-white flex items-center">
                 <Clock size={10} className="mr-1" />
-                {duration}
+                {video.duration}
             </div>
         </div>
         <div className="p-4">
             <div className="flex items-center mb-1">
-                <span className="text-[10px] font-medium text-saas-text-secondary uppercase tracking-wider border border-gray-200 px-1 rounded">{category}</span>
+                <span className="text-[10px] font-medium text-saas-text-secondary uppercase tracking-wider border border-gray-200 px-1 rounded">{video.category}</span>
             </div>
-            <h3 className="font-medium text-saas-text-primary group-hover:text-saas-blue transition-colors line-clamp-2">{title}</h3>
+            <h3 className="font-medium text-saas-text-primary group-hover:text-saas-blue transition-colors line-clamp-2">{video.title}</h3>
+        </div>
+    </div>
+);
+
+// Detail Views
+
+const SOPDetail = ({ sop, onBack }: { sop: SOP, onBack: () => void }) => {
+    // Parse description bullets to create mock "content"
+    const contentPoints = sop.description.split('\n').map(l => l.replace('• ', '').trim()).filter(Boolean);
+
+    return (
+        <div className="bg-white min-h-[calc(100vh-48px)] animate-in fade-in slide-in-from-bottom-4 duration-300">
+            {/* Breadcrumb / Nav */}
+            <div className="max-w-4xl mx-auto px-8 py-6 border-b border-gray-100 mb-8 flex items-center text-sm text-saas-text-secondary">
+                <button onClick={onBack} className="hover:text-saas-text-primary flex items-center transition-colors">
+                    <ArrowLeft size={16} className="mr-1" />
+                    Back to Library
+                </button>
+                <ChevronRight size={14} className="mx-2 text-gray-300" />
+                <span className="text-saas-text-primary font-medium truncate">{sop.title}</span>
+            </div>
+
+            {/* Document Content */}
+            <article className="max-w-3xl mx-auto px-8 pb-20">
+                <div className="mb-8">
+                    <div className="flex items-center space-x-2 mb-4">
+                        <span className="px-2.5 py-0.5 rounded-full bg-blue-50 text-blue-700 text-xs font-semibold uppercase tracking-wide">
+                            {sop.category}
+                        </span>
+                    </div>
+                    <h1 className="text-4xl font-bold text-gray-900 mb-4 tracking-tight">{sop.title}</h1>
+                    <div className="flex items-center space-x-4 text-sm text-gray-500 border-b border-gray-100 pb-8">
+                        <div className="flex items-center">
+                            <div className="w-5 h-5 rounded-full bg-gray-200 mr-2"></div>
+                            <span>Created by System</span>
+                        </div>
+                        <span>•</span>
+                        <span>Updated just now</span>
+                    </div>
+                </div>
+
+                <div className="prose prose-slate max-w-none">
+                    <p className="text-lg text-gray-600 mb-8 leading-relaxed">
+                        This Standard Operating Procedure outlines the verified process for <strong>{sop.title}</strong>.
+                        Follow the steps below to ensure consistency and quality.
+                    </p>
+
+                    <div className="bg-gray-50 rounded-xl p-6 border border-gray-100 mb-8">
+                        <h3 className="text-sm font-semibold text-gray-900 uppercase tracking-wider mb-4">Key Objectives</h3>
+                        <ul className="space-y-3">
+                            {contentPoints.map((point, i) => (
+                                <li key={i} className="flex items-start">
+                                    <CheckSquare size={18} className="text-saas-blue mt-0.5 mr-3 flex-shrink-0" />
+                                    <span className="text-gray-700">{point}</span>
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
+
+                    <h3>Procedure Steps</h3>
+                    <p>
+                        1. <strong>Preparation:</strong> Ensure you have all necessary access and tools ready before beginning this workflow.<br />
+                        2. <strong>Execution:</strong> Follow the checklist items above in sequential order.<br />
+                        3. <strong>Verification:</strong> Double-check your work against the quality standards defined in the {sop.category} guidelines.<br />
+                        4. <strong>Documentation:</strong> Log any variations or issues in the CRM notes field.
+                    </p>
+
+                    <div className="mt-8 p-4 border-l-4 border-saas-blue bg-blue-50/50 text-sm text-blue-900">
+                        <strong>Note:</strong> This process is critical for maintaining our operational standards. If you encounter any blockers, escalate to your manager immediately.
+                    </div>
+                </div>
+            </article>
+        </div>
+    );
+};
+
+const VideoDetail = ({ video, onBack }: { video: Video, onBack: () => void }) => (
+    <div className="min-h-[calc(100vh-48px)] animate-in fade-in zoom-in-95 duration-300 flex flex-col">
+        {/* Breadcrumb / Nav */}
+        <div className="px-8 py-6 flex items-center text-sm text-saas-text-secondary bg-white border-b border-saas-border">
+            <button onClick={onBack} className="hover:text-saas-text-primary flex items-center transition-colors">
+                <ArrowLeft size={16} className="mr-1" />
+                Back to Tutorials
+            </button>
+            <ChevronRight size={14} className="mx-2 text-gray-300" />
+            <span className="text-saas-text-primary font-medium truncate">{video.title}</span>
+        </div>
+
+        <div className="flex-1 bg-black flex items-center justify-center p-8">
+            <div className="w-full max-w-5xl aspect-video bg-gray-900 border border-gray-800 rounded-lg shadow-2xl flex items-center justify-center relative group">
+                {/* Mock Player UI */}
+                <div className="text-center">
+                    <div className="w-20 h-20 rounded-full bg-white/10 backdrop-blur-sm flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform cursor-pointer">
+                        <Play size={40} className="text-white fill-white ml-2" />
+                    </div>
+                    <p className="text-gray-400 font-medium">Video Player Placeholder</p>
+                    <p className="text-gray-600 text-sm mt-2">{video.title}</p>
+                </div>
+
+                {/* Mock Controls */}
+                <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-black/80 to-transparent p-4 flex items-end">
+                    <div className="w-full flex items-center space-x-4">
+                        <Play size={20} className="text-white fill-white" />
+                        <div className="h-1 bg-gray-600 flex-1 rounded-full overflow-hidden">
+                            <div className="h-full w-1/3 bg-saas-blue"></div>
+                        </div>
+                        <span className="text-xs text-white font-medium">{video.duration}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div className="bg-white p-8 border-t border-saas-border">
+            <div className="max-w-5xl mx-auto">
+                <h1 className="text-2xl font-bold text-gray-900 mb-2">{video.title}</h1>
+                <p className="text-gray-500">{video.category} • {video.duration}</p>
+            </div>
         </div>
     </div>
 );
@@ -85,8 +219,11 @@ const ViewToggle = ({ mode, setMode }: { mode: 'grid' | 'list', setMode: (m: 'gr
 const App = () => {
     const [activeTab, setActiveTab] = useState('Process Library');
     const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
+    const [activeView, setActiveView] = useState<ViewState>('library');
+    const [selectedSOP, setSelectedSOP] = useState<SOP | null>(null);
+    const [selectedVideo, setSelectedVideo] = useState<Video | null>(null);
 
-    const sops = [
+    const sops: SOP[] = [
         {
             title: "Lead Response & Speed-to-Lead SOP",
             description: "How new leads are contacted within minutes\n• Call + text flow\n• Missed call logic\n• First 24 hour cadence",
@@ -139,7 +276,7 @@ const App = () => {
         },
     ];
 
-    const videos = [
+    const videos: Video[] = [
         // Core System Walkthroughs
         { title: "How the Growth System Works (big picture)", duration: "05:00", category: "Core System" },
         { title: "How New Leads Flow Through the CRM", duration: "05:00", category: "Core System" },
@@ -156,6 +293,32 @@ const App = () => {
         { title: "When to Increase Lead Volume", duration: "05:00", category: "Revenue" },
         { title: "When & How to Hire Your First Sales Help", duration: "05:00", category: "Revenue" },
     ];
+
+    // Logic to handle view switching
+    const handleSOPClick = (sop: SOP) => {
+        setSelectedSOP(sop);
+        setActiveView('sop-detail');
+    };
+
+    const handleVideoClick = (video: Video) => {
+        setSelectedVideo(video);
+        setActiveView('video-detail');
+    };
+
+    const goBack = () => {
+        setActiveView('library');
+        setSelectedSOP(null);
+        setSelectedVideo(null);
+    };
+
+    // Render Logic
+    if (activeView === 'sop-detail' && selectedSOP) {
+        return <SOPDetail sop={selectedSOP} onBack={goBack} />;
+    }
+
+    if (activeView === 'video-detail' && selectedVideo) {
+        return <VideoDetail video={selectedVideo} onBack={goBack} />;
+    }
 
     return (
         <div className="min-h-screen bg-saas-bg font-sans text-saas-text-primary selection:bg-blue-100 selection:text-blue-900 p-6">
@@ -182,7 +345,7 @@ const App = () => {
                 {activeTab === 'Process Library' && (
                     <div className={`grid ${viewMode === 'grid' ? 'grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4' : 'grid-cols-1'} gap-6`}>
                         {sops.map((sop, idx) => (
-                            <SOPCard key={idx} {...sop} />
+                            <SOPCard key={idx} sop={sop} onClick={() => handleSOPClick(sop)} />
                         ))}
                     </div>
                 )}
@@ -190,7 +353,7 @@ const App = () => {
                 {activeTab === 'Video Tutorials' && (
                     <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6">
                         {videos.map((video, idx) => (
-                            <VideoCard key={idx} {...video} />
+                            <VideoCard key={idx} video={video} onClick={() => handleVideoClick(video)} />
                         ))}
                     </div>
                 )}
