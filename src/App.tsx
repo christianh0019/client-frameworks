@@ -89,7 +89,7 @@ const SOPDetail = ({ sop, onBack }: { sop: SOP, onBack: () => void }) => {
     const contentPoints = sop.description.split('\n').map(l => l.replace('• ', '').trim()).filter(Boolean);
 
     return (
-        <div className="min-h-[calc(100vh-48px)] animate-in fade-in slide-in-from-bottom-4 duration-300 pb-12">
+        <div className="animate-in fade-in slide-in-from-bottom-4 duration-300 pb-12">
             {/* Breadcrumb / Nav */}
             <div className="max-w-5xl mx-auto py-6 flex items-center text-sm text-saas-text-secondary">
                 <button onClick={onBack} className="hover:text-saas-text-primary flex items-center transition-colors">
@@ -175,7 +175,7 @@ const SOPDetail = ({ sop, onBack }: { sop: SOP, onBack: () => void }) => {
 };
 
 const VideoDetail = ({ video, onBack }: { video: Video, onBack: () => void }) => (
-    <div className="min-h-[calc(100vh-48px)] animate-in fade-in zoom-in-95 duration-300 flex flex-col pb-12">
+    <div className="animate-in fade-in zoom-in-95 duration-300 flex flex-col pb-12">
         {/* Breadcrumb / Nav */}
         <div className="max-w-6xl mx-auto w-full py-6 flex items-center text-sm text-saas-text-secondary">
             <button onClick={onBack} className="hover:text-saas-text-primary flex items-center transition-colors">
@@ -187,24 +187,25 @@ const VideoDetail = ({ video, onBack }: { video: Video, onBack: () => void }) =>
         </div>
 
         <div className="max-w-6xl mx-auto w-full bg-white rounded-xl shadow-sm border border-saas-border overflow-hidden">
-            <div className="aspect-video bg-black flex items-center justify-center relative group">
+            <div className="aspect-video bg-gray-100 flex items-center justify-center relative group">
+                <div className="absolute inset-0 bg-gray-200/50"></div>
                 {/* Mock Player UI */}
-                <div className="text-center">
-                    <div className="w-24 h-24 rounded-full bg-white/10 backdrop-blur-sm flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform cursor-pointer border border-white/20 shadow-xl">
-                        <Play size={40} className="text-white fill-white ml-2" />
+                <div className="text-center z-10">
+                    <div className="w-24 h-24 rounded-full bg-white shadow-lg flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform cursor-pointer border border-gray-100">
+                        <Play size={40} className="text-saas-blue ml-2 fill-saas-blue" />
                     </div>
                 </div>
 
                 {/* Mock Controls */}
-                <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-black/90 to-transparent p-6 flex items-end">
+                <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-gray-900/10 to-transparent p-6 flex items-end">
                     <div className="w-full flex items-center space-x-4">
-                        <button className="text-white hover:text-saas-blue transition-colors">
+                        <button className="text-saas-blue transition-colors">
                             <Play size={24} className="fill-current" />
                         </button>
-                        <div className="h-1.5 bg-gray-600/50 flex-1 rounded-full overflow-hidden cursor-pointer hover:h-2 transition-all">
+                        <div className="h-1.5 bg-gray-300 flex-1 rounded-full overflow-hidden cursor-pointer hover:h-2 transition-all">
                             <div className="h-full w-1/3 bg-saas-blue"></div>
                         </div>
-                        <span className="text-sm text-white font-medium font-mono">{video.duration}</span>
+                        <span className="text-sm text-gray-600 font-medium font-mono">{video.duration}</span>
                     </div>
                 </div>
             </div>
@@ -350,63 +351,67 @@ const App = () => {
         setSelectedVideo(null);
     };
 
-    // Render Logic
-    if (activeView === 'sop-detail' && selectedSOP) {
-        return <SOPDetail sop={selectedSOP} onBack={goBack} />;
-    }
-
-    if (activeView === 'video-detail' && selectedVideo) {
-        return <VideoDetail video={selectedVideo} onBack={goBack} />;
-    }
-
     return (
         <div className="min-h-screen bg-saas-bg font-sans text-saas-text-primary selection:bg-blue-100 selection:text-blue-900 p-6">
 
-            {/* Top Controls */}
-            <div className="flex flex-col md:flex-row md:items-center justify-between mb-6 gap-4">
-                <TabNav active={activeTab} onChange={setActiveTab} />
+            {/* Dynamic Content */}
+            <div className="max-w-7xl mx-auto">
 
-                <div className="flex items-center space-x-3">
-                    <div className="relative">
-                        <Search size={16} className="absolute left-3 top-1/2 transform -translate-y-1/2 text-saas-text-secondary" />
-                        <input
-                            type="text"
-                            placeholder="Search..."
-                            className="bg-white border border-saas-border text-sm text-saas-text-primary rounded-md pl-9 pr-4 py-1.5 focus:outline-none focus:border-saas-blue focus:ring-1 focus:ring-saas-blue w-48 transition-all"
-                        />
-                    </div>
-                    <ViewToggle mode={viewMode} setMode={setViewMode} />
-                </div>
+                {activeView === 'library' ? (
+                    <>
+                        {/* Top Controls */}
+                        <div className="flex flex-col md:flex-row md:items-center justify-between mb-6 gap-4">
+                            <TabNav active={activeTab} onChange={setActiveTab} />
+
+                            <div className="flex items-center space-x-3">
+                                <div className="relative">
+                                    <Search size={16} className="absolute left-3 top-1/2 transform -translate-y-1/2 text-saas-text-secondary" />
+                                    <input
+                                        type="text"
+                                        placeholder="Search..."
+                                        className="bg-white border border-saas-border text-sm text-saas-text-primary rounded-md pl-9 pr-4 py-1.5 focus:outline-none focus:border-saas-blue focus:ring-1 focus:ring-saas-blue w-48 transition-all"
+                                    />
+                                </div>
+                                <ViewToggle mode={viewMode} setMode={setViewMode} />
+                            </div>
+                        </div>
+
+                        {/* Content Grids */}
+                        {activeTab === 'Process Library' && (
+                            <div className={`grid ${viewMode === 'grid' ? 'grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4' : 'grid-cols-1'} gap-6`}>
+                                {sops.map((sop, idx) => (
+                                    <SOPCard key={idx} sop={sop} onClick={() => handleSOPClick(sop)} />
+                                ))}
+                            </div>
+                        )}
+
+                        {activeTab === 'Video Tutorials' && (
+                            <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                                {videos.map((video, idx) => (
+                                    <VideoCard key={idx} video={video} onClick={() => handleVideoClick(video)} />
+                                ))}
+                            </div>
+                        )}
+
+                        {activeTab === 'Resources' && (
+                            <div className="flex flex-col items-center justify-center py-20 text-saas-text-secondary">
+                                <FileText size={48} className="mb-4 opacity-20" />
+                                <p>No additional resources found.</p>
+                            </div>
+                        )}
+                    </>
+                ) : null}
+
+                {activeView === 'sop-detail' && selectedSOP && (
+                    <SOPDetail sop={selectedSOP} onBack={goBack} />
+                )}
+
+                {activeView === 'video-detail' && selectedVideo && (
+                    <VideoDetail video={selectedVideo} onBack={goBack} />
+                )}
+
             </div>
-
-            <main className="max-w-7xl mx-auto">
-                {/* Content */}
-                {activeTab === 'Process Library' && (
-                    <div className={`grid ${viewMode === 'grid' ? 'grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4' : 'grid-cols-1'} gap-6`}>
-                        {sops.map((sop, idx) => (
-                            <SOPCard key={idx} sop={sop} onClick={() => handleSOPClick(sop)} />
-                        ))}
-                    </div>
-                )}
-
-                {activeTab === 'Video Tutorials' && (
-                    <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6">
-                        {videos.map((video, idx) => (
-                            <VideoCard key={idx} video={video} onClick={() => handleVideoClick(video)} />
-                        ))}
-                    </div>
-                )}
-
-                {activeTab === 'Resources' && (
-                    <div className="flex flex-col items-center justify-center py-20 text-saas-text-secondary">
-                        <FileText size={48} className="mb-4 opacity-20" />
-                        <p>No additional resources found.</p>
-                    </div>
-                )}
-
-            </main>
         </div>
     );
 };
-
 export default App;
