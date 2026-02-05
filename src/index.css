@@ -7,9 +7,10 @@
     line-height: 1.5;
     font-weight: 400;
 
-    color-scheme: light dark;
-    color: rgba(255, 255, 255, 0.87);
-    background-color: #242424;
+    color-scheme: light;
+    color: #111827;
+    background-color: #f3f4f6;
+    /* Light gray to match the SaaS background */
 
     font-synthesis: none;
     text-rendering: optimizeLegibility;
@@ -19,8 +20,26 @@
 
 body {
     margin: 0;
-    display: flex;
-    place-items: center;
     min-width: 320px;
     min-height: 100vh;
+    background-color: #f3f4f6;
+}
+
+/* Scrollbar styling to match SaaS apps usually */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #94a3b8;
 }
