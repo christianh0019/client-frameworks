@@ -27,8 +27,8 @@ const TabNav = ({ active, onChange }: { active: string, onChange: (val: string) 
                 key={tab}
                 onClick={() => onChange(tab)}
                 className={`pb-3 text-sm font-medium border-b-2 transition-colors ${active === tab
-                        ? 'border-saas-blue text-saas-blue'
-                        : 'border-transparent text-saas-text-secondary hover:text-saas-text-primary hover:border-gray-300'
+                    ? 'border-saas-blue text-saas-blue'
+                    : 'border-transparent text-saas-text-secondary hover:text-saas-text-primary hover:border-gray-300'
                     }`}
             >
                 {tab}
@@ -89,9 +89,9 @@ const SOPDetail = ({ sop, onBack }: { sop: SOP, onBack: () => void }) => {
     const contentPoints = sop.description.split('\n').map(l => l.replace('• ', '').trim()).filter(Boolean);
 
     return (
-        <div className="bg-white min-h-[calc(100vh-48px)] animate-in fade-in slide-in-from-bottom-4 duration-300">
+        <div className="min-h-[calc(100vh-48px)] animate-in fade-in slide-in-from-bottom-4 duration-300 pb-12">
             {/* Breadcrumb / Nav */}
-            <div className="max-w-4xl mx-auto px-8 py-6 border-b border-gray-100 mb-8 flex items-center text-sm text-saas-text-secondary">
+            <div className="max-w-5xl mx-auto py-6 flex items-center text-sm text-saas-text-secondary">
                 <button onClick={onBack} className="hover:text-saas-text-primary flex items-center transition-colors">
                     <ArrowLeft size={16} className="mr-1" />
                     Back to Library
@@ -101,63 +101,83 @@ const SOPDetail = ({ sop, onBack }: { sop: SOP, onBack: () => void }) => {
             </div>
 
             {/* Document Content */}
-            <article className="max-w-3xl mx-auto px-8 pb-20">
-                <div className="mb-8">
-                    <div className="flex items-center space-x-2 mb-4">
-                        <span className="px-2.5 py-0.5 rounded-full bg-blue-50 text-blue-700 text-xs font-semibold uppercase tracking-wide">
-                            {sop.category}
-                        </span>
-                    </div>
-                    <h1 className="text-4xl font-bold text-gray-900 mb-4 tracking-tight">{sop.title}</h1>
-                    <div className="flex items-center space-x-4 text-sm text-gray-500 border-b border-gray-100 pb-8">
-                        <div className="flex items-center">
-                            <div className="w-5 h-5 rounded-full bg-gray-200 mr-2"></div>
-                            <span>Created by System</span>
+            <div className="max-w-4xl mx-auto bg-white rounded-xl shadow-sm border border-saas-border overflow-hidden">
+                {/* Header Banner */}
+                <div className="h-32 bg-gradient-to-r from-blue-50 to-indigo-50 border-b border-gray-100"></div>
+
+                <article className="px-12 py-10 -mt-12 relative">
+                    <div className="mb-8">
+                        <div className="inline-flex items-center space-x-2 mb-4 bg-white p-1 pr-3 rounded-full shadow-sm border border-gray-100">
+                            <div className="p-1 bg-blue-100 rounded-full text-saas-blue">
+                                <FileText size={14} />
+                            </div>
+                            <span className="text-xs font-semibold text-saas-text-secondary uppercase tracking-wide">
+                                {sop.category}
+                            </span>
                         </div>
-                        <span>•</span>
-                        <span>Updated just now</span>
-                    </div>
-                </div>
+                        <h1 className="text-4xl font-bold text-gray-900 mb-6 tracking-tight leading-tight">{sop.title}</h1>
 
-                <div className="prose prose-slate max-w-none">
-                    <p className="text-lg text-gray-600 mb-8 leading-relaxed">
-                        This Standard Operating Procedure outlines the verified process for <strong>{sop.title}</strong>.
-                        Follow the steps below to ensure consistency and quality.
-                    </p>
-
-                    <div className="bg-gray-50 rounded-xl p-6 border border-gray-100 mb-8">
-                        <h3 className="text-sm font-semibold text-gray-900 uppercase tracking-wider mb-4">Key Objectives</h3>
-                        <ul className="space-y-3">
-                            {contentPoints.map((point, i) => (
-                                <li key={i} className="flex items-start">
-                                    <CheckSquare size={18} className="text-saas-blue mt-0.5 mr-3 flex-shrink-0" />
-                                    <span className="text-gray-700">{point}</span>
-                                </li>
-                            ))}
-                        </ul>
+                        <div className="flex items-center space-x-6 text-sm text-gray-500 border-b border-gray-100 pb-6">
+                            <div className="flex items-center">
+                                <div className="w-6 h-6 rounded-full bg-indigo-100 flex items-center justify-center text-indigo-700 font-bold text-xs mr-2">S</div>
+                                <span className="font-medium text-gray-700">System Admin</span>
+                            </div>
+                            <div className="flex items-center">
+                                <Clock size={14} className="mr-1.5" />
+                                <span>Updated 2 days ago</span>
+                            </div>
+                        </div>
                     </div>
 
-                    <h3>Procedure Steps</h3>
-                    <p>
-                        1. <strong>Preparation:</strong> Ensure you have all necessary access and tools ready before beginning this workflow.<br />
-                        2. <strong>Execution:</strong> Follow the checklist items above in sequential order.<br />
-                        3. <strong>Verification:</strong> Double-check your work against the quality standards defined in the {sop.category} guidelines.<br />
-                        4. <strong>Documentation:</strong> Log any variations or issues in the CRM notes field.
-                    </p>
+                    <div className="prose prose-slate max-w-none prose-headings:font-semibold prose-a:text-saas-blue">
+                        <p className="text-lg text-gray-600 mb-8 leading-relaxed">
+                            This Standard Operating Procedure outlines the verified process for <strong>{sop.title}</strong>.
+                            Follow the steps below to ensure consistency and quality.
+                        </p>
 
-                    <div className="mt-8 p-4 border-l-4 border-saas-blue bg-blue-50/50 text-sm text-blue-900">
-                        <strong>Note:</strong> This process is critical for maintaining our operational standards. If you encounter any blockers, escalate to your manager immediately.
+                        <div className="bg-gray-50 rounded-xl p-6 border border-gray-200 mb-10">
+                            <h3 className="text-sm font-bold text-gray-900 uppercase tracking-wider mb-4 flex items-center">
+                                <CheckSquare size={16} className="mr-2 text-saas-blue" />
+                                Key Objectives
+                            </h3>
+                            <ul className="space-y-3 m-0 p-0 list-none">
+                                {contentPoints.map((point, i) => (
+                                    <li key={i} className="flex items-start p-0 m-0">
+                                        <div className="mt-1.5 w-1.5 h-1.5 rounded-full bg-saas-blue mr-3 flex-shrink-0"></div>
+                                        <span className="text-gray-700">{point}</span>
+                                    </li>
+                                ))}
+                            </ul>
+                        </div>
+
+                        <h3>Procedure Steps</h3>
+                        <ol className="space-y-4">
+                            <li><strong>Preparation:</strong> Ensure you have all necessary access and tools ready before beginning this workflow.</li>
+                            <li><strong>Execution:</strong> Follow the checklist items above in sequential order.</li>
+                            <li><strong>Verification:</strong> Double-check your work against the quality standards defined in the {sop.category} guidelines.</li>
+                            <li><strong>Documentation:</strong> Log any variations or issues in the CRM notes field.</li>
+                        </ol>
+
+                        <div className="mt-10 p-5 bg-blue-50/50 border border-blue-100 rounded-lg text-sm text-blue-900 flex items-start">
+                            <div className="mr-3 mt-0.5 text-blue-500">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+                            </div>
+                            <div>
+                                <strong className="block mb-1 text-blue-700">Important Note</strong>
+                                This process is critical for maintaining our operational standards. If you encounter any blockers, escalate to your manager immediately.
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </article>
+                </article>
+            </div>
         </div>
     );
 };
 
 const VideoDetail = ({ video, onBack }: { video: Video, onBack: () => void }) => (
-    <div className="min-h-[calc(100vh-48px)] animate-in fade-in zoom-in-95 duration-300 flex flex-col">
+    <div className="min-h-[calc(100vh-48px)] animate-in fade-in zoom-in-95 duration-300 flex flex-col pb-12">
         {/* Breadcrumb / Nav */}
-        <div className="px-8 py-6 flex items-center text-sm text-saas-text-secondary bg-white border-b border-saas-border">
+        <div className="max-w-6xl mx-auto w-full py-6 flex items-center text-sm text-saas-text-secondary">
             <button onClick={onBack} className="hover:text-saas-text-primary flex items-center transition-colors">
                 <ArrowLeft size={16} className="mr-1" />
                 Back to Tutorials
@@ -166,34 +186,53 @@ const VideoDetail = ({ video, onBack }: { video: Video, onBack: () => void }) =>
             <span className="text-saas-text-primary font-medium truncate">{video.title}</span>
         </div>
 
-        <div className="flex-1 bg-black flex items-center justify-center p-8">
-            <div className="w-full max-w-5xl aspect-video bg-gray-900 border border-gray-800 rounded-lg shadow-2xl flex items-center justify-center relative group">
+        <div className="max-w-6xl mx-auto w-full bg-white rounded-xl shadow-sm border border-saas-border overflow-hidden">
+            <div className="aspect-video bg-black flex items-center justify-center relative group">
                 {/* Mock Player UI */}
                 <div className="text-center">
-                    <div className="w-20 h-20 rounded-full bg-white/10 backdrop-blur-sm flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform cursor-pointer">
+                    <div className="w-24 h-24 rounded-full bg-white/10 backdrop-blur-sm flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform cursor-pointer border border-white/20 shadow-xl">
                         <Play size={40} className="text-white fill-white ml-2" />
                     </div>
-                    <p className="text-gray-400 font-medium">Video Player Placeholder</p>
-                    <p className="text-gray-600 text-sm mt-2">{video.title}</p>
                 </div>
 
                 {/* Mock Controls */}
-                <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-black/80 to-transparent p-4 flex items-end">
+                <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-black/90 to-transparent p-6 flex items-end">
                     <div className="w-full flex items-center space-x-4">
-                        <Play size={20} className="text-white fill-white" />
-                        <div className="h-1 bg-gray-600 flex-1 rounded-full overflow-hidden">
+                        <button className="text-white hover:text-saas-blue transition-colors">
+                            <Play size={24} className="fill-current" />
+                        </button>
+                        <div className="h-1.5 bg-gray-600/50 flex-1 rounded-full overflow-hidden cursor-pointer hover:h-2 transition-all">
                             <div className="h-full w-1/3 bg-saas-blue"></div>
                         </div>
-                        <span className="text-xs text-white font-medium">{video.duration}</span>
+                        <span className="text-sm text-white font-medium font-mono">{video.duration}</span>
                     </div>
                 </div>
             </div>
-        </div>
 
-        <div className="bg-white p-8 border-t border-saas-border">
-            <div className="max-w-5xl mx-auto">
-                <h1 className="text-2xl font-bold text-gray-900 mb-2">{video.title}</h1>
-                <p className="text-gray-500">{video.category} • {video.duration}</p>
+            <div className="p-8">
+                <div className="flex items-start justify-between">
+                    <div>
+                        <div className="flex items-center space-x-2 mb-3">
+                            <span className="px-2 py-0.5 rounded bg-blue-50 text-blue-700 text-xs font-semibold uppercase tracking-wide">
+                                {video.category}
+                            </span>
+                            <span className="text-gray-400 text-xs">•</span>
+                            <span className="text-gray-500 text-xs font-medium">Updated recently</span>
+                        </div>
+                        <h1 className="text-2xl font-bold text-gray-900 mb-3">{video.title}</h1>
+                        <p className="text-gray-600 max-w-2xl">
+                            In this tutorial, we visualize the core concepts of the <strong>{video.category}</strong> workflow.
+                            Watch this to understand the practical application of our SOPs.
+                        </p>
+                    </div>
+
+                    <div className="hidden md:block">
+                        <button className="flex items-center px-4 py-2 bg-gray-50 hover:bg-gray-100 border border-gray-200 rounded-md text-sm font-medium text-gray-700 transition-colors">
+                            <CheckSquare size={16} className="mr-2 text-gray-500" />
+                            Mark as Watched
+                        </button>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
