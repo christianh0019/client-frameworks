@@ -10,8 +10,8 @@ const TabNav = ({ active, onChange }: { active: string, onChange: (val: string) 
                 key={tab}
                 onClick={() => onChange(tab)}
                 className={`pb-3 text-sm font-medium border-b-2 transition-colors ${active === tab
-                        ? 'border-saas-blue text-saas-blue'
-                        : 'border-transparent text-saas-text-secondary hover:text-saas-text-primary hover:border-gray-300'
+                    ? 'border-saas-blue text-saas-blue'
+                    : 'border-transparent text-saas-text-secondary hover:text-saas-text-primary hover:border-gray-300'
                     }`}
             >
                 {tab}
@@ -20,7 +20,7 @@ const TabNav = ({ active, onChange }: { active: string, onChange: (val: string) 
     </div>
 );
 
-const SOPCard = ({ title, description, category, lastUpdated }: { title: string, description: string, category: string, lastUpdated: string }) => (
+const SOPCard = ({ title, description, category }: { title: string, description: string, category: string }) => (
     <div className="bg-white border border-saas-border rounded-lg p-5 hover:shadow-card hover:border-gray-300 transition-all cursor-pointer group flex flex-col h-full">
         <div className="flex justify-between items-start mb-3">
             <div className="flex items-center space-x-2">
@@ -31,10 +31,9 @@ const SOPCard = ({ title, description, category, lastUpdated }: { title: string,
             </div>
         </div>
         <h3 className="text-lg font-semibold text-saas-text-primary mb-2 group-hover:text-saas-blue transition-colors line-clamp-1">{title}</h3>
-        <p className="text-sm text-saas-text-secondary mb-4 line-clamp-2 flex-grow">{description}</p>
+        <p className="text-sm text-saas-text-secondary mb-4 flex-grow whitespace-pre-line">{description}</p>
 
-        <div className="flex items-center justify-between pt-4 border-t border-gray-100 mt-auto">
-            <span className="text-xs text-gray-400">Updated {lastUpdated}</span>
+        <div className="flex items-center justify-end pt-4 border-t border-gray-100 mt-auto">
             <div className="flex items-center text-sm font-medium text-saas-blue opacity-0 group-hover:opacity-100 transition-opacity">
                 View
                 <ArrowRight size={14} className="ml-1" />
@@ -43,7 +42,7 @@ const SOPCard = ({ title, description, category, lastUpdated }: { title: string,
     </div>
 );
 
-const VideoCard = ({ title, duration, author }: { title: string, duration: string, author: string }) => (
+const VideoCard = ({ title, duration, category }: { title: string, duration: string, category: string }) => (
     <div className="bg-white border border-saas-border rounded-lg overflow-hidden hover:shadow-card hover:border-gray-300 transition-all cursor-pointer group">
         <div className="relative aspect-video bg-gray-100 flex items-center justify-center overflow-hidden">
             <div className="absolute inset-0 bg-gray-200"></div> {/* Placeholder for thumbnail */}
@@ -58,8 +57,10 @@ const VideoCard = ({ title, duration, author }: { title: string, duration: strin
             </div>
         </div>
         <div className="p-4">
-            <h3 className="font-medium text-saas-text-primary mb-1 group-hover:text-saas-blue transition-colors line-clamp-1">{title}</h3>
-            <p className="text-xs text-saas-text-secondary">By {author}</p>
+            <div className="flex items-center mb-1">
+                <span className="text-[10px] font-medium text-saas-text-secondary uppercase tracking-wider border border-gray-200 px-1 rounded">{category}</span>
+            </div>
+            <h3 className="font-medium text-saas-text-primary group-hover:text-saas-blue transition-colors line-clamp-2">{title}</h3>
         </div>
     </div>
 );
@@ -86,19 +87,74 @@ const App = () => {
     const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
 
     const sops = [
-        { title: "New Client Onboarding", description: "Standard procedure for welcoming and setting up new clients in the system.", category: "Onboarding", lastUpdated: "2 days ago" },
-        { title: "Monthly Reporting Workflow", description: "How to generate, review, and send monthly performance reports.", category: "Reporting", lastUpdated: "1 week ago" },
-        { title: "Facebook Ad Campaign Setup", description: "Checklist for launching a new conversion campaign including pixel verification.", category: "Media Buying", lastUpdated: "3 weeks ago" },
-        { title: "Lead Qualification Script", description: "Phone script for qualifying inbound leads before booking appointments.", category: "Sales", lastUpdated: "1 month ago" },
-        { title: "CRM Pipeline Management", description: "Rules for moving opportunities between stages in the sales pipeline.", category: "Sales", lastUpdated: "2 months ago" },
-        { title: "Content Calendar Template", description: "How to use the content calendar to plan social media posts.", category: "Marketing", lastUpdated: "3 months ago" },
+        {
+            title: "Lead Response & Speed-to-Lead SOP",
+            description: "How new leads are contacted within minutes\n• Call + text flow\n• Missed call logic\n• First 24 hour cadence",
+            category: "Sales"
+        },
+        {
+            title: "Qualification & Discovery SOP",
+            description: "Budget filters\n• Timeline filters\n• Decision maker logic\n• Serious buyer signals\n• When to disqualify",
+            category: "Sales"
+        },
+        {
+            title: "Sales Pipeline Management SOP",
+            description: "Pipeline stages explained\n• What “next action” always means\n• Forecasting future work\n• How nothing falls through cracks",
+            category: "Sales"
+        },
+        {
+            title: "Long-Cycle Follow-Up & Nurture SOP",
+            description: "90 day cadence\n• 6–12 month nurture rhythm\n• Reactivation process\n• How automation + human touches combine",
+            category: "Nurture"
+        },
+        {
+            title: "Early Monetization SOP",
+            description: "Paid consultations\n• Design agreements\n• Pre-construction packages\n• How to pitch and price them",
+            category: "Finance"
+        },
+        {
+            title: "CRM Daily Operations SOP",
+            description: "Morning routine\n• Lead check process\n• Pipeline update rules\n• Task management",
+            category: "Operations"
+        },
+        {
+            title: "Weekly Growth Review SOP",
+            description: "KPIs to review\n• Pipeline health\n• Lead quality checks\n• Bottleneck identification",
+            category: "Management"
+        },
+        {
+            title: "Lead Quality Feedback Loop SOP",
+            description: "How to flag bad leads\n• Adjust targeting\n• Improve campaigns\n• Tighten qualification over time",
+            category: "Marketing"
+        },
+        {
+            title: "First Hire Playbook SOP",
+            description: "When to hire\n• Who to hire first\n• Role responsibilities\n• Hand-off process from owner",
+            category: "HR"
+        },
+        {
+            title: "Capacity & Scaling SOP",
+            description: "How many leads per month you can handle\n• When to increase spend\n• When to add team\n• How to avoid overbooking",
+            category: "Growth"
+        },
     ];
 
     const videos = [
-        { title: "Dashboard Overview Walkthrough", duration: "05:30", author: "Christian H." },
-        { title: "How to Launch Your First Ad", duration: "12:45", author: "Sarah J." },
-        { title: "Setting Up Automations", duration: "08:15", author: "Mike T." },
-        { title: "Understanding Analytics", duration: "06:20", author: "Christian H." },
+        // Core System Walkthroughs
+        { title: "How the Growth System Works (big picture)", duration: "05:00", category: "Core System" },
+        { title: "How New Leads Flow Through the CRM", duration: "05:00", category: "Core System" },
+        { title: "How Automations Handle Follow-Up", duration: "05:00", category: "Core System" },
+        { title: "How to Update Pipeline Stages Properly", duration: "05:00", category: "Core System" },
+
+        // Daily & Weekly Operations
+        { title: "Daily Lead Management Routine", duration: "05:00", category: "Operations" },
+        { title: "Weekly Pipeline Review Process", duration: "05:00", category: "Operations" },
+        { title: "How to Qualify Leads Correctly", duration: "05:00", category: "Operations" },
+
+        // Revenue & Scaling
+        { title: "How to Pitch Design Agreements & Pre-Con", duration: "05:00", category: "Revenue" },
+        { title: "When to Increase Lead Volume", duration: "05:00", category: "Revenue" },
+        { title: "When & How to Hire Your First Sales Help", duration: "05:00", category: "Revenue" },
     ];
 
     return (
