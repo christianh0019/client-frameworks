@@ -289,12 +289,15 @@ interface ProcessStage {
 
 const SalesProcessTree = ({ onSelectSOP }: { onSelectSOP: (sopTitle: string) => void }) => {
     const stages: ProcessStage[] = [
-        { id: '1', name: 'New Lead', sopId: 'New Lead Follow-Up Procedure', description: 'Immediate response and qualification.' },
-        { id: '2', name: 'Qualified Lead', sopId: 'Qualification & Discovery SOP', description: 'Budget and timeline verification.' },
-        { id: '3', name: 'Discovery Call Booked', sopId: 'Qualification & Discovery SOP', description: 'Scheduled deep-dive call.' },
-        { id: '4', name: 'Discovery Call Completed', sopId: 'Sales Pipeline Management SOP', description: 'Post-call analysis and next steps.' },
-        { id: '5', name: 'Concept Design Signed', sopId: 'Early Monetization SOP', description: 'Paid engagement begins.' },
-        { id: '6', name: 'Construction Contract', sopId: 'Capacity & Scaling SOP', description: 'Final build agreement.' },
+        { id: '1', name: 'New Lead', sopId: 'New Lead Follow-Up Procedure', description: 'Manual qualification only' },
+        { id: '2', name: 'Qualified Lead', sopId: 'Qualification & Discovery SOP', description: 'Eligible for discovery' },
+        { id: '3', name: 'Discovery Call Booked', sopId: 'Qualification & Discovery SOP', description: 'Discovery scheduled' },
+        { id: '4', name: 'Discovery Call Completed', sopId: 'Sales Pipeline Management SOP', description: 'Discovery done' },
+        { id: '5', name: 'Not Booked Follow Ups', sopId: 'Long-Cycle Follow-Up & Nurture SOP', description: 'Booking recovery' },
+        { id: '6', name: 'In-Person Meeting Booked', sopId: 'Sales Pipeline Management SOP', description: 'High-intent next step' },
+        { id: '7', name: 'In-Person Meeting Completed', sopId: 'Early Monetization SOP', description: 'Trust + alignment' },
+        { id: '8', name: 'Not Closed Follow Ups', sopId: 'Long-Cycle Follow-Up & Nurture SOP', description: 'Long-cycle nurture' },
+        { id: '9', name: 'Agreements Signed', sopId: 'Early Monetization SOP', description: 'Revenue progression' },
     ];
 
     return (
