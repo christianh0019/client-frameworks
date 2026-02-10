@@ -23,7 +23,7 @@ interface Video {
 
 const TabNav = ({ active, onChange }: { active: string, onChange: (val: string) => void }) => (
     <div className="flex items-center space-x-6 border-b border-saas-border mb-6">
-        {['Process Library', 'Video Tutorials', 'Resources'].map((tab) => (
+        {['Process Library', 'Video Tutorials', 'Tree', 'Resources'].map((tab) => (
             <button
                 key={tab}
                 onClick={() => onChange(tab)}
@@ -279,6 +279,56 @@ const ViewToggle = ({ mode, setMode }: { mode: 'grid' | 'list', setMode: (m: 'gr
     </div>
 );
 
+// Tree Visualization
+interface ProcessStage {
+    id: string;
+    name: string;
+    sopId: string; // Title of the SOP to link to
+    description?: string;
+}
+
+const SalesProcessTree = ({ onSelectSOP }: { onSelectSOP: (sopTitle: string) => void }) => {
+    const stages: ProcessStage[] = [
+        { id: '1', name: 'New Lead', sopId: 'New Lead Follow-Up Procedure', description: 'Immediate response and qualification.' },
+        { id: '2', name: 'Qualified Lead', sopId: 'Qualification & Discovery SOP', description: 'Budget and timeline verification.' },
+        { id: '3', name: 'Discovery Call Booked', sopId: 'Qualification & Discovery SOP', description: 'Scheduled deep-dive call.' },
+        { id: '4', name: 'Discovery Call Completed', sopId: 'Sales Pipeline Management SOP', description: 'Post-call analysis and next steps.' },
+        { id: '5', name: 'Concept Design Signed', sopId: 'Early Monetization SOP', description: 'Paid engagement begins.' },
+        { id: '6', name: 'Construction Contract', sopId: 'Capacity & Scaling SOP', description: 'Final build agreement.' },
+    ];
+
+    return (
+        <div className="max-w-3xl mx-auto py-10">
+            <div className="relative border-l-2 border-gray-200 ml-4 space-y-12">
+                {stages.map((stage, index) => (
+                    <div key={stage.id} className="relative pl-8 group">
+                        {/* Dot on the line */}
+                        <div className={`absolute -left-[9px] top-6 w-4 h-4 rounded-full border-2 transition-all duration-300 z-10 ${'bg-white border-saas-blue group-hover:scale-125 group-hover:bg-blue-50'
+                            }`}></div>
+
+                        {/* Connection Line Highlight (Optional) */}
+                        <div className="absolute left-[-2px] top-6 bottom-[-48px] w-[2px] bg-blue-100 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+
+                        {/* Content Card */}
+                        <div
+                            onClick={() => onSelectSOP(stage.sopId)}
+                            className="bg-white p-5 rounded-lg border border-saas-border hover:shadow-md hover:border-saas-blue/50 cursor-pointer transition-all relative"
+                        >
+                            <div className="flex items-center justify-between mb-1">
+                                <h3 className="text-lg font-semibold text-saas-text-primary group-hover:text-saas-blue transition-colors">
+                                    {stage.name}
+                                </h3>
+                                <ArrowRight size={16} className="text-gray-300 group-hover:text-saas-blue transform group-hover:translate-x-1 transition-all" />
+                            </div>
+                            {stage.description && <p className="text-sm text-saas-text-secondary">{stage.description}</p>}
+                        </div>
+                    </div>
+                ))}
+            </div>
+        </div>
+    );
+};
+
 const App = () => {
     const [activeTab, setActiveTab] = useState('Process Library');
     const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
@@ -472,6 +522,17 @@ Target contact rate: 70–85%
         setSelectedVideo(null);
     };
 
+    // Helper to find SOP by title and open it
+    const handleTreeSelection = (sopTitle: string) => {
+        const foundSOP = sops.find(s => s.title === sopTitle);
+        if (foundSOP) {
+            handleSOPClick(foundSOP);
+        } else {
+            // Fallback or alert if SOP not found (optional)
+            console.warn(`SOP not found: ${sopTitle}`);
+        }
+    };
+
     return (
         <div className="min-h-screen bg-saas-bg font-sans text-saas-text-primary selection:bg-blue-100 selection:text-blue-900 p-6">
 
@@ -512,6 +573,10 @@ Target contact rate: 70–85%
                                     <VideoCard key={idx} video={video} onClick={() => handleVideoClick(video)} />
                                 ))}
                             </div>
+                        )}
+
+                        {activeTab === 'Tree' && (
+                            <SalesProcessTree onSelectSOP={handleTreeSelection} />
                         )}
 
                         {activeTab === 'Resources' && (
