@@ -9,6 +9,7 @@ interface SOP {
     description: string;
     category: string;
     content?: string[]; // Mock content for the detail view
+    detailedContent?: string; // Full text content for the detail view
 }
 
 interface Video {
@@ -124,49 +125,71 @@ const SOPDetail = ({ sop, onBack }: { sop: SOP, onBack: () => void }) => {
                             </div>
                             <div className="flex items-center">
                                 <Clock size={14} className="mr-1.5" />
-                                <span>Updated 2 days ago</span>
+                                <span>Updated recently</span>
                             </div>
                         </div>
                     </div>
 
                     <div className="prose prose-slate max-w-none prose-headings:font-semibold prose-a:text-saas-blue">
-                        <p className="text-lg text-gray-600 mb-8 leading-relaxed">
-                            This Standard Operating Procedure outlines the verified process for <strong>{sop.title}</strong>.
-                            Follow the steps below to ensure consistency and quality.
-                        </p>
+                        {sop.detailedContent ? (
+                            <div className="whitespace-pre-wrap font-sans text-gray-700 leading-relaxed text-base">
+                                {sop.detailedContent.split('\n').map((line, i) => {
+                                    const trimmed = line.trim();
+                                    if (!trimmed) return <div key={i} className="h-4"></div>;
 
-                        <div className="bg-gray-50 rounded-xl p-6 border border-gray-200 mb-10">
-                            <h3 className="text-sm font-bold text-gray-900 uppercase tracking-wider mb-4 flex items-center">
-                                <CheckSquare size={16} className="mr-2 text-saas-blue" />
-                                Key Objectives
-                            </h3>
-                            <ul className="space-y-3 m-0 p-0 list-none">
-                                {contentPoints.map((point, i) => (
-                                    <li key={i} className="flex items-start p-0 m-0">
-                                        <div className="mt-1.5 w-1.5 h-1.5 rounded-full bg-saas-blue mr-3 flex-shrink-0"></div>
-                                        <span className="text-gray-700">{point}</span>
-                                    </li>
-                                ))}
-                            </ul>
-                        </div>
+                                    // Headers
+                                    if (trimmed.match(/^(⏱|📞|🗣|🧾|📅|📊|🚫|Objective)/)) {
+                                        return <h3 key={i} className="text-xl font-bold text-gray-900 mt-8 mb-4 border-b border-gray-100 pb-2">{line}</h3>;
+                                    }
+                                    // Sub-headers / Keys
+                                    if (trimmed.endsWith(':') || (trimmed === trimmed.toUpperCase() && trimmed.length > 3 && !trimmed.includes(' '))) {
+                                        return <strong key={i} className="block mt-4 mb-2 text-gray-900">{line}</strong>
+                                    }
 
-                        <h3>Procedure Steps</h3>
-                        <ol className="space-y-4">
-                            <li><strong>Preparation:</strong> Ensure you have all necessary access and tools ready before beginning this workflow.</li>
-                            <li><strong>Execution:</strong> Follow the checklist items above in sequential order.</li>
-                            <li><strong>Verification:</strong> Double-check your work against the quality standards defined in the {sop.category} guidelines.</li>
-                            <li><strong>Documentation:</strong> Log any variations or issues in the CRM notes field.</li>
-                        </ol>
-
-                        <div className="mt-10 p-5 bg-blue-50/50 border border-blue-100 rounded-lg text-sm text-blue-900 flex items-start">
-                            <div className="mr-3 mt-0.5 text-blue-500">
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+                                    return <div key={i}>{line}</div>
+                                })}
                             </div>
-                            <div>
-                                <strong className="block mb-1 text-blue-700">Important Note</strong>
-                                This process is critical for maintaining our operational standards. If you encounter any blockers, escalate to your manager immediately.
-                            </div>
-                        </div>
+                        ) : (
+                            <>
+                                <p className="text-lg text-gray-600 mb-8 leading-relaxed">
+                                    This Standard Operating Procedure outlines the verified process for <strong>{sop.title}</strong>.
+                                    Follow the steps below to ensure consistency and quality.
+                                </p>
+
+                                <div className="bg-gray-50 rounded-xl p-6 border border-gray-200 mb-10">
+                                    <h3 className="text-sm font-bold text-gray-900 uppercase tracking-wider mb-4 flex items-center">
+                                        <CheckSquare size={16} className="mr-2 text-saas-blue" />
+                                        Key Objectives
+                                    </h3>
+                                    <ul className="space-y-3 m-0 p-0 list-none">
+                                        {contentPoints.map((point, i) => (
+                                            <li key={i} className="flex items-start p-0 m-0">
+                                                <div className="mt-1.5 w-1.5 h-1.5 rounded-full bg-saas-blue mr-3 flex-shrink-0"></div>
+                                                <span className="text-gray-700">{point}</span>
+                                            </li>
+                                        ))}
+                                    </ul>
+                                </div>
+
+                                <h3>Procedure Steps</h3>
+                                <ol className="space-y-4">
+                                    <li><strong>Preparation:</strong> Ensure you have all necessary access and tools ready before beginning this workflow.</li>
+                                    <li><strong>Execution:</strong> Follow the checklist items above in sequential order.</li>
+                                    <li><strong>Verification:</strong> Double-check your work against the quality standards defined in the {sop.category} guidelines.</li>
+                                    <li><strong>Documentation:</strong> Log any variations or issues in the CRM notes field.</li>
+                                </ol>
+
+                                <div className="mt-10 p-5 bg-blue-50/50 border border-blue-100 rounded-lg text-sm text-blue-900 flex items-start">
+                                    <div className="mr-3 mt-0.5 text-blue-500">
+                                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+                                    </div>
+                                    <div>
+                                        <strong className="block mb-1 text-blue-700">Important Note</strong>
+                                        This process is critical for maintaining our operational standards. If you encounter any blockers, escalate to your manager immediately.
+                                    </div>
+                                </div>
+                            </>
+                        )}
                     </div>
                 </article>
             </div>
@@ -265,9 +288,107 @@ const App = () => {
 
     const sops: SOP[] = [
         {
-            title: "Lead Response & Speed-to-Lead SOP",
-            description: "How new leads are contacted within minutes\n• Call + text flow\n• Missed call logic\n• First 24 hour cadence",
-            category: "Sales"
+            title: "New Lead Follow-Up Procedure",
+            description: "Contact every new lead quickly, qualify seriousness, and secure the next step within 7 days.",
+            category: "Sales",
+            detailedContent: `(First 7 Days After Inquiry)
+
+Objective
+Contact every new lead quickly, qualify seriousness, and secure the next step while momentum is highest.
+
+⏱ DAY 0: IMMEDIATE RESPONSE (0–5 MINUTES)
+Trigger
+New lead enters CRM.
+
+Automated Actions
+• Instant text sent
+• Instant email sent
+• Call task created
+
+Sales Rep Action (Required)
+Call within 5 minutes.
+
+Call Opener
+“Hey {{Name}}, this is {{Rep}} with {{Builder Company}}.
+I just saw your request about building and wanted to learn a little about what you’re planning.”
+
+If No Answer
+Leave voicemail (short):
+“Hey {{Name}}, this is {{Rep}} with {{Builder Company}} calling about your build request. I’ll send a quick text.”
+
+Send text:
+“Hey {{Name}}, just tried calling about your build request. When’s a good time to connect?”
+
+📞 DAYS 0–3: HIGH-INTENT CONTACT PHASE
+Total attempts: 3–4 calls + texts
+
+Timing windows
+Day 0
+• Morning or immediate
+• Evening
+
+Day 1
+• Midday
+
+Day 2
+• Evening
+
+Rule
+Always text after missed call.
+Never stack calls back to back.
+
+📞 DAYS 4–7: FINAL CONTACT PUSH
+Goal: Reach anyone who hasn’t responded yet.
+
+Attempts
+• 1 call every other day
+• 1 short follow-up text after each
+
+Example Text
+“Hey {{Name}}, wanted to make sure I didn’t miss you about your home build request. Happy to answer any questions.”
+
+🗣 FIRST CONVERSATION STRUCTURE (ONCE CONTACTED)
+Purpose
+Qualify, not pitch.
+
+Required Questions
+Where are you at in the process right now?
+Do you already own land?
+When are you hoping to start building?
+What budget range are you aiming for?
+
+🧾 SAME-DAY CRM UPDATE (MANDATORY)
+After every interaction:
+• Update pipeline stage
+• Log call notes
+• Set next task
+• Tag as Qualified / Future / Not Fit
+No exceptions.
+
+📅 NEXT STEP SETUP
+If Qualified
+Schedule builder’s next step immediately.
+Send confirmation.
+
+If Not Ready
+Move to nurture pipeline.
+Send text:
+“Great talking today. I’ll stay in touch as you move through planning.”
+
+📊 PERFORMANCE STANDARDS
+Each lead should receive within 7 days:
+✅ 5–7 total touch attempts
+✅ multiple time windows
+✅ at least one voicemail
+✅ consistent texts
+
+Target contact rate: 70–85%
+
+🚫 DO NOT
+❌ wait hours to call
+❌ rely on text only
+❌ give up after 1 try
+❌ leave leads unlogged`
         },
         {
             title: "Qualification & Discovery SOP",
