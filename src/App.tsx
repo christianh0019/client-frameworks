@@ -300,7 +300,7 @@ const SalesProcessTree = ({ onSelectSOP }: { onSelectSOP: (sopTitle: string) => 
     return (
         <div className="max-w-3xl mx-auto py-10">
             <div className="relative border-l-2 border-gray-200 ml-4 space-y-12">
-                {stages.map((stage, index) => (
+                {stages.map((stage) => (
                     <div key={stage.id} className="relative pl-8 group">
                         {/* Dot on the line */}
                         <div className={`absolute -left-[9px] top-6 w-4 h-4 rounded-full border-2 transition-all duration-300 z-10 ${'bg-white border-saas-blue group-hover:scale-125 group-hover:bg-blue-50'
