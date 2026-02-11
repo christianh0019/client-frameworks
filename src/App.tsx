@@ -472,7 +472,30 @@ If you DO proceed immediately, use the [[LINK:Discovery Call Script]].`
             title: "Handling Qualified Lead Stage",
             description: "Process for handling the Qualified Lead stage.",
             category: "Sales",
-            detailedContent: "### Process for Qualified Lead Stage\n\nComing soon..."
+            detailedContent: `### Definition
+"Qualified Leads" have either:
+1. Been called and qualified manually.
+2. Filled out an application on our website that automatically qualified them (ASK: The application and qualification call ask the same things).
+
+### Goal
+Book a Discovery Call.
+
+### Timeline
+**Max Time in Stage: 3-5 Days.**
+We should have either booked a discovery call or marked them as uninterested by day 5.
+
+### Action Plan
+Reach out mainly via **Text Message** or **Phone Call**.
+Script/Approach: "Would you like to set up a time to talk so we can learn more about your project?"
+
+### Outcome 1: Not Interested
+Move to "Lost" stage.
+Select Reason: "Uninterested".
+
+### Outcome 2: Interested (Booking)
+1. Click on **Appointments**.
+2. Schedule a "Discovery Call".
+3. **Automatic:** Once booked, the system will move them to the "Discovery Call Booked" stage automatically.`
         },
         {
             title: "Handling Discovery Call Booked Stage",
