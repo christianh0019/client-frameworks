@@ -501,7 +501,19 @@ Select Reason: "Uninterested".
             title: "Handling Discovery Call Booked Stage",
             description: "Process for handling the Discovery Call Booked stage.",
             category: "Sales",
-            detailedContent: "### Process for Discovery Call Booked Stage\n\nComing soon..."
+            detailedContent: `### Definition
+This is an **Automated Pipeline Stage** that tracks all leads with a scheduled Discovery Call.
+
+### Goal
+Monitor upcoming appointments and prepare for the calls.
+
+### Where to View
+You can view these appointments in this pipeline stage or in the **Calendars** tab.
+(Shows how many people are booked and their specific times).
+
+### Automation Rules
+*   **Entry:** Leads are automatically entered into this stage when a "Discovery Call" is booked.
+*   **Exit:** Leads are automatically moved to the "Discovery Call Completed" stage when the appointment is marked as "Completed" (or the time passes, depending on settings).`
         },
         {
             title: "Handling Discovery Call Completed Stage",
