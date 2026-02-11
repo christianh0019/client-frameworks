@@ -137,12 +137,13 @@ const SOPDetail = ({ sop, onBack }: { sop: SOP, onBack: () => void }) => {
                                     const trimmed = line.trim();
                                     if (!trimmed) return <div key={i} className="h-4"></div>;
 
-                                    // Headers
-                                    if (trimmed.match(/^(⏱|📞|🗣|🧾|📅|📊|🚫|Objective)/)) {
-                                        return <h3 key={i} className="text-xl font-bold text-gray-900 mt-8 mb-4 border-b border-gray-100 pb-2">{line}</h3>;
+                                    // Headers (Markdown style ###)
+                                    if (trimmed.startsWith('### ')) {
+                                        return <h3 key={i} className="text-xl font-bold text-gray-900 mt-8 mb-4 border-b border-gray-100 pb-2">{trimmed.replace(/^###\s+/, '')}</h3>;
                                     }
+
                                     // Sub-headers / Keys
-                                    if (trimmed.endsWith(':') || (trimmed === trimmed.toUpperCase() && trimmed.length > 3 && !trimmed.includes(' '))) {
+                                    if (trimmed.endsWith(':') || (trimmed === trimmed.toUpperCase() && trimmed.length > 3 && !trimmed.includes(' ') && !trimmed.startsWith('[['))) {
                                         return <strong key={i} className="block mt-4 mb-2 text-gray-900">{line}</strong>
                                     }
 
