@@ -110,22 +110,18 @@ const SOPDetail = ({ sop, onBack, onSOPClick }: { sop: SOP, onBack: () => void, 
 
     return (
         <div className="flex flex-col h-full bg-saas-bg animate-in fade-in slide-in-from-bottom-4 duration-300">
-            {/* Breadcrumb / Nav */}
-            <div className="w-full bg-white border-b border-saas-border px-6 py-4 flex items-center text-sm text-saas-text-secondary sticky top-0 z-20">
-                <button
-                    onClick={onBack}
-                    className="hover:text-saas-text-primary flex items-center transition-colors mr-4"
-                >
-                    <ArrowLeft size={16} className="mr-1" />
-                    Back
-                </button>
-                <div className="h-4 w-px bg-gray-200 mx-2"></div>
-                <span className="text-saas-text-primary font-medium truncate ml-2">{sop.title}</span>
-            </div>
-
             <div className="flex-1 overflow-y-auto">
                 {/* Document Content */}
-                <div className="max-w-4xl mx-auto bg-white min-h-[calc(100vh-4rem)] shadow-sm border-x border-saas-border overflow-hidden">
+                <div className="max-w-4xl mx-auto bg-white min-h-[calc(100vh-4rem)] shadow-sm border-x border-saas-border overflow-hidden relative">
+                    {/* Back Button - Absolute Top Left */}
+                    <button
+                        onClick={onBack}
+                        className="absolute top-6 left-6 z-20 flex items-center px-3 py-1.5 bg-white/80 hover:bg-white backdrop-blur-sm rounded-lg shadow-sm border border-gray-200 text-sm font-medium text-gray-700 hover:text-gray-900 transition-all"
+                    >
+                        <ArrowLeft size={16} className="mr-1.5" />
+                        Back to Library
+                    </button>
+
                     {/* Header Banner - Notion Style */}
                     <div className="h-40 bg-gradient-to-r from-blue-50 to-indigo-50 border-b border-gray-100 relative group">
                         <div className="absolute inset-0 bg-white/0 group-hover:bg-white/10 transition-colors"></div>
