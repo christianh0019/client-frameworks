@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Search, FileText, Play, Clock, ArrowRight, LayoutGrid, List, ArrowLeft, ChevronRight, CheckSquare } from 'lucide-react';
 
 // Types
@@ -144,6 +144,29 @@ const SOPDetail = ({ sop, onBack }: { sop: SOP, onBack: () => void }) => {
                                     // Sub-headers / Keys
                                     if (trimmed.endsWith(':') || (trimmed === trimmed.toUpperCase() && trimmed.length > 3 && !trimmed.includes(' '))) {
                                         return <strong key={i} className="block mt-4 mb-2 text-gray-900">{line}</strong>
+                                    }
+
+                                    // Link Detection [[LINK:SOP Title]]
+                                    const linkMatch = line.match(/\[\[LINK:(.*?)\]\]/);
+                                    if (linkMatch) {
+                                        const targetSop = linkMatch[1];
+                                        const parts = line.split(linkMatch[0]);
+                                        return (
+                                            <div key={i} className="my-2">
+                                                {parts[0]}
+                                                <button
+                                                    onClick={() => {
+                                                        const event = new CustomEvent('navigate-sop', { detail: targetSop });
+                                                        window.dispatchEvent(event);
+                                                    }}
+                                                    className="inline-flex items-center text-saas-blue font-medium hover:underline cursor-pointer"
+                                                >
+                                                    <FileText size={14} className="mr-1" />
+                                                    {targetSop}
+                                                </button>
+                                                {parts[1]}
+                                            </div>
+                                        );
                                     }
 
                                     return <div key={i}>{line}</div>
@@ -339,109 +362,59 @@ const App = () => {
     const [selectedSOP, setSelectedSOP] = useState<SOP | null>(null);
     const [selectedVideo, setSelectedVideo] = useState<Video | null>(null);
 
+
     const sops: SOP[] = [
         {
             title: "New Lead Follow-Up Procedure",
             description: "Contact every new lead quickly, qualify seriousness, and secure the next step within 7 days.",
             category: "Sales",
-            detailedContent: `(First 7 Days After Inquiry)
+            detailedContent: `📍 WHERE TO FIND THIS
+(Desktop & Mobile) CRM > Opportunities > "New Lead" Stage.
 
-Objective
-Contact every new lead quickly, qualify seriousness, and secure the next step while momentum is highest.
+📌 DEFINITION
+"New Leads" are generated via lead magnets. These contacts have exchanged their information for a valuable guide or tool effectively but have NOT yet been qualified.
 
-⏱ DAY 0: IMMEDIATE RESPONSE (0–5 MINUTES)
-Trigger
-New lead enters CRM.
+🎯 GOAL
+Qualify or disqualify as fast as possible.
 
-Automated Actions
-• Instant text sent
-• Instant email sent
-• Call task created
+⚡ IMPORTANT RULE: 5-MINUTE RESPONSE
+All leads should be contacted in under 5 minutes.
+Why? Conversion rates increase by 300% when this is done.
 
-Sales Rep Action (Required)
-Call within 5 minutes.
+🔔 NOTIFICATIONS
+• You will be notified via text message for all new leads.
+• The lead receives an automated text message 2-3 minutes after they enter the system (designed to feel human).
+• Example: "Hey I just saw you downloaded our [Asset Name]! Is this John?"
 
-Call Opener
-“Hey {{Name}}, this is {{Rep}} with {{Builder Company}}.
-I just saw your request about building and wanted to learn a little about what you’re planning.”
+🏃‍♂️ ACTION PLAN
+1. Call them immediately (immediately after the automated text triggers).
+2. If they answer: [[LINK:Qualification & Discovery SOP]]
 
-If No Answer
-Leave voicemail (short):
-“Hey {{Name}}, this is {{Rep}} with {{Builder Company}} calling about your build request. I’ll send a quick text.”
+📞 IF NO ANSWER (FOLLOW-UP CADENCE)
+Call once every day for the next 4 days.
 
-Send text:
-“Hey {{Name}}, just tried calling about your build request. When’s a good time to connect?”
+If they don't answer the call:
+• Send a quick text.
+• Leave a voicemail.
+• Suggested Text: "Just tried to give you a ring John. Did you have a moment?" (Keep it friendly, do not annoy them).
 
-📞 DAYS 0–3: HIGH-INTENT CONTACT PHASE
-Total attempts: 3–4 calls + texts
+🗣 IF THEY ANSWER
+Follow the Qualification Script: [[LINK:Qualification & Discovery SOP]]
 
-Timing windows
-Day 0
-• Morning or immediate
-• Evening
+Goal: Determine if they are Qualified or Unqualified.
 
-Day 1
-• Midday
+✅ Qualified: Move to "Qualified Lead" pipeline stage.
+❌ Disqualified: Move to "Lost" stage and add "Disqualified" reason.
 
-Day 2
-• Evening
+⚠️ SPECIAL CIRCUMSTANCES NOTE
+Sometimes you can proceed with a discovery call immediately during the qualification call, but this is RARE.
 
-Rule
-Always text after missed call.
-Never stack calls back to back.
+Only proceed if:
+• All decision makers are present.
+• They are in a quiet, isolated environment.
+• Everybody has time to talk.
 
-📞 DAYS 4–7: FINAL CONTACT PUSH
-Goal: Reach anyone who hasn’t responded yet.
-
-Attempts
-• 1 call every other day
-• 1 short follow-up text after each
-
-Example Text
-“Hey {{Name}}, wanted to make sure I didn’t miss you about your home build request. Happy to answer any questions.”
-
-🗣 FIRST CONVERSATION STRUCTURE (ONCE CONTACTED)
-Purpose
-Qualify, not pitch.
-
-Required Questions
-Where are you at in the process right now?
-Do you already own land?
-When are you hoping to start building?
-What budget range are you aiming for?
-
-🧾 SAME-DAY CRM UPDATE (MANDATORY)
-After every interaction:
-• Update pipeline stage
-• Log call notes
-• Set next task
-• Tag as Qualified / Future / Not Fit
-No exceptions.
-
-📅 NEXT STEP SETUP
-If Qualified
-Schedule builder’s next step immediately.
-Send confirmation.
-
-If Not Ready
-Move to nurture pipeline.
-Send text:
-“Great talking today. I’ll stay in touch as you move through planning.”
-
-📊 PERFORMANCE STANDARDS
-Each lead should receive within 7 days:
-✅ 5–7 total touch attempts
-✅ multiple time windows
-✅ at least one voicemail
-✅ consistent texts
-
-Target contact rate: 70–85%
-
-🚫 DO NOT
-❌ wait hours to call
-❌ rely on text only
-❌ give up after 1 try
-❌ leave leads unlogged`
+If these conditions are not met, schedule the Discovery Call for a later time.`
         },
         {
             title: "Qualification & Discovery SOP",
@@ -535,6 +508,15 @@ Target contact rate: 70–85%
             console.warn(`SOP not found: ${sopTitle}`);
         }
     };
+
+    useEffect(() => {
+        const handleNavigation = (e: Event) => {
+            const customEvent = e as CustomEvent;
+            handleTreeSelection(customEvent.detail);
+        };
+        window.addEventListener('navigate-sop', handleNavigation);
+        return () => window.removeEventListener('navigate-sop', handleNavigation);
+    }, [sops]);
 
     return (
         <div className="min-h-screen bg-saas-bg font-sans text-saas-text-primary selection:bg-blue-100 selection:text-blue-900 p-6">
