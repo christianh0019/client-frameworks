@@ -521,7 +521,11 @@ Go to the **Calendars** tab or the appointment on the pipeline card and update t
 *   Schedule the meeting in the system.
 *   **Automation:** They will automatically move to the **"In-Person Meeting Booked"** stage.`
         },
-        detailedContent: \`### Definition
+        {
+            title: "Handling Not Booked Follow Ups Stage",
+            description: "Process for handling the Not Booked Follow Ups stage.",
+            category: "Sales",
+            detailedContent: \`### Definition
 This stage is for **Qualified Leads** who engaged with us but for some reason could not book an In-Person Meeting immediately.
 
 Common reasons include:
@@ -553,11 +557,12 @@ We need to get them face-to-face to build rapport, establish trust, and pitch ou
 ### Exit Criteria
 *   **Success:** They typically move to the **"In-Person Meeting Booked"** stage.
 *   **Failure:** If they ghost you for a couple of months despite consistent follow-up, move them to **"Lost"** (Reason: Abandoned/Ghosted).\`
+        },
         {
             title: "Handling In-Person Meeting Booked Stage",
             description: "Process for handling the In-Person Meeting Booked stage.",
             category: "Sales",
-            detailedContent: "### Process for In-Person Meeting Booked Stage\n\nComing soon..."
+            detailedContent: "### Process for In-Person Meeting Booked Stage\\n\\nComing soon..."
         },
         {
             title: "Handling In-Person Meeting Completed Stage",
