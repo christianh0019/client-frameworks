@@ -389,7 +389,7 @@ Why? Conversion rates increase by 300% when this is done.
 
 ### Action Plan
 1. Call them immediately (immediately after the automated text triggers).
-2. If they answer: [[LINK:Qualification & Discovery SOP]]
+2. If they answer: [[LINK:Qualification Call Script]]
 
 ### If No Answer (Follow-Up Cadence)
 Call once every day for the next 4 days.
@@ -400,7 +400,7 @@ If they don't answer the call:
 • Suggested Text: "Just tried to give you a ring John. Did you have a moment?" (Keep it friendly, do not annoy them).
 
 ### If They Answer
-Follow the Qualification Script: [[LINK:Qualification & Discovery SOP]]
+Follow the Qualification Script: [[LINK:Qualification Call Script]]
 
 Goal: Determine if they are Qualified or Unqualified.
 
@@ -415,7 +415,9 @@ Only proceed if:
 • They are in a quiet, isolated environment.
 • Everybody has time to talk.
 
-If these conditions are not met, schedule the Discovery Call for a later time.`
+If these conditions are not met, schedule the Discovery Call for a later time.
+
+If you DO proceed immediately, use the [[LINK:Discovery Call Script]].`
         },
         {
             title: "Qualification & Discovery SOP",
@@ -516,7 +518,48 @@ If these conditions are not met, schedule the Discovery Call for a later time.`
         },
     ];
 
-    const allSops = [...sops, ...stageSops];
+    const scripts: SOP[] = [
+        {
+            title: "Qualification Call Script",
+            description: "Initial script to qualify new leads in under 5 minutes.",
+            category: "Script",
+            detailedContent: `### Introduction
+"Hi [Name], this is [Your Name] with [Company]. I saw you downloaded our [Asset Name] and wanted to see if you had any questions?"
+
+### Qualification Questions
+1. **Current Situation:** "Where are you currently at in your home building journey?"
+2. **Land:** "Do you already own a lot, or are you looking for one?"
+3. **Timeline:** "When are you hoping to be moved in?"
+4. **Budget:** "Do you have a rough budget range in mind for the project?"
+
+### Conclusion
+**If Qualified:** "It sounds like we might be a good fit. I'd love to schedule a Discovery Call to dive deeper. Does [Time] work?"
+**If Unqualified:** "It sounds like you're still early in the process. I'll send you some more resources to help you plan. Have a great day!"`
+        },
+        {
+            title: "Discovery Call Script",
+            description: "Detailed script for the 30-45 minute discovery session.",
+            category: "Script",
+            detailedContent: `### Agenda Setting
+"The goal of this call is to understand your vision, review your budget, and see if we are the right team to build your home. By the end, we'll decide if it makes sense to move to a Design Agreement."
+
+### Vision & Goals
+*   "Tell me about your dream home. What are the must-haves?"
+*   "Why are you looking to build right now?"
+
+### Budget & Finance
+*   "Have you spoken with a lender yet?"
+*   "You mentioned a budget of [Amount]. Is that for the build only, or all-in (including land/soft costs)?"
+
+### Process Overview
+Briefly explain your 3-step process: Design -> Pre-Construction -> Build.
+
+### Closing / Next Steps
+**If Moving Forward:** "I think we can help you build this. The next step is our Design Agreement. It costs [Amount] and gets you [Deliverable]. Shall we get that started?"`
+        }
+    ];
+
+    const allSops = [...sops, ...stageSops, ...scripts];
 
     const videos: Video[] = [
         // Core System Walkthroughs
@@ -620,9 +663,10 @@ If these conditions are not met, schedule the Discovery Call for a later time.`
                         )}
 
                         {activeTab === 'Resources' && (
-                            <div className="flex flex-col items-center justify-center py-20 text-saas-text-secondary">
-                                <FileText size={48} className="mb-4 opacity-20" />
-                                <p>No additional resources found.</p>
+                            <div className={`grid ${viewMode === 'grid' ? 'grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4' : 'grid-cols-1'} gap-6`}>
+                                {scripts.map((script, idx) => (
+                                    <SOPCard key={idx} sop={script} onClick={() => handleSOPClick(script)} />
+                                ))}
                             </div>
                         )}
                     </>
