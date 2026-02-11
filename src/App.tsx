@@ -521,12 +521,38 @@ Go to the **Calendars** tab or the appointment on the pipeline card and update t
 *   Schedule the meeting in the system.
 *   **Automation:** They will automatically move to the **"In-Person Meeting Booked"** stage.`
         },
-        {
-            title: "Handling Not Booked Follow Ups Stage",
-            description: "Process for handling the Not Booked Follow Ups stage.",
-            category: "Sales",
-            detailedContent: "### Process for Not Booked Follow Ups Stage\n\nComing soon..."
-        },
+        detailedContent: \`### Definition
+This stage is for **Qualified Leads** who engaged with us but for some reason could not book an In-Person Meeting immediately.
+
+Common reasons include:
+*   Vacation / Scheduling conflicts.
+*   Waiting for a work promotion or financial event.
+*   Finalizing land purchase.
+*   Spouse/Partner needs to be consulted.
+
+### Importance: High Priority
+These are your **most important follow-ups**.
+*   They are already **Qualified**.
+*   They have already **Engaged** (Discovery Call).
+*   They are "low hanging fruit" that just need nurturing.
+
+### Rules of Engagement
+**1. 100% Manual & Personalized**
+*   Do NOT use automated blasts here.
+*   **Always** review the Contact Notes, Opportunity Notes, and the Discovery Call Recording before reaching out.
+*   Reference specific details: "Hey John, hope the vacation in Hawaii was great..." or "Did you end up closing on that lot yet?"
+
+**2. Follow-Up Cadence**
+*   **Specific Date:** If they asked you to call back on a specific date, set a Task and call on that exact day.
+*   **General:** If no date was set, follow up **every 1-2 weeks**.
+
+### Goal
+**Book an In-Person Meeting.**
+We need to get them face-to-face to build rapport, establish trust, and pitch our service.
+
+### Exit Criteria
+*   **Success:** They typically move to the **"In-Person Meeting Booked"** stage.
+*   **Failure:** If they ghost you for a couple of months despite consistent follow-up, move them to **"Lost"** (Reason: Abandoned/Ghosted).\`
         {
             title: "Handling In-Person Meeting Booked Stage",
             description: "Process for handling the In-Person Meeting Booked stage.",
@@ -562,14 +588,14 @@ Go to the **Calendars** tab or the appointment on the pipeline card and update t
 "Hi [Name], this is [Your Name] with [Company]. I saw you downloaded our [Asset Name] and wanted to see if you had any questions?"
 
 ### Qualification Questions
-1. **Current Situation:** "Where are you currently at in your home building journey?"
-2. **Land:** "Do you already own a lot, or are you looking for one?"
-3. **Timeline:** "When are you hoping to be moved in?"
-4. **Budget:** "Do you have a rough budget range in mind for the project?"
+1. ** Current Situation:** "Where are you currently at in your home building journey?"
+2. ** Land:** "Do you already own a lot, or are you looking for one?"
+3. ** Timeline:** "When are you hoping to be moved in?"
+4. ** Budget:** "Do you have a rough budget range in mind for the project?"
 
 ### Conclusion
-**If Qualified:** "It sounds like we might be a good fit. I'd love to schedule a Discovery Call to dive deeper. Does [Time] work?"
-**If Unqualified:** "It sounds like you're still early in the process. I'll send you some more resources to help you plan. Have a great day!"`
+        ** If Qualified:** "It sounds like we might be a good fit. I'd love to schedule a Discovery Call to dive deeper. Does [Time] work?"
+        ** If Unqualified:** "It sounds like you're still early in the process. I'll send you some more resources to help you plan. Have a great day!"`
         },
         {
             title: "Discovery Call Script",
@@ -579,18 +605,18 @@ Go to the **Calendars** tab or the appointment on the pipeline card and update t
 "The goal of this call is to understand your vision, review your budget, and see if we are the right team to build your home. By the end, we'll decide if it makes sense to move to a Design Agreement."
 
 ### Vision & Goals
-*   "Tell me about your dream home. What are the must-haves?"
-*   "Why are you looking to build right now?"
+        * "Tell me about your dream home. What are the must-haves?"
+        * "Why are you looking to build right now?"
 
 ### Budget & Finance
-*   "Have you spoken with a lender yet?"
-*   "You mentioned a budget of [Amount]. Is that for the build only, or all-in (including land/soft costs)?"
+        * "Have you spoken with a lender yet?"
+        * "You mentioned a budget of [Amount]. Is that for the build only, or all-in (including land/soft costs)?"
 
 ### Process Overview
-Briefly explain your 3-step process: Design -> Pre-Construction -> Build.
+Briefly explain your 3 - step process: Design -> Pre - Construction -> Build.
 
 ### Closing / Next Steps
-**If Moving Forward:** "I think we can help you build this. The next step is our Design Agreement. It costs [Amount] and gets you [Deliverable]. Shall we get that started?"`
+        ** If Moving Forward:** "I think we can help you build this. The next step is our Design Agreement. It costs [Amount] and gets you [Deliverable]. Shall we get that started?"`
         }
     ];
 
@@ -638,7 +664,7 @@ Briefly explain your 3-step process: Design -> Pre-Construction -> Build.
             handleSOPClick(foundSOP);
         } else {
             // Fallback or alert if SOP not found (optional)
-            console.warn(`SOP not found: ${sopTitle}`);
+            console.warn(`SOP not found: ${ sopTitle }`);
         }
     };
 
@@ -678,7 +704,7 @@ Briefly explain your 3-step process: Design -> Pre-Construction -> Build.
 
                         {/* Content Grids */}
                         {activeTab === 'Process Library' && (
-                            <div className={`grid ${viewMode === 'grid' ? 'grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4' : 'grid-cols-1'} gap-6`}>
+                            <div className={`grid ${ viewMode === 'grid' ? 'grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4' : 'grid-cols-1'} gap-6`}>
                                 {allSops.map((sop, idx) => (
                                     <SOPCard key={idx} sop={sop} onClick={() => handleSOPClick(sop)} />
                                 ))}
@@ -698,7 +724,7 @@ Briefly explain your 3-step process: Design -> Pre-Construction -> Build.
                         )}
 
                         {activeTab === 'Resources' && (
-                            <div className={`grid ${viewMode === 'grid' ? 'grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4' : 'grid-cols-1'} gap-6`}>
+                            <div className={`grid ${ viewMode === 'grid' ? 'grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4' : 'grid-cols-1' } gap - 6`}>
                                 {scripts.map((script, idx) => (
                                     <SOPCard key={idx} sop={script} onClick={() => handleSOPClick(script)} />
                                 ))}
