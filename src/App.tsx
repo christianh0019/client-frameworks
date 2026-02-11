@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import ReactMarkdown from 'react-markdown';
 import { Search, FileText, Play, Clock, ArrowRight, LayoutGrid, List, ArrowLeft, ChevronRight, CheckSquare } from 'lucide-react';
 
 // Types
@@ -85,137 +86,74 @@ const VideoCard = ({ video, onClick }: { video: Video, onClick: () => void }) =>
 
 // Detail Views
 
-const SOPDetail = ({ sop, onBack }: { sop: SOP, onBack: () => void }) => {
-    // Parse description bullets to create mock "content"
-    const contentPoints = sop.description.split('\n').map(l => l.replace('• ', '').trim()).filter(Boolean);
+const SOPDetail = ({ sop, onBack, onSOPClick }: { sop: SOP, onBack: () => void, onSOPClick?: (sopTitle: string) => void }) => {
+
+    // Helper to process internal links for Markdown
+    const processContent = (content: string) => {
+        // Replace [[LINK:Title]] with [Title](#sop-Title)
+        return content.replace(/\[\[LINK:(.*?)\]\]/g, (match, title) => {
+            return `[${title}](#sop-${title})`;
+        });
+    };
 
     return (
-        <div className="animate-in fade-in slide-in-from-bottom-4 duration-300 pb-12">
-            {/* Breadcrumb / Nav */}
-            <div className="max-w-5xl mx-auto py-6 flex items-center text-sm text-saas-text-secondary">
-                <button onClick={onBack} className="hover:text-saas-text-primary flex items-center transition-colors">
-                    <ArrowLeft size={16} className="mr-1" />
-                    Back to Library
-                </button>
-                <ChevronRight size={14} className="mx-2 text-gray-300" />
-                <span className="text-saas-text-primary font-medium truncate">{sop.title}</span>
-            </div>
-
-            {/* Document Content */}
-            <div className="max-w-4xl mx-auto bg-white rounded-xl shadow-sm border border-saas-border overflow-hidden">
-                {/* Header Banner */}
-                <div className="h-32 bg-gradient-to-r from-blue-50 to-indigo-50 border-b border-gray-100"></div>
-
-                <article className="px-12 py-10 -mt-12 relative">
-                    <div className="mb-8">
-                        <div className="inline-flex items-center space-x-2 mb-4 bg-white p-1 pr-3 rounded-full shadow-sm border border-gray-100">
-                            <div className="p-1 bg-blue-100 rounded-full text-saas-blue">
-                                <FileText size={14} />
-                            </div>
-                            <span className="text-xs font-semibold text-saas-text-secondary uppercase tracking-wide">
+        <div className="flex flex-col h-full bg-saas-bg">
+            <div className="flex items-center justify-between p-6 border-b border-saas-border bg-white sticky top-0 z-10 w-full">
+                <div className="flex items-center space-x-4">
+                    <button
+                        onClick={onBack}
+                        className="p-2 hover:bg-saas-bg rounded-lg transition-colors text-saas-text-secondary hover:text-saas-text-primary"
+                    >
+                        <ArrowLeft size={20} />
+                    </button>
+                    <div>
+                        <div className="flex items-center space-x-3 mb-1">
+                            <span className="text-xs font-medium px-2 py-0.5 rounded-full bg-indigo-50 text-indigo-600 border border-indigo-100">
                                 {sop.category}
                             </span>
+                            <span className="text-xs text-saas-text-secondary flex items-center">
+                                <Clock size={12} className="mr-1" />
+                                Updated recently
+                            </span>
                         </div>
-                        <h1 className="text-4xl font-bold text-gray-900 mb-6 tracking-tight leading-tight">{sop.title}</h1>
-
-                        <div className="flex items-center space-x-6 text-sm text-gray-500 border-b border-gray-100 pb-6">
-                            <div className="flex items-center">
-                                <div className="w-6 h-6 rounded-full bg-indigo-100 flex items-center justify-center text-indigo-700 font-bold text-xs mr-2">S</div>
-                                <span className="font-medium text-gray-700">System Admin</span>
-                            </div>
-                            <div className="flex items-center">
-                                <Clock size={14} className="mr-1.5" />
-                                <span>Updated recently</span>
-                            </div>
-                        </div>
+                        <h2 className="text-xl font-bold text-saas-text-primary">{sop.title}</h2>
                     </div>
+                </div>
+            </div>
 
-                    <div className="prose prose-slate max-w-none prose-headings:font-semibold prose-a:text-saas-blue">
-                        {sop.detailedContent ? (
-                            <div className="whitespace-pre-wrap font-sans text-gray-700 leading-relaxed text-base">
-                                {sop.detailedContent.split('\n').map((line, i) => {
-                                    const trimmed = line.trim();
-                                    if (!trimmed) return <div key={i} className="h-4"></div>;
-
-                                    // Headers (Markdown style ###)
-                                    if (trimmed.startsWith('### ')) {
-                                        return <h3 key={i} className="text-xl font-bold text-gray-900 mt-8 mb-4 border-b border-gray-100 pb-2">{trimmed.replace(/^###\s+/, '')}</h3>;
-                                    }
-
-                                    // Sub-headers / Keys
-                                    if (trimmed.endsWith(':') || (trimmed === trimmed.toUpperCase() && trimmed.length > 3 && !trimmed.includes(' ') && !trimmed.startsWith('[['))) {
-                                        return <strong key={i} className="block mt-4 mb-2 text-gray-900">{line}</strong>
-                                    }
-
-                                    // Link Detection [[LINK:SOP Title]]
-                                    const linkMatch = line.match(/\[\[LINK:(.*?)\]\]/);
-                                    if (linkMatch) {
-                                        const targetSop = linkMatch[1];
-                                        const parts = line.split(linkMatch[0]);
+            <div className="flex-1 overflow-y-auto p-8">
+                <div className="max-w-3xl mx-auto bg-white rounded-xl border border-saas-border shadow-sm p-8">
+                    <article className="prose prose-slate max-w-none prose-headings:font-bold prose-h1:text-3xl prose-h2:text-2xl prose-h3:text-xl prose-a:text-indigo-600 prose-a:no-underline hover:prose-a:underline prose-strong:font-bold prose-strong:text-slate-900">
+                        <ReactMarkdown
+                            components={{
+                                a: ({ node, ...props }) => {
+                                    const href = props.href || '';
+                                    if (href.startsWith('#sop-')) {
                                         return (
-                                            <div key={i} className="my-2">
-                                                {parts[0]}
-                                                <button
-                                                    onClick={() => {
-                                                        const event = new CustomEvent('navigate-sop', { detail: targetSop });
-                                                        window.dispatchEvent(event);
-                                                    }}
-                                                    className="inline-flex items-center text-saas-blue font-medium hover:underline cursor-pointer"
-                                                >
-                                                    <FileText size={14} className="mr-1" />
-                                                    {targetSop}
-                                                </button>
-                                                {parts[1]}
-                                            </div>
+                                            <a
+                                                {...props}
+                                                href="#"
+                                                onClick={(e) => {
+                                                    e.preventDefault();
+                                                    const title = href.replace('#sop-', '');
+                                                    if (onSOPClick) {
+                                                        onSOPClick(title);
+                                                    }
+                                                }}
+                                                className="text-indigo-600 font-medium hover:text-indigo-800 transition-colors cursor-pointer"
+                                            >
+                                                {props.children}
+                                            </a>
                                         );
                                     }
-
-                                    return <div key={i}>{line}</div>
-                                })}
-                            </div>
-                        ) : (
-                            <>
-                                <p className="text-lg text-gray-600 mb-8 leading-relaxed">
-                                    This Standard Operating Procedure outlines the verified process for <strong>{sop.title}</strong>.
-                                    Follow the steps below to ensure consistency and quality.
-                                </p>
-
-                                <div className="bg-gray-50 rounded-xl p-6 border border-gray-200 mb-10">
-                                    <h3 className="text-sm font-bold text-gray-900 uppercase tracking-wider mb-4 flex items-center">
-                                        <CheckSquare size={16} className="mr-2 text-saas-blue" />
-                                        Key Objectives
-                                    </h3>
-                                    <ul className="space-y-3 m-0 p-0 list-none">
-                                        {contentPoints.map((point, i) => (
-                                            <li key={i} className="flex items-start p-0 m-0">
-                                                <div className="mt-1.5 w-1.5 h-1.5 rounded-full bg-saas-blue mr-3 flex-shrink-0"></div>
-                                                <span className="text-gray-700">{point}</span>
-                                            </li>
-                                        ))}
-                                    </ul>
-                                </div>
-
-                                <h3>Procedure Steps</h3>
-                                <ol className="space-y-4">
-                                    <li><strong>Preparation:</strong> Ensure you have all necessary access and tools ready before beginning this workflow.</li>
-                                    <li><strong>Execution:</strong> Follow the checklist items above in sequential order.</li>
-                                    <li><strong>Verification:</strong> Double-check your work against the quality standards defined in the {sop.category} guidelines.</li>
-                                    <li><strong>Documentation:</strong> Log any variations or issues in the CRM notes field.</li>
-                                </ol>
-
-                                <div className="mt-10 p-5 bg-blue-50/50 border border-blue-100 rounded-lg text-sm text-blue-900 flex items-start">
-                                    <div className="mr-3 mt-0.5 text-blue-500">
-                                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
-                                    </div>
-                                    <div>
-                                        <strong className="block mb-1 text-blue-700">Important Note</strong>
-                                        This process is critical for maintaining our operational standards. If you encounter any blockers, escalate to your manager immediately.
-                                    </div>
-                                </div>
-                            </>
-                        )}
-                    </div>
-                </article>
+                                    return <a {...props} target="_blank" rel="noopener noreferrer" className="text-indigo-600 hover:underline">{props.children}</a>;
+                                }
+                            }}
+                        >
+                            {processContent(sop.detailedContent || '')}
+                        </ReactMarkdown>
+                    </article>
+                </div>
             </div>
         </div>
     );
@@ -738,7 +676,14 @@ Briefly explain your 3-step process: Design -> Pre-Construction -> Build.
                 ) : null}
 
                 {activeView === 'sop-detail' && selectedSOP && (
-                    <SOPDetail sop={selectedSOP} onBack={goBack} />
+                    <SOPDetail
+                        sop={selectedSOP}
+                        onBack={goBack}
+                        onSOPClick={(title) => {
+                            const found = allSops.find(s => s.title === title);
+                            if (found) handleSOPClick(found);
+                        }}
+                    />
                 )}
 
                 {activeView === 'video-detail' && selectedVideo && (
