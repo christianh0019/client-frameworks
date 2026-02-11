@@ -589,18 +589,106 @@ We need to get them face-to-face to build rapport, establish trust, and pitch ou
             title: "Qualification Call Script",
             description: "Initial script to qualify new leads in under 5 minutes.",
             category: "Script",
-            detailedContent: `### Introduction
-"Hi [Name], this is [Your Name] with [Company]. I saw you downloaded our [Asset Name] and wanted to see if you had any questions?"
+            detailedContent: `### Standard Operating Procedure
 
-### Qualification Questions
-1. **Current Situation:** "Where are you currently at in your home building journey?"
-2. **Land:** "Do you already own a lot, or are you looking for one?"
-3. **Timeline:** "When are you hoping to be moved in?"
-4. **Budget:** "Do you have a rough budget range in mind for the project?"
+#### When To Conduct Qualification Calls:
+**When you receive a new lead**, meaning somebody you haven’t spoken to before puts in their contact information via your website, paid ads, social media, or even calls you directly.
 
-### Conclusion
-**If Qualified:** "It sounds like we might be a good fit. I'd love to schedule a Discovery Call to dive deeper. Does [Time] work?"
-**If Unqualified:** "It sounds like you're still early in the process. I'll send you some more resources to help you plan. Have a great day!"`
+**You should be calling them within 5 minutes** of them becoming a new lead.
+*   Studies show that engaging a lead within 1 minute of them becoming a lead increases conversions by up to **391%**.
+*   Shockingly, only **7%** of companies consistently follow-up within 5 minutes.
+
+#### How To Prepare For Qualification Calls:
+1.  **Review their form submission:** If they answered extra questions (e.g., land ownership, location), use that info to show professionalism.
+    *   *Example:* If they said they own land, don't ask "Do you own land?", ask "Where is your lot located?"
+2.  **Cross-reference CRM:** Check if they have reached out before. Use past notes to build instant rapport.
+
+#### How To Qualify / Disqualify Leads:
+The goal isn't to sell—it's to determine **fit**.
+*   **Motivation:** Are they genuinely interested or just browsing?
+*   **Location:** Is it in our service area?
+*   **Land Ownership:** Do they have land? (If not, disqualify or nurture).
+*   **Project Type:** Is it a custom home/renovation we actually do?
+*   **Design Stage:** Are they early (good) or just price shopping with finished plans (bad)?
+*   **Timeline:** 12-24 months is ideal. 3-4 years is too far out (nurture).
+*   **Decision Makers:** Are partners/spouses involved? (Get them on the Discovery Call).
+
+#### What To Do After Qualification Calls:
+*   **Record:** Take notes or record the call/texts in the CRM.
+*   **Document:** Long sales cycles mean you might not talk for months. Detailed notes save you from starting over.
+
+---
+
+### Qualification Call Script
+
+#### Connection Questions:
+"Hey **[Prospect Name]**, it’s **[Your Name]** with **[Business Name]**… It looks like you just **[Action they took]** to possibly learn more about getting started with your custom home project, does that ring a bell?" *(Curious/Concerned tone)*
+
+"Great. This will only take a second but I’m just calling to see if there’s anything we could possibly do for you… and if there is… I could maybe get you booked for a phone call with our planning team. Would that… help you if I did that?"
+
+#### Situational Questions:
+
+**1. "So tell me [Name], what caught your eye or made you want to reach out to us?"**
+
+**2. "Do you have an idea of where you’re looking to build?"**
+
+| If In Service Area | If Outside Service Area |
+| :--- | :--- |
+| **Continue on ↓** | "I’m not sure we’d be able to serve you there, I’m sorry. Unfortunately, I don’t have anyone I can recommend to you right now, however, I wish you the best with your project. Is there anything else I can help you with today?"<br><br>**End the call ✗** |
+
+**3. "Have you decided on a piece of land yet or purchased one?"**
+
+| If They Own Land Or Are Actively Purchasing Land | If They Don’t Have Land |
+| :--- | :--- |
+| "Ok and do you have the address of the lot so that I can double check that?"<br><br>"Are there any slopes or additional dwellings or anything the team should be aware of?"<br><br>**Continue on ↓** | "Oh ok that’s alright. I don’t think we’d be able to do very much for you at this moment because you’d need a plot of land for us to help you get started."<br><br>*(Potentially recommend them to somebody who can help them find a lot or bring up any lots that your business owns)*<br><br>"Is there anything else I can help you with today?"<br><br>**End the call ✗** |
+
+**4. "Ok and what type of home are you looking to build?"**
+
+| If Within Your Niche | If It Isn’t Within Your Niche |
+| :--- | :--- |
+| **Continue on ↓** | "I’m not sure we’d be able to help you with that, I’m sorry. **[Their project]** is not something we typically do. Unfortunately, I don’t have anyone I can recommend to you right now, however, I wish you the best with your project. Is there anything else I can help you with today?"<br><br>**End the call ✗** |
+
+**5. "Do you have any designs or sketches drawn up yet?"**
+
+| If No Designs Yet | If They Have Designs |
+| :--- | :--- |
+| **Continue on ↓** | "Oh ok. Have you reached out to any other builders for a bid or are you just researching the best builder?" |
+
+*(If they have designs...)*
+
+| Looking For Best Builder | Looking For Multiple Bids |
+| :--- | :--- |
+| **Continue on ↓** | "Got it. I’m sorry but we typically don’t do competitive bidding. Unfortunately, I don’t have anyone I can recommend to you right now, however, I wish you the best with your project. Is there anything else I can help you with today?"<br><br>**End the call ✗** |
+
+**6. "Ok and when would you potentially be looking to move in?"**
+
+| If Within Next 1-2 Years | If Further Out Than 2 Years |
+| :--- | :--- |
+| **Continue on ↓** | "Ok that makes sense. Unfortunately there’s not much we can do at the very moment considering any next steps. That date is pretty far out, but what I can do is send you some information on the process and what to expect so that you’re more prepared. I’ll make a note to follow up with you when that gets closer… would that help you?"<br><br>"Is there anything else I can help you with today?"<br><br>**End the call ✗** |
+
+**7. "Are there any partners or spouses that would be involved in the process?"**
+
+| If Yes | If No |
+| :--- | :--- |
+| "Ok can I have (his/her/their) name so that I can make a note of that?"<br><br>**Continue on ↓** | **Continue on ↓** |
+
+---
+
+### Book The Discovery Call:
+
+"From what you’ve gone over… it sounds like we could potentially help you out."
+
+"If you would like… I could get you on a phone call with **[Business Owner/ Sales Rep]**… over the next few days depending on our availability… where you’d talk a bit more about your potential project… and then some possible… next steps… would that help you?"
+
+"Ok, I’m pulling up his calendar now to see what times he may have available for you. Does tomorrow (morning/ afternoon) work for you (and partner/spouse name if applicable)?"
+
+**CONFIRM THE TIME AND BOOK IN-PERSON MEETING**
+
+"One more thing before I confirm that phone call, if you need to reschedule—please let him know in advance. I’m sure you would anyways *(playful tone)*… but he wants me to say that because he’s very busy and doesn’t take too many calls. Is that ok with you?"
+
+"Great—**[Business Owner/ Sales Rep]** will give you a call at **[Time and Date]**."
+
+"Have a good rest of your day!"`
         },
         {
             title: "Discovery Call Script",
