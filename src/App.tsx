@@ -313,15 +313,15 @@ interface ProcessStage {
 
 const SalesProcessTree = ({ onSelectSOP }: { onSelectSOP: (sopTitle: string) => void }) => {
     const stages: ProcessStage[] = [
-        { id: '1', name: 'New Lead', sopId: 'New Lead Follow-Up Procedure', description: 'Manual qualification only' },
-        { id: '2', name: 'Qualified Lead', sopId: 'Qualification & Discovery SOP', description: 'Eligible for discovery' },
-        { id: '3', name: 'Discovery Call Booked', sopId: 'Qualification & Discovery SOP', description: 'Discovery scheduled' },
-        { id: '4', name: 'Discovery Call Completed', sopId: 'Sales Pipeline Management SOP', description: 'Discovery done' },
-        { id: '5', name: 'Not Booked Follow Ups', sopId: 'Long-Cycle Follow-Up & Nurture SOP', description: 'Booking recovery' },
-        { id: '6', name: 'In-Person Meeting Booked', sopId: 'Sales Pipeline Management SOP', description: 'High-intent next step' },
-        { id: '7', name: 'In-Person Meeting Completed', sopId: 'Early Monetization SOP', description: 'Trust + alignment' },
-        { id: '8', name: 'Not Closed Follow Ups', sopId: 'Long-Cycle Follow-Up & Nurture SOP', description: 'Long-cycle nurture' },
-        { id: '9', name: 'Agreements Signed', sopId: 'Early Monetization SOP', description: 'Revenue progression' },
+        { id: '1', name: 'New Lead', sopId: 'Handling New Lead Stage', description: 'Manual qualification only' },
+        { id: '2', name: 'Qualified Lead', sopId: 'Handling Qualified Lead Stage', description: 'Eligible for discovery' },
+        { id: '3', name: 'Discovery Call Booked', sopId: 'Handling Discovery Call Booked Stage', description: 'Discovery scheduled' },
+        { id: '4', name: 'Discovery Call Completed', sopId: 'Handling Discovery Call Completed Stage', description: 'Discovery done' },
+        { id: '5', name: 'Not Booked Follow Ups', sopId: 'Handling Not Booked Follow Ups Stage', description: 'Booking recovery' },
+        { id: '6', name: 'In-Person Meeting Booked', sopId: 'Handling In-Person Meeting Booked Stage', description: 'High-intent next step' },
+        { id: '7', name: 'In-Person Meeting Completed', sopId: 'Handling In-Person Meeting Completed Stage', description: 'Trust + alignment' },
+        { id: '8', name: 'Not Closed Follow Ups', sopId: 'Handling Not Closed Follow Ups Stage', description: 'Long-cycle nurture' },
+        { id: '9', name: 'Agreements Signed', sopId: 'Handling Agreements Signed Stage', description: 'Revenue progression' },
     ];
 
     return (
@@ -366,7 +366,7 @@ const App = () => {
 
     const sops: SOP[] = [
         {
-            title: "New Lead Follow-Up Procedure",
+            title: "Handling New Lead Stage",
             description: "Contact every new lead quickly, qualify seriousness, and secure the next step within 7 days.",
             category: "Sales",
             detailedContent: `### Where to Find This
@@ -464,6 +464,60 @@ If these conditions are not met, schedule the Discovery Call for a later time.`
         },
     ];
 
+    // Placeholder SOPs for Tree Stages
+    const stageSops: SOP[] = [
+        {
+            title: "Handling Qualified Lead Stage",
+            description: "Process for handling the Qualified Lead stage.",
+            category: "Sales",
+            detailedContent: "### Process for Qualified Lead Stage\n\nComing soon..."
+        },
+        {
+            title: "Handling Discovery Call Booked Stage",
+            description: "Process for handling the Discovery Call Booked stage.",
+            category: "Sales",
+            detailedContent: "### Process for Discovery Call Booked Stage\n\nComing soon..."
+        },
+        {
+            title: "Handling Discovery Call Completed Stage",
+            description: "Process for handling the Discovery Call Completed stage.",
+            category: "Sales",
+            detailedContent: "### Process for Discovery Call Completed Stage\n\nComing soon..."
+        },
+        {
+            title: "Handling Not Booked Follow Ups Stage",
+            description: "Process for handling the Not Booked Follow Ups stage.",
+            category: "Sales",
+            detailedContent: "### Process for Not Booked Follow Ups Stage\n\nComing soon..."
+        },
+        {
+            title: "Handling In-Person Meeting Booked Stage",
+            description: "Process for handling the In-Person Meeting Booked stage.",
+            category: "Sales",
+            detailedContent: "### Process for In-Person Meeting Booked Stage\n\nComing soon..."
+        },
+        {
+            title: "Handling In-Person Meeting Completed Stage",
+            description: "Process for handling the In-Person Meeting Completed stage.",
+            category: "Sales",
+            detailedContent: "### Process for In-Person Meeting Completed Stage\n\nComing soon..."
+        },
+        {
+            title: "Handling Not Closed Follow Ups Stage",
+            description: "Process for handling the Not Closed Follow Ups stage.",
+            category: "Sales",
+            detailedContent: "### Process for Not Closed Follow Ups Stage\n\nComing soon..."
+        },
+        {
+            title: "Handling Agreements Signed Stage",
+            description: "Process for handling the Agreements Signed stage.",
+            category: "Sales",
+            detailedContent: "### Process for Agreements Signed Stage\n\nComing soon..."
+        },
+    ];
+
+    const allSops = [...sops, ...stageSops];
+
     const videos: Video[] = [
         // Core System Walkthroughs
         { title: "How the Growth System Works (big picture)", duration: "05:00", category: "Core System" },
@@ -501,7 +555,7 @@ If these conditions are not met, schedule the Discovery Call for a later time.`
 
     // Helper to find SOP by title and open it
     const handleTreeSelection = (sopTitle: string) => {
-        const foundSOP = sops.find(s => s.title === sopTitle);
+        const foundSOP = allSops.find(s => s.title === sopTitle);
         if (foundSOP) {
             handleSOPClick(foundSOP);
         } else {
@@ -517,7 +571,7 @@ If these conditions are not met, schedule the Discovery Call for a later time.`
         };
         window.addEventListener('navigate-sop', handleNavigation);
         return () => window.removeEventListener('navigate-sop', handleNavigation);
-    }, [sops]);
+    }, [allSops]);
 
     return (
         <div className="min-h-screen bg-saas-bg font-sans text-saas-text-primary selection:bg-blue-100 selection:text-blue-900 p-6">
@@ -547,7 +601,7 @@ If these conditions are not met, schedule the Discovery Call for a later time.`
                         {/* Content Grids */}
                         {activeTab === 'Process Library' && (
                             <div className={`grid ${viewMode === 'grid' ? 'grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4' : 'grid-cols-1'} gap-6`}>
-                                {sops.map((sop, idx) => (
+                                {allSops.map((sop, idx) => (
                                     <SOPCard key={idx} sop={sop} onClick={() => handleSOPClick(sop)} />
                                 ))}
                             </div>
