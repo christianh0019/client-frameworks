@@ -507,19 +507,19 @@ This is an **Automated Pipeline Stage** that tracks all leads with a scheduled D
 ### Goal
 Monitor upcoming appointments and prepare for the calls.
 
-### Where to View
-You can view these appointments in this pipeline stage or in the **Calendars** tab.
-(Shows how many people are booked and their specific times).
+### Pre-Call Automations (What the Lead Sees)
+Leading up to the call, the system automatically sends:
+*   **Reminders:** Automated text and email notifications to prevent no-shows.
+*   **Company Info:** Helpful content to build trust and educate them about us before we talk.
+
+### Execution: Taking the Call
+When it's time for the appointment:
+1.  **Dial via CRM:** Always call using the CRM dialer so the call is recorded, transcribed, and summarized.
+2.  **Use the Script:** Follow the [[LINK:Discovery Call Script]] to guide the conversation.
 
 ### Automation Rules
 *   **Entry:** Leads are automatically entered into this stage when a "Discovery Call" is booked.
-*   **Exit:** Leads are automatically moved to the "Discovery Call Completed" stage when the appointment is marked as "Completed" (or the time passes, depending on settings).
-
-### Important Note: CRM Calling
-**ALWAYS call through the CRM.**
-*   It records the call.
-*   It transcribes the conversation.
-*   It summarizes the discussion (found in the "Notes" section of the Opportunity).`
+*   **Exit:** Leads are automatically moved to the "Discovery Call Completed" stage when the appointment is marked as "Completed".`
         },
         {
             title: "Handling Discovery Call Completed Stage",
