@@ -90,68 +90,104 @@ const SOPDetail = ({ sop, onBack, onSOPClick }: { sop: SOP, onBack: () => void, 
 
     // Helper to process internal links for Markdown
     const processContent = (content: string) => {
-        // Replace [[LINK:Title]] with [Title](#sop-Title)
-        return content.replace(/\[\[LINK:(.*?)\]\]/g, (_, title) => {
-            return `[${title}](#sop-${title})`;
+        let processed = content;
+
+        // 1. Handle Lists: Ensure bullets have enough spacing to be recognized as lists
+        // Replace "•" with "*" for consistency
+        processed = processed.replace(/•/g, '*');
+        // Ensure newlines before bullets (Markdown requires a blank line before a list usually, or at least a newline)
+        processed = processed.replace(/\n\*/g, '\n\n*');
+
+        // 2. Handle Links
+        // Replace [[LINK:Title with Spaces]] with [Title with Spaces](#sop-Title%20with%20Spaces)
+        processed = processed.replace(/\[\[LINK:(.*?)\]\]/g, (_, title) => {
+            const encodedTitle = encodeURIComponent(title);
+            return `[${title}](#sop-${encodedTitle})`;
         });
+
+        return processed;
     };
 
     return (
-        <div className="flex flex-col h-full bg-saas-bg">
-            <div className="flex items-center justify-between p-6 border-b border-saas-border bg-white sticky top-0 z-10 w-full">
-                <div className="flex items-center space-x-4">
-                    <button
-                        onClick={onBack}
-                        className="p-2 hover:bg-saas-bg rounded-lg transition-colors text-saas-text-secondary hover:text-saas-text-primary"
-                    >
-                        <ArrowLeft size={20} />
-                    </button>
-                    <div>
-                        <div className="flex items-center space-x-3 mb-1">
-                            <span className="text-xs font-medium px-2 py-0.5 rounded-full bg-indigo-50 text-indigo-600 border border-indigo-100">
-                                {sop.category}
-                            </span>
-                            <span className="text-xs text-saas-text-secondary flex items-center">
-                                <Clock size={12} className="mr-1" />
-                                Updated recently
-                            </span>
-                        </div>
-                        <h2 className="text-xl font-bold text-saas-text-primary">{sop.title}</h2>
-                    </div>
-                </div>
+        <div className="flex flex-col h-full bg-saas-bg animate-in fade-in slide-in-from-bottom-4 duration-300">
+            {/* Breadcrumb / Nav */}
+            <div className="w-full bg-white border-b border-saas-border px-6 py-4 flex items-center text-sm text-saas-text-secondary sticky top-0 z-20">
+                <button
+                    onClick={onBack}
+                    className="hover:text-saas-text-primary flex items-center transition-colors mr-4"
+                >
+                    <ArrowLeft size={16} className="mr-1" />
+                    Back
+                </button>
+                <div className="h-4 w-px bg-gray-200 mx-2"></div>
+                <span className="text-saas-text-primary font-medium truncate ml-2">{sop.title}</span>
             </div>
 
-            <div className="flex-1 overflow-y-auto p-8">
-                <div className="max-w-3xl mx-auto bg-white rounded-xl border border-saas-border shadow-sm p-8">
-                    <article className="prose prose-slate max-w-none prose-headings:font-bold prose-h1:text-3xl prose-h2:text-2xl prose-h3:text-xl prose-a:text-indigo-600 prose-a:no-underline hover:prose-a:underline prose-strong:font-bold prose-strong:text-slate-900">
-                        <ReactMarkdown
-                            components={{
-                                a: ({ node, ...props }) => {
-                                    const href = props.href || '';
-                                    if (href.startsWith('#sop-')) {
-                                        return (
-                                            <a
-                                                {...props}
-                                                href="#"
-                                                onClick={(e) => {
-                                                    e.preventDefault();
-                                                    const title = href.replace('#sop-', '');
-                                                    if (onSOPClick) {
-                                                        onSOPClick(title);
-                                                    }
-                                                }}
-                                                className="text-indigo-600 font-medium hover:text-indigo-800 transition-colors cursor-pointer"
-                                            >
-                                                {props.children}
-                                            </a>
-                                        );
+            <div className="flex-1 overflow-y-auto">
+                {/* Document Content */}
+                <div className="max-w-4xl mx-auto bg-white min-h-[calc(100vh-4rem)] shadow-sm border-x border-saas-border overflow-hidden">
+                    {/* Header Banner - Notion Style */}
+                    <div className="h-40 bg-gradient-to-r from-blue-50 to-indigo-50 border-b border-gray-100 relative group">
+                        <div className="absolute inset-0 bg-white/0 group-hover:bg-white/10 transition-colors"></div>
+                    </div>
+
+                    <article className="px-12 py-10 relative">
+                        {/* Icon - Overlapping Banner */}
+                        <div className="-mt-20 mb-8 relative z-10">
+                            <div className="inline-flex items-center justify-center w-24 h-24 bg-white rounded-xl shadow-sm border border-gray-100 text-saas-blue">
+                                <FileText size={48} strokeWidth={1.5} />
+                            </div>
+                        </div>
+
+                        {/* Title & Meta */}
+                        <div className="mb-12 border-b border-gray-100 pb-8">
+                            <div className="flex items-center space-x-3 mb-4">
+                                <span className="text-xs font-semibold px-2.5 py-1 rounded-md bg-blue-50 text-blue-700 border border-blue-100 uppercase tracking-wide">
+                                    {sop.category}
+                                </span>
+                                <span className="text-xs text-saas-text-secondary flex items-center">
+                                    <Clock size={12} className="mr-1" />
+                                    Updated recently
+                                </span>
+                            </div>
+                            <h1 className="text-4xl font-bold text-gray-900 tracking-tight leading-tight">{sop.title}</h1>
+                        </div>
+
+                        {/* Main Markdown Content */}
+                        <div className="prose prose-slate max-w-none prose-headings:font-bold prose-h1:text-3xl prose-h2:text-2xl prose-h3:text-xl prose-a:text-indigo-600 prose-a:no-underline hover:prose-a:underline prose-strong:font-bold prose-strong:text-slate-900 prose-li:marker:text-gray-400">
+                            <ReactMarkdown
+                                components={{
+                                    a: ({ node, ...props }) => {
+                                        const href = props.href || '';
+                                        if (href.startsWith('#sop-')) {
+                                            return (
+                                                <a
+                                                    {...props}
+                                                    href="#"
+                                                    onClick={(e) => {
+                                                        e.preventDefault();
+                                                        // Decode the title back from the URL
+                                                        const title = decodeURIComponent(href.replace('#sop-', ''));
+                                                        if (onSOPClick) {
+                                                            onSOPClick(title);
+                                                        }
+                                                    }}
+                                                    className="text-indigo-600 font-medium hover:text-indigo-800 transition-colors cursor-pointer bg-indigo-50 px-1 py-0.5 rounded hover:bg-indigo-100 no-underline"
+                                                >
+                                                    <span className="inline-flex items-center">
+                                                        <FileText size={14} className="mr-1" />
+                                                        {props.children}
+                                                    </span>
+                                                </a>
+                                            );
+                                        }
+                                        return <a {...props} target="_blank" rel="noopener noreferrer" className="text-indigo-600 hover:underline">{props.children}</a>;
                                     }
-                                    return <a {...props} target="_blank" rel="noopener noreferrer" className="text-indigo-600 hover:underline">{props.children}</a>;
-                                }
-                            }}
-                        >
-                            {processContent(sop.detailedContent || '')}
-                        </ReactMarkdown>
+                                }}
+                            >
+                                {processContent(sop.detailedContent || '')}
+                            </ReactMarkdown>
+                        </div>
                     </article>
                 </div>
             </div>
