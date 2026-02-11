@@ -525,7 +525,7 @@ Go to the **Calendars** tab or the appointment on the pipeline card and update t
             title: "Handling Not Booked Follow Ups Stage",
             description: "Process for handling the Not Booked Follow Ups stage.",
             category: "Sales",
-            detailedContent: \`### Definition
+            detailedContent: `### Definition
 This stage is for **Qualified Leads** who engaged with us but for some reason could not book an In-Person Meeting immediately.
 
 Common reasons include:
