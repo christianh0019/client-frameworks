@@ -513,13 +513,43 @@ You can view these appointments in this pipeline stage or in the **Calendars** t
 
 ### Automation Rules
 *   **Entry:** Leads are automatically entered into this stage when a "Discovery Call" is booked.
-*   **Exit:** Leads are automatically moved to the "Discovery Call Completed" stage when the appointment is marked as "Completed" (or the time passes, depending on settings).`
+*   **Exit:** Leads are automatically moved to the "Discovery Call Completed" stage when the appointment is marked as "Completed" (or the time passes, depending on settings).
+
+### Important Note: CRM Calling
+**ALWAYS call through the CRM.**
+*   It records the call.
+*   It transcribes the conversation.
+*   It summarizes the discussion (found in the "Notes" section of the Opportunity).`
         },
         {
             title: "Handling Discovery Call Completed Stage",
             description: "Process for handling the Discovery Call Completed stage.",
             category: "Sales",
-            detailedContent: "### Process for Discovery Call Completed Stage\n\nComing soon..."
+            detailedContent: `### Definition
+This stage indicates that a scheduled call has passed and requires **Outcome Feedback**.
+
+### Action Item: Update Call Outcome
+Go to the **Calendars** tab or the appointment on the pipeline card and update the outcome:
+
+#### Option A: No Show
+*   Select **"No Show"**.
+*   **Automation:** An automated sequence will immediately follow up to reschedule.
+
+#### Option B: Showed
+*   Select **"Showed"**.
+*   Then, determine the next step based on the conversation:
+
+**1. Uninterested / Disqualified:**
+*   Move to **"Lost"**.
+*   Select Reason: "Uninterested" or "Disqualified".
+
+**2. Good Conversation (But No Booking):**
+*   Move to **"Not Booked Follow Ups"** stage.
+*   Use this for leads who are interested but couldn't commit to an in-person meeting yet.
+
+**3. In-Person Meeting Booked:**
+*   Schedule the meeting in the system.
+*   **Automation:** They will automatically move to the **"In-Person Meeting Booked"** stage.`
         },
         {
             title: "Handling Not Booked Follow Ups Stage",
