@@ -91,7 +91,7 @@ const SOPDetail = ({ sop, onBack, onSOPClick }: { sop: SOP, onBack: () => void, 
     // Helper to process internal links for Markdown
     const processContent = (content: string) => {
         // Replace [[LINK:Title]] with [Title](#sop-Title)
-        return content.replace(/\[\[LINK:(.*?)\]\]/g, (match, title) => {
+        return content.replace(/\[\[LINK:(.*?)\]\]/g, (_, title) => {
             return `[${title}](#sop-${title})`;
         });
     };
