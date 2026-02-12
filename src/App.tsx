@@ -857,17 +857,17 @@ const DiscoveryScriptView = () => {
     const [showGuide, setShowGuide] = useState(true);
 
     return (
-        <div className="space-y-12 font-sans text-gray-800 pb-20">
+        <div className="space-y-12 font-sans text-gray-800 pb-20 max-w-4xl mx-auto">
 
             {/* Header / Toggle */}
-            <div className="flex items-center justify-between">
+            <div className="flex items-center justify-between border-b border-gray-200 pb-6">
                 <div>
                     <h2 className="text-3xl font-bold text-gray-900">Discovery Call</h2>
-                    <p className="text-gray-500">Standard Operating Procedure & Script</p>
+                    <p className="text-gray-500 mt-1">Standard Operating Procedure & Script</p>
                 </div>
                 <button
                     onClick={() => setShowGuide(!showGuide)}
-                    className="flex items-center space-x-2 text-sm font-medium text-indigo-600 bg-indigo-50 px-4 py-2 rounded-lg hover:bg-indigo-100 transition-colors"
+                    className="flex items-center space-x-2 text-sm font-medium text-indigo-600 hover:text-indigo-800 transition-colors"
                 >
                     {showGuide ? <Search size={16} /> : <FileText size={16} />}
                     <span>{showGuide ? 'Hide Guidelines' : 'Show Guidelines'}</span>
@@ -876,136 +876,109 @@ const DiscoveryScriptView = () => {
 
             {/* Part 1: SOP / Guidelines (Collapsible) */}
             {showGuide && (
-                <section className="bg-white border border-gray-200 rounded-xl shadow-sm overflow-hidden animate-in fade-in slide-in-from-top-2">
-                    <div className="p-6 bg-gray-50 border-b border-gray-200">
-                        <h3 className="font-bold text-gray-900 flex items-center">
-                            <FileText size={18} className="mr-2 text-gray-500" />
-                            Standard Operating Procedure
-                        </h3>
+                <section className="bg-white rounded-xl animate-in fade-in slide-in-from-top-2 space-y-8">
+
+                    {/* When / Who */}
+                    <div className="space-y-4">
+                        <h4 className="font-bold text-gray-900 text-lg border-b border-gray-100 pb-2">1. When To Conduct</h4>
+                        <div className="prose prose-sm text-gray-600 max-w-none">
+                            <p>
+                                Discovery Calls are only for qualified leads who’ve already completed a Qualification Call and meet the basic criteria: they’re in your service area, own or are purchasing land, have a realistic timeline and budget, and fit your niche.
+                            </p>
+                            <p>
+                                This is the salesperson’s call — it’s meant for the business owner, sales rep, or whoever will be making the actual sale. The goal here isn’t to “close” the deal yet, but to collect deep insight into the client’s situation, motivations, pain points, and goals. You’re building emotional context that will later drive your in-person presentation or proposal.
+                            </p>
+                            <div className="bg-blue-50 p-4 rounded-lg border-l-4 border-blue-500 text-blue-900 not-prose mt-4">
+                                <strong>The Focus:</strong> Understand the gap between where they are now and where they want to be — and to make them feel that gap.
+                            </div>
+                        </div>
                     </div>
 
-                    <div className="p-8 space-y-10">
-                        {/* When / Who */}
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                            <div>
-                                <h4 className="font-bold text-gray-900 mb-2 text-sm uppercase tracking-wide">When To Conduct</h4>
-                                <p className="text-sm text-gray-600 leading-relaxed mb-4">
-                                    Discovery Calls are only for qualified leads who’ve already completed a Qualification Call and meet the basic criteria: they’re in your service area, own or are purchasing land, have a realistic timeline and budget, and fit your niche.
-                                </p>
-                                <p className="text-sm text-gray-600 leading-relaxed">
-                                    This is the salesperson’s call — it’s meant for the business owner, sales rep, or whoever will be making the actual sale. The goal here isn’t to “close” the deal yet, but to collect deep insight into the client’s situation, motivations, pain points, and goals. You’re building emotional context that will later drive your in-person presentation or proposal.
-                                </p>
-                            </div>
-                            <div>
-                                <h4 className="font-bold text-gray-900 mb-2 text-sm uppercase tracking-wide">The Focus</h4>
-                                <p className="text-sm text-gray-600 leading-relaxed bg-blue-50 p-4 rounded-lg border border-blue-100 text-blue-900">
-                                    The main focus is to understand the gap between where they are now and where they want to be — and to make them feel that gap.
-                                </p>
-                            </div>
-                        </div>
+                    {/* Prepare */}
+                    <div className="space-y-4">
+                        <h4 className="font-bold text-gray-900 text-lg border-b border-gray-100 pb-2">2. How To Prepare</h4>
+                        <ul className="list-disc list-inside text-gray-600 space-y-2">
+                            <li><strong>Review Notes:</strong> Review all notes from the Qualification Call and CRM record. Know their land details, project type, and any prior communications.</li>
+                            <li><strong>Have Notes Open:</strong> Have their form submission or call notes open. Reference past answers naturally.</li>
+                            <li><strong>Quiet Setting:</strong> Always take this call in a quiet, private setting.</li>
+                        </ul>
+                    </div>
 
-                        {/* Prepare */}
-                        <div>
-                            <h4 className="font-bold text-gray-900 mb-3 text-sm uppercase tracking-wide">How To Prepare</h4>
-                            <ul className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                                <li className="bg-gray-50 p-4 rounded-lg border border-gray-100 text-sm text-gray-700">
-                                    <strong>Review Notes:</strong> Review all notes from the Qualification Call and CRM record. Know their land details, project type, and any prior communications so you can skip the surface-level questions and sound informed.
-                                </li>
-                                <li className="bg-gray-50 p-4 rounded-lg border border-gray-100 text-sm text-gray-700">
-                                    <strong>Have Notes Open:</strong> Have their form submission or call notes open. Reference past answers naturally (“Last time you mentioned you were still finalizing the land purchase — how’s that going?”).
-                                </li>
-                                <li className="bg-gray-50 p-4 rounded-lg border border-gray-100 text-sm text-gray-700">
-                                    <strong>Quiet Setting:</strong> Always take this call in a quiet, private setting. These conversations reveal financial details and emotional motivations — listen carefully and take notes.
-                                </li>
-                            </ul>
-                        </div>
-
-                        {/* Purpose */}
-                        <div>
-                            <h4 className="font-bold text-gray-900 mb-3 text-sm uppercase tracking-wide">Purpose Of The Discovery Call</h4>
-                            <div className="flex flex-col md:flex-row gap-6">
-                                <div className="flex-1 bg-indigo-50 p-5 rounded-lg border border-indigo-100">
-                                    <h5 className="font-bold text-indigo-900 mb-1">1. Data Collection</h5>
-                                    <p className="text-sm text-indigo-800">To understand their situation, goals, obstacles, and timeline so you can prepare an informed proposal or in-person meeting.</p>
-                                </div>
-                                <div className="flex-1 bg-indigo-50 p-5 rounded-lg border border-indigo-100">
-                                    <h5 className="font-bold text-indigo-900 mb-1">2. Emotional Discovery</h5>
-                                    <p className="text-sm text-indigo-800">To help them surface and relive the frustrations or fears behind their current situation, then visualize how much better life will be when they solve it with your help.</p>
-                                </div>
+                    {/* Purpose */}
+                    <div className="space-y-4">
+                        <h4 className="font-bold text-gray-900 text-lg border-b border-gray-100 pb-2">3. Purpose Of The Discovery Call</h4>
+                        <div className="space-y-4">
+                            <div className="bg-indigo-50 p-5 rounded-lg border border-indigo-100">
+                                <h5 className="font-bold text-indigo-900 mb-1">Data Collection</h5>
+                                <p className="text-sm text-indigo-800">To understand their situation, goals, obstacles, and timeline so you can prepare an informed proposal or in-person meeting.</p>
                             </div>
-                            <p className="mt-3 text-sm text-gray-500 italic">
+                            <div className="bg-indigo-50 p-5 rounded-lg border border-indigo-100">
+                                <h5 className="font-bold text-indigo-900 mb-1">Emotional Discovery</h5>
+                                <p className="text-sm text-indigo-800">To help them surface and relive the frustrations or fears behind their current situation, then visualize how much better life will be when they solve it with your help.</p>
+                            </div>
+                            <p className="text-sm text-gray-500 italic">
                                 Think of this call as connecting logic to emotion — you’re finding both the “reason” and the “feeling” behind their decision to build so that you can provide the best in-person meeting possible and make the sale.
                             </p>
                         </div>
+                    </div>
 
-                        {/* How To Conduct */}
-                        <div className="space-y-4">
-                            <h4 className="font-bold text-gray-900 mb-2 text-sm uppercase tracking-wide">How To Conduct Discovery Calls</h4>
-                            <p className="text-sm text-gray-600">Start with casual rapport and tone-setting — you want them relaxed and conversational. The best Discovery Calls sound like two people exploring ideas, not a salesperson running through a checklist.</p>
+                    {/* How To Conduct */}
+                    <div className="space-y-4">
+                        <h4 className="font-bold text-gray-900 text-lg border-b border-gray-100 pb-2">4. How To Conduct</h4>
+                        <p className="text-gray-600">Start with casual rapport and tone-setting — you want them relaxed and conversational.</p>
 
-                            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 text-sm">
-                                <div className="border border-gray-100 p-3 rounded">
-                                    <strong className="block text-gray-900 mb-1">Connection Questions</strong>
-                                    <span className="text-gray-500">Warm up, set context, reinforce authority. Confirm alignment and if spouse is present.</span>
-                                </div>
-                                <div className="border border-gray-100 p-3 rounded">
-                                    <strong className="block text-gray-900 mb-1">Situation Questions</strong>
-                                    <span className="text-gray-500">Gather hard data. Establish facts and uncover the "gap". Tone: Curious and slightly skeptical.</span>
-                                </div>
-                                <div className="border border-gray-100 p-3 rounded">
-                                    <strong className="block text-gray-900 mb-1">Problem Awareness</strong>
-                                    <span className="text-gray-500">Sales psychology. Help them feel the problem (frustrations, delays). Trigger self-reflection.</span>
-                                </div>
-                                <div className="border border-gray-100 p-3 rounded">
-                                    <strong className="block text-gray-900 mb-1">Booking The Meeting</strong>
-                                    <span className="text-gray-500">Invite serious prospects to the in-person meeting. Book on the spot. Send Pre-Meeting Page.</span>
-                                </div>
+                        <div className="space-y-3">
+                            <div className="border-l-2 border-gray-200 pl-4 py-1">
+                                <strong className="block text-gray-900">Connection Questions</strong>
+                                <span className="text-sm text-gray-500">Warm up, set context, reinforce authority. Confirm alignment and if spouse is present.</span>
                             </div>
-                            <div className="bg-red-50 p-4 border-l-4 border-red-500 text-sm text-red-900 mt-2">
-                                <strong>WARNING:</strong> NEVER UNDER ANY CIRCUMSTANCES should you give into the temptation to “just send them an email with more information”. You will lose the sale 99% of the time.
+                            <div className="border-l-2 border-gray-200 pl-4 py-1">
+                                <strong className="block text-gray-900">Situation Questions</strong>
+                                <span className="text-sm text-gray-500">Gather hard data. Establish facts and uncover the "gap". Tone: Curious and slightly skeptical.</span>
+                            </div>
+                            <div className="border-l-2 border-gray-200 pl-4 py-1">
+                                <strong className="block text-gray-900">Problem Awareness</strong>
+                                <span className="text-sm text-gray-500">Sales psychology. Help them feel the problem. Trigger self-reflection.</span>
+                            </div>
+                            <div className="border-l-2 border-gray-200 pl-4 py-1">
+                                <strong className="block text-gray-900">Booking The Meeting</strong>
+                                <span className="text-sm text-gray-500">Invite serious prospects to the in-person meeting. Book on the spot. Send Pre-Meeting Page.</span>
                             </div>
                         </div>
 
-                        {/* Qualify / Disqualify */}
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 pt-6 border-t border-gray-100">
-                            <div>
-                                <h4 className="font-bold text-gray-900 mb-3 text-sm uppercase tracking-wide">How To Qualify / Disqualify</h4>
-                                <p className="text-sm text-gray-600 mb-2">Use this call to confirm:</p>
-                                <ul className="list-disc list-inside text-sm text-gray-600 space-y-1">
-                                    <li>They have a realistic budget</li>
-                                    <li>They’re emotionally and financially ready to start soon</li>
-                                    <li>All decision-makers are engaged</li>
-                                    <li>The project still fits your niche and capacity</li>
-                                </ul>
-                                <p className="text-sm text-gray-500 mt-2 italic">If anything changes... politely reset expectations. It’s better to disqualify now.</p>
-                            </div>
-                            <div>
-                                <h4 className="font-bold text-gray-900 mb-3 text-sm uppercase tracking-wide">What To Do After</h4>
-                                <ul className="space-y-2 text-sm text-gray-600">
-                                    <li className="flex items-start">
-                                        <div className="min-w-4 mt-0.5 mr-2 text-blue-500">1.</div>
-                                        <span><strong>Log Detailed Notes:</strong> Log every frustration, goal, and quote-worthy line in your CRM.</span>
-                                    </li>
-                                    <li className="flex items-start">
-                                        <div className="min-w-4 mt-0.5 mr-2 text-blue-500">2.</div>
-                                        <span><strong>Confirm Meeting:</strong> Send a quick text/email within 10 mins to lock it in.</span>
-                                    </li>
-                                    <li className="flex items-start">
-                                        <div className="min-w-4 mt-0.5 mr-2 text-blue-500">3.</div>
-                                        <span><strong>Follow Up:</strong> If they didn't commit, follow up within 24 hours.</span>
-                                    </li>
-                                </ul>
-                                <p className="text-sm text-gray-500 mt-2 italic">Use the Discovery Call to build momentum—from interest to intention.</p>
-                            </div>
+                        <div className="bg-red-50 p-4 border-l-4 border-red-500 text-red-900 mt-2 rounded-r-lg">
+                            <strong>WARNING:</strong> NEVER UNDER ANY CIRCUMSTANCES should you give into the temptation to “just send them an email with more information”. You will lose the sale 99% of the time.
                         </div>
+                    </div>
+
+                    {/* Qualify / Disqualify */}
+                    <div className="space-y-4">
+                        <h4 className="font-bold text-gray-900 text-lg border-b border-gray-100 pb-2">5. How To Qualify / Disqualify</h4>
+                        <ul className="list-disc list-inside text-gray-600 space-y-1">
+                            <li>They have a realistic budget</li>
+                            <li>They’re emotionally and financially ready to start soon</li>
+                            <li>All decision-makers are engaged</li>
+                            <li>The project still fits your niche and capacity</li>
+                        </ul>
+                        <p className="text-sm text-gray-500 italic">If anything changes... politely reset expectations. It’s better to disqualify now.</p>
+                    </div>
+
+                    {/* Post-Call */}
+                    <div className="space-y-4">
+                        <h4 className="font-bold text-gray-900 text-lg border-b border-gray-100 pb-2">6. What To Do After</h4>
+                        <ol className="list-decimal list-inside text-gray-600 space-y-2">
+                            <li><strong>Log Detailed Notes:</strong> Log every frustration, goal, and quote-worthy line in your CRM.</li>
+                            <li><strong>Confirm Meeting:</strong> Send a quick text/email within 10 mins to lock it in.</li>
+                            <li><strong>Follow Up:</strong> If they didn't commit, follow up within 24 hours.</li>
+                        </ol>
                     </div>
                 </section>
             )}
 
             {/* Part 2: The Script */}
-            <div className="flex items-center justify-center py-6">
+            <div className="flex items-center justify-center py-8">
                 <div className="h-px bg-gray-200 flex-1"></div>
-                <span className="px-4 text-xs font-bold text-gray-400 uppercase tracking-widest bg-saas-bg">Discovery Call Script</span>
+                <span className="px-4 text-sm font-bold text-gray-400 uppercase tracking-widest bg-saas-bg">Discovery Call Script</span>
                 <div className="h-px bg-gray-200 flex-1"></div>
             </div>
 
@@ -1024,6 +997,7 @@ const DiscoveryScriptView = () => {
                 </div>
 
                 <h3 className="font-bold text-gray-900 mb-4 ml-1">Decision Maker Check</h3>
+                {/* 2-Column Layout PRESENCE NEEDED for Decision Splitting */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     {/* Path A */}
                     <div className="bg-green-50 border border-green-200 rounded-xl p-6 relative">
@@ -1086,16 +1060,17 @@ const DiscoveryScriptView = () => {
                         </p>
                     </div>
 
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    {/* Edge Cases - Single Column Stack */}
+                    <div className="space-y-4">
                         <div className="bg-orange-50 border border-orange-200 rounded-xl p-6">
-                            <h4 className="font-bold text-orange-900 text-sm uppercase tracking-wide mb-2">Status Frame If Needed</h4>
+                            <h4 className="font-bold text-orange-900 text-sm uppercase tracking-wide mb-2">Scenario: Status Frame If Needed</h4>
                             <p className="text-sm text-orange-900 italic">
                                 "I’m not too sure if we can help you just yet … you might not even need us … I’d have to know a bit more about what you’re already doing for XYZ …"
                             </p>
                             <p className="text-xs text-orange-700 mt-2 font-bold">&rarr; Ask your first Situation Question</p>
                         </div>
                         <div className="bg-blue-50 border border-blue-200 rounded-xl p-6">
-                            <h4 className="font-bold text-blue-900 text-sm uppercase tracking-wide mb-2">If Asked For Pricing</h4>
+                            <h4 className="font-bold text-blue-900 text-sm uppercase tracking-wide mb-2">Scenario: If Asked For Pricing</h4>
                             <p className="text-sm text-blue-900 italic">
                                 "Ohhh yeah, totally… it really depends on a few things — like the level of finishes, the specific lot you’re building on, and what steps you’ve already taken. Once we’ve gone through that a bit more… I can give you a ballpark range just so you know what’s realistic."
                             </p>
@@ -1114,29 +1089,29 @@ const DiscoveryScriptView = () => {
                 </div>
 
                 <div className="bg-white border border-gray-200 rounded-xl p-8 shadow-sm space-y-8">
-                    <p className="text-gray-600 italic">
+                    <p className="text-gray-600 italic border-l-4 border-gray-300 pl-4 py-2">
                         "So I know <strong>(Team Member Name)</strong> already went over some of the basics — things like your land, where you’re building, general timing — I won’t make you repeat all that again. What I’d love to understand though… is more about why you’re doing this because that’s really important to us here."
                     </p>
 
-                    <div className="space-y-6">
-                        <div className="pl-4 border-l-4 border-gray-200">
-                            <p className="font-medium text-gray-900">"So how long have you been thinking about building a home?"</p>
+                    <div className="space-y-8">
+                        <div>
+                            <p className="font-medium text-gray-900 text-lg mb-1">"So how long have you been thinking about building a home?"</p>
                             <span className="text-xs text-gray-500 font-bold uppercase">Tone: Curious</span>
                         </div>
-                        <div className="pl-4 border-l-4 border-gray-200">
-                            <p className="font-medium text-gray-900">"Ok… and what made you decide you wanted to build rather than just buy something that’s already out there?"</p>
+                        <div className="border-t border-gray-100 pt-6">
+                            <p className="font-medium text-gray-900 text-lg mb-1">"Ok… and what made you decide you wanted to build rather than just buy something that’s already out there?"</p>
                             <span className="text-xs text-gray-500 font-bold uppercase">Tone: Neutral / Curious</span>
                         </div>
-                        <div className="pl-4 border-l-4 border-gray-200">
-                            <p className="font-medium text-gray-900">"And what have you really done so far in the process except for you know… buy land?"</p>
-                            <p className="font-medium text-gray-900 mt-2">"Just (whatever they mention)? Or anything else you’ve tried so I have a bit more context?"</p>
+                        <div className="border-t border-gray-100 pt-6">
+                            <p className="font-medium text-gray-900 text-lg">"And what have you really done so far in the process except for you know… buy land?"</p>
+                            <p className="font-medium text-gray-900 mt-2 mb-1">"Just (whatever they mention)? Or anything else you’ve tried so I have a bit more context?"</p>
                             <span className="text-xs text-gray-500 font-bold uppercase">Tone: Curious / Skeptical</span>
                         </div>
-                        <div className="pl-4 border-l-4 border-gray-200">
-                            <p className="font-medium text-gray-900">"Got it. And when you think about it… what’s the main goal behind this? Like… what’s the big picture for you? Is this more of a forever home, an investment, a lifestyle change?"</p>
+                        <div className="border-t border-gray-100 pt-6">
+                            <p className="font-medium text-gray-900 text-lg">"Got it. And when you think about it… what’s the main goal behind this? Like… what’s the big picture for you? Is this more of a forever home, an investment, a lifestyle change?"</p>
                         </div>
-                        <div className="pl-4 border-l-4 border-gray-200">
-                            <p className="font-medium text-gray-900">"When you picture the home being finished… what would make you feel like… “Yeah… this was completely worth it”?"</p>
+                        <div className="border-t border-gray-100 pt-6">
+                            <p className="font-medium text-gray-900 text-lg">"When you picture the home being finished… what would make you feel like… “Yeah… this was completely worth it”?"</p>
                         </div>
                     </div>
                 </div>
@@ -1149,10 +1124,10 @@ const DiscoveryScriptView = () => {
                     <h2 className="text-2xl font-bold text-gray-900">Probing / Clarifying Questions</h2>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div className="bg-gray-50 p-6 rounded-xl border border-gray-200">
-                        <h4 className="font-bold text-gray-500 text-xs uppercase tracking-wide mb-4">Digging Deeper</h4>
-                        <ul className="space-y-3 text-sm font-medium text-gray-800">
+                <div className="space-y-6">
+                    <div className="bg-gray-50 p-6 rounded-lg border border-gray-200">
+                        <h4 className="font-bold text-gray-900 text-lg mb-4">Digging Deeper</h4>
+                        <ul className="space-y-3 text-base text-gray-800 list-disc list-inside">
                             <li>"How long has that been going on for?"</li>
                             <li>"Has that had an impact on you?"</li>
                             <li>"Well, in what way?"</li>
@@ -1162,9 +1137,9 @@ const DiscoveryScriptView = () => {
                             <li className="text-blue-600 italic">"(Repeat back emotional words)?"</li>
                         </ul>
                     </div>
-                    <div className="bg-gray-50 p-6 rounded-xl border border-gray-200">
-                        <h4 className="font-bold text-gray-500 text-xs uppercase tracking-wide mb-4">Understanding Nuance</h4>
-                        <ul className="space-y-3 text-sm font-medium text-gray-800">
+                    <div className="bg-gray-50 p-6 rounded-lg border border-gray-200">
+                        <h4 className="font-bold text-gray-900 text-lg mb-4">Understanding Nuance</h4>
+                        <ul className="space-y-3 text-base text-gray-800 list-disc list-inside">
                             <li>"Can I ask why you said (blank)?"</li>
                             <li>"Can I ask what you meant when you said (blank)?"</li>
                             <li>"How do you mean by (blank)?"</li>
@@ -1187,26 +1162,26 @@ const DiscoveryScriptView = () => {
                     <h2 className="text-2xl font-bold text-gray-900">Problem Awareness Questions</h2>
                 </div>
 
-                <div className="bg-white border border-gray-200 rounded-xl p-8 shadow-sm space-y-8">
-                    <div className="pl-4 border-l-4 border-indigo-200">
-                        <p className="font-medium text-gray-900 leading-relaxed">
+                <div className="bg-white border border-gray-200 rounded-xl p-8 shadow-sm space-y-10">
+                    <div>
+                        <p className="font-medium text-gray-900 leading-relaxed text-lg">
                             "Ok so, besides (Insert any problems you’re aware of if applicable), from what you’ve told me about your project so far (insert situation), which seems like a fairly decent starting point… but if you don’t mind me asking though… are you… 100%... satisfied with how things are progressing so far?"
                         </p>
-                        <span className="text-xs text-indigo-500 font-bold uppercase mt-1 block">Tone: Curious / Slightly Skeptical</span>
+                        <span className="text-xs text-indigo-500 font-bold uppercase mt-2 block">Tone: Curious / Slightly Skeptical</span>
                     </div>
-                    <div className="pl-4 border-l-4 border-indigo-200">
-                        <p className="font-medium text-gray-900 leading-relaxed">
+                    <div className="border-t border-gray-100 pt-8">
+                        <p className="font-medium text-gray-900 leading-relaxed text-lg">
                             "Why haven’t you actually (blank) yet?"
                         </p>
-                        <span className="text-xs text-indigo-500 font-bold uppercase mt-1 block">Tone: Confused / Skeptical</span>
+                        <span className="text-xs text-indigo-500 font-bold uppercase mt-2 block">Tone: Confused / Skeptical</span>
                     </div>
-                    <div className="pl-4 border-l-4 border-indigo-200">
-                        <p className="font-medium text-gray-900 leading-relaxed">
+                    <div className="border-t border-gray-100 pt-8">
+                        <p className="font-medium text-gray-900 leading-relaxed text-lg">
                             "So what is it do you think about (blank) that’s causing you to not hit, say (ideal outcome)?"
                         </p>
                     </div>
-                    <div className="pl-4 border-l-4 border-indigo-200">
-                        <p className="font-medium text-gray-900 leading-relaxed">
+                    <div className="border-t border-gray-100 pt-8">
+                        <p className="font-medium text-gray-900 leading-relaxed text-lg">
                             "Just so I can understand the rationale behind why you might be looking, besides just wanting to build your dream home… because everybody says that… what's the main reason you’re looking for outside help rather than (what they’re already doing or an alternative)?"
                         </p>
                     </div>
