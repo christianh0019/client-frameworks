@@ -893,89 +893,78 @@ const DiscoveryScriptView = () => {
                             Standard Operating Procedure
                         </h3>
                     </div>
-                    <div className="p-8 space-y-10">
-                        {/* When / Who */}
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                            <div>
-                                <h4 className="font-bold text-gray-900 mb-2 text-sm uppercase tracking-wide">When To Conduct</h4>
-                                <p className="text-sm text-gray-600 leading-relaxed mb-4">
-                                    Discovery Calls are only for qualified leads who’ve already completed a Qualification Call and meet the basic criteria: they’re in your service area, own or are purchasing land, have a realistic timeline and budget, and fit your niche.
-                                </p>
-                                <p className="text-sm text-gray-600 leading-relaxed">
-                                    This is the salesperson’s call — it’s meant for the business owner, sales rep, or whoever will be making the actual sale. The goal here isn’t to “close” the deal yet, but to collect deep insight into the client’s situation, motivations, pain points, and goals. You’re building emotional context that will later drive your in-person presentation or proposal.
-                                </p>
-                            </div>
-                            <div>
-                                <h4 className="font-bold text-gray-900 mb-2 text-sm uppercase tracking-wide">The Focus</h4>
-                                <p className="text-sm text-gray-600 leading-relaxed bg-blue-50 p-4 rounded-lg border border-blue-100 text-blue-900">
-                                    The main focus is to understand the gap between where they are now and where they want to be — and to make them feel that gap.
-                                </p>
-                            </div>
+
+                    {/* Document Body - Simple Single Column */}
+                    <div className="p-8 md:p-12 max-w-none space-y-8">
+
+                        {/* 1. When To Conduct */}
+                        <div className="space-y-3">
+                            <h4 className="text-xl font-bold text-indigo-700">When To Conduct Discovery Calls:</h4>
+                            <p className="text-base text-gray-800 leading-relaxed">
+                                Discovery Calls are only for qualified leads who’ve already completed a Qualification Call and meet the basic criteria: they’re in your service area, own or are purchasing land, have a realistic timeline and budget, and fit your niche.
+                            </p>
+                            <p className="text-base text-gray-800 leading-relaxed">
+                                This is the salesperson’s call — it’s meant for the business owner, sales rep, or whoever will be making the actual sale. The goal here isn’t to “close” the deal yet, but to collect deep insight into the client’s situation, motivations, pain points, and goals. You’re building emotional context that will later drive your in-person presentation or proposal.
+                            </p>
+                            <p className="text-base text-gray-800 leading-relaxed">
+                                The main focus is to understand the gap between where they are now and where they want to be — and to make them feel that gap.
+                            </p>
                         </div>
 
-                        {/* Prepare */}
-                        <div>
-                            <h4 className="font-bold text-gray-900 mb-3 text-sm uppercase tracking-wide">How To Prepare</h4>
-                            <ul className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                                <li className="bg-gray-50 p-4 rounded-lg border border-gray-100 text-sm text-gray-700">
-                                    <strong>Review Notes:</strong> Review all notes from the Qualification Call and CRM record. Know their land details, project type, and any prior communications so you can skip the surface-level questions and sound informed.
+                        {/* 2. How To Prepare */}
+                        <div className="space-y-3">
+                            <h4 className="text-xl font-bold text-indigo-700">How To Prepare For Discovery Calls:</h4>
+                            <p className="text-base text-gray-800 leading-relaxed">
+                                Before each Discovery Call, review all notes from the Qualification Call and CRM record. Know their land details, project type, and any prior communications so you can skip the surface-level questions and sound informed.
+                            </p>
+                            <p className="text-base text-gray-800 leading-relaxed">
+                                Have their form submission or call notes open during the conversation. You should be able to reference past answers naturally ("Last time you mentioned you were still finalizing the land purchase — how's that going?").
+                            </p>
+                            <p className="text-base text-gray-800 leading-relaxed">
+                                Always take this call in a quiet, private setting where you can focus 100%. These conversations often reveal financial details, family plans, and emotional motivations — so you need to listen carefully and take notes.
+                            </p>
+                        </div>
+
+                        {/* 3. Purpose */}
+                        <div className="space-y-3">
+                            <h4 className="text-xl font-bold text-indigo-700">Purpose Of The Discovery Call:</h4>
+                            <p className="text-base text-gray-800 leading-relaxed">
+                                The Discovery Call has two purposes:
+                            </p>
+                            <ol className="list-decimal list-inside space-y-2 text-base text-gray-800 leading-relaxed ml-2">
+                                <li>
+                                    <strong>Data Collection</strong> — to understand their situation, goals, obstacles, and timeline so you can prepare an informed proposal or in-person meeting.
                                 </li>
-                                <li className="bg-gray-50 p-4 rounded-lg border border-gray-100 text-sm text-gray-700">
-                                    <strong>Have Notes Open:</strong> Have their form submission or call notes open. Reference past answers naturally.
+                                <li>
+                                    <strong>Emotional Discovery</strong> — to help them surface and relive the frustrations or fears behind their current situation, then visualize how much better life will be when they solve it with your help.
                                 </li>
-                                <li className="bg-gray-50 p-4 rounded-lg border border-gray-100 text-sm text-gray-700">
-                                    <strong>Quiet Setting:</strong> Always take this call in a quiet, private setting. These conversations reveal financial details and emotional motivations — listen carefully and take notes.
-                                </li>
-                            </ul>
+                            </ol>
+                            <p className="text-base text-gray-800 leading-relaxed">
+                                Think of this call as connecting logic to emotion — you’re finding both the “reason” and the “feeling” behind their decision to build so that you can provide the best in-person meeting possible and make the sale.
+                            </p>
                         </div>
 
-                        {/* Purpose */}
-                        <div>
-                            <h4 className="font-bold text-gray-900 mb-3 text-sm uppercase tracking-wide">Purpose Of The Discovery Call</h4>
-                            <div className="flex flex-col md:flex-row gap-6">
-                                <div className="flex-1 bg-indigo-50 p-5 rounded-lg border border-indigo-100">
-                                    <h5 className="font-bold text-indigo-900 mb-1">Data Collection</h5>
-                                    <p className="text-sm text-indigo-800">To understand their situation, goals, obstacles, and timeline so you can prepare an informed proposal or in-person meeting.</p>
-                                </div>
-                                <div className="flex-1 bg-indigo-50 p-5 rounded-lg border border-indigo-100">
-                                    <h5 className="font-bold text-indigo-900 mb-1">Emotional Discovery</h5>
-                                    <p className="text-sm text-indigo-800">To help them surface and relive the frustrations or fears behind their current situation, then visualize how much better life will be when they solve it with your help.</p>
-                                </div>
-                            </div>
+                        {/* 4. How To Conduct */}
+                        <div className="space-y-3">
+                            <h4 className="text-xl font-bold text-indigo-700">How To Conduct:</h4>
+                            <p className="text-base text-gray-800 leading-relaxed">
+                                Start with casual rapport and tone-setting — you want them relaxed and conversational.
+                            </p>
+                            <ol className="list-decimal list-inside space-y-2 text-base text-gray-800 leading-relaxed ml-2">
+                                <li><strong>Connection Questions:</strong> Warm up, set context, reinforce authority. Confirm alignment and if spouse is present.</li>
+                                <li><strong>Situation Questions:</strong> Gather hard data. Establish facts and uncover the "gap". Tone: Curious and slightly skeptical.</li>
+                                <li><strong>Problem Awareness:</strong> Sales psychology. Help them feel the problem. Trigger self-reflection.</li>
+                                <li><strong>Booking The Meeting:</strong> Invite serious prospects to the in-person meeting. Book on the spot. Send Pre-Meeting Page.</li>
+                            </ol>
+                            <p className="text-base text-gray-800 leading-relaxed font-bold text-red-700 mt-2">
+                                WARNING: NEVER UNDER ANY CIRCUMSTANCES should you give into the temptation to “just send them an email with more information”. You will lose the sale 99% of the time.
+                            </p>
                         </div>
 
-                        {/* How To Conduct */}
-                        <div className="space-y-4">
-                            <h4 className="font-bold text-gray-900 mb-2 text-sm uppercase tracking-wide">How To Conduct</h4>
-                            <p className="text-sm text-gray-600">Start with casual rapport and tone-setting — you want them relaxed and conversational.</p>
-
-                            <div className="grid grid-cols-1 md:grid-cols-4 gap-4 text-sm text-gray-600">
-                                <div className="border border-gray-100 p-3 rounded bg-gray-50">
-                                    <strong>1. Connection</strong>
-                                    <span className="block text-xs mt-1">Warm up, set context.</span>
-                                </div>
-                                <div className="border border-gray-100 p-3 rounded bg-gray-50">
-                                    <strong>2. Situation</strong>
-                                    <span className="block text-xs mt-1">Gather facts & "gap".</span>
-                                </div>
-                                <div className="border border-gray-100 p-3 rounded bg-gray-50">
-                                    <strong>3. Awareness</strong>
-                                    <span className="block text-xs mt-1">Feel the problem.</span>
-                                </div>
-                                <div className="border border-gray-100 p-3 rounded bg-gray-50">
-                                    <strong>4. Booking</strong>
-                                    <span className="block text-xs mt-1">Book in-person.</span>
-                                </div>
-                            </div>
-                            <div className="bg-red-50 p-4 border-l-4 border-red-500 text-sm text-red-900 mt-2">
-                                <strong>WARNING:</strong> NEVER UNDER ANY CIRCUMSTANCES should you give into the temptation to “just send them an email with more information”. You will lose the sale 99% of the time.
-                            </div>
-                        </div>
-
-                        {/* Post-Call */}
-                        <div className="space-y-4 pt-6 border-t border-gray-100">
-                            <h4 className="font-bold text-gray-900 text-sm uppercase tracking-wide">What To Do After</h4>
-                            <ul className="list-disc list-inside text-sm text-gray-600 space-y-1">
+                        {/* 5. Post-Call */}
+                        <div className="space-y-3">
+                            <h4 className="text-xl font-bold text-indigo-700">What To Do After:</h4>
+                            <ul className="list-disc list-inside space-y-2 text-base text-gray-800 leading-relaxed ml-2">
                                 <li><strong>Log Detailed Notes:</strong> Log every frustration, goal, and quote-worthy line in your CRM.</li>
                                 <li><strong>Confirm Meeting:</strong> Send a quick text/email within 10 mins to lock it in.</li>
                                 <li><strong>Follow Up:</strong> If they didn't commit, follow up within 24 hours.</li>
