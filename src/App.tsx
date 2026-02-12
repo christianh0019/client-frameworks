@@ -155,6 +155,8 @@ const SOPDetail = ({ sop, onBack, onSOPClick }: { sop: SOP, onBack: () => void, 
                             switch (sop.title) {
                                 case "Qualification Call Script":
                                     return <QualificationScriptView />;
+                                case "Discovery Call Script":
+                                    return <DiscoveryScriptView />;
                                 case "Handling New Lead Stage":
                                     return <HandlingNewLeadView onLinkClick={onSOPClick} />;
                                 case "Handling Qualified Lead Stage":
@@ -849,6 +851,233 @@ const SalesProcessTree = ({ onSelectSOP }: { onSelectSOP: (sopTitle: string) => 
         </div>
     );
 };
+
+// Custom View for Discovery Script
+const DiscoveryScriptView = () => (
+    <div className="space-y-12 font-sans text-gray-800 pb-20">
+
+        {/* SOP Header Section */}
+        <section className="bg-white border border-gray-200 rounded-xl p-8 shadow-sm">
+            <h2 className="text-2xl font-bold text-gray-900 mb-6 border-b border-gray-100 pb-4">Standard Operating Procedure</h2>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div>
+                    <h3 className="font-bold text-gray-900 mb-2 flex items-center">
+                        <Clock size={16} className="mr-2 text-indigo-500" /> When To Conduct
+                    </h3>
+                    <p className="text-sm text-gray-600 leading-relaxed mb-4">
+                        Discovery Calls are only for qualified leads who’ve already completed a Qualification Call and meet the basic criteria: they’re in your service area, own or are purchasing land, have a realistic timeline and budget, and fit your niche.
+                    </p>
+                    <p className="text-sm text-gray-600 leading-relaxed">
+                        The goal isn’t to “close” the deal yet, but to collect deep insight into the client’s situation, motivations, pain points, and goals. You’re building emotional context that will later drive your in-person presentation.
+                    </p>
+                </div>
+                <div>
+                    <h3 className="font-bold text-gray-900 mb-2 flex items-center">
+                        <CheckSquare size={16} className="mr-2 text-indigo-500" /> How To Prepare
+                    </h3>
+                    <ul className="text-sm text-gray-600 list-disc list-inside space-y-2">
+                        <li>Review all notes from the Qualification Call and CRM record.</li>
+                        <li>Know their land details and project type.</li>
+                        <li>Have their form submission or call notes open.</li>
+                        <li>Ensure you are in a quiet, private setting.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div className="mt-8 pt-6 border-t border-gray-100 flex flex-col md:flex-row gap-6">
+                <div className="flex-1 bg-indigo-50 p-5 rounded-lg border border-indigo-100">
+                    <h4 className="font-bold text-indigo-900 text-sm uppercase tracking-wide mb-2">Purpose 1: Data Collection</h4>
+                    <p className="text-sm text-indigo-800">Understand situation, goals, obstacles, and timeline.</p>
+                </div>
+                <div className="flex-1 bg-indigo-50 p-5 rounded-lg border border-indigo-100">
+                    <h4 className="font-bold text-indigo-900 text-sm uppercase tracking-wide mb-2">Purpose 2: Emotional Discovery</h4>
+                    <p className="text-sm text-indigo-800">Help them surface frustrations and visualize a better future.</p>
+                </div>
+            </div>
+        </section>
+
+        {/* Separator */}
+        <div className="flex items-center justify-center">
+            <div className="h-px bg-gray-200 flex-1"></div>
+            <span className="px-4 text-xs font-bold text-gray-400 uppercase tracking-widest">Script Begins</span>
+            <div className="h-px bg-gray-200 flex-1"></div>
+        </div>
+
+        {/* Connection Phase */}
+        <section>
+            <div className="flex items-center mb-6">
+                <div className="w-8 h-8 rounded-full bg-blue-600 text-white flex items-center justify-center font-bold mr-3">1</div>
+                <h2 className="text-2xl font-bold text-gray-900">Connection & Logistics</h2>
+            </div>
+
+            <div className="bg-gray-50 border border-gray-200 rounded-xl p-6 mb-8">
+                <p className="italic text-gray-700 text-lg">
+                    "Hey <strong>[Prospect Name]</strong>, it’s <strong>[Your Name]</strong>… with <strong>[Business Name]</strong>… It looks like you talked to <strong>[Team Member]</strong> and booked a time with me to explore how we might be able to help you with your custom home idea.. does that sound right?" <span className="text-sm font-normal text-gray-500 not-italic ml-2">(Curious/Concerned tone)</span>
+                </p>
+            </div>
+
+            <h3 className="font-bold text-gray-900 mb-4">Decision Maker Check</h3>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                {/* Path A */}
+                <div className="bg-green-50 border border-green-200 rounded-xl p-6">
+                    <div className="text-xs font-bold text-green-700 uppercase tracking-wide mb-3">All Decision Makers Present</div>
+                    <div className="flex items-center text-green-800 font-bold mb-4">
+                        Continue on <ArrowRight size={16} className="ml-2" />
+                    </div>
+                </div>
+
+                {/* Path B */}
+                <div className="bg-yellow-50 border border-yellow-200 rounded-xl p-6">
+                    <div className="text-xs font-bold text-yellow-700 uppercase tracking-wide mb-3">Missing A Decision Maker</div>
+                    <p className="italic text-yellow-900 text-sm mb-4">
+                        "Before we get started, [Team Member] had mentioned to me about <strong>[Partner's Name]</strong>. Are they able to make it?"
+                    </p>
+
+                    {/* Nested Logic */}
+                    <div className="mt-4 space-y-3">
+                        <div className="flex items-center justify-between p-3 bg-white/60 rounded border border-yellow-100">
+                            <span className="text-sm font-medium">Yes (They join)</span>
+                            <span className="text-xs font-bold text-green-600">Continue &rarr;</span>
+                        </div>
+                        <div className="p-3 bg-white/60 rounded border border-yellow-100">
+                            <span className="text-sm font-medium block mb-2">No (They can't join)</span>
+                            <p className="italic text-xs text-gray-600 mb-2">
+                                "Ok no problem at all. What I'd recommend is that we reschedule... Do you know when both of you would 100% be available?"
+                            </p>
+                            <span className="text-xs font-bold text-red-600 uppercase">Reschedule Call &rarr;</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        {/* Transition */}
+        <section>
+            <div className="flex items-center mb-6">
+                <div className="w-8 h-8 rounded-full bg-blue-600 text-white flex items-center justify-center font-bold mr-3">2</div>
+                <h2 className="text-2xl font-bold text-gray-900">Setting the Stage</h2>
+            </div>
+            <div className="bg-white border border-gray-200 rounded-xl p-6 space-y-6">
+                <div>
+                    <h4 className="font-bold text-gray-800 mb-2">The Opening Question</h4>
+                    <p className="italic text-gray-700 border-l-4 border-blue-200 pl-4 py-1">
+                        "What really stood out to you that caused you to want to reach out today?"
+                    </p>
+                </div>
+                <div>
+                    <h4 className="font-bold text-gray-800 mb-2">The Frame (Setting Expectations)</h4>
+                    <p className="italic text-gray-700 border-l-4 border-blue-200 pl-4 py-1">
+                        "Oh ok… These first calls are pretty basic… It’s really more for us to understand where you’re at now… how far you’ve gotten in the process… compared to what you have in mind for your finished home… to see what the gap looks like... And then towards the end… if you feel like this… might be… what you’re looking for, and we think we can help, then we can talk about possible next steps. Would that be appropriate?"
+                    </p>
+                </div>
+                <div className="bg-orange-50 p-4 rounded-lg border border-orange-100">
+                    <h4 className="font-bold text-orange-900 text-sm mb-1">Handling Price Questions Early</h4>
+                    <p className="italic text-orange-800 text-sm">
+                        "Ohhh yeah, totally… it really depends on a few things — like the level of finishes, the specific lot you’re building on, and what steps you’ve already taken. Once we’ve gone through that a bit more… I can give you a ballpark range just so you know what’s realistic." <span className="not-italic font-bold">(Ask next question immediately)</span>
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        {/* Situation Questions */}
+        <section>
+            <div className="flex items-center mb-6">
+                <div className="w-8 h-8 rounded-full bg-blue-600 text-white flex items-center justify-center font-bold mr-3">3</div>
+                <h2 className="text-2xl font-bold text-gray-900">Situation Questions</h2>
+            </div>
+            <div className="bg-gray-50 rounded-xl p-6 border border-gray-200">
+                <p className="mb-6 text-gray-600 text-sm">
+                    "So I know [Team Member] already went over some of the basics... I won’t make you repeat all that again. What I’d love to understand though… is more about why you’re doing this because that’s really important to us here."
+                </p>
+                <div className="space-y-4">
+                    <div className="bg-white p-4 rounded-lg shadow-sm border border-gray-100">
+                        <span className="text-xs font-bold text-blue-500 uppercase tracking-wide">Motivation</span>
+                        <p className="font-medium text-gray-800 mt-1">"So how long have you been thinking about building a home?"</p>
+                    </div>
+                    <div className="bg-white p-4 rounded-lg shadow-sm border border-gray-100">
+                        <span className="text-xs font-bold text-blue-500 uppercase tracking-wide">The "Why"</span>
+                        <p className="font-medium text-gray-800 mt-1">"Ok… and what made you decide you wanted to build rather than just buy something that’s already out there?"</p>
+                    </div>
+                    <div className="bg-white p-4 rounded-lg shadow-sm border border-gray-100">
+                        <span className="text-xs font-bold text-blue-500 uppercase tracking-wide">Actions Taken</span>
+                        <p className="font-medium text-gray-800 mt-1">"And what have you really done so far in the process except for you know… buy land? Just (whatever they mention)? Or anything else you’ve tried so I have a bit more context?"</p>
+                    </div>
+                    <div className="bg-white p-4 rounded-lg shadow-sm border border-gray-100">
+                        <span className="text-xs font-bold text-blue-500 uppercase tracking-wide">The Vision</span>
+                        <p className="font-medium text-gray-800 mt-1">"Got it. And when you think about it… what’s the main goal behind this? Like… what’s the big picture for you? Is this more of a forever home, an investment, a lifestyle change?"</p>
+                    </div>
+                    <div className="bg-white p-4 rounded-lg shadow-sm border border-gray-100">
+                        <span className="text-xs font-bold text-blue-500 uppercase tracking-wide">The Feeling</span>
+                        <p className="font-medium text-gray-800 mt-1">"When you picture the home being finished… what would make you feel like… 'Yeah… this was completely worth it'?"</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        {/* Probing Questions */}
+        <section>
+            <div className="flex items-center mb-6">
+                <div className="w-8 h-8 rounded-full bg-blue-600 text-white flex items-center justify-center font-bold mr-3">4</div>
+                <h2 className="text-2xl font-bold text-gray-900">Probing & Clarifying</h2>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div className="bg-white border border-gray-200 p-5 rounded-lg">
+                    <h4 className="font-bold text-gray-800 mb-3">Digging Deeper</h4>
+                    <ul className="space-y-2 text-sm text-gray-700">
+                        <li>"How long has that been going on for?"</li>
+                        <li>"Has that had an impact on you? In what way?"</li>
+                        <li>"What bothers you the most about this?"</li>
+                        <li>"Okay, well, why now though? ... why not just push it down the road?"</li>
+                    </ul>
+                </div>
+                <div className="bg-white border border-gray-200 p-5 rounded-lg">
+                    <h4 className="font-bold text-gray-800 mb-3">Understanding Meaning</h4>
+                    <ul className="space-y-2 text-sm text-gray-700">
+                        <li>"Can I ask what you meant when you said (blank)?"</li>
+                        <li>"Can you walk me through how (blank) happened exactly?"</li>
+                        <li>"How did you feel when (blank) happened?"</li>
+                        <li>"What’s causing (blank) to happen?"</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        {/* Closing */}
+        <section>
+            <div className="flex items-center mb-6">
+                <div className="w-8 h-8 rounded-full bg-blue-600 text-white flex items-center justify-center font-bold mr-3">5</div>
+                <h2 className="text-2xl font-bold text-gray-900">Closing & Booking</h2>
+            </div>
+
+            <div className="bg-blue-50 border border-blue-200 rounded-xl p-8 space-y-8">
+                <div>
+                    <h3 className="text-xl font-bold text-blue-900 mb-4">Book The In-Person Meeting</h3>
+                    <p className="italic text-blue-900/80 mb-4">
+                        "Based on what you’ve shared with me so far … what we do here could work for you … What I can do from here if you’d like … is let you (and your partner/spouse if applicable) book a more formal meeting with me at my office… over the next few days depending on our availability..."
+                    </p>
+                    <div className="bg-white/50 p-3 rounded border border-blue-100 text-center font-bold text-blue-800 my-4 uppercase tracking-widest text-sm">
+                        Confirm Time & Book Meeting
+                    </div>
+                </div>
+
+                <div>
+                    <h4 className="font-bold text-blue-900 mb-2">Playful Accountability</h4>
+                    <p className="italic text-blue-900/80">
+                        "Now just real quick… and I’m sure this isn’t you … however sometimes people ask us to help them with their project, we let them book some more time with us and then they don’t show up … you know those kinds of people … I’m sure that isn’t you … right?"
+                    </p>
+                </div>
+
+                <div>
+                    <h4 className="font-bold text-blue-900 mb-2">Pre-Meeting Page</h4>
+                    <p className="italic text-blue-900/80">
+                        "Great… I also wanted to bring up real quick about our pre-meeting page. It has a couple different things to make sure you know everything that we do... Would it help if I sent that page over to you?"
+                    </p>
+                </div>
+            </div>
+        </section>
+    </div>
+);
 
 const App = () => {
     const [activeTab, setActiveTab] = useState('Process Library');
