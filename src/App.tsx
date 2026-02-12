@@ -1048,19 +1048,19 @@ const DiscoveryScriptView = () => {
                                 <div>
                                     <span className="text-xs font-bold text-gray-500 uppercase">If Yes</span>
                                     <div className="text-green-700 font-bold text-sm">Ok great. (Continue on &darr;)</div>
-                                }
-                                    <div>
-                                        <span className="text-xs font-bold text-gray-500 uppercase">If No</span>
-                                        <p className="text-sm text-gray-800 italic mb-2">
-                                            "Ok no problem at all. What I'd recommend is that we reschedule so that we can find a time that works for both of you so that we can make sure everybody including me is on the same page with each other.<br /><br />
-                                            Do you know when both of you would 100% be available so I can check my calendar and make sure I have time for you?"
-                                        </p>
-                                        <div className="inline-block px-2 py-1 bg-red-100 text-red-700 text-xs font-bold rounded">End the call ✗</div>
-                                    </div>
+                                </div>
+                                <div>
+                                    <span className="text-xs font-bold text-gray-500 uppercase">If No</span>
+                                    <p className="text-sm text-gray-800 italic mb-2">
+                                        "Ok no problem at all. What I'd recommend is that we reschedule so that we can find a time that works for both of you so that we can make sure everybody including me is on the same page with each other.<br /><br />
+                                        Do you know when both of you would 100% be available so I can check my calendar and make sure I have time for you?"
+                                    </p>
+                                    <div className="inline-block px-2 py-1 bg-red-100 text-red-700 text-xs font-bold rounded">End the call ✗</div>
                                 </div>
                             </div>
                         </div>
                     </div>
+                </div>
             </section>
 
             {/* Opening / Frame */}
