@@ -157,6 +157,8 @@ const SOPDetail = ({ sop, onBack, onSOPClick }: { sop: SOP, onBack: () => void, 
                                     return <QualificationScriptView />;
                                 case "Discovery Call Script":
                                     return <DiscoveryScriptView />;
+                                case "In-Person Meeting Script":
+                                    return <InPersonMeetingScriptView />;
                                 case "Handling New Lead Stage":
                                     return <HandlingNewLeadView onLinkClick={onSOPClick} />;
                                 case "Handling Qualified Lead Stage":
@@ -1279,6 +1281,292 @@ const DiscoveryScriptView = () => {
     );
 };
 
+// Custom View for In-Person Meeting Script
+const InPersonMeetingScriptView = () => {
+    // Standard Styles
+    const s = {
+        container: "space-y-8 font-sans text-gray-800 pb-20 max-w-4xl mx-auto",
+        paper: "bg-white border border-gray-200 rounded-xl shadow-sm overflow-hidden",
+        header: "p-6 bg-gray-50 border-b border-gray-200",
+        headerTitle: "font-bold text-gray-900 flex items-center",
+        body: "p-8 md:p-12 max-w-none space-y-8",
+        sectionTitle: "text-xl font-bold text-indigo-700",
+        p: "text-base text-gray-800 leading-relaxed",
+        list: "list-decimal list-inside space-y-2 text-base text-gray-800 leading-relaxed ml-2",
+        bulletList: "list-disc list-inside space-y-2 text-base text-gray-800 leading-relaxed ml-2",
+        callout: "bg-gray-50 p-4 border-l-4 border-gray-300 text-gray-700 italic"
+    };
+
+    return (
+        <div className={s.container}>
+            {/* Part 1: SOP / Guidelines */}
+            <section className={s.paper}>
+                <div className={s.header}>
+                    <div className="text-center mb-4">
+                        <h1 className="text-2xl font-bold text-gray-900">In-Person Meeting (TEMPLATE)</h1>
+                        <p className="text-xs text-gray-400 mt-2">BuilderProject LLC © Copyright 2025. All Rights Reserved. ®</p>
+                    </div>
+                    <h3 className={s.headerTitle}>
+                        <FileText size={18} className="mr-2 text-gray-500" />
+                        Standard Operating Procedure
+                    </h3>
+                </div>
+
+                <div className={s.body}>
+                    <div className="space-y-3">
+                        <h4 className={s.sectionTitle}>When To Conduct In-Person Meetings:</h4>
+                        <p className={s.p}>The in-person meeting is conducted only after a successful Discovery Call with a fully qualified prospect. At this point, you already know:</p>
+                        <ul className={s.bulletList}>
+                            <li>They own or are purchasing land.</li>
+                            <li>They’re within your service area and niche.</li>
+                            <li>They have a realistic budget and timeline.</li>
+                            <li>You’ve uncovered their pain points, emotional motivators, and desired outcomes.</li>
+                        </ul>
+                        <p className={s.p}>The goal now is to convert trust and emotion into commitment by:</p>
+                        <ul className={s.bulletList}>
+                            <li>Re-activating their emotional awareness of the problem.</li>
+                            <li>Exploring what they’ve already tried and why it hasn’t worked.</li>
+                            <li>Building a clear vision of their “ideal outcome.”</li>
+                            <li>Connecting that outcome to your solution in a collaborative, low-pressure way.</li>
+                            <li>Guiding them toward a decision and next steps.</li>
+                        </ul>
+                    </div>
+
+                    <div className="space-y-3">
+                        <h4 className={s.sectionTitle}>Purpose Of The In-Person Meeting:</h4>
+                        <p className={s.p}>The purpose is not to “sell” your company. It’s to lead the client through clarity and conviction.</p>
+                        <p className={s.p}>This meeting accomplishes three things:</p>
+                        <ul className={s.bulletList}>
+                            <li><strong>Emotional Re-engagement:</strong> Reignite the feelings they shared on the Discovery Call (frustration, excitement, overwhelm).</li>
+                            <li><strong>Solution Framing:</strong> Help them logically and emotionally connect your process to their needs.</li>
+                            <li><strong>Commitment:</strong> Earn permission to present a tailored plan and secure an agreement or design engagement.</li>
+                        </ul>
+                    </div>
+
+                    <div className="space-y-3">
+                        <h4 className={s.sectionTitle}>How To Prepare For In-Person Meetings:</h4>
+                        <ol className={s.list}>
+                            <li>
+                                <strong>Review Discovery Notes/ Call:</strong> Read every line of your CRM notes. Highlight exact phrases they used (“We feel stuck,” “We want a space that fits our family”). These are emotional anchors you’ll re-use. Also re-listen to the Discovery Call once as you prepare your pillars, and once before the actual in-person meeting itself so you remember every key detail.
+                            </li>
+                            <li>
+                                <strong>Prepare The 2-4 Pillars Of Your Presentation:</strong> Each pillar should represent one key problem they shared and how you’ll solve it. Use the Presentation Pillar Template resource attached to this lesson. These pillars should be customized for the exact problems you found in your Discovery Call.
+                            </li>
+                            <li>
+                                <strong>Pre-Meeting Phone Call:</strong> You should always call them the day of the in-person appointment. This is not meant to be a long call and should only take 5 minutes. You want to:
+                                <ul className="ml-6 mt-2 list-disc space-y-1">
+                                    <li>Confirm they will be able to attend obviously as well as their partner. <strong>DO NOT under any circumstances take the in-person meeting without every decision maker present.</strong> There is a 99.9999% chance that they will say they need to think about it and talk to their partner when you ask them to make a decision. Instead of trying to handle that objection, it is far easier to prevent it all together.</li>
+                                    <li>Ensure they’ve reviewed your pre-meeting content (videos, past projects, FAQs). This removes the need for a “pitch” and shifts the meeting from proving to planning.</li>
+                                    <li>Make sure there’s no unanswered questions about where you are meeting or what you will be discussing.</li>
+                                </ul>
+                            </li>
+                            <li>
+                                <strong>Environment Setup:</strong>
+                                <ul className="ml-6 mt-2 list-disc space-y-1">
+                                    <li>Quiet, private space (no interruptions).</li>
+                                    <li>Collaborative seating (side-by-side or at 45° angle, not directly across).</li>
+                                    <li>Have visual aids ready (concept photos, samples, digital plans).</li>
+                                    <li>Prepare a notepad to mirror “taking notes” — builds perceived investment and authority.</li>
+                                </ul>
+                            </li>
+                            <li>
+                                <strong>Mindset:</strong> You’re not closing them; you’re helping them close themselves by realizing their situation, goals, and next logical step.
+                            </li>
+                        </ol>
+                    </div>
+
+                    <div className="space-y-3">
+                        <h4 className={s.sectionTitle}>What To Do After An In-Person Meeting:</h4>
+                        <p className={s.p}>After every in-person meeting, there are only three possible outcomes. Each one requires a clear next step to keep control of the process and protect pipeline momentum.</p>
+                        <ol className={s.list}>
+                            <li>
+                                <strong>Closed Agreement:</strong> This means you got a firm “yes” and a signed agreement while the client was in the office. This should always be your goal — getting physical authorization or digital signature before they leave. Once signed, immediately confirm payment details, update the CRM to “Closed Won,” and notify the internal team. The client should leave knowing exactly what happens next and when they’ll hear from your team.
+                            </li>
+                            <li>
+                                <strong>Very Interested, But Did Not Formally Close:</strong> This means you received a verbal yes — they want to move forward — but couldn’t secure authorization or signature in the meeting. Before they leave, lock in a specific follow-up time (within 48–72 hours) to finalize the paperwork. Send a short recap email the same day summarizing their goals, what was agreed on verbally, and confirming the follow-up appointment. Update CRM stage to “Verbal Yes / Pending Signature.”
+                            </li>
+                            <li>
+                                <strong>Did Not Close / Not Interested:</strong> This means they declined or clearly aren’t ready to proceed. End the meeting on a professional and respectful note. Thank them for their time, send a polite follow-up email that leaves the door open, and tag the lead appropriately in the CRM as “Lost” or “Nurture.” Set a reminder to recheck in several months if appropriate.
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+            </section>
+
+            {/* Part 2: The Script Questions */}
+            <section className={s.paper}>
+                <div className={s.header}>
+                    <h3 className={s.headerTitle}>
+                        <MessageSquare size={18} className="mr-2 text-gray-500" />
+                        In-Person Meeting Script
+                    </h3>
+                </div>
+
+                <div className={s.body}>
+                    {/* Re-Establish Problem Awareness */}
+                    <div className="space-y-3">
+                        <h4 className={s.sectionTitle}>Re-Establish Problem Awareness:</h4>
+                        <p className={s.p}>
+                            “I know we spoke briefly the other day… I did take some notes but you’ll have to forgive me… my handwriting’s all scratchy like a doctor.” <span className="text-gray-500 italic">(Playful tone)</span>
+                        </p>
+                        <p className={s.p}>
+                            “So…” <span className="text-gray-500 italic">(pretending to look at notes)</span> “…when we talked, you mentioned (insert 2–3 pains or frustrations — e.g., ‘feeling stuck on the design process,’ ‘uncertain about total cost,’ ‘overwhelmed with options’)… can you tell me a bit more about that?” <span className="text-gray-500 italic">(Concerned tone, look up and pause)</span>
+                        </p>
+                        <p className={s.callout}>(Let them talk — this reopens their emotional state. Nod, mirror tone.)</p>
+                        <p className={s.p}>
+                            “You’d also asked me to send that pre-meeting page — the one with our past projects and that short video showing how we helped other clients (insert result, e.g., “go from concept to move-in with no budget surprises”). For you though, what stood out the most from that?”
+                        </p>
+                        <p className={s.callout}>
+                            (Wait — confirm they went through it. This pre-frames authority and eliminates the need to “prove yourself”... If they didn’t go through it- sit there and go through it with them.)
+                        </p>
+                    </div>
+
+                    <hr className="border-gray-100" />
+
+                    {/* Solution Awareness Questions */}
+                    <div className="space-y-3">
+                        <h4 className={s.sectionTitle}>Solution Awareness Questions:</h4>
+                        <p className={s.p}>
+                            “Now I’m curious — before you came to us, besides (what they’ve already tried or mentioned), who else have you talked with or looked into for help?”
+                        </p>
+
+                        <div className="mt-4 space-y-4">
+                            <div className="bg-gray-50 p-4 rounded-lg border border-gray-200">
+                                <h5 className="font-bold text-gray-700 text-sm mb-2">If they haven’t talked to anyone:</h5>
+                                <ul className="list-disc ml-5 space-y-1 text-sm text-gray-800">
+                                    <li>“Ohhh… what do you feel held you back from getting help before now?”</li>
+                                    <li>“What’s changed that’s making it more important to figure this out now?”</li>
+                                </ul>
+                            </div>
+                            <div className="bg-gray-50 p-4 rounded-lg border border-gray-200">
+                                <h5 className="font-bold text-gray-700 text-sm mb-2">If they’ve spoken with others:</h5>
+                                <p className="text-sm text-gray-800">“Ohhh, you’ve talked to (Builder X)? They’re fairly decent. What was missing from those conversations that kept you from already moving forward with them?”</p>
+                            </div>
+                            <div className="bg-gray-50 p-4 rounded-lg border border-gray-200">
+                                <h5 className="font-bold text-gray-700 text-sm mb-2">If they’ve tried something before and it didn’t work:</h5>
+                                <ul className="list-disc ml-5 space-y-1 text-sm text-gray-800">
+                                    <li>“How do you mean it ‘didn’t work out’ last time?”</li>
+                                    <li>“What do you feel caused that?”</li>
+                                    <li>“Why not just give up on the idea altogether then?” <span className="text-gray-500 italic">(Slightly challenging tone - builds emotional buy-in)</span></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <hr className="border-gray-100" />
+
+                    {/* Ideal Criteria */}
+                    <div className="space-y-3">
+                        <h4 className={s.sectionTitle}>Ideal Criteria (Building the Vision):</h4>
+                        <p className={s.p}>
+                            “Let’s just make sure we could… actually help you. Suppose we sat down and mapped out your ideal build — besides (what they already said they want) — what else would you really want to see in that?”
+                        </p>
+                        <p className={s.callout}>
+                            <strong>If they hesitate:</strong> “Well, I can make a suggestion if that helps. Most people we talk with say they’re usually looking for help with things like [clarity on budget], [design-to-build continuity], or [stress-free process]. What are your thoughts on those?”
+                        </p>
+                        <p className={s.p}>“Ok… and why is that so important to you right now?”</p>
+                        <p className={s.p}>“Anything else you’d want to make sure we got right?”</p>
+                    </div>
+
+                    <hr className="border-gray-100" />
+
+                    {/* Future State */}
+                    <div className="space-y-3">
+                        <h4 className={s.sectionTitle}>Future State / Desired Outcome:</h4>
+                        <p className={s.p}>
+                            “Let’s just imagine for a second… suppose we could help you (insert their goal — e.g., ‘build that home without constant budget surprises’ or ‘finally move into something that actually fits your family’s lifestyle’)… how do you see that changing things for you?”
+                        </p>
+                        <p className={s.p}>“Besides that… how else do you see this helping you the most?”</p>
+                        <p className={s.p}>“And on more of a personal or emotional level… what would that do for you?”</p>
+                        <p className={s.callout}>(Pause — this lets them vividly picture success. That image is what they’ll later justify the investment for.)</p>
+                    </div>
+
+                    <hr className="border-gray-100" />
+
+                    {/* Consequence Questions */}
+                    <div className="space-y-3">
+                        <h4 className={s.sectionTitle}>Consequence Questions:</h4>
+                        <p className={s.p}>
+                            “Oh ok… well if you could… help me understand a bit better… what happens if you don’t do anything about this… and that (restate main problem) keeps dragging out another six or twelve months?”
+                        </p>
+                        <p className={s.callout}>
+                            <strong>If they deflect:</strong> “Ohhh no worries — I’m not saying you won’t do anything… what I mean is, if nothing changed, what would that mean for you?”
+                        </p>
+                        <p className={s.p}>“How important is it for you to actually fix this now so you don’t have to keep (restate pain)?”</p>
+                        <p className={s.p}>“Why is that so important for you?”</p>
+                        <p className={s.p}>“Why do this now though- not just push it down the road like most people normally would?</p>
+                        <p className={s.callout}>(Pause — let them feel the weight of inaction.)</p>
+                    </div>
+
+                    <hr className="border-gray-100" />
+
+                    {/* Transition To Presentation */}
+                    <div className="space-y-3">
+                        <h4 className={s.sectionTitle}>Transition To Presentation:</h4>
+                        <p className={s.p}>“So it sounds like… it’s possibly time to make a change then?”</p>
+                        <p className={s.p}>“Ok… that’s what I needed to hear — and based on everything you’ve told me, what we do here would work for you…”</p>
+                        <p className={s.p}>
+                            “…because you said you don’t want to keep (insert frustration) — but right now, you’re (insert logical challenge) — and that’s made you feel (insert emotional keyword from earlier)… does that sound about right?” <span className="text-gray-500 italic">(Wait for agreement)</span>
+                        </p>
+                        <p className={s.p}>
+                            “Ok — well what I can do now, if you’d like, is walk you through how we help clients like you (insert goal)… so you can (insert emotional outcome). Would that be helpful?”
+                        </p>
+                    </div>
+
+                    <hr className="border-gray-100" />
+
+                    {/* Presentation (Pillars) */}
+                    <div className="space-y-3">
+                        <h4 className={s.sectionTitle}>Presentation (Pillars):</h4>
+                        <p className={s.p}>For each pillar:</p>
+                        <ul className={s.bulletList}>
+                            <li>“Remember how you said (problem)…”</li>
+                            <li>“…which has been causing (logical consequence)…”</li>
+                            <li>“That’s actually one of the biggest things we see with clients before they come to us…”</li>
+                            <li>“How we solve that is we (insert your process)…”</li>
+                            <li>“And what that means for you is (insert emotional benefit)…”</li>
+                            <li>“Does that make sense?” / “What are your thoughts on that?” / “Would that help you?”</li>
+                        </ul>
+                        <p className={s.callout}>(Repeat for each pillar, keeping total presentation under 10–15% of meeting time.)</p>
+                        <div className="bg-blue-50 border border-blue-200 p-4 rounded-lg mt-4">
+                            <p className="font-bold text-blue-900 mb-2">The Ask:</p>
+                            <p className="text-blue-900 leading-relaxed">
+                                "Ok… so the funds required for us to (insert what you are pitching them and what it will do for them) is just $_____. <span className="italic font-normal">(Neutral tone — not defensive or rushed.)</span>"
+                            </p>
+                            <p className="text-blue-900 font-bold mt-2">"Would that… help you… if we did that?"</p>
+                        </div>
+                    </div>
+
+                    <hr className="border-gray-100" />
+
+                    {/* Commitment & Next Steps */}
+                    <div className="space-y-3">
+                        <h4 className={s.sectionTitle}>Commitment & Next Steps:</h4>
+                        <p className={s.p}>
+                            “Based on everything we’ve gone over today… do you feel like this could be the answer for you — to finally (insert end result)?”
+                        </p>
+                        <div className="mt-4 space-y-4">
+                            <div className="bg-green-50 p-4 rounded-lg border border-green-200">
+                                <h5 className="font-bold text-green-700 text-sm mb-2">If yes:</h5>
+                                <ul className="list-disc ml-5 space-y-2 text-sm text-green-900">
+                                    <li>“Ok — why do you feel it is though?” <span className="text-gray-500 italic">(Skeptical tone — builds conviction.)</span></li>
+                                    <li>“Besides that, what specific parts of what we covered do you feel would help you the most?”</li>
+                                    <li>“Perfect — looks like we’ve covered everything you said you needed to (insert goal). So the next step would be to make arrangements for (design agreement / pre-construction / etc.).”</li>
+                                    <li>“We can take care of that right now so we can lock in your start timeline — would that be appropriate?”</li>
+                                </ul>
+                                <div className="mt-3 inline-block px-3 py-1 bg-green-100 text-green-800 text-xs font-bold rounded uppercase">
+                                    Aim for signature on the spot
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+        </div>
+    );
+};
+
 const App = () => {
     const [activeTab, setActiveTab] = useState('Process Library');
     const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
@@ -1663,6 +1951,12 @@ Briefly explain your 3-step process: Design -> Pre-Construction -> Build.
 
 ### Closing / Next Steps
 **If Moving Forward:** "I think we can help you build this. The next step is our Design Agreement. It costs [Amount] and gets you [Deliverable]. Shall we get that started?"`
+        },
+        {
+            title: "In-Person Meeting Script",
+            description: "Detailed script and SOP for conducting the In-Person Meeting.",
+            category: "Script",
+            detailedContent: "SOP and Script for In-Person Meeting" // Placeholder content reference
         }
     ];
 
