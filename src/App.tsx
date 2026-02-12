@@ -3509,60 +3509,6 @@ const App = () => {
 
     const sops: SOP[] = [
         {
-            title: "Handling New Lead Stage",
-            description: "Contact every new lead quickly, qualify seriousness, and secure the next step within 7 days.",
-            category: "Sales",
-            detailedContent: `### Where to Find This
-Desktop & Mobile CRM > Opportunities > "New Lead" Stage.
-
-### Definition
-"New Leads" are generated via lead magnets. These contacts have exchanged their information for a valuable guide or tool effectively but have NOT yet been qualified.
-
-### Goal
-Qualify or disqualify as fast as possible.
-
-### Important Rule: 5-Minute Response
-All leads should be contacted in under 5 minutes.
-Why? Conversion rates increase by 300% when this is done.
-
-### Notifications
-• You will be notified via text message for all new leads.
-• The lead receives an automated text message 2-3 minutes after they enter the system (designed to feel human).
-• Example: "Hey I just saw you downloaded our [Asset Name]! Is this John?"
-
-### Action Plan
-1. Call them immediately (immediately after the automated text triggers).
-2. If they answer: [[LINK:Qualification Call Script]]
-
-### If No Answer (Follow-Up Cadence)
-Call once every day for the next 4 days.
-
-If they don't answer the call:
-• Send a quick text.
-• Leave a voicemail.
-• Suggested Text: "Just tried to give you a ring John. Did you have a moment?" (Keep it friendly, do not annoy them).
-
-### If They Answer
-Follow the Qualification Script: [[LINK:Qualification Call Script]]
-
-Goal: Determine if they are Qualified or Unqualified.
-
-Qualified: Move to "Qualified Lead" pipeline stage.
-Disqualified: Move to "Lost" stage and add "Disqualified" reason.
-
-### Special Circumstances Note
-Sometimes you can proceed with a discovery call immediately during the qualification call, but this is RARE.
-
-Only proceed if:
-• All decision makers are present.
-• They are in a quiet, isolated environment.
-• Everybody has time to talk.
-
-If these conditions are not met, schedule the Discovery Call for a later time.
-
-If you DO proceed immediately, use the [[LINK:Discovery Call Script]].`
-        },
-        {
             title: "Qualification & Discovery SOP",
             description: "Budget filters\n• Timeline filters\n• Decision maker logic\n• Serious buyer signals\n• When to disqualify",
             category: "Sales"
