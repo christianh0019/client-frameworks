@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
-import { Search, FileText, Play, Clock, ArrowRight, LayoutGrid, List, ArrowLeft, ChevronRight, CheckSquare } from 'lucide-react';
+import { Search, FileText, Play, Clock, ArrowRight, LayoutGrid, List, ArrowLeft, ChevronRight, CheckSquare, MessageSquare } from 'lucide-react';
 
 // Types
 type ViewState = 'library' | 'sop-detail' | 'video-detail';
