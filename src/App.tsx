@@ -986,7 +986,7 @@ const DiscoveryScriptView = () => {
                             </li>
                         </ul>
                         <p className={s.p}>
-                            <em>If No:</em> "I'd recommend we reschedule to a time that works for both of you so we're all on the same page. When are you both 100% available?" -> <strong>End Call.</strong>
+                            <em>If No:</em> "I'd recommend we reschedule to a time that works for both of you so we're all on the same page. When are you both 100% available?" &rarr; <strong>End Call.</strong>
                         </p>
                     </div>
 
