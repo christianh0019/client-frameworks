@@ -1066,7 +1066,7 @@ const HandlingNotBookedFollowUpsView = () => {
             <section className={s.paper}>
                 <div className={s.header}>
                     <div className="text-center mb-4">
-                        <h1 className="text-2xl font-bold text-gray-900">Handling Not Booked Follow Ups Stage (SOP)</h1>
+                        <h1 className="text-2xl font-bold text-gray-900">Pipeline Stage: Not Booked Follow Ups</h1>
                         <p className="text-xs text-gray-400 mt-2">BuilderProject LLC © Copyright 2025. All Rights Reserved. ®</p>
                     </div>
                     <h3 className={s.headerTitle}>
@@ -1076,54 +1076,225 @@ const HandlingNotBookedFollowUpsView = () => {
                 </div>
 
                 <div className={s.body}>
-                    {/* Goal / Low Hanging Fruit */}
-                    <div className="bg-orange-50 border border-orange-200 rounded-xl p-6 mb-8">
-                        <h3 className="text-lg font-bold text-orange-900 mb-3 flex items-center">
-                            <span className="bg-orange-200 text-orange-800 text-xs px-2 py-1 rounded mr-2 uppercase tracking-wide">High Priority</span>
-                            Low Hanging Fruit
-                        </h3>
-                        <p className="text-orange-900 text-base">
-                            Qualified leads who engaged but couldn't book immediately (scheduling, spouse, land, etc.).
-                        </p>
+                    {/* 1. Location in CRM */}
+                    <div className="space-y-3">
+                        <h4 className={s.sectionTitle}>1. Location in CRM</h4>
+                        <p className={s.p}>This procedure applies to the "Not Booked Follow Ups" stage within the Sales Pipeline.</p>
+                        <p className={s.p}>You can locate this stage by navigating to:</p>
+                        <p className="font-medium text-gray-900 bg-gray-50 p-2 rounded inline-block text-sm">Opportunities &rarr; Sales Pipeline &rarr; Not Booked Follow Ups</p>
+                        <p className={s.p}>This stage is accessible on both desktop and mobile versions of the CRM.</p>
                     </div>
 
                     <hr className="border-gray-100" />
 
-                    {/* Rules of Engagement */}
-                    <div className="space-y-4 pt-4">
-                        <h3 className={s.sectionTitle}>Rules of Engagement</h3>
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                            <div className="border border-gray-200 rounded-xl p-6 shadow-sm">
-                                <div className="bg-blue-100 w-10 h-10 rounded-full flex items-center justify-center text-blue-600 font-bold mb-4">1</div>
-                                <h4 className="font-bold text-lg mb-2 text-gray-900">100% Manual & Personalized</h4>
-                                <p className="text-gray-600 text-sm">
-                                    Do NOT use automated blasts. Reference specific details from their previous call ("How was Hawaii?", "Did you close on the lot?").
-                                </p>
-                            </div>
-                            <div className="border border-gray-200 rounded-xl p-6 shadow-sm">
-                                <div className="bg-blue-100 w-10 h-10 rounded-full flex items-center justify-center text-blue-600 font-bold mb-4">2</div>
-                                <h4 className="font-bold text-lg mb-2 text-gray-900">Follow-Up Cadence</h4>
-                                <ul className="text-gray-600 text-sm space-y-2">
-                                    <li><strong>Specific Date:</strong> If set, call then.</li>
-                                    <li><strong>General:</strong> Every 1-2 weeks.</li>
+                    {/* 2. Definition of This Stage */}
+                    <div className="space-y-3">
+                        <h4 className={s.sectionTitle}>2. Definition of This Stage</h4>
+                        <p className={s.p}>An opportunity is moved to Not Booked Follow Ups when:</p>
+                        <ul className={s.bulletList}>
+                            <li>The Discovery Call has been completed.</li>
+                            <li>The prospect is qualified.</li>
+                            <li>An in-person meeting was not scheduled.</li>
+                        </ul>
+                        <div className="bg-indigo-50 border-l-4 border-indigo-500 p-4 mt-2">
+                            <p className="text-indigo-900">These are <strong>not</strong> unqualified leads.<br />These are <strong>not</strong> uninterested leads.</p>
+                            <p className="text-indigo-900 mt-2">These are qualified prospects who, for one reason or another, were not ready to schedule the next step.</p>
+                        </div>
+                        <p className={s.p}>Common reasons include:</p>
+                        <ul className={s.bulletList}>
+                            <li>Waiting to purchase land</li>
+                            <li>On vacation</li>
+                            <li>Waiting for a job promotion or income change</li>
+                            <li>Finalizing financing</li>
+                            <li>Personal timing constraints</li>
+                        </ul>
+                        <p className={s.p}>This stage is reserved exclusively for qualified prospects who expressed legitimate interest but require additional time.</p>
+                    </div>
+
+                    <hr className="border-gray-100" />
+
+                    {/* 3. Purpose of This Stage */}
+                    <div className="space-y-3">
+                        <h4 className={s.sectionTitle}>3. Purpose of This Stage</h4>
+                        <p className={s.p}>The purpose of this stage is to:</p>
+                        <div className="bg-indigo-50 border-l-4 border-indigo-500 p-4">
+                            <p className="font-bold text-indigo-900">Maintain structured, personalized follow-up with qualified prospects until they are ready to book an in-person meeting.</p>
+                        </div>
+                        <p className={s.p}>These are among the most valuable opportunities in the pipeline because:</p>
+                        <ul className={s.bulletList}>
+                            <li>They have engaged in a Discovery Call.</li>
+                            <li>They have met qualification standards.</li>
+                            <li>They are aware of the process.</li>
+                            <li>They have shown genuine interest.</li>
+                        </ul>
+                        <p className={s.p}>Proper follow-up here directly impacts close rate and long-term revenue.</p>
+                    </div>
+
+                    <hr className="border-gray-100" />
+
+                    {/* 4. Follow-Up Standards */}
+                    <div className="space-y-3">
+                        <h4 className={s.sectionTitle}>4. Follow-Up Standards</h4>
+                        <p className={s.p}>All follow-up in this stage must be:</p>
+                        <ul className={s.bulletList}>
+                            <li><strong>Manual</strong></li>
+                            <li><strong>Personalized</strong></li>
+                            <li><strong>Context-aware</strong></li>
+                        </ul>
+                        <div className="bg-red-50 border-l-4 border-red-500 p-4 mt-2">
+                            <p className="font-bold text-red-900">Automated nurture sequences should not replace personal outreach at this stage.</p>
+                        </div>
+                    </div>
+
+                    <hr className="border-gray-100" />
+
+                    {/* 5. Personalization Requirement */}
+                    <div className="space-y-3">
+                        <h4 className={s.sectionTitle}>5. Personalization Requirement</h4>
+                        <p className={s.p}>Before every follow-up:</p>
+                        <ul className={s.bulletList}>
+                            <li>Review the contact record.</li>
+                            <li>Review opportunity notes.</li>
+                            <li>Review call recordings and AI summaries if necessary.</li>
+                        </ul>
+                        <p className={s.p}>Follow-ups must reference their specific situation.</p>
+                        <div className="mt-4 border border-gray-200 rounded-lg p-4 bg-gray-50">
+                            <h5 className="font-bold text-gray-900 mb-2">Examples:</h5>
+                            <ul className={s.bulletList}>
+                                <li>If they are purchasing land, ask whether the purchase has been finalized.</li>
+                                <li>If they are waiting on financing, ask whether they have received updates.</li>
+                                <li>If they mentioned a specific timeline, reference it directly.</li>
+                            </ul>
+                        </div>
+                        <p className={s.p}>Follow-up should demonstrate that you understand their situation and are aligned with their goals.</p>
+                    </div>
+
+                    <hr className="border-gray-100" />
+
+                    {/* 6. Follow-Up Cadence */}
+                    <div className="space-y-3">
+                        <h4 className={s.sectionTitle}>6. Follow-Up Cadence</h4>
+                        <p className={s.p}>Follow-up timing should be based on the prospect's stated reason for delay.</p>
+                        <p className={s.p}>There are two acceptable structures:</p>
+
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-4">
+                            <div className="bg-green-50 border border-green-100 rounded-xl p-6">
+                                <h5 className="font-bold text-green-800 text-lg mb-2">A. Specific Date Follow-Up</h5>
+                                <p className="text-sm text-green-700 mb-2">If the prospect provided a clear timeline:</p>
+                                <ul className="list-disc list-inside text-sm text-green-700 space-y-1">
+                                    <li>Create a task or reminder for that exact date.</li>
+                                    <li>Follow up as agreed.</li>
+                                    <li>Reference the prior conversation directly.</li>
                                 </ul>
+                                <p className="text-xs text-green-600 mt-2 italic">This is the preferred method when a timeline is provided.</p>
+                            </div>
+
+                            <div className="bg-blue-50 border border-blue-100 rounded-xl p-6">
+                                <h5 className="font-bold text-blue-800 text-lg mb-2">B. General Ongoing Follow-Up</h5>
+                                <p className="text-sm text-blue-700 mb-2">If no specific date was provided:</p>
+                                <ul className="list-disc list-inside text-sm text-blue-700 space-y-1">
+                                    <li>Follow up every 1–2 weeks.</li>
+                                    <li>Maintain professional, value-oriented communication.</li>
+                                    <li>Avoid excessive messaging.</li>
+                                </ul>
+                                <p className="text-xs text-blue-600 mt-2 italic">The purpose is to remain present without creating pressure.</p>
                             </div>
                         </div>
                     </div>
 
                     <hr className="border-gray-100" />
 
-                    {/* Success / Failure */}
-                    <div className="bg-gray-100 rounded-xl p-8 flex flex-col md:flex-row justify-between items-center px-12 gap-8 mt-4">
-                        <div className="text-center">
-                            <div className="font-bold text-2xl text-green-600 mb-1">Success</div>
-                            <div className="text-sm text-gray-600 font-medium">Book In-Person Meeting</div>
+                    {/* 7. Objective of Follow-Up */}
+                    <div className="space-y-3">
+                        <h4 className={s.sectionTitle}>7. Objective of Follow-Up</h4>
+                        <p className={s.p}>The objective at this stage is clear:</p>
+                        <div className="bg-indigo-50 border-l-4 border-indigo-500 p-4">
+                            <p className="font-bold text-indigo-900 text-lg">Secure an in-person meeting.</p>
                         </div>
-                        <div className="hidden md:block h-12 w-px bg-gray-300"></div>
-                        <div className="text-center">
-                            <div className="font-bold text-2xl text-red-600 mb-1">Failure</div>
-                            <div className="text-sm text-gray-600 font-medium">Ghosted (Move to Lost)</div>
+                        <p className={s.p}>The in-person meeting allows you to:</p>
+                        <ul className={s.bulletList}>
+                            <li>Build deeper rapport</li>
+                            <li>Establish trust</li>
+                            <li>Strengthen emotional commitment</li>
+                            <li>Present services in greater detail</li>
+                        </ul>
+                        <p className={s.p}>All follow-up should naturally guide toward scheduling this next step.</p>
+                    </div>
+
+                    <hr className="border-gray-100" />
+
+                    {/* 8. Movement Out of This Stage */}
+                    <div className="space-y-3">
+                        <h4 className={s.sectionTitle}>8. Movement Out of This Stage</h4>
+                        <p className={s.p}>There are three possible outcomes from this stage:</p>
+
+                        {/* A. In-Person Meeting Booked */}
+                        <div className="bg-green-50 border border-green-100 rounded-xl p-6 mt-4">
+                            <h5 className="font-bold text-green-800 text-lg mb-2">A. In-Person Meeting Booked</h5>
+                            <p className="text-sm text-green-700 mb-2">If the prospect agrees to schedule an in-person meeting:</p>
+                            <ul className="list-disc list-inside text-sm text-green-700 space-y-1">
+                                <li>Schedule the appointment in the CRM.</li>
+                                <li>The opportunity will automatically move to <strong>In-Person Meeting Booked</strong>.</li>
+                            </ul>
+                            <p className="text-xs text-green-600 mt-2 italic">No manual stage movement is required.</p>
                         </div>
+
+                        {/* B. Lost – Uninterested */}
+                        <div className="bg-red-50 border border-red-100 rounded-xl p-6">
+                            <h5 className="font-bold text-red-800 text-lg mb-2">B. Lost – Uninterested</h5>
+                            <p className="text-sm text-red-700 mb-2">If the prospect clearly communicates they no longer wish to proceed:</p>
+                            <ul className="list-disc list-inside text-sm text-red-700 space-y-1">
+                                <li>Move the opportunity to <strong>Lost</strong>.</li>
+                                <li>Select the appropriate reason.</li>
+                                <li>Add summary notes.</li>
+                            </ul>
+                        </div>
+
+                        {/* C. Abandoned */}
+                        <div className="bg-gray-100 border border-gray-200 rounded-xl p-6">
+                            <h5 className="font-bold text-gray-800 text-lg mb-2">C. Abandoned</h5>
+                            <p className="text-sm text-gray-700 mb-2">If the prospect becomes unresponsive and:</p>
+                            <ul className="list-disc list-inside text-sm text-gray-700 space-y-1">
+                                <li>Multiple follow-up attempts have been made, and</li>
+                                <li>Several months have passed without engagement,</li>
+                            </ul>
+                            <p className="text-sm text-gray-700 mt-2">Move the opportunity to <strong>Abandoned</strong>.</p>
+                            <p className="text-sm text-gray-700 mt-2">Add a clear note summarizing:</p>
+                            <ul className="list-disc list-inside text-sm text-gray-700 space-y-1">
+                                <li>Last contact attempt</li>
+                                <li>Duration of inactivity</li>
+                                <li>Follow-up history</li>
+                            </ul>
+                            <p className="text-xs text-gray-500 mt-2 italic">This keeps the pipeline accurate and forecastable.</p>
+                        </div>
+                    </div>
+
+                    <hr className="border-gray-100" />
+
+                    {/* 9. Completion Criteria */}
+                    <div className="space-y-3">
+                        <h4 className={s.sectionTitle}>9. Completion Criteria</h4>
+                        <p className={s.p}>An opportunity should not remain in Not Booked Follow Ups without:</p>
+                        <ul className={s.bulletList}>
+                            <li>Documented follow-up activity, and</li>
+                            <li>A scheduled next touchpoint.</li>
+                        </ul>
+                        <p className={s.p}>Stagnant opportunities distort pipeline visibility and reduce accountability.</p>
+                    </div>
+
+                    <hr className="border-gray-100" />
+
+                    {/* 10. Accountability */}
+                    <div className="space-y-3">
+                        <h4 className={s.sectionTitle}>10. Accountability</h4>
+                        <p className={s.p}>This stage directly impacts:</p>
+                        <ul className={s.bulletList}>
+                            <li>Long-cycle deal conversion</li>
+                            <li>Pipeline stability</li>
+                            <li>Revenue forecasting</li>
+                            <li>Overall close rate</li>
+                        </ul>
+                        <p className={s.p}>Consistent, personalized follow-up is required to maximize conversion from qualified prospects.</p>
                     </div>
                 </div>
             </section>
