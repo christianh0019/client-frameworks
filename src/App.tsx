@@ -648,9 +648,10 @@ const HandlingDiscoveryBookedView = ({ onLinkClick }: { onLinkClick?: (title: st
     return (
         <div className={s.container}>
             <section className={s.paper}>
+                {/* Header */}
                 <div className={s.header}>
                     <div className="text-center mb-4">
-                        <h1 className="text-2xl font-bold text-gray-900">Handling Discovery Call Booked Stage (SOP)</h1>
+                        <h1 className="text-2xl font-bold text-gray-900">Pipeline Stage: Discovery Call Booked</h1>
                         <p className="text-xs text-gray-400 mt-2">BuilderProject LLC © Copyright 2025. All Rights Reserved. ®</p>
                     </div>
                     <h3 className={s.headerTitle}>
@@ -660,61 +661,173 @@ const HandlingDiscoveryBookedView = ({ onLinkClick }: { onLinkClick?: (title: st
                 </div>
 
                 <div className={s.body}>
-                    {/* Intro */}
-                    <div className="bg-indigo-50 border border-indigo-100 rounded-xl p-6 flex flex-col items-center text-center">
-                        <div className="p-3 bg-white rounded-full shadow-sm mb-4">
-                            <Clock size={32} className="text-indigo-600" />
-                        </div>
-                        <h3 className="text-xl font-bold text-indigo-900 mb-2">Automated Pipeline Stage</h3>
-                        <p className="text-indigo-700">Tracks all leads with a scheduled Discovery Call.</p>
+                    {/* 1. Location in CRM */}
+                    <div className="space-y-3">
+                        <h4 className={s.sectionTitle}>1. Location in CRM</h4>
+                        <p className={s.p}>This procedure applies to the “Discovery Call Booked” stage within the Sales Pipeline.</p>
+                        <p className={s.p}>You can locate this stage by navigating to:</p>
+                        <p className="font-medium text-gray-900 bg-gray-50 p-2 rounded inline-block text-sm">Opportunities &rarr; Sales Pipeline &rarr; Discovery Call Booked</p>
+                        <p className={s.p}>Appointments can also be viewed in:</p>
+                        <p className="font-medium text-gray-900 bg-gray-50 p-2 rounded inline-block text-sm">Calendars &rarr; Appointments</p>
+                        <p className={s.p}>This stage is accessible on both desktop and mobile versions of the CRM.</p>
                     </div>
 
                     <hr className="border-gray-100" />
 
-                    {/* Pre-Call Automations */}
+                    {/* 2. Definition of This Stage */}
                     <div className="space-y-3">
-                        <h4 className={s.sectionTitle}>Pre-Call Automations (Lead Perspective)</h4>
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                            <div className="border border-gray-200 p-6 rounded-xl">
-                                <h4 className="font-bold text-lg mb-2 text-gray-900">Reminders</h4>
-                                <p className="text-sm text-gray-600">Automated text/email notifications to prevent no-shows.</p>
-                            </div>
-                            <div className="border border-gray-200 p-6 rounded-xl">
-                                <h4 className="font-bold text-lg mb-2 text-gray-900">Company Info</h4>
-                                <p className="text-sm text-gray-600">Helpful content to build trust before the call.</p>
-                            </div>
-                        </div>
+                        <h4 className={s.sectionTitle}>2. Definition of This Stage</h4>
+                        <p className={s.p}>A lead enters the Discovery Call Booked stage automatically when a Discovery Call appointment is scheduled.</p>
+                        <p className={s.p}>No manual stage movement is required.</p>
+                        <p className={s.p}>When the Discovery Call is completed and properly marked in the CRM, the opportunity will automatically move to the Discovery Call Completed stage.</p>
+                        <p className={s.p}>This stage serves primarily as:</p>
+                        <ul className={s.bulletList}>
+                            <li>A visibility dashboard of scheduled Discovery Calls</li>
+                            <li>A tracking stage for upcoming sales conversations</li>
+                        </ul>
                     </div>
 
                     <hr className="border-gray-100" />
 
-                    {/* Execution */}
+                    {/* 3. Purpose of the Discovery Call Booked Stage */}
                     <div className="space-y-3">
-                        <h4 className={s.sectionTitle}>Execution: Taking the Call</h4>
-                        <div className="bg-gray-900 text-white rounded-xl p-8 space-y-6">
-                            <div className="flex items-start">
-                                <div className="bg-gray-700 p-2 rounded mr-4 font-bold w-8 h-8 flex items-center justify-center">1</div>
-                                <div>
-                                    <h4 className="font-bold text-lg">Dial via CRM</h4>
-                                    <p className="text-gray-400 text-sm mt-1">Always call using the CRM dialer so it's recorded and transcribed.</p>
-                                </div>
-                            </div>
-                            <div className="flex items-start">
-                                <div className="bg-gray-700 p-2 rounded mr-4 font-bold w-8 h-8 flex items-center justify-center">2</div>
-                                <div>
-                                    <h4 className="font-bold text-lg">Use the Script</h4>
-                                    <button onClick={() => onLinkClick && onLinkClick("Discovery Call Script")} className="text-blue-300 hover:text-white underline text-sm mt-1 block">
-                                        Open Discovery Call Script
-                                    </button>
-                                </div>
-                            </div>
+                        <h4 className={s.sectionTitle}>3. Purpose of the Discovery Call Booked Stage</h4>
+                        <p className={s.p}>The purpose of this stage is to:</p>
+                        <ul className={s.bulletList}>
+                            <li>Monitor scheduled Discovery Calls</li>
+                            <li>Ensure proper preparation before each appointment</li>
+                            <li>Maintain visibility into pipeline activity</li>
+                        </ul>
+                        <p className={s.p}>This stage is not for qualification or extended follow-up. It is a holding stage for confirmed Discovery appointments.</p>
+                    </div>
+
+                    <hr className="border-gray-100" />
+
+                    {/* 4. Required Preparation Before the Call */}
+                    <div className="space-y-3">
+                        <h4 className={s.sectionTitle}>4. Required Preparation Before the Call</h4>
+                        <p className={s.p}>Prior to each Discovery Call:</p>
+                        <ol className={s.list}>
+                            <li>Open the opportunity record.</li>
+                            <li>Review all existing notes, including:
+                                <ul className="list-disc list-inside ml-4 mt-1">
+                                    <li>Qualification Call notes (if applicable)</li>
+                                    <li>Application responses (if applicable)</li>
+                                </ul>
+                            </li>
+                            <li>Confirm:
+                                <ul className="list-disc list-inside ml-4 mt-1">
+                                    <li>All decision makers are expected to attend.</li>
+                                    <li>The scheduled time is accurate.</li>
+                                    <li>Contact details are correct.</li>
+                                </ul>
+                            </li>
+                        </ol>
+                        <p className={s.p}>Preparation is mandatory to ensure a structured and productive conversation.</p>
+                    </div>
+
+                    <hr className="border-gray-100" />
+
+                    {/* 5. Required Call Procedure */}
+                    <div className="space-y-3">
+                        <h4 className={s.sectionTitle}>5. Required Call Procedure</h4>
+                        <p className={s.p}>All Discovery Calls must be conducted through the CRM dialing system.</p>
+                        <div className="bg-red-50 border-l-4 border-red-500 p-4">
+                            <p className="font-bold text-red-900">Do not place calls using a personal mobile device or external calling platform.</p>
                         </div>
+                        <p className={s.p}>Calling through the CRM ensures:</p>
+                        <ul className={s.bulletList}>
+                            <li>The call is recorded.</li>
+                            <li>The call is transcribed.</li>
+                            <li>An AI-generated summary is created.</li>
+                            <li>All documentation is stored in the opportunity record.</li>
+                        </ul>
+
+                        <h5 className="font-bold text-gray-900 mt-4 text-lg">Discovery Call Script</h5>
+                        <p className={s.p}>The Discovery Call must follow the standardized Discovery Call Script.</p>
+                        <p className={s.p}>
+                            <button onClick={() => onLinkClick && onLinkClick("Discovery Call Script")} className="text-indigo-600 underline font-medium hover:text-indigo-800 flex items-center">
+                                Open Discovery Call Script <ArrowRight size={16} className="ml-1" />
+                            </button>
+                        </p>
+                        <p className={s.p}>Sales representatives are required to follow the script structure to ensure:</p>
+                        <ul className={s.bulletList}>
+                            <li>Consistent questioning</li>
+                            <li>Proper budget and scope clarification</li>
+                            <li>Accurate next-step alignment</li>
+                            <li>Uniform sales execution across the team</li>
+                        </ul>
+                        <p className={s.p}>Do not improvise or skip required sections of the script.</p>
+                    </div>
+
+                    <hr className="border-gray-100" />
+
+                    {/* 6. Accessing Recordings, Transcripts, and Summaries */}
+                    <div className="space-y-3">
+                        <h4 className={s.sectionTitle}>6. Accessing Recordings, Transcripts, and Summaries</h4>
+                        <p className={s.p}>After the call:</p>
+                        <ol className={s.list}>
+                            <li>Open the opportunity record.</li>
+                            <li>Navigate to the Notes section.</li>
+                            <li>Review:
+                                <ul className="list-disc list-inside ml-4 mt-1">
+                                    <li>The call recording</li>
+                                    <li>The transcript</li>
+                                    <li>The AI-generated summary</li>
+                                </ul>
+                            </li>
+                        </ol>
+                        <p className={s.p}>These records must be reviewed before progressing the opportunity to ensure accuracy and completeness.</p>
+                    </div>
+
+                    <hr className="border-gray-100" />
+
+                    {/* 7. Stage Automation */}
+                    <div className="space-y-3">
+                        <h4 className={s.sectionTitle}>7. Stage Automation</h4>
+                        <p className={s.p}>Stage movement is automated:</p>
+                        <ul className={s.bulletList}>
+                            <li>When a Discovery Call is scheduled &rarr; the opportunity automatically moves to <strong>Discovery Call Booked</strong>.</li>
+                            <li>When the Discovery Call is marked as completed &rarr; the opportunity automatically moves to <strong>Discovery Call Completed</strong>.</li>
+                        </ul>
+                        <p className={s.p}>Manual movement should not be necessary.</p>
+                        <p className={s.p}>If automation does not function properly, notify the system administrator immediately.</p>
+                    </div>
+
+                    <hr className="border-gray-100" />
+
+                    {/* 8. Completion Criteria */}
+                    <div className="space-y-3">
+                        <h4 className={s.sectionTitle}>8. Completion Criteria</h4>
+                        <p className={s.p}>An opportunity remains in this stage until:</p>
+                        <ul className={s.bulletList}>
+                            <li>The Discovery Call has been completed and properly logged in the CRM.</li>
+                        </ul>
+                        <p className={s.p}>If the prospect cancels or fails to attend, follow the designated No-Show or Reschedule procedure.</p>
+                    </div>
+
+                    <hr className="border-gray-100" />
+
+                    {/* 9. Accountability */}
+                    <div className="space-y-3">
+                        <h4 className={s.sectionTitle}>9. Accountability</h4>
+                        <p className={s.p}>Using the CRM calling system is mandatory.</p>
+                        <p className={s.p}>Failure to call through the CRM results in:</p>
+                        <ul className={s.bulletList}>
+                            <li>No call recording</li>
+                            <li>No transcript</li>
+                            <li>No AI summary</li>
+                            <li>Reduced coaching visibility</li>
+                            <li>Incomplete documentation</li>
+                        </ul>
+                        <p className={s.p}>System adherence ensures process integrity, performance visibility, and operational consistency.</p>
                     </div>
                 </div>
             </section>
         </div>
     );
 };
+
 
 // 4. Handling Discovery Call Completed View
 const HandlingDiscoveryCompletedView = () => {
