@@ -522,19 +522,75 @@ const QualificationScriptView = () => {
                 </div>
 
                 <div className={s.body}>
-                    {/* Introduction Section */}
+                    {/* When To Conduct */}
                     <div className="space-y-3">
-                        <h4 className={s.sectionTitle}>Introduction</h4>
-                        <p className={s.callout}>
-                            "Hi <strong>[Name]</strong>, this is <strong>[Your Name]</strong> with <strong>[Company]</strong>. I saw you downloaded our <strong>[Asset Name]</strong> and wanted to see if you had any questions?"
+                        <h4 className={s.sectionTitle}>When To Conduct Qualification Calls:</h4>
+                        <p className={s.p}>
+                            When you receive a new lead, meaning somebody you haven’t spoken to before puts in their contact information via your website, paid ads, social media, or even calls you directly.
+                        </p>
+                        <p className={s.p}>
+                            You should be calling them within 5 minutes of them becoming a new lead. Studies show that engaging a lead within 1 minute of them becoming a lead increases conversions by up to 391%. And shockingly, only 7% of companies consistently follow-up within 5 minutes.
                         </p>
                     </div>
 
-                    {/* Connection Question */}
+                    {/* How To Prepare */}
                     <div className="space-y-3">
-                        <h4 className={s.sectionTitle}>Connection Question</h4>
-                        <p className={s.callout}>
-                            "Great. This will only take a second but I’m just calling to see if there’s anything we could possibly do for you… and if there is… I could maybe get you booked for a phone call with our planning team. Would that… help you if I did that?"
+                        <h4 className={s.sectionTitle}>How To Prepare For Qualification Calls:</h4>
+                        <p className={s.p}>
+                            Always start by reviewing their form submission. If they just gave their name and phone number, you can’t do very much. But in some cases, you ask other questions on the form and these responses must be reviewed to show the lead your professionalism.
+                        </p>
+                        <p className={s.p}>
+                            For example, if the lead inquires about a new custom home and selects they already own land, don’t ask the question about land ownership, rather, ask where their lot is located.
+                        </p>
+                        <p className={s.p}>
+                            And always cross-reference the lead’s contact information with your CRM database. In some cases, the lead may have already reached out years ago and you can use the information that you previously documented from the past to build instant rapport.
+                        </p>
+                    </div>
+
+                    {/* How To Qualify */}
+                    <div className="space-y-3">
+                        <h4 className={s.sectionTitle}>How To Qualify / Disqualify Leads:</h4>
+                        <p className={s.p}>
+                            The qualification call isn’t about selling — it’s about quickly figuring out if this person is someone we can genuinely help right now. Every question in the script has a reason behind it. Your goal is to understand whether they’re ready, realistic, and within the boundaries of what we actually do. If they aren’t, end the call kindly and professionally. Here’s how to think through each question when you’re on the phone.
+                        </p>
+
+                        <ol className={s.list}>
+                            <li>
+                                <strong>Motivation</strong> — “So tell me, what caught your eye or made you want to reach out to us?”<br />
+                                This one is simple — you’re trying to understand what made them reach out in the first place. If they mention a specific project, ad, or referral, it means they’re genuinely interested and paying attention. If they sound unsure or can’t remember, they’re probably just browsing. You don’t need to disqualify someone just for being early, but you should mentally note how warm they feel and how aware they are of who we are. It also tells you what part of our marketing is actually working.
+                            </li>
+                            <li>
+                                <strong>Location</strong> — “Do you have an idea of where you’re looking to build?”<br />
+                                You’re checking if the project is even within reach. If it’s inside your service area, great — keep going. If it’s outside, there’s no point in continuing. Politely let them know it’s not a match and wish them well. This one’s purely about logistics and fit. The earlier you confirm this, the less time you waste chasing projects you can’t take on.
+                            </li>
+                            <li>
+                                <strong>Land Ownership</strong> — “Have you decided on a piece of land yet or purchased one?”<br />
+                                This tells you how close they are to actually building. If they already own land or are in the middle of buying, they’re qualified to move forward. You can even ask for the address and basic details about the lot so your team can prep properly later. If they don’t have land yet, they can’t do much with us right now. Still, always stay helpful — offer to point them toward a realtor or let them know if you have lots available. Even if you disqualify them for now, put them in your nurture system because that “no land yet” lead often turns into a real opportunity down the road.
+                            </li>
+                            <li>
+                                <strong>Project Type</strong> — “What type of home are you looking to build?”<br />
+                                This one’s about fit. You only want projects that match your company’s niche — whether that’s luxury custom homes, modern builds, or specific square footage ranges. If someone’s asking about a remodel, duplex, or something you don’t specialize in, it’s better to be honest upfront and let them know it’s not something you typically do. It saves everyone time and keeps your pipeline filled with projects you’re actually set up to deliver well.
+                            </li>
+                            <li>
+                                <strong>Design Stage</strong> — “Do you have any designs or sketches drawn up yet?”<br />
+                                Here you’re trying to figure out how far along they are in the process. If they don’t have any designs yet, that’s perfect — they’re early and open to being guided, which means you can help shape the project from the start. If they already have full plans, ask if they’re just collecting bids or looking for a specific builder to partner with. If they’re just comparing prices, that’s not your client — politely let them go. If they’re looking for the right fit, keep them qualified and move forward. This question separates tire-kickers from people ready to engage.
+                            </li>
+                            <li>
+                                <strong>Timeline</strong> — “When would you potentially be looking to move in?”<br />
+                                This one measures urgency. If they’re looking to move in within the next 12 to 24 months, that’s a solid timeframe. You can continue to the next step because it gives you time to go through design and construction properly. If they say something like “three or four years from now,” there’s no real action to take today. Use that opportunity to educate them about the timeline of the process and offer to send them some resources. Then add them to long-term follow-up. They’re not ready yet, but leaving a good impression now can turn them into an easy “yes” later.
+                            </li>
+                            <li>
+                                <strong>Decision Makers</strong> — “Are there any partners or spouses that would be involved in the process?”<br />
+                                This is a simple but crucial question. You need to know if there’s anyone else who’ll be part of the decision. If they have a partner or spouse, make sure you get their name and include them in the Discovery Call — that prevents delays and miscommunication later. If it’s just them, great. Either way, always confirm this early so you’re not halfway through the process only to find out there’s another decision-maker you haven’t spoken to.
+                            </li>
+                        </ol>
+                    </div>
+
+                    {/* What To Do After */}
+                    <div className="space-y-3">
+                        <h4 className={s.sectionTitle}>What To Do After Qualification Calls:</h4>
+                        <p className={s.p}>
+                            Make sure that you are taking notes or recording the call / texts in your CRM. Some systems including the BuilderProject CRM have call recording features and you can text from within the system. Every qualification point and extra detail that may be necessary moving forward should be thoroughly documented. Because of the long sales cycles, you may not speak with that lead again for 12 months, and without proper notes, you will start from square one and become overwhelmed.
                         </p>
                     </div>
                 </div>
@@ -550,17 +606,30 @@ const QualificationScriptView = () => {
                 </div>
 
                 <div className={s.body}>
+                    {/* Introduction Section */}
+                    <div className="space-y-3">
+                        <h4 className={s.sectionTitle}>Introduction</h4>
+                        <p className={s.callout}>
+                            "Hi <strong>[Name]</strong>, this is <strong>[Your Name]</strong> with <strong>[Company]</strong>. I saw you downloaded our <strong>[Asset Name]</strong> and wanted to see if you had any questions?"
+                        </p>
+                    </div>
+
+                    {/* Connection Question */}
+                    <div className="space-y-3">
+                        <h4 className={s.sectionTitle}>Connection Question</h4>
+                        <p className={s.callout}>
+                            "Great. This will only take a second but I’m just calling to see if there’s anything we could possibly do for you… and if there is… I could maybe get you booked for a phone call with our planning team. Would that… help you if I did that?"
+                        </p>
+                    </div>
 
                     {/* Q1 Motivation */}
-                    <div className="space-y-3">
+                    <div className="space-y-3 border-t border-gray-100 pt-8">
                         <h4 className={s.sectionTitle}>1. Motivation</h4>
                         <p className={s.p}>"So tell me [Name], what caught your eye or made you want to reach out to us?"</p>
                     </div>
 
-                    <hr className="border-gray-100" />
-
                     {/* Q2 Location */}
-                    <div className="space-y-3">
+                    <div className="space-y-3 border-t border-gray-100 pt-8">
                         <h4 className={s.sectionTitle}>2. Location</h4>
                         <p className={s.p}>"Do you have an idea of where you’re looking to build?"</p>
 
@@ -585,10 +654,8 @@ const QualificationScriptView = () => {
                         </div>
                     </div>
 
-                    <hr className="border-gray-100" />
-
                     {/* Q3 Land */}
-                    <div className="space-y-3">
+                    <div className="space-y-3 border-t border-gray-100 pt-8">
                         <h4 className={s.sectionTitle}>3. Land Ownership</h4>
                         <p className={s.p}>"Have you decided on a piece of land yet or purchased one?"</p>
 
@@ -616,10 +683,8 @@ const QualificationScriptView = () => {
                         </div>
                     </div>
 
-                    <hr className="border-gray-100" />
-
                     {/* Q4 Project Type */}
-                    <div className="space-y-3">
+                    <div className="space-y-3 border-t border-gray-100 pt-8">
                         <h4 className={s.sectionTitle}>4. Project Type</h4>
                         <p className={s.p}>"Ok and what type of home are you looking to build?"</p>
 
@@ -644,10 +709,8 @@ const QualificationScriptView = () => {
                         </div>
                     </div>
 
-                    <hr className="border-gray-100" />
-
                     {/* Q5 Designs */}
-                    <div className="space-y-3">
+                    <div className="space-y-3 border-t border-gray-100 pt-8">
                         <h4 className={s.sectionTitle}>5. Design Stage</h4>
                         <p className={s.p}>"Do you have any designs or sketches drawn up yet?"</p>
 
@@ -691,10 +754,8 @@ const QualificationScriptView = () => {
                         </div>
                     </div>
 
-                    <hr className="border-gray-100" />
-
                     {/* Q6 Timeline */}
-                    <div className="space-y-3">
+                    <div className="space-y-3 border-t border-gray-100 pt-8">
                         <h4 className={s.sectionTitle}>6. Timeline</h4>
                         <p className={s.p}>"Ok and when would you potentially be looking to move in?"</p>
 
@@ -719,10 +780,8 @@ const QualificationScriptView = () => {
                         </div>
                     </div>
 
-                    <hr className="border-gray-100" />
-
                     {/* Q7 Partners */}
-                    <div className="space-y-3">
+                    <div className="space-y-3 border-t border-gray-100 pt-8">
                         <h4 className={s.sectionTitle}>7. Partners</h4>
                         <p className={s.p}>"Are there any partners or spouses that would be involved in the process?"</p>
 
@@ -744,10 +803,8 @@ const QualificationScriptView = () => {
                         </div>
                     </div>
 
-                    <hr className="border-gray-100" />
-
                     {/* Closing */}
-                    <div className="space-y-3 bg-blue-50 border border-blue-200 rounded-xl p-8 mt-8">
+                    <div className="space-y-3 bg-blue-50 border border-blue-200 rounded-xl p-8 mt-8 border-t border-gray-100 pt-8">
                         <h3 className="text-2xl font-bold text-blue-900 mb-6">Book The Discovery Call</h3>
                         <div className="space-y-4 text-blue-900/80">
                             <p>"From what you’ve gone over… it sounds like we could potentially help you out."</p>
