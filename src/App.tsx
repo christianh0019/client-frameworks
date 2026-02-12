@@ -219,279 +219,466 @@ const SOPDetail = ({ sop, onBack, onSOPClick }: { sop: SOP, onBack: () => void, 
 };
 
 // 1. Handling New Lead View
-const HandlingNewLeadView = ({ onLinkClick }: { onLinkClick?: (title: string) => void }) => (
-    <div className="space-y-8 font-sans text-gray-800">
-        <div className="bg-yellow-50 border-l-4 border-yellow-400 p-4">
-            <div className="flex">
-                <div className="ml-3">
-                    <h3 className="text-sm font-medium text-yellow-800">Where to Find This</h3>
-                    <div className="mt-2 text-sm text-yellow-700">
-                        <p>Desktop & Mobile CRM &gt; Opportunities &gt; <strong>"New Lead" Stage</strong></p>
+const HandlingNewLeadView = ({ onLinkClick }: { onLinkClick?: (title: string) => void }) => {
+    // Standard Styles
+    const s = {
+        container: "space-y-8 font-sans text-gray-800 pb-20 max-w-4xl mx-auto",
+        paper: "bg-white border border-gray-200 rounded-xl shadow-sm overflow-hidden",
+        header: "p-6 bg-gray-50 border-b border-gray-200",
+        headerTitle: "font-bold text-gray-900 flex items-center",
+        body: "p-8 md:p-12 max-w-none space-y-8",
+        sectionTitle: "text-xl font-bold text-indigo-700",
+        p: "text-base text-gray-800 leading-relaxed",
+        list: "list-decimal list-inside space-y-2 text-base text-gray-800 leading-relaxed ml-2",
+        bulletList: "list-disc list-inside space-y-2 text-base text-gray-800 leading-relaxed ml-2",
+        callout: "bg-gray-50 p-4 border-l-4 border-gray-300 text-gray-700 italic"
+    };
+
+    return (
+        <div className={s.container}>
+            <section className={s.paper}>
+                <div className={s.header}>
+                    <div className="text-center mb-4">
+                        <h1 className="text-2xl font-bold text-gray-900">Handling New Lead Stage (SOP)</h1>
+                        <p className="text-xs text-gray-400 mt-2">BuilderProject LLC © Copyright 2025. All Rights Reserved. ®</p>
+                    </div>
+                    <h3 className={s.headerTitle}>
+                        <FileText size={18} className="mr-2 text-gray-500" />
+                        Standard Operating Procedure
+                    </h3>
+                </div>
+
+                <div className={s.body}>
+                    {/* Where to Find This */}
+                    <div className="space-y-3">
+                        <h4 className={s.sectionTitle}>Where to Find This:</h4>
+                        <div className="bg-yellow-50 p-4 rounded-lg border border-yellow-200 text-sm">
+                            <p className="text-yellow-800">
+                                <strong>Desktop & Mobile CRM</strong> &gt; Opportunities &gt; <strong>"New Lead" Stage</strong>
+                            </p>
+                        </div>
+                    </div>
+
+                    {/* Goal */}
+                    <div className="space-y-3">
+                        <h4 className={s.sectionTitle}>Goal:</h4>
+                        <p className={s.p}>Qualify or disqualify as fast as possible.</p>
+                    </div>
+
+                    {/* Important Rule */}
+                    <div className="space-y-3">
+                        <h4 className={s.sectionTitle}>Important Rule: 5-Minute Response</h4>
+                        <div className="bg-red-50 border-l-4 border-red-500 p-4">
+                            <div className="flex items-start">
+                                <Clock className="h-5 w-5 text-red-600 mt-0.5 mr-3 flex-shrink-0" />
+                                <div>
+                                    <p className="text-red-800 font-medium">All leads should be contacted in <strong>under 5 minutes</strong>.</p>
+                                    <p className="text-red-700 text-sm mt-1">Why? Conversion rates increase by <strong>300%</strong> when this is done.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <hr className="border-gray-100" />
+
+                    {/* Action Plan */}
+                    <div className="space-y-3">
+                        <h4 className={s.sectionTitle}>Action Plan:</h4>
+                        <ol className={s.list}>
+                            <li>
+                                <strong>Call them immediately</strong> (immediately after the automated text triggers).
+                            </li>
+                            <li>
+                                <strong>If they answer:</strong>
+                                <button
+                                    onClick={() => onLinkClick && onLinkClick("Qualification Call Script")}
+                                    className="ml-2 inline-flex items-center text-indigo-600 font-medium hover:text-indigo-800 underline"
+                                >
+                                    Use Qualification Call Script <ArrowRight size={14} className="ml-1" />
+                                </button>
+                            </li>
+                        </ol>
+                    </div>
+
+                    <hr className="border-gray-100" />
+
+                    {/* Scenarios */}
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pt-4">
+                        {/* If No Answer */}
+                        <div className="border border-gray-200 rounded-xl p-6">
+                            <h3 className="font-bold text-gray-900 mb-4 text-lg">If No Answer</h3>
+                            <p className="text-sm text-gray-500 mb-4 italic">Cadence: Call once every day for 4 days.</p>
+                            <ul className="space-y-3 text-sm text-gray-700">
+                                <li className="flex items-center"><CheckSquare size={16} className="mr-2 text-blue-500" /> Send a quick text</li>
+                                <li className="flex items-center"><CheckSquare size={16} className="mr-2 text-blue-500" /> Leave a voicemail</li>
+                            </ul>
+                            <div className="bg-gray-50 p-3 rounded text-gray-600 italic mt-4 text-sm border border-gray-100">
+                                "Just tried to give you a ring John. Did you have a moment?"
+                            </div>
+                        </div>
+
+                        {/* If They Answer */}
+                        <div className="border border-gray-200 rounded-xl p-6">
+                            <h3 className="font-bold text-gray-900 mb-4 text-lg">If They Answer</h3>
+                            <p className="mb-4 text-sm text-gray-700">Follow the <button onClick={() => onLinkClick && onLinkClick("Qualification Call Script")} className="text-indigo-600 font-medium hover:underline">Qualification Call Script</button></p>
+                            <div className="space-y-3">
+                                <div className="flex items-center justify-between p-3 bg-green-50 rounded border border-green-100">
+                                    <span className="font-medium text-green-800 text-sm">Qualified</span>
+                                    <ArrowRight size={14} className="text-green-600" />
+                                    <span className="text-xs text-green-700">Move to "Qualified Lead"</span>
+                                </div>
+                                <div className="flex items-center justify-between p-3 bg-red-50 rounded border border-red-100">
+                                    <span className="font-medium text-red-800 text-sm">Disqualified</span>
+                                    <ArrowRight size={14} className="text-red-600" />
+                                    <span className="text-xs text-red-700">Move to "Lost"</span>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
+            </section>
         </div>
-
-        <section>
-            <h3 className="text-xl font-bold text-gray-900 mb-3">Goal</h3>
-            <p className="text-lg">Qualify or disqualify as fast as possible.</p>
-        </section>
-
-        <section className="bg-red-50 border border-red-100 rounded-xl p-6">
-            <div className="flex items-start">
-                <div className="flex-shrink-0">
-                    <Clock className="h-6 w-6 text-red-600" />
-                </div>
-                <div className="ml-4">
-                    <h3 className="text-lg font-bold text-red-900">Important Rule: 5-Minute Response</h3>
-                    <p className="mt-2 text-red-800">
-                        All leads should be contacted in <strong>under 5 minutes</strong>.
-                        Why? Conversion rates increase by <strong>300%</strong> when this is done.
-                    </p>
-                </div>
-            </div>
-        </section>
-
-        <section>
-            <h3 className="text-xl font-bold text-gray-900 mb-3">Action Plan</h3>
-            <ol className="list-decimal list-inside space-y-4 text-gray-700">
-                <li className="p-4 bg-white border border-gray-200 rounded-lg shadow-sm">
-                    <strong>Call them immediately</strong> (immediately after the automated text triggers).
-                </li>
-                <li className="p-4 bg-white border border-gray-200 rounded-lg shadow-sm">
-                    If they answer:
-                    <button
-                        onClick={() => onLinkClick && onLinkClick("Qualification Call Script")}
-                        className="ml-2 inline-flex items-center text-indigo-600 font-medium hover:text-indigo-800"
-                    >
-                        Use Qualification Call Script <ArrowRight size={14} className="ml-1" />
-                    </button>
-                </li>
-            </ol>
-        </section>
-
-        <section className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div className="border border-gray-200 rounded-xl p-6">
-                <h3 className="font-bold text-gray-900 mb-4">If No Answer</h3>
-                <p className="text-sm text-gray-500 mb-4">Cadence: Call once every day for 4 days.</p>
-                <ul className="space-y-2 text-sm">
-                    <li className="flex items-center"><CheckSquare size={14} className="mr-2 text-blue-500" /> Send a quick text</li>
-                    <li className="flex items-center"><CheckSquare size={14} className="mr-2 text-blue-500" /> Leave a voicemail</li>
-                    <li className="bg-gray-50 p-3 rounded text-gray-600 italic mt-2">
-                        "Just tried to give you a ring John. Did you have a moment?"
-                    </li>
-                </ul>
-            </div>
-            <div className="border border-gray-200 rounded-xl p-6">
-                <h3 className="font-bold text-gray-900 mb-4">If They Answer</h3>
-                <p className="mb-4">Follow the <button onClick={() => onLinkClick && onLinkClick("Qualification Call Script")} className="text-indigo-600 font-medium hover:underline">Qualification Call Script</button></p>
-                <div className="space-y-3">
-                    <div className="flex items-center justify-between p-3 bg-green-50 rounded border border-green-100">
-                        <span className="font-medium text-green-800">Qualified</span>
-                        <ArrowRight size={14} className="text-green-600" />
-                        <span className="text-sm">Move to "Qualified Lead"</span>
-                    </div>
-                    <div className="flex items-center justify-between p-3 bg-red-50 rounded border border-red-100">
-                        <span className="font-medium text-red-800">Disqualified</span>
-                        <ArrowRight size={14} className="text-red-600" />
-                        <span className="text-sm">Move to "Lost"</span>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </div>
-);
+    );
+};
 
 // 2. Handling Qualified Lead View
-const HandlingQualifiedLeadView = () => (
-    <div className="space-y-8 font-sans text-gray-800">
-        <div className="bg-blue-50 p-6 rounded-xl border border-blue-100">
-            <h3 className="text-xl font-bold text-blue-900 mb-2">Goal</h3>
-            <p className="text-blue-800 text-lg">Book a Discovery Call.</p>
-        </div>
+const HandlingQualifiedLeadView = () => {
+    // Standard Styles
+    const s = {
+        container: "space-y-8 font-sans text-gray-800 pb-20 max-w-4xl mx-auto",
+        paper: "bg-white border border-gray-200 rounded-xl shadow-sm overflow-hidden",
+        header: "p-6 bg-gray-50 border-b border-gray-200",
+        headerTitle: "font-bold text-gray-900 flex items-center",
+        body: "p-8 md:p-12 max-w-none space-y-8",
+        sectionTitle: "text-xl font-bold text-indigo-700",
+        p: "text-base text-gray-800 leading-relaxed",
+        list: "list-decimal list-inside space-y-2 text-base text-gray-800 leading-relaxed ml-2",
+        bulletList: "list-disc list-inside space-y-2 text-base text-gray-800 leading-relaxed ml-2",
+        callout: "bg-gray-50 p-4 border-l-4 border-gray-300 text-gray-700 italic"
+    };
 
-        <section>
-            <h3 className="text-lg font-bold text-gray-900 mb-2">Timeline</h3>
-            <div className="flex items-center space-x-2 text-gray-600">
-                <Clock size={20} />
-                <span>Max Time in Stage: <strong>3-5 Days</strong></span>
-            </div>
-        </section>
-
-        <section>
-            <h3 className="text-lg font-bold text-gray-900 mb-4">Action Plan</h3>
-            <div className="bg-white border border-gray-200 rounded-lg p-6 shadow-sm">
-                <p className="mb-4">Reach out mainly via <strong>Text Message</strong> or <strong>Phone Call</strong>.</p>
-                <div className="bg-gray-100 p-4 rounded-lg italic text-gray-700 border-l-4 border-gray-400">
-                    "Would you like to set up a time to talk so we can learn more about your project?"
+    return (
+        <div className={s.container}>
+            <section className={s.paper}>
+                <div className={s.header}>
+                    <div className="text-center mb-4">
+                        <h1 className="text-2xl font-bold text-gray-900">Handling Qualified Lead Stage (SOP)</h1>
+                        <p className="text-xs text-gray-400 mt-2">BuilderProject LLC © Copyright 2025. All Rights Reserved. ®</p>
+                    </div>
+                    <h3 className={s.headerTitle}>
+                        <FileText size={18} className="mr-2 text-gray-500" />
+                        Standard Operating Procedure
+                    </h3>
                 </div>
-            </div>
-        </section>
 
-        <section className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div className="bg-red-50 border border-red-200 rounded-xl p-6">
-                <h3 className="font-bold text-red-900 mb-2">Outcome 1: Not Interested</h3>
-                <ol className="list-decimal list-inside space-y-2 text-red-800">
-                    <li>Move to "Lost" stage.</li>
-                    <li>Select Reason: "Uninterested".</li>
-                </ol>
-            </div>
-            <div className="bg-green-50 border border-green-200 rounded-xl p-6">
-                <h3 className="font-bold text-green-900 mb-2">Outcome 2: Interested (Booking)</h3>
-                <ol className="list-decimal list-inside space-y-2 text-green-800">
-                    <li>Click on <strong>Appointments</strong>.</li>
-                    <li>Schedule a "Discovery Call".</li>
-                    <li className="text-sm mt-2 font-normal italic">System automatically moves them to "Discovery Call Booked".</li>
-                </ol>
-            </div>
-        </section>
-    </div>
-);
+                <div className={s.body}>
+                    {/* Goal */}
+                    <div className="space-y-3">
+                        <h4 className={s.sectionTitle}>Goal:</h4>
+                        <p className={s.p}>Book a Discovery Call.</p>
+                    </div>
+
+                    {/* Timeline */}
+                    <div className="space-y-3">
+                        <h4 className={s.sectionTitle}>Timeline:</h4>
+                        <div className="flex items-center space-x-2 text-gray-700 bg-gray-50 p-3 rounded-lg border border-gray-200 w-fit">
+                            <Clock size={20} className="text-gray-500" />
+                            <span>Max Time in Stage: <strong>3-5 Days</strong></span>
+                        </div>
+                    </div>
+
+                    <hr className="border-gray-100" />
+
+                    {/* Action Plan */}
+                    <div className="space-y-3">
+                        <h4 className={s.sectionTitle}>Action Plan:</h4>
+                        <p className={s.p}>Reach out mainly via <strong>Text Message</strong> or <strong>Phone Call</strong>.</p>
+                        <p className={s.callout}>
+                            "Would you like to set up a time to talk so we can learn more about your project?"
+                        </p>
+                    </div>
+
+                    <hr className="border-gray-100" />
+
+                    {/* Scenarios */}
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pt-4">
+                        {/* Outcome 1 */}
+                        <div className="bg-red-50 border border-red-200 rounded-xl p-6">
+                            <h3 className="font-bold text-red-900 mb-2 text-lg">Outcome 1: Not Interested</h3>
+                            <div className="space-y-2 text-red-800 text-sm">
+                                <p className="font-medium">Move to "Lost" stage.</p>
+                                <p>Select Reason: "Uninterested".</p>
+                            </div>
+                        </div>
+
+                        {/* Outcome 2 */}
+                        <div className="bg-green-50 border border-green-200 rounded-xl p-6">
+                            <h3 className="font-bold text-green-900 mb-2 text-lg">Outcome 2: Interested (Booking)</h3>
+                            <ol className="list-decimal list-inside space-y-2 text-green-800 text-sm">
+                                <li>Click on <strong>Appointments</strong>.</li>
+                                <li>Schedule a "Discovery Call".</li>
+                                <li className="italic text-green-700 opacity-80 mt-2 block">System automatically moves them to "Discovery Call Booked".</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    );
+};
 
 // 3. Handling Discovery Call Booked View
-const HandlingDiscoveryBookedView = ({ onLinkClick }: { onLinkClick?: (title: string) => void }) => (
-    <div className="space-y-8 font-sans text-gray-800">
-        <div className="bg-indigo-50 border border-indigo-100 rounded-xl p-6 flex flex-col items-center text-center">
-            <div className="p-3 bg-white rounded-full shadow-sm mb-4">
-                <Clock size={32} className="text-indigo-600" />
-            </div>
-            <h3 className="text-xl font-bold text-indigo-900 mb-2">Automated Pipeline Stage</h3>
-            <p className="text-indigo-700">Tracks all leads with a scheduled Discovery Call.</p>
+const HandlingDiscoveryBookedView = ({ onLinkClick }: { onLinkClick?: (title: string) => void }) => {
+    // Standard Styles
+    const s = {
+        container: "space-y-8 font-sans text-gray-800 pb-20 max-w-4xl mx-auto",
+        paper: "bg-white border border-gray-200 rounded-xl shadow-sm overflow-hidden",
+        header: "p-6 bg-gray-50 border-b border-gray-200",
+        headerTitle: "font-bold text-gray-900 flex items-center",
+        body: "p-8 md:p-12 max-w-none space-y-8",
+        sectionTitle: "text-xl font-bold text-indigo-700",
+        p: "text-base text-gray-800 leading-relaxed",
+        list: "list-decimal list-inside space-y-2 text-base text-gray-800 leading-relaxed ml-2",
+        bulletList: "list-disc list-inside space-y-2 text-base text-gray-800 leading-relaxed ml-2",
+        callout: "bg-gray-50 p-4 border-l-4 border-gray-300 text-gray-700 italic"
+    };
+
+    return (
+        <div className={s.container}>
+            <section className={s.paper}>
+                <div className={s.header}>
+                    <div className="text-center mb-4">
+                        <h1 className="text-2xl font-bold text-gray-900">Handling Discovery Call Booked Stage (SOP)</h1>
+                        <p className="text-xs text-gray-400 mt-2">BuilderProject LLC © Copyright 2025. All Rights Reserved. ®</p>
+                    </div>
+                    <h3 className={s.headerTitle}>
+                        <FileText size={18} className="mr-2 text-gray-500" />
+                        Standard Operating Procedure
+                    </h3>
+                </div>
+
+                <div className={s.body}>
+                    {/* Intro */}
+                    <div className="bg-indigo-50 border border-indigo-100 rounded-xl p-6 flex flex-col items-center text-center">
+                        <div className="p-3 bg-white rounded-full shadow-sm mb-4">
+                            <Clock size={32} className="text-indigo-600" />
+                        </div>
+                        <h3 className="text-xl font-bold text-indigo-900 mb-2">Automated Pipeline Stage</h3>
+                        <p className="text-indigo-700">Tracks all leads with a scheduled Discovery Call.</p>
+                    </div>
+
+                    <hr className="border-gray-100" />
+
+                    {/* Pre-Call Automations */}
+                    <div className="space-y-3">
+                        <h4 className={s.sectionTitle}>Pre-Call Automations (Lead Perspective)</h4>
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div className="border border-gray-200 p-6 rounded-xl">
+                                <h4 className="font-bold text-lg mb-2 text-gray-900">Reminders</h4>
+                                <p className="text-sm text-gray-600">Automated text/email notifications to prevent no-shows.</p>
+                            </div>
+                            <div className="border border-gray-200 p-6 rounded-xl">
+                                <h4 className="font-bold text-lg mb-2 text-gray-900">Company Info</h4>
+                                <p className="text-sm text-gray-600">Helpful content to build trust before the call.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <hr className="border-gray-100" />
+
+                    {/* Execution */}
+                    <div className="space-y-3">
+                        <h4 className={s.sectionTitle}>Execution: Taking the Call</h4>
+                        <div className="bg-gray-900 text-white rounded-xl p-8 space-y-6">
+                            <div className="flex items-start">
+                                <div className="bg-gray-700 p-2 rounded mr-4 font-bold w-8 h-8 flex items-center justify-center">1</div>
+                                <div>
+                                    <h4 className="font-bold text-lg">Dial via CRM</h4>
+                                    <p className="text-gray-400 text-sm mt-1">Always call using the CRM dialer so it's recorded and transcribed.</p>
+                                </div>
+                            </div>
+                            <div className="flex items-start">
+                                <div className="bg-gray-700 p-2 rounded mr-4 font-bold w-8 h-8 flex items-center justify-center">2</div>
+                                <div>
+                                    <h4 className="font-bold text-lg">Use the Script</h4>
+                                    <button onClick={() => onLinkClick && onLinkClick("Discovery Call Script")} className="text-blue-300 hover:text-white underline text-sm mt-1 block">
+                                        Open Discovery Call Script
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
         </div>
-
-        <section>
-            <h3 className="text-lg font-bold text-gray-900 mb-4">Pre-Call Automations (Lead Perspective)</h3>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div className="border border-gray-200 p-4 rounded-lg">
-                    <h4 className="font-semibold mb-2">Reminders</h4>
-                    <p className="text-sm text-gray-600">Automated text/email notifications to prevent no-shows.</p>
-                </div>
-                <div className="border border-gray-200 p-4 rounded-lg">
-                    <h4 className="font-semibold mb-2">Company Info</h4>
-                    <p className="text-sm text-gray-600">Helpful content to build trust before the call.</p>
-                </div>
-            </div>
-        </section>
-
-        <section className="bg-gray-900 text-white rounded-xl p-8">
-            <h3 className="text-xl font-bold mb-6">Execution: Taking the Call</h3>
-            <div className="space-y-6">
-                <div className="flex items-start">
-                    <div className="bg-gray-700 p-2 rounded mr-4">1</div>
-                    <div>
-                        <h4 className="font-bold">Dial via CRM</h4>
-                        <p className="text-gray-400 text-sm">Always call using the CRM dialer so it's recorded and transcribed.</p>
-                    </div>
-                </div>
-                <div className="flex items-start">
-                    <div className="bg-gray-700 p-2 rounded mr-4">2</div>
-                    <div>
-                        <h4 className="font-bold">Use the Script</h4>
-                        <button onClick={() => onLinkClick && onLinkClick("Discovery Call Script")} className="text-blue-300 hover:text-white underline text-sm mt-1">
-                            Open Discovery Call Script
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </div>
-);
+    );
+};
 
 // 4. Handling Discovery Call Completed View
-const HandlingDiscoveryCompletedView = () => (
-    <div className="space-y-8 font-sans text-gray-800">
-        <section className="text-center py-6 border-b border-gray-200">
-            <h3 className="text-2xl font-bold text-gray-900">Call Completed. What happened?</h3>
-            <p className="text-gray-500 mt-2">Update the appointment outcome in the CRM.</p>
-        </section>
+const HandlingDiscoveryCompletedView = () => {
+    // Standard Styles
+    const s = {
+        container: "space-y-8 font-sans text-gray-800 pb-20 max-w-4xl mx-auto",
+        paper: "bg-white border border-gray-200 rounded-xl shadow-sm overflow-hidden",
+        header: "p-6 bg-gray-50 border-b border-gray-200",
+        headerTitle: "font-bold text-gray-900 flex items-center",
+        body: "p-8 md:p-12 max-w-none space-y-8",
+        sectionTitle: "text-xl font-bold text-indigo-700",
+        p: "text-base text-gray-800 leading-relaxed",
+        list: "list-decimal list-inside space-y-2 text-base text-gray-800 leading-relaxed ml-2",
+        bulletList: "list-disc list-inside space-y-2 text-base text-gray-800 leading-relaxed ml-2",
+        callout: "bg-gray-50 p-4 border-l-4 border-gray-300 text-gray-700 italic"
+    };
 
-        <section className="grid grid-cols-1 gap-6">
-            {/* Option A */}
-            <div className="bg-gray-50 border border-gray-200 rounded-xl p-6 opacity-75 hover:opacity-100 transition-opacity">
-                <h3 className="text-lg font-bold text-gray-700 mb-2">Option A: No Show</h3>
-                <p className="text-sm text-gray-600">Select "No Show". Automation will follow up to reschedule.</p>
-            </div>
+    return (
+        <div className={s.container}>
+            <section className={s.paper}>
+                <div className={s.header}>
+                    <div className="text-center mb-4">
+                        <h1 className="text-2xl font-bold text-gray-900">Handling Discovery Call Completed Stage (SOP)</h1>
+                        <p className="text-xs text-gray-400 mt-2">BuilderProject LLC © Copyright 2025. All Rights Reserved. ®</p>
+                    </div>
+                    <h3 className={s.headerTitle}>
+                        <FileText size={18} className="mr-2 text-gray-500" />
+                        Standard Operating Procedure
+                    </h3>
+                </div>
 
-            {/* Option B */}
-            <div className="border-2 border-blue-100 bg-white rounded-xl p-8 shadow-sm">
-                <h3 className="text-xl font-bold text-blue-900 mb-6">Option B: Showed</h3>
-                <div className="space-y-4">
-                    <div className="flex items-center justify-between p-4 bg-red-50 rounded-lg border border-red-100">
-                        <div>
-                            <span className="font-bold text-red-900 block">1. Uninterested / Disqualified</span>
-                            <span className="text-xs text-red-700">Move to "Lost"</span>
-                        </div>
-                        <div className="h-3 w-3 rounded-full bg-red-500"></div>
+                <div className={s.body}>
+                    {/* Goal */}
+                    <div className="text-center py-2 mb-6">
+                        <h3 className="text-2xl font-bold text-gray-900">Call Completed. What happened?</h3>
+                        <p className="text-gray-500 mt-2 text-lg">Update the appointment outcome in the CRM.</p>
                     </div>
 
-                    <div className="flex items-center justify-between p-4 bg-yellow-50 rounded-lg border border-yellow-100">
-                        <div>
-                            <span className="font-bold text-yellow-900 block">2. Good Conversation (No Booking)</span>
-                            <span className="text-xs text-yellow-700">Move to "Not Booked Follow Ups"</span>
+                    <div className="grid grid-cols-1 gap-8">
+                        {/* Option A */}
+                        <div className="bg-gray-50 border border-gray-200 rounded-xl p-8 hover:bg-gray-100 transition-colors">
+                            <h3 className="text-xl font-bold text-gray-800 mb-2">Option A: No Show</h3>
+                            <p className="text-gray-600">Select "No Show". Automation will follow up to reschedule.</p>
                         </div>
-                        <div className="h-3 w-3 rounded-full bg-yellow-500"></div>
-                    </div>
 
-                    <div className="flex items-center justify-between p-4 bg-green-50 rounded-lg border border-green-100 shadow-sm">
-                        <div>
-                            <span className="font-bold text-green-900 block">3. In-Person Meeting Booked</span>
-                            <span className="text-xs text-green-700">Schedule Meeting &rarr; Moves to "Booked" Stage</span>
+                        {/* Option B */}
+                        <div className="border-2 border-blue-100 bg-white rounded-xl p-8 shadow-sm">
+                            <h3 className="text-xl font-bold text-blue-900 mb-6 border-b border-blue-50 pb-4">Option B: Showed</h3>
+                            <div className="space-y-4">
+                                <div className="flex items-center justify-between p-4 bg-red-50 rounded-lg border border-red-100">
+                                    <div>
+                                        <span className="font-bold text-red-900 block text-lg">1. Uninterested / Disqualified</span>
+                                        <span className="text-sm text-red-700">Move to "Lost"</span>
+                                    </div>
+                                    <div className="h-4 w-4 rounded-full bg-red-500"></div>
+                                </div>
+
+                                <div className="flex items-center justify-between p-4 bg-yellow-50 rounded-lg border border-yellow-100">
+                                    <div>
+                                        <span className="font-bold text-yellow-900 block text-lg">2. Good Conversation (No Booking)</span>
+                                        <span className="text-sm text-yellow-700">Move to "Not Booked Follow Ups"</span>
+                                    </div>
+                                    <div className="h-4 w-4 rounded-full bg-yellow-500"></div>
+                                </div>
+
+                                <div className="flex items-center justify-between p-4 bg-green-50 rounded-lg border border-green-100 shadow-sm transform scale-[1.02]">
+                                    <div>
+                                        <span className="font-bold text-green-900 block text-lg">3. In-Person Meeting Booked</span>
+                                        <span className="text-sm text-green-700">Schedule Meeting &rarr; Moves to "Booked" Stage</span>
+                                    </div>
+                                    <div className="h-4 w-4 rounded-full bg-green-500"></div>
+                                </div>
+                            </div>
                         </div>
-                        <div className="h-3 w-3 rounded-full bg-green-500"></div>
                     </div>
                 </div>
-            </div>
-        </section>
-    </div>
-);
+            </section>
+        </div>
+    );
+};
 
 // 5. Handling Not Booked Follow Ups View
-const HandlingNotBookedFollowUpsView = () => (
-    <div className="space-y-8 font-sans text-gray-800">
-        <section className="bg-orange-50 border border-orange-200 rounded-xl p-6">
-            <h3 className="text-lg font-bold text-orange-900 mb-3 flex items-center">
-                <span className="bg-orange-200 text-orange-800 text-xs px-2 py-1 rounded mr-2">HIGH PRIORITY</span>
-                Low Hanging Fruit
-            </h3>
-            <p className="text-orange-800 mb-4">
-                Qualified leads who engaged but couldn't book immediately (scheduling, spouse, land, etc.).
-            </p>
-        </section>
+const HandlingNotBookedFollowUpsView = () => {
+    // Standard Styles
+    const s = {
+        container: "space-y-8 font-sans text-gray-800 pb-20 max-w-4xl mx-auto",
+        paper: "bg-white border border-gray-200 rounded-xl shadow-sm overflow-hidden",
+        header: "p-6 bg-gray-50 border-b border-gray-200",
+        headerTitle: "font-bold text-gray-900 flex items-center",
+        body: "p-8 md:p-12 max-w-none space-y-8",
+        sectionTitle: "text-xl font-bold text-indigo-700",
+        p: "text-base text-gray-800 leading-relaxed",
+        list: "list-decimal list-inside space-y-2 text-base text-gray-800 leading-relaxed ml-2",
+        bulletList: "list-disc list-inside space-y-2 text-base text-gray-800 leading-relaxed ml-2",
+        callout: "bg-gray-50 p-4 border-l-4 border-gray-300 text-gray-700 italic"
+    };
 
-        <section>
-            <h3 className="text-xl font-bold text-gray-900 mb-4">Rules of Engagement</h3>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div className="border border-gray-200 rounded-xl p-6 shadow-sm">
-                    <div className="bg-blue-100 w-10 h-10 rounded-full flex items-center justify-center text-blue-600 font-bold mb-4">1</div>
-                    <h4 className="font-bold text-lg mb-2">100% Manual & Personalized</h4>
-                    <p className="text-gray-600 text-sm">
-                        Do NOT use automated blasts. Reference specific details from their previous call ("How was Hawaii?", "Did you close on the lot?").
-                    </p>
+    return (
+        <div className={s.container}>
+            <section className={s.paper}>
+                <div className={s.header}>
+                    <div className="text-center mb-4">
+                        <h1 className="text-2xl font-bold text-gray-900">Handling Not Booked Follow Ups Stage (SOP)</h1>
+                        <p className="text-xs text-gray-400 mt-2">BuilderProject LLC © Copyright 2025. All Rights Reserved. ®</p>
+                    </div>
+                    <h3 className={s.headerTitle}>
+                        <FileText size={18} className="mr-2 text-gray-500" />
+                        Standard Operating Procedure
+                    </h3>
                 </div>
-                <div className="border border-gray-200 rounded-xl p-6 shadow-sm">
-                    <div className="bg-blue-100 w-10 h-10 rounded-full flex items-center justify-center text-blue-600 font-bold mb-4">2</div>
-                    <h4 className="font-bold text-lg mb-2">Follow-Up Cadence</h4>
-                    <ul className="text-gray-600 text-sm space-y-2">
-                        <li><strong>Specific Date:</strong> If set, call then.</li>
-                        <li><strong>General:</strong> Every 1-2 weeks.</li>
-                    </ul>
-                </div>
-            </div>
-        </section>
 
-        <section className="bg-gray-100 rounded-xl p-6 flex justify-between items-center px-10">
-            <div className="text-center">
-                <div className="font-bold text-2xl text-green-600 mb-1">Success</div>
-                <div className="text-sm text-gray-500">Book In-Person Meeting</div>
-            </div>
-            <div className="h-12 w-px bg-gray-300"></div>
-            <div className="text-center">
-                <div className="font-bold text-2xl text-red-600 mb-1">Failure</div>
-                <div className="text-sm text-gray-500">Ghosted (Move to Lost)</div>
-            </div>
-        </section>
-    </div>
-);
+                <div className={s.body}>
+                    {/* Goal / Low Hanging Fruit */}
+                    <div className="bg-orange-50 border border-orange-200 rounded-xl p-6 mb-8">
+                        <h3 className="text-lg font-bold text-orange-900 mb-3 flex items-center">
+                            <span className="bg-orange-200 text-orange-800 text-xs px-2 py-1 rounded mr-2 uppercase tracking-wide">High Priority</span>
+                            Low Hanging Fruit
+                        </h3>
+                        <p className="text-orange-900 text-base">
+                            Qualified leads who engaged but couldn't book immediately (scheduling, spouse, land, etc.).
+                        </p>
+                    </div>
+
+                    <hr className="border-gray-100" />
+
+                    {/* Rules of Engagement */}
+                    <div className="space-y-4 pt-4">
+                        <h3 className={s.sectionTitle}>Rules of Engagement</h3>
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div className="border border-gray-200 rounded-xl p-6 shadow-sm">
+                                <div className="bg-blue-100 w-10 h-10 rounded-full flex items-center justify-center text-blue-600 font-bold mb-4">1</div>
+                                <h4 className="font-bold text-lg mb-2 text-gray-900">100% Manual & Personalized</h4>
+                                <p className="text-gray-600 text-sm">
+                                    Do NOT use automated blasts. Reference specific details from their previous call ("How was Hawaii?", "Did you close on the lot?").
+                                </p>
+                            </div>
+                            <div className="border border-gray-200 rounded-xl p-6 shadow-sm">
+                                <div className="bg-blue-100 w-10 h-10 rounded-full flex items-center justify-center text-blue-600 font-bold mb-4">2</div>
+                                <h4 className="font-bold text-lg mb-2 text-gray-900">Follow-Up Cadence</h4>
+                                <ul className="text-gray-600 text-sm space-y-2">
+                                    <li><strong>Specific Date:</strong> If set, call then.</li>
+                                    <li><strong>General:</strong> Every 1-2 weeks.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <hr className="border-gray-100" />
+
+                    {/* Success / Failure */}
+                    <div className="bg-gray-100 rounded-xl p-8 flex flex-col md:flex-row justify-between items-center px-12 gap-8 mt-4">
+                        <div className="text-center">
+                            <div className="font-bold text-2xl text-green-600 mb-1">Success</div>
+                            <div className="text-sm text-gray-600 font-medium">Book In-Person Meeting</div>
+                        </div>
+                        <div className="hidden md:block h-12 w-px bg-gray-300"></div>
+                        <div className="text-center">
+                            <div className="font-bold text-2xl text-red-600 mb-1">Failure</div>
+                            <div className="text-sm text-gray-600 font-medium">Ghosted (Move to Lost)</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    );
+};
 
 // Custom View for Qualification Script
 const QualificationScriptView = () => {
