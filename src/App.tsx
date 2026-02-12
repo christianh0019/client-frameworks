@@ -149,7 +149,7 @@ const SOPDetail = ({ sop, onBack, onSOPClick }: { sop: SOP, onBack: () => void, 
                                 case "Handling Not Booked Follow Ups Stage":
                                     return <HandlingNotBookedFollowUpsView />;
                                 case "Handling In-Person Meeting Booked Stage":
-                                    return <HandlingInPersonMeetingBookedView />;
+                                    return <HandlingInPersonMeetingBookedView onLinkClick={onSOPClick} />;
                                 case "Handling In-Person Meeting Completed Stage":
                                     return <HandlingInPersonMeetingCompletedView />;
                                 case "Handling Not Closed Follow Ups Stage":
@@ -1288,7 +1288,7 @@ const HandlingNotBookedFollowUpsView = () => {
 };
 
 // 6. Handling In-Person Meeting Booked View
-const HandlingInPersonMeetingBookedView = () => {
+const HandlingInPersonMeetingBookedView = ({ onLinkClick }: { onLinkClick?: (title: string) => void }) => {
     // Standard Styles
     const s = {
         container: "space-y-8 font-sans text-gray-800 pb-20 max-w-4xl mx-auto",
@@ -1403,7 +1403,7 @@ const HandlingInPersonMeetingBookedView = () => {
                         <div className="bg-indigo-50 border-l-4 border-indigo-500 p-4">
                             <p className="font-bold text-indigo-900">Follow the standardized In-Person Meeting Script.</p>
                         </div>
-                        <p className={s.p}>Within this SOP, include a direct link to the In-Person Meeting Script located in the Resources section of the Sales SOP Library.</p>
+                        <p className={s.p}>You must follow the official <button onClick={() => onLinkClick && onLinkClick("In-Person Meeting Script")} className="text-indigo-600 underline font-medium hover:text-indigo-800">In-Person Meeting Script</button> located in the Resources section of the SOP library. Before the meeting, you must also prepare your <button onClick={() => onLinkClick && onLinkClick("Presentation Pillar Examples")} className="text-indigo-600 underline font-medium hover:text-indigo-800">Presentation Pillars</button> — these are the core value statements and proof points that anchor your authority and guide the conversation.</p>
                         <div className="bg-red-50 border-l-4 border-red-500 p-4 mt-2">
                             <p className="font-bold text-red-900">Do not conduct the meeting informally or without structure.</p>
                         </div>
