@@ -159,6 +159,8 @@ const SOPDetail = ({ sop, onBack, onSOPClick }: { sop: SOP, onBack: () => void, 
                                     return <DiscoveryScriptView />;
                                 case "In-Person Meeting Script":
                                     return <InPersonMeetingScriptView />;
+                                case "Presentation Pillar Examples":
+                                    return <PresentationPillarExamplesView />;
                                 case "Handling New Lead Stage":
                                     return <HandlingNewLeadView onLinkClick={onSOPClick} />;
                                 case "Handling Qualified Lead Stage":
@@ -1567,6 +1569,181 @@ const InPersonMeetingScriptView = () => {
     );
 };
 
+// Custom View for Presentation Pillar Examples
+const PresentationPillarExamplesView = () => {
+    // Standard Styles
+    const s = {
+        container: "space-y-8 font-sans text-gray-800 pb-20 max-w-4xl mx-auto",
+        paper: "bg-white border border-gray-200 rounded-xl shadow-sm overflow-hidden",
+        header: "p-6 bg-gray-50 border-b border-gray-200",
+        headerTitle: "font-bold text-gray-900 flex items-center",
+        body: "p-8 md:p-12 max-w-none space-y-8",
+        sectionTitle: "text-xl font-bold text-indigo-700",
+        p: "text-base text-gray-800 leading-relaxed",
+        list: "list-decimal list-inside space-y-2 text-base text-gray-800 leading-relaxed ml-2",
+        bulletList: "list-disc list-inside space-y-2 text-base text-gray-800 leading-relaxed ml-2",
+        callout: "bg-gray-50 p-4 border-l-4 border-gray-300 text-gray-700 italic"
+    };
+
+    return (
+        <div className={s.container}>
+            {/* Part 1: Structure / SOP */}
+            <section className={s.paper}>
+                <div className={s.header}>
+                    <div className="text-center mb-4">
+                        <h1 className="text-2xl font-bold text-gray-900">Presentation Pillar Examples (TEMPLATE)</h1>
+                        <p className="text-xs text-gray-400 mt-2">BuilderProject LLC © Copyright 2025. All Rights Reserved. ®</p>
+                    </div>
+                    <h3 className={s.headerTitle}>
+                        <LayoutGrid size={18} className="mr-2 text-gray-500" />
+                        Presentation Pillar Structure
+                    </h3>
+                </div>
+
+                <div className={s.body}>
+                    <div className="space-y-3">
+                        <p className={s.p}>Repeat this structure for 2-4 problems that you uncovered earlier during the conversation.</p>
+
+                        <div className="space-y-4 border-l-4 border-indigo-100 pl-6 py-2">
+                            <div>
+                                <h4 className="font-bold text-gray-700">1. Re-state the problem</h4>
+                                <p className={s.p}>"Remember how you said … (one specific problem they have)"</p>
+                            </div>
+
+                            <div>
+                                <h4 className="font-bold text-gray-700">2. Amplify the consequence</h4>
+                                <p className={s.p}>"Which is causing you to … (logical consequence of that problem, not emotional consequence)"</p>
+                                <p className="text-sm text-gray-500 italic">(Check for agreement e.g. you know what I mean?)</p>
+                            </div>
+
+                            <div>
+                                <h4 className="font-bold text-gray-700">3. Normalize the problem</h4>
+                                <p className={s.p}>"That’s actually one of the biggest problems people have when they come to us… (talk about this same problem in terms of how other people come to you with the same issue)"</p>
+                            </div>
+
+                            <div>
+                                <h4 className="font-bold text-gray-700">4. Introduce the solution (Logistics)</h4>
+                                <p className={s.p}>"How we solve/prevent that for our clients is we… (Logistically - How you solve this particular part of the problem)"</p>
+                                <p className="text-sm text-gray-500 italic">(Check for agreement e.g. does that make sense?)</p>
+                            </div>
+
+                            <div>
+                                <h4 className="font-bold text-gray-700">5. Explain the outcome (Result)</h4>
+                                <p className={s.p}>"What that means for you is… (What it means once it’s solved = the outcome / end result)"</p>
+                                <p className="text-sm text-gray-500 italic">(Open ended check for agreement e.g. What are your thoughts on that?)</p>
+                            </div>
+                        </div>
+
+                        <p className={s.callout}>
+                            <strong>Bridge:</strong> "And the second concern that a lot of our clients have, and i remember you mentioning this as well, is (next problem they have)..."
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            {/* Part 2: Examples */}
+            <section className={s.paper}>
+                <div className={s.header}>
+                    <h3 className={s.headerTitle}>
+                        <MessageSquare size={18} className="mr-2 text-gray-500" />
+                        Presentation Pillar Examples
+                    </h3>
+                </div>
+
+                <div className={s.body}>
+                    {/* Example 1 */}
+                    <div className="space-y-3">
+                        <h4 className={s.sectionTitle}>“We’ve been planning this for years and still haven’t started.”</h4>
+                        <p className={s.p}>“Remember how you said you’ve been planning this for years and still haven’t been able to actually get started?”</p>
+                        <p className={s.p}>“Which has been causing you to feel like you’re stuck — researching, saving ideas, maybe even talking to a few builders… but never really seeing anything come to life.”</p>
+                        <p className="text-sm text-gray-500 italic">“You know what I mean?” (pause for agreement)</p>
+                        <p className={s.p}>“That’s actually one of the most common things we hear from people when they first reach out. They’ve had the dream sitting in their head for years, but between confusing information, not knowing what step comes first, and being worried about making a wrong decision — it just keeps getting pushed off.”</p>
+                        <p className={s.p}>“How we help clients finally get started is through our Concept Design Agreement. It’s a really simple first step that lets us take all those ideas out of your head and actually put them onto paper. We’ll create your concept layout, align it with your budget, and give you a realistic view of what it could look like and cost — before you have to make any big commitments.”</p>
+                        <p className="text-sm text-gray-500 italic">“Does that make sense?” (pause)</p>
+                        <p className={s.p}>“What that means for you is you’ll finally stop planning in circles and start seeing your home take shape. It’s a low-risk, easy way to move from talking about your dream home to actually designing it — with something real you can look at, tweak, and feel confident about.”</p>
+                        <p className="text-sm text-gray-500 italic">“What are your thoughts on that?”</p>
+                    </div>
+
+                    <hr className="border-gray-100" />
+
+                    {/* Example 2 */}
+                    <div className="space-y-3">
+                        <h4 className={s.sectionTitle}>“We want confidence that the timeline will be met.”</h4>
+                        <p className={s.p}>“Remember how you said one of your biggest concerns was making sure the timeline actually gets met?”</p>
+                        <p className={s.p}>“Which has been causing you to feel a bit uneasy about moving forward — because you’ve probably heard all the stories about builds dragging on for months past deadline, costing people extra rent, stress, and sleepless nights.”</p>
+                        <p className="text-sm text-gray-500 italic">“You know what I mean?” (pause for agreement)</p>
+                        <p className={s.p}>“That’s honestly one of the top frustrations we hear from families before they start with us. They’ve seen other builders overpromise and underdeliver — or start construction without all the details finalized — and then every small delay snowballs into something much bigger.”</p>
+                        <p className={s.p}>“How we prevent that from happening for our clients is through our Preliminary Building Agreement. During this stage, we finalize all your engineering, selections, approvals, and supplier scheduling before a single shovel hits the ground. That way, when we sign your build contract, every piece of the puzzle is already in place — and your construction timeline is realistic, accurate, and protected.”</p>
+                        <p className="text-sm text-gray-500 italic">“Does that make sense?” (pause)</p>
+                        <p className={s.p}>“What that means for you is you’ll finally have confidence in what’s coming next. You’ll know your timeline is mapped out, backed by real data, and managed proactively — so you can plan your move, your finances, and your life without constant uncertainty.”</p>
+                        <p className="text-sm text-gray-500 italic">“What are your thoughts on that?”</p>
+                    </div>
+
+                    <hr className="border-gray-100" />
+
+                    {/* Example 3 */}
+                    <div className="space-y-3">
+                        <h4 className={s.sectionTitle}>“We want to know exactly what we’re paying for.”</h4>
+                        <p className={s.p}>“Remember how you said one of the most important things for you was knowing exactly what you’re paying for?”</p>
+                        <p className={s.p}>“Which has probably caused some hesitation when talking to other builders — because you’ve seen quotes that look vague, or full of allowances, and it leaves you wondering what’s actually included and what might show up later as an extra.”</p>
+                        <p className="text-sm text-gray-500 italic">“You know what I mean?” (pause for agreement)</p>
+                        <p className={s.p}>“That’s honestly one of the biggest reasons people come to us. They’ve heard the horror stories — budgets blowing out halfway through, clients being hit with surprise invoices, or builders changing prices once construction starts — and they just want transparency from day one.”</p>
+                        <p className={s.p}>“How we make sure that never happens is by giving you a fully itemized, fixed-price contract that’s built from the groundwork we did in your preliminary stage. Every material, every inclusion, every cost is broken down in writing. There are no grey areas, and no ‘we’ll figure that out later’ items. Everything is priced, signed off, and locked in before we start.”</p>
+                        <p className="text-sm text-gray-500 italic">“Does that make sense?” (pause)</p>
+                        <p className={s.p}>“What that means for you is total clarity — no guessing, no surprises, and no awkward conversations halfway through your build. You’ll always know where every dollar is going, so you can feel confident that the investment you’re making is protected and fully understood.”</p>
+                        <p className="text-sm text-gray-500 italic">“What are your thoughts on that?”</p>
+                    </div>
+
+                    <hr className="border-gray-100" />
+
+                    {/* Example 4 */}
+                    <div className="space-y-3">
+                        <h4 className={s.sectionTitle}>“We want to stop feeling cramped or disorganized.”</h4>
+                        <p className={s.p}>“Remember how you said you want to stop feeling cramped and disorganized in your current home?”</p>
+                        <p className={s.p}>“Which, as you mentioned, has been causing a lot of day-to-day frustration — running out of storage, feeling like everyone’s on top of each other, or not having space that really works for how your family lives.”</p>
+                        <p className="text-sm text-gray-500 italic">“You know what I mean?” (pause for agreement)</p>
+                        <p className={s.p}>“That’s actually one of the most common reasons families come to us. Their current home might technically ‘work,’ but it’s not functional — the layout doesn’t flow, the rooms aren’t being used well, and it just feels like chaos no matter how much they clean or rearrange. And after a while, that constant clutter and tight space starts affecting everything — stress levels, routines, even how much time they actually enjoy being home.”</p>
+                        <p className={s.p}>“How we help people fix that is through our Concept Design Agreement. That’s where we sit down, look at how you live day to day, and design a home that finally makes sense for your lifestyle — with spaces that are open, organized, and tailored to your routines. It’s a simple first step that turns all that daily frustration into a clear plan for a home that actually works for you.”</p>
+                        <p className="text-sm text-gray-500 italic">“Does that make sense?” (pause)</p>
+                        <p className={s.p}>“What that means for you is no more tripping over toys, bumping elbows in the kitchen, or feeling like your home is bursting at the seams. You’ll finally have a layout that feels open, calm, and organized — where everything has its place and you can actually relax at home again.”</p>
+                        <p className="text-sm text-gray-500 italic">“What are your thoughts on that?”</p>
+                    </div>
+
+                    <hr className="border-gray-100" />
+
+                    {/* Example 5 */}
+                    <div className="space-y-3">
+                        <h4 className={s.sectionTitle}>“We want our builder to communicate proactively.”</h4>
+                        <p className={s.p}>“Remember how you said one of the biggest things for you was wanting a builder who actually communicates — not just when something goes wrong?”</p>
+                        <p className={s.p}>“Which has probably been one of your biggest worries — that once you sign, you’ll be left in the dark, wondering what’s happening or chasing updates that should’ve already been shared.”</p>
+                        <p className="text-sm text-gray-500 italic">“You know what I mean?” (pause for agreement)</p>
+                        <p className={s.p}>“That’s honestly one of the most common frustrations we hear from people who come to us after talking with other builders. They tell us they’d get calls returned days later, or not at all, and had no idea where their project stood. It leaves people feeling ignored, anxious, and like they have to manage the builder instead of the other way around.”</p>
+                        <p className={s.p}>“How we solve that for our clients is through our client communication system that’s built into every project. You get weekly progress calls, real-time updates through our client portal, and direct contact with your project manager — so you’re always in the loop before you even need to ask.”</p>
+                        <p className="text-sm text-gray-500 italic">“Does that make sense?” (pause)</p>
+                        <p className={s.p}>“What that means for you is peace of mind — knowing exactly what’s happening, what’s coming next, and that your builder is staying ahead of potential issues before they ever reach you. You won’t have to chase updates or wonder if things are on track — you’ll know, every step of the way.”</p>
+                        <p className="text-sm text-gray-500 italic">“What are your thoughts on that?”</p>
+                    </div>
+
+                    <hr className="border-gray-100" />
+
+                    {/* Example 6 */}
+                    <div className="space-y-3">
+                        <h4 className={s.sectionTitle}>“We’re nervous about committing to such a big decision.”</h4>
+                        <p className={s.p}>“Remember how you mentioned feeling a little nervous about committing to something this big?”</p>
+                        <p className={s.p}>“Which makes total sense — it’s not a small decision. You’re investing a huge amount of time, money, and emotion into something you want to get absolutely right.”</p>
+                        <p className="text-sm text-gray-500 italic">“You know what I mean?” (pause for agreement)</p>
+                        <p className={s.p}>“That’s honestly how just about every family feels before they build. Even the most confident clients tell me they were excited but anxious at the same time — because it’s not just a contract, it’s your dream, your savings, your next chapter. And nobody wants to get that wrong.”</p>
+                        <p className={s.p}>“How we help clients get past that uncertainty is by making sure there’s nothing unknown by the time you sign. You’ve already gone through concept design, all your selections, engineering, pricing, and scheduling — everything is mapped out before construction even starts. That’s why this agreement isn’t a leap of faith — it’s simply the next logical step in a process you already know and trust.”</p>
+                        <p className="text-sm text-gray-500 italic">“Does that make sense?” (pause)</p>
+                        <p className={s.p}>“What that means for you is peace of mind — knowing that when you sign, you’re not gambling, you’re confirming. You’re saying yes to something that’s been planned, priced, and proven — and from here, all that’s left is to finally see it come to life.”</p>
+                        <p className="text-sm text-gray-500 italic">“What are your thoughts on that?”</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+    );
+};
+
 const App = () => {
     const [activeTab, setActiveTab] = useState('Process Library');
     const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
@@ -1956,7 +2133,13 @@ Briefly explain your 3-step process: Design -> Pre-Construction -> Build.
             title: "In-Person Meeting Script",
             description: "Detailed script and SOP for conducting the In-Person Meeting.",
             category: "Script",
-            detailedContent: "SOP and Script for In-Person Meeting" // Placeholder content reference
+            detailedContent: "SOP and Script for In-Person Meeting"
+        },
+        {
+            title: "Presentation Pillar Examples",
+            description: "Structure and examples for the Presentation Pillars to be used in the In-Person Meeting.",
+            category: "Script",
+            detailedContent: "Presentation Pillar Structure and Examples"
         }
     ];
 
