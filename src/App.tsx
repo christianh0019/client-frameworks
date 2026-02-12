@@ -876,6 +876,10 @@ const DiscoveryScriptView = () => {
             {/* Part 1: SOP / Guidelines */}
             <section className={s.paper}>
                 <div className={s.header}>
+                    <div className="text-center mb-4">
+                        <h1 className="text-2xl font-bold text-gray-900">Discovery Call (TEMPLATE)</h1>
+                        <p className="text-xs text-gray-400 mt-2">BuilderProject LLC © Copyright 2025. All Rights Reserved. ®</p>
+                    </div>
                     <h3 className={s.headerTitle}>
                         <FileText size={18} className="mr-2 text-gray-500" />
                         Standard Operating Procedure
@@ -885,7 +889,7 @@ const DiscoveryScriptView = () => {
                 {/* Document Body */}
                 <div className={s.body}>
 
-                    {/* 1. When To Conduct */}
+                    {/* When To Conduct */}
                     <div className="space-y-3">
                         <h4 className={s.sectionTitle}>When To Conduct Discovery Calls:</h4>
                         <p className={s.p}>
@@ -894,63 +898,85 @@ const DiscoveryScriptView = () => {
                         <p className={s.p}>
                             This is the salesperson’s call — it’s meant for the business owner, sales rep, or whoever will be making the actual sale. The goal here isn’t to “close” the deal yet, but to collect deep insight into the client’s situation, motivations, pain points, and goals. You’re building emotional context that will later drive your in-person presentation or proposal.
                         </p>
+                        <p className={s.p}>
+                            The main focus is to understand the gap between where they are now and where they want to be — and to make them feel that gap.
+                        </p>
                     </div>
 
-                    {/* 2. How To Prepare */}
+                    {/* How To Prepare */}
                     <div className="space-y-3">
                         <h4 className={s.sectionTitle}>How To Prepare For Discovery Calls:</h4>
                         <p className={s.p}>
                             Before each Discovery Call, review all notes from the Qualification Call and CRM record. Know their land details, project type, and any prior communications so you can skip the surface-level questions and sound informed.
                         </p>
                         <p className={s.p}>
-                            Have their form submission or call notes open during the conversation. You should be able to reference past answers naturally.
+                            Have their form submission or call notes open during the conversation. You should be able to reference past answers naturally (“Last time you mentioned you were still finalizing the land purchase — how’s that going?”).
                         </p>
                         <p className={s.p}>
                             Always take this call in a quiet, private setting where you can focus 100%. These conversations often reveal financial details, family plans, and emotional motivations — so you need to listen carefully and take notes.
                         </p>
                     </div>
 
-                    {/* 3. Purpose */}
+                    {/* Purpose */}
                     <div className="space-y-3">
                         <h4 className={s.sectionTitle}>Purpose Of The Discovery Call:</h4>
                         <p className={s.p}>
                             The Discovery Call has two purposes:
                         </p>
-                        <ol className={s.list}>
-                            <li>
-                                <strong>Data Collection</strong> — to understand their situation, goals, obstacles, and timeline so you can prepare an informed proposal or in-person meeting.
-                            </li>
-                            <li>
-                                <strong>Emotional Discovery</strong> — to help them surface and relive the frustrations or fears behind their current situation, then visualize how much better life will be when they solve it with your help.
-                            </li>
-                        </ol>
-                    </div>
-
-                    {/* 4. How To Conduct */}
-                    <div className="space-y-3">
-                        <h4 className={s.sectionTitle}>How To Conduct:</h4>
                         <p className={s.p}>
-                            Start with casual rapport and tone-setting — you want them relaxed and conversational.
+                            <strong>Data Collection</strong> – to understand their situation, goals, obstacles, and timeline so you can prepare an informed proposal or in-person meeting.
                         </p>
-                        <ol className={s.list}>
-                            <li><strong>Connection Questions:</strong> Warm up, set context, reinforce authority. Confirm alignment and if spouse is present.</li>
-                            <li><strong>Situation Questions:</strong> Gather hard data. Establish facts and uncover the "gap". Tone: Curious and slightly skeptical.</li>
-                            <li><strong>Problem Awareness:</strong> Sales psychology. Help them feel the problem. Trigger self-reflection.</li>
-                            <li><strong>Booking The Meeting:</strong> Invite serious prospects to the in-person meeting. Book on the spot. Send Pre-Meeting Page.</li>
-                        </ol>
-                        <p className="text-base text-red-700 font-bold mt-2">
-                            WARNING: NEVER give into the temptation to “just send them an email”. You will lose the sale 99% of the time.
+                        <p className={s.p}>
+                            <strong>Emotional Discovery</strong> – to help them surface and relive the frustrations or fears behind their current situation, then visualize how much better life will be when they solve it with your help.
+                        </p>
+                        <p className={s.p}>
+                            Think of this call as connecting logic to emotion — you’re finding both the “reason” and the “feeling” behind their decision to build so that you can provide the best in-person meeting possible and make the sale.
                         </p>
                     </div>
 
-                    {/* 5. Post-Call */}
+                    {/* How To Conduct */}
                     <div className="space-y-3">
-                        <h4 className={s.sectionTitle}>What To Do After:</h4>
+                        <h4 className={s.sectionTitle}>How To Conduct Discovery Calls:</h4>
+                        <p className={s.p}>
+                            Start with casual rapport and tone-setting — you want them relaxed and conversational. The best Discovery Calls sound like two people exploring ideas, not a salesperson running through a checklist.
+                        </p>
+
+                        <p className={s.p}><strong>Connection Questions:</strong> These warm up the conversation and remind them who you are and why you’re speaking. You’re setting context, confirming that you’re aligned on purpose, and subtly reinforcing authority. Asking what stood out to them about your company helps you understand what part of your brand message connected most.</p>
+                        <p className={s.p}>If a spouse or partner is part of the decision, confirm they’re on the call before diving in. You don’t want to spend 30 minutes only to have to repeat the conversation later.</p>
+
+                        <p className={s.p}><strong>Situation Questions:</strong> This is where you gather hard data — how long they’ve been looking, what they’ve tried so far, and where they are in the process. You’re establishing facts about their journey and uncovering the “gap” between their current state and their desired outcome. The tone should be curious and slightly skeptical — you’re guiding them to realize they haven’t made the progress they’d like.</p>
+
+                        <p className={s.p}><strong>Problem Awareness Questions:</strong> Here’s where the real sales psychology starts. You’re helping them feel the problem again — the frustrations, delays, or uncertainties holding them back. Questions like “Are you 100% satisfied with how things are progressing?” are designed to trigger self-reflection.</p>
+                        <p className={s.p}>As they talk, listen for emotion and repeat their words back with empathy: “So it sounds like that’s been pretty stressful for you?” This is how they re-experience the pain that led them to reach out. From there, guide them to imagine what solving that problem would feel like — clarity, momentum, relief. That emotional contrast is what sets the stage for your pitch later.</p>
+
+                        <p className={s.p}><strong>Booking The In-Person Meeting:</strong> By the end, you should know whether they’re a serious prospect and if your service is a good fit. If so, you’ll invite them to the next step — a more detailed, in-person or virtual planning meeting. This meeting is where you’ll present tailored insights and next steps, not just generic info.</p>
+                        <p className={s.p}>Always book that meeting on the spot. Confirm the date and time, and use the “playful accountability” line from your script to reduce no-shows.</p>
+                        <p className={s.p}>Then send them your Pre-Meeting Page — it builds authority and keeps them warm before the next step. Explain that it’ll help them come prepared and make better use of your meeting time.</p>
+
+                        <p className="text-base text-red-700 font-bold mt-2">
+                            NEVER UNDER ANY CIRCUMSTANCES should you give into the temptation to “just send them an email with more information” even if they explicitly ask for it. Always confirm a time or follow-up later to confirm a time if needed. You will lose the sale 99% of the time by doing this.
+                        </p>
+                    </div>
+
+                    {/* How To Qualify */}
+                    <div className="space-y-3">
+                        <h4 className={s.sectionTitle}>How To Qualify / Disqualify During Discovery</h4>
+                        <p className={s.p}>Even though these are already “qualified” leads, not everyone will stay that way once you dig deeper. Use this call to confirm:</p>
                         <ul className={s.bulletList}>
-                            <li><strong>Log Detailed Notes:</strong> Log every frustration, goal, and quote-worthy line in your CRM.</li>
-                            <li><strong>Confirm Meeting:</strong> Send a quick text/email within 10 mins to lock it in.</li>
-                            <li><strong>Follow Up:</strong> If they didn't commit, follow up within 24 hours.</li>
+                            <li>They have a realistic budget</li>
+                            <li>They’re emotionally and financially ready to start soon</li>
+                            <li>All decision-makers are engaged</li>
+                            <li>The project still fits your niche and capacity</li>
                         </ul>
+                        <p className={s.p}>If anything changes — for example, they’ve delayed the project or drastically reduced budget — politely reset expectations. It’s better to disqualify now than waste time preparing a proposal for someone who won’t move forward.</p>
+                    </div>
+
+                    {/* What To Do After */}
+                    <div className="space-y-3">
+                        <h4 className={s.sectionTitle}>What To Do After Discovery Calls</h4>
+                        <p className={s.p}>Immediately after each call, log detailed notes in your CRM — every frustration, every goal, every quote-worthy line. These emotional triggers become powerful material for your in-person meeting or proposal presentation. Make sure the call was recorded as well so that you can listen to it again before the in-person meeting.</p>
+                        <p className={s.p}>If they booked the next meeting, send a quick text or email confirmation within 10 minutes to lock it in. If they didn’t commit to a time yet, follow up within 24 hours while the emotional connection is still fresh.</p>
+                        <p className={s.p}>Use the Discovery Call to build not just information, but momentum. You’re bridging the gap between curiosity and commitment — from interest to intention.</p>
                     </div>
                 </div>
             </section>
@@ -960,20 +986,17 @@ const DiscoveryScriptView = () => {
                 <div className={s.header}>
                     <h3 className={s.headerTitle}>
                         <MessageSquare size={18} className="mr-2 text-gray-500" />
-                        Discovery Call Script
+                        Discovery Call Script:
                     </h3>
                 </div>
 
                 <div className={s.body}>
 
-                    {/* 1. Connection Questions */}
+                    {/* Connection Questions */}
                     <div className="space-y-3">
-                        <h4 className={s.sectionTitle}>1. Connection Questions</h4>
+                        <h4 className={s.sectionTitle}>Connection Questions:</h4>
                         <p className={s.p}>
-                            "Hey <strong>(Prospect First Name)</strong>, it’s <strong>(Your First Name)</strong>… <strong>(Your Full Name)</strong> with <strong>(Business Name)</strong>… It looks like you talked to <strong>(Team Member Name)</strong> and booked a time with me to explore how we might be able to help you with your custom home idea.. does that sound right?"
-                        </p>
-                        <p className={s.callout}>
-                            Tone: Curious / Concerned
+                            Hey (Prospect First Name), it’s (Your First Name)… (Your Full Name) with (Business Name)… It looks like you talked to (Team Member Name) and booked a time with me to explore how we might be able to help you with your custom home idea.. does that sound right? <span className="text-gray-500 italic">(Curious/Concerned tone)</span>
                         </p>
 
                         {/* Decision Maker Table */}
@@ -998,7 +1021,7 @@ const DiscoveryScriptView = () => {
                                 {/* Red Path */}
                                 <div className="p-4 bg-red-50 text-gray-800 text-sm space-y-4">
                                     <p>
-                                        "Before we get started, <strong>(Team Member Name)</strong> had mentioned to me about <strong>(Other Decision Maker's Name)</strong>. Are they able to make it?"
+                                        Before we get started, (Team Member Name) had mentioned to me about (Other Decision Maker’s Name). Are they able to make it?
                                     </p>
 
                                     {/* Nested Yes/No Table */}
@@ -1013,7 +1036,7 @@ const DiscoveryScriptView = () => {
                                                 <span className="italic">Continue on &darr;</span>
                                             </div>
                                             <div className="p-3 text-xs space-y-2">
-                                                <p>Ok no problem at all. What I’d recommend is that we reschedule so that we can find a time that works for both of you so that we can make sure everybody including me is on the same page with each other.</p>
+                                                <p>Ok no problem at all. What I'd recommend is that we reschedule so that we can find a time that works for both of you so that we can make sure everybody including me is on the same page with each other.</p>
                                                 <p>Do you know when both of you would 100% be available so I can check my calendar and make sure I have time for you?</p>
                                                 <p className="font-bold text-red-600">End the call ✗</p>
                                             </div>
@@ -1022,126 +1045,122 @@ const DiscoveryScriptView = () => {
                                 </div>
                             </div>
                         </div>
-                    </div>
 
-                    <hr className="border-gray-100" />
-
-                    {/* 2. Opening & Frame */}
-                    <div className="space-y-3">
-                        <h4 className={s.sectionTitle}>2. Opening & Frame</h4>
                         <p className={s.p}>
-                            "What really stood out to you that caused you to want to reach out today?"
+                            What really stood out to you that caused you to want to reach out today? <span className="text-gray-500 italic">(Curious/Engaging tone)</span>
                         </p>
+                        <p className={s.p}>
+                            Oh ok… These first calls are pretty basic… It’s really more for us to understand where you’re at now… how far you’ve gotten in the process… compared to what you have in mind for your finished home … to see what the gap looks like... And then towards the end… if you feel like this… might be… what you’re looking for, and we think we can help, then we can talk about possible next steps. Would that be appropriate?
+                        </p>
+
                         <p className={s.callout}>
-                            Tone: Curious / Engaging
+                            <strong>Status Frame If Needed:</strong> I’m not too sure if we can help you just yet … you might not even need us … I’d have to know a bit more about what you’re already doing for XYZ … <span className="text-gray-500 italic">(Ask your first Situation Question)</span>
                         </p>
-                        <p className={s.p}>
-                            "Oh ok… These first calls are pretty basic… It’s really more for us to understand where you’re at now… how far you’ve gotten in the process… compared to what you have in mind for your finished home … to see what the gap looks like... And then towards the end… if you feel like this… might be… what you’re looking for, and we think we can help, then we can talk about possible next steps. Would that be appropriate?"
+
+                        <p className={s.callout}>
+                            <strong>Asked For Pricing:</strong> Ohhh yeah, totally… it really depends on a few things — like the level of finishes, the specific lot you’re building on, and what steps you’ve already taken. Once we’ve gone through that a bit more… I can give you a ballpark range just so you know what’s realistic. <span className="text-gray-500 italic">(Ask your next question immediately)</span>
                         </p>
                     </div>
 
                     <hr className="border-gray-100" />
 
-                    {/* 3. Situation Questions */}
+                    {/* Situation Questions */}
                     <div className="space-y-3">
-                        <h4 className={s.sectionTitle}>3. Situation Questions</h4>
+                        <h4 className={s.sectionTitle}>Situation Questions:</h4>
                         <p className={s.p}>
-                            "So I know <strong>(Team Member Name)</strong> already went over some of the basics — things like your land, where you’re building, general timing — I won’t make you repeat all that again. What I’d love to understand though… is more about why you’re doing this because that’s really important to us here."
+                            So I know (Team Member Name) already went over some of the basics — things like your land, where you’re building, general timing — I won’t make you repeat all that again.
+                        </p>
+                        <p className={s.p}>
+                            What I’d love to understand though… is more about why you’re doing this because that’s really important to us here.
                         </p>
 
                         <ul className="space-y-4 py-2">
-                            <li>
-                                <p className={s.p}>"So how long have you been thinking about building a home?"</p>
-                            </li>
-                            <li>
-                                <p className={s.p}>"Ok… and what made you decide you wanted to build rather than just buy something that’s already out there?"</p>
-                            </li>
-                            <li>
-                                <p className={s.p}>"And what have you really done so far in the process except for you know… buy land?"</p>
-                                <p className="text-gray-500 italic text-sm mt-1">"Just (whatever they mention)? Or anything else you’ve tried?"</p>
-                            </li>
-                            <li>
-                                <p className={s.p}>"Got it. And when you think about it… what’s the main goal behind this? Like… what’s the big picture for you? Is this more of a forever home, an investment, a lifestyle change?"</p>
-                            </li>
-                            <li>
-                                <p className={s.p}>"When you picture the home being finished… what would make you feel like… “Yeah… this was completely worth it”?"</p>
-                            </li>
+                            <li><p className={s.p}>So how long have you been thinking about building a home? <span className="text-gray-500 italic">(Curious tone)</span></p></li>
+                            <li><p className={s.p}>Ok… and what made you decide you wanted to build rather than just buy something that’s already out there? <span className="text-gray-500 italic">(Neutral/curious tone)</span></p></li>
+                            <li><p className={s.p}>And what have you really done so far in the process except for you know… buy land?</p></li>
+                            <li><p className={s.p}>Just (whatever they mention)? Or anything else you’ve tried so I have a bit more context? <span className="text-gray-500 italic">(Curious/skeptical tone)</span></p></li>
+                            <li><p className={s.p}>Got it. And when you think about it… what’s the main goal behind this? Like… what’s the big picture for you? Is this more of a forever home, an investment, a lifestyle change?</p></li>
+                            <li><p className={s.p}>When you picture the home being finished… what would make you feel like… “Yeah… this was completely worth it”?</p></li>
                         </ul>
                     </div>
 
                     <hr className="border-gray-100" />
 
-                    {/* 4. Probing / Clarifying */}
-                    <div className="space-y-6">
-                        <h4 className={s.sectionTitle}>4. Probing / Clarifying Questions</h4>
-
-                        <div>
-                            <strong className="block mb-2 text-gray-900">Digging Deeper:</strong>
-                            <ul className={s.bulletList}>
-                                <li>"How long has that been going on for?"</li>
-                                <li>"Has that had an impact on you?"</li>
-                                <li>"Well, in what way?"</li>
-                                <li>"What bothers you the most about this?"</li>
-                                <li>"Okay, well, why now though?"</li>
-                                <li>"Why is that so important to you now… why not just push it down the road?"</li>
-                            </ul>
-                        </div>
-
-                        <div>
-                            <strong className="block mb-2 text-gray-900">Understanding Nuance:</strong>
-                            <ul className={s.bulletList}>
-                                <li>"Can I ask why you said (blank)?"</li>
-                                <li>"Can I ask what you meant when you said (blank)?"</li>
-                                <li>"How do you mean by (blank)?"</li>
-                                <li>"Can you walk me through how (blank) happened exactly?"</li>
-                                <li>"When you say (blank), what did you mean by that exactly?"</li>
-                                <li>"How did you feel when (blank) happened?"</li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <hr className="border-gray-100" />
-
-                    {/* 5. Problem Awareness */}
+                    {/* Probing / Clarifying Questions */}
                     <div className="space-y-3">
-                        <h4 className={s.sectionTitle}>5. Problem Awareness Questions</h4>
-                        <p className={s.p}>
-                            "Ok so, besides (Insert any problems you’re aware of if applicable), from what you’ve told me about your project so far (insert situation), which seems like a fairly decent starting point… but if you don’t mind me asking though… are you… 100%... satisfied with how things are progressing so far?"
-                        </p>
-                        <ul className="space-y-4 py-2">
-                            <li><p className={s.p}>"Why haven’t you actually (blank) yet?"</p></li>
-                            <li><p className={s.p}>"So what is it do you think about (blank) that’s causing you to not hit, say (ideal outcome)?"</p></li>
-                            <li><p className={s.p}>"Just so I can understand the rationale behind why you might be looking, besides just wanting to build your dream home… because everybody says that… what's the main reason you’re looking for outside help rather than (what they’re already doing)?"</p></li>
+                        <h4 className={s.sectionTitle}>Probing / Clarifying Questions:</h4>
+                        <ul className={s.bulletList}>
+                            <li>How long has that been going on for?</li>
+                            <li>Has that had an impact on you?</li>
+                            <li>Well, in what way?</li>
+                            <li>What bothers you the most about this?</li>
+                            <li>Okay, well, why now though?</li>
+                            <li>Why is that so important to you now… why not just push it down the road?</li>
+                            <li>(Repeat back emotional words)?</li>
+                            <li>Can I ask why you said (blank)?</li>
+                            <li>Can I ask what you meant when you said (blank)?</li>
+                            <li>How do you mean by (blank)</li>
+                            <li>Can you walk me through how (blank) happened exactly?</li>
+                            <li>When you say (blank), what did you mean by that exactly?</li>
+                            <li>Can I ask why you want (blank) though?</li>
+                            <li>How did you feel when (blank) happened?</li>
+                            <li>What’s causing (blank) to happen?</li>
+                            <li>What’s prompting you to look into possibly changing (blank) though?</li>
+                            <li>How does (blank) feel about (blank)?</li>
                         </ul>
                     </div>
 
                     <hr className="border-gray-100" />
 
-                    {/* 6. Book The Meeting */}
+                    {/* Problem Awareness Questions */}
                     <div className="space-y-3">
-                        <h4 className={s.sectionTitle}>6. Book The In-Person Meeting</h4>
+                        <h4 className={s.sectionTitle}>Problem Awareness Questions:</h4>
                         <p className={s.p}>
-                            "Based on what you’ve shared with me so far … what we do here could work for you …"
+                            Ok so, besides (Insert any problems you’re aware of if applicable), from what you’ve told me about your project so far (insert situation), which seems like a fairly decent starting point… but if you don’t mind me asking though… are you… 100%... satisfied with how things are progressing so far? <span className="text-gray-500 italic">(Curious/Slightly skeptical tone)</span>
                         </p>
+                        <ul className="space-y-4 py-2">
+                            <li><p className={s.p}>Why haven’t you actually (blank) yet? <span className="text-gray-500 italic">(Confused/Skeptical tone)</span></p></li>
+                            <li><p className={s.p}>So what is it do you think about (blank) that’s causing you to not hit, say (ideal outcome)?</p></li>
+                            <li><p className={s.p}>Just so I can understand the rationale behind why you might be looking, besides just wanting to build your dream home… because everybody says that… what's the main reason you’re looking for outside help rather than (what they’re already doing or an alternative)?</p></li>
+                        </ul>
+                    </div>
+
+                    <hr className="border-gray-100" />
+
+                    {/* Book The Meeting */}
+                    <div className="space-y-3">
+                        <h4 className={s.sectionTitle}>Book The In-Person Meeting:</h4>
+
                         <p className={s.p}>
-                            "What I can do from here if you’d like … is let you (and your partner/spouse if applicable) book a more formal meeting with me at my office… over the next few days depending on our availability … where we’d talk a bit more about what you might be looking for … and then some possible … next steps … would that help you?"
+                            Based on what you’ve shared with me so far … what we do here could work for you …
                         </p>
+
                         <p className={s.p}>
-                            "Ok, I’m pulling up my calendar now to see what times I may have available for you. Does tomorrow (morning/ afternoon) work for you?"
+                            What I can do from here if you’d like … is let you (and your partner/spouse if applicable) book a more formal meeting with me at my office… over the next few days depending on our availability … where we’d talk a bit more about what you might be looking for … and then some possible … next steps … would that help you?
+                        </p>
+
+                        <p className={s.p}>
+                            Ok, I’m pulling up my calendar now to see what times I may have available for you. Does tomorrow (morning/ afternoon) work for you?
                         </p>
 
                         <div className="bg-blue-50 border border-blue-100 p-4 rounded text-center my-4">
-                            <strong className="text-blue-900 block">ACTION: Confirm Time & Book Meeting</strong>
+                            <strong className="text-blue-900 block">CONFIRM THE TIME AND BOOK IN-PERSON MEETING</strong>
                         </div>
 
                         <p className={s.p}>
-                            "Now just real quick… and I’m sure this isn’t you … however sometimes people ask us to help them with their project, we let them book some more time with us and then they don’t show up … you know those kinds of people … I’m sure that isn’t you … right?"
+                            <span className="text-gray-500 italic">(Playful tone)</span> Now just real quick… and I’m sure this isn’t you … however sometimes people ask us to help them with their project, we let them book some more time with us and then they don’t show up … you know those kinds of people …  I’m sure that isn’t you … right?
                         </p>
+
                         <p className={s.p}>
-                            "Great… I also wanted to bring up real quick about our pre-meeting page. It has a couple different things to make sure you know everything that we do... Would it help if I sent that page over to you?"
+                            Great… I also wanted to bring up real quick about our pre-meeting page. It has a couple different things to make sure you know everything that we do, so that during our meeting, we can focus more on how it could possibly help, <span className="text-gray-500 italic">(playful tone)</span> rather than doing a boring lecture on our process. There’s a video on there, some frequently asked questions, and some projects we’ve done in the past.
                         </p>
+
                         <p className={s.p}>
-                            "Awesome, I’ll ask you about it at our meeting at (Time and Date of Sales Call). Anything else for me before I go?"
+                            Would it help if I sent that page over to you?
+                        </p>
+
+                        <p className={s.p}>
+                            Awesome, I’ll ask you about it at our meeting at (Time and Date of Sales Call). Anything else for me before I go?
                         </p>
                     </div>
 
