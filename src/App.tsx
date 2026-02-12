@@ -490,232 +490,284 @@ const HandlingNotBookedFollowUpsView = () => (
 );
 
 // Custom View for Qualification Script
-const QualificationScriptView = () => (
-    <div className="space-y-10 font-sans text-gray-800">
+const QualificationScriptView = () => {
+    // Standard Styles for the "Document" look (Matching DiscoveryScriptView)
+    const s = {
+        container: "space-y-8 font-sans text-gray-800 pb-20 max-w-4xl mx-auto",
+        paper: "bg-white border border-gray-200 rounded-xl shadow-sm overflow-hidden",
+        header: "p-6 bg-gray-50 border-b border-gray-200",
+        headerTitle: "font-bold text-gray-900 flex items-center",
+        body: "p-8 md:p-12 max-w-none space-y-8",
+        sectionTitle: "text-xl font-bold text-indigo-700",
+        p: "text-base text-gray-800 leading-relaxed",
+        list: "list-decimal list-inside space-y-2 text-base text-gray-800 leading-relaxed ml-2",
+        bulletList: "list-disc list-inside space-y-2 text-base text-gray-800 leading-relaxed ml-2",
+        callout: "bg-gray-50 p-4 border-l-4 border-gray-300 text-gray-700 italic"
+    };
 
-        {/* Introduction Section */}
-        <section className="bg-gray-50 border border-gray-200 rounded-xl p-6">
-            <h3 className="text-lg font-bold text-gray-900 mb-4 flex items-center">
-                <span className="w-8 h-8 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center mr-3 text-sm">00</span>
-                Introduction
-            </h3>
-            <div className="space-y-4">
-                <p className="italic text-gray-600 border-l-4 border-blue-400 pl-4 py-1 bg-white rounded-r-md">
-                    "Hi <strong>[Name]</strong>, this is <strong>[Your Name]</strong> with <strong>[Company]</strong>. I saw you downloaded our <strong>[Asset Name]</strong> and wanted to see if you had any questions?"
-                </p>
-            </div>
-        </section>
+    return (
+        <div className={s.container}>
 
-        {/* Connection Question */}
-        <div className="bg-white rounded-xl">
-            <h3 className="text-lg font-bold text-gray-900 mb-2">Connection Question</h3>
-            <p className="italic text-gray-600 border-l-4 border-gray-300 pl-4 py-1">
-                "Great. This will only take a second but I’m just calling to see if there’s anything we could possibly do for you… and if there is… I could maybe get you booked for a phone call with our planning team. Would that… help you if I did that?"
-            </p>
-        </div>
-
-        {/* Q1 Motivation */}
-        <div className="border-t border-gray-100 pt-8">
-            <h3 className="text-lg font-bold text-gray-900 mb-2">1. Motivation</h3>
-            <p className="font-medium text-gray-800 text-lg">"So tell me [Name], what caught your eye or made you want to reach out to us?"</p>
-        </div>
-
-        {/* Q2 Location */}
-        <div className="border-t border-gray-100 pt-8">
-            <h3 className="text-lg font-bold text-gray-900 mb-4">2. Location</h3>
-            <p className="font-medium text-gray-800 text-lg mb-6">"Do you have an idea of where you’re looking to build?"</p>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                {/* Path A */}
-                <div className="bg-green-50 border border-green-200 rounded-lg p-5">
-                    <div className="text-xs font-bold text-green-700 uppercase tracking-wide mb-2">If In Service Area</div>
-                    <div className="flex items-center text-green-800 font-bold">
-                        Continue on <ArrowRight size={16} className="ml-2" />
+            {/* Part 1: SOP / Guidelines */}
+            <section className={s.paper}>
+                <div className={s.header}>
+                    <div className="text-center mb-4">
+                        <h1 className="text-2xl font-bold text-gray-900">Qualification Call (TEMPLATE)</h1>
+                        <p className="text-xs text-gray-400 mt-2">BuilderProject LLC © Copyright 2025. All Rights Reserved. ®</p>
                     </div>
+                    <h3 className={s.headerTitle}>
+                        <FileText size={18} className="mr-2 text-gray-500" />
+                        Standard Operating Procedure
+                    </h3>
                 </div>
-                {/* Path B */}
-                <div className="bg-red-50 border border-red-200 rounded-lg p-5 relative overflow-hidden">
-                    <div className="text-xs font-bold text-red-700 uppercase tracking-wide mb-2">If Outside Service Area</div>
-                    <p className="italic text-red-900 text-sm mb-4">
-                        "I’m not sure we’d be able to serve you there, I’m sorry. Unfortunately, I don’t have anyone I can recommend to you right now, however, I wish you the best with your project..."
-                    </p>
-                    <div className="inline-flex items-center px-2 py-1 bg-red-100 text-red-700 text-xs font-bold rounded uppercase">
-                        End the Call ✗
-                    </div>
-                </div>
-            </div>
-        </div>
 
-        {/* Q3 Land */}
-        <div className="border-t border-gray-100 pt-8">
-            <h3 className="text-lg font-bold text-gray-900 mb-4">3. Land Ownership</h3>
-            <p className="font-medium text-gray-800 text-lg mb-6">"Have you decided on a piece of land yet or purchased one?"</p>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                {/* Path A */}
-                <div className="bg-green-50 border border-green-200 rounded-lg p-5">
-                    <div className="text-xs font-bold text-green-700 uppercase tracking-wide mb-2">Owns Land / Buying</div>
-                    <p className="italic text-green-900 text-sm mb-4">
-                        "Ok and do you have the address of the lot so that I can double check that? Are there any slopes or additional dwellings..."
-                    </p>
-                    <div className="flex items-center text-green-800 font-bold">
-                        Continue on <ArrowRight size={16} className="ml-2" />
-                    </div>
-                </div>
-                {/* Path B */}
-                <div className="bg-red-50 border border-red-200 rounded-lg p-5">
-                    <div className="text-xs font-bold text-red-700 uppercase tracking-wide mb-2">No Land</div>
-                    <p className="italic text-red-900 text-sm mb-4">
-                        "Oh ok that’s alright. I don’t think we’d be able to do very much for you at this moment because you’d need a plot of land for us to help you get started..."
-                    </p>
-                    <div className="inline-flex items-center px-2 py-1 bg-red-100 text-red-700 text-xs font-bold rounded uppercase">
-                        End the Call ✗
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        {/* Q4 Project Type */}
-        <div className="border-t border-gray-100 pt-8">
-            <h3 className="text-lg font-bold text-gray-900 mb-4">4. Project Type</h3>
-            <p className="font-medium text-gray-800 text-lg mb-6">"Ok and what type of home are you looking to build?"</p>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                {/* Path A */}
-                <div className="bg-green-50 border border-green-200 rounded-lg p-5">
-                    <div className="text-xs font-bold text-green-700 uppercase tracking-wide mb-2">Within your niche</div>
-                    <div className="flex items-center text-green-800 font-bold">
-                        Continue on <ArrowRight size={16} className="ml-2" />
-                    </div>
-                </div>
-                {/* Path B */}
-                <div className="bg-red-50 border border-red-200 rounded-lg p-5">
-                    <div className="text-xs font-bold text-red-700 uppercase tracking-wide mb-2">Not in niche</div>
-                    <p className="italic text-red-900 text-sm mb-4">
-                        "I’m not sure we’d be able to help you with that, I’m sorry. [Their project] is not something we typically do..."
-                    </p>
-                    <div className="inline-flex items-center px-2 py-1 bg-red-100 text-red-700 text-xs font-bold rounded uppercase">
-                        End the Call ✗
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        {/* Q5 Designs */}
-        <div className="border-t border-gray-100 pt-8">
-            <h3 className="text-lg font-bold text-gray-900 mb-4">5. Design Stage</h3>
-            <p className="font-medium text-gray-800 text-lg mb-6">"Do you have any designs or sketches drawn up yet?"</p>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                {/* Path A */}
-                <div className="bg-green-50 border border-green-200 rounded-lg p-5">
-                    <div className="text-xs font-bold text-green-700 uppercase tracking-wide mb-2">No Designs Yet</div>
-                    <div className="flex items-center text-green-800 font-bold">
-                        Continue on <ArrowRight size={16} className="ml-2" />
-                    </div>
-                </div>
-                {/* Path B */}
-                <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-5">
-                    <div className="text-xs font-bold text-yellow-700 uppercase tracking-wide mb-2">Has Designs</div>
-                    <p className="italic text-yellow-900 text-sm mb-2">
-                        "Oh ok. Have you reached out to any other builders for a bid or are you just researching the best builder?"
-                    </p>
-                </div>
-            </div>
-
-            {/* Sub-question for Path B */}
-            <div className="mt-4 ml-0 md:ml-8 border-l-2 border-dashed border-gray-300 pl-6 py-4">
-                <p className="text-sm font-semibold text-gray-500 mb-4 uppercase">If they have designs...</p>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div className="bg-green-50 border border-green-200 rounded-lg p-5">
-                        <div className="text-xs font-bold text-green-700 uppercase tracking-wide mb-2">Looking for Best Builder</div>
-                        <div className="flex items-center text-green-800 font-bold">
-                            Continue on <ArrowRight size={16} className="ml-2" />
-                        </div>
-                    </div>
-                    <div className="bg-red-50 border border-red-200 rounded-lg p-5">
-                        <div className="text-xs font-bold text-red-700 uppercase tracking-wide mb-2">Looking for Multiple Bids</div>
-                        <p className="italic text-red-900 text-sm mb-4">
-                            "Got it. I’m sorry but we typically don’t do competitive bidding..."
+                <div className={s.body}>
+                    {/* Introduction Section */}
+                    <div className="space-y-3">
+                        <h4 className={s.sectionTitle}>Introduction</h4>
+                        <p className={s.callout}>
+                            "Hi <strong>[Name]</strong>, this is <strong>[Your Name]</strong> with <strong>[Company]</strong>. I saw you downloaded our <strong>[Asset Name]</strong> and wanted to see if you had any questions?"
                         </p>
-                        <div className="inline-flex items-center px-2 py-1 bg-red-100 text-red-700 text-xs font-bold rounded uppercase">
-                            End the Call ✗
+                    </div>
+
+                    {/* Connection Question */}
+                    <div className="space-y-3">
+                        <h4 className={s.sectionTitle}>Connection Question</h4>
+                        <p className={s.callout}>
+                            "Great. This will only take a second but I’m just calling to see if there’s anything we could possibly do for you… and if there is… I could maybe get you booked for a phone call with our planning team. Would that… help you if I did that?"
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            {/* Part 2: The Script Questions */}
+            <section className={s.paper}>
+                <div className={s.header}>
+                    <h3 className={s.headerTitle}>
+                        <MessageSquare size={18} className="mr-2 text-gray-500" />
+                        Qualification Script Questions
+                    </h3>
+                </div>
+
+                <div className={s.body}>
+
+                    {/* Q1 Motivation */}
+                    <div className="space-y-3">
+                        <h4 className={s.sectionTitle}>1. Motivation</h4>
+                        <p className={s.p}>"So tell me [Name], what caught your eye or made you want to reach out to us?"</p>
+                    </div>
+
+                    <hr className="border-gray-100" />
+
+                    {/* Q2 Location */}
+                    <div className="space-y-3">
+                        <h4 className={s.sectionTitle}>2. Location</h4>
+                        <p className={s.p}>"Do you have an idea of where you’re looking to build?"</p>
+
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+                            {/* Path A */}
+                            <div className="bg-green-50 border border-green-200 rounded-lg p-5">
+                                <div className="text-xs font-bold text-green-700 uppercase tracking-wide mb-2">If In Service Area</div>
+                                <div className="flex items-center text-green-800 font-bold">
+                                    Continue on <ArrowRight size={16} className="ml-2" />
+                                </div>
+                            </div>
+                            {/* Path B */}
+                            <div className="bg-red-50 border border-red-200 rounded-lg p-5 relative overflow-hidden">
+                                <div className="text-xs font-bold text-red-700 uppercase tracking-wide mb-2">If Outside Service Area</div>
+                                <p className="italic text-red-900 text-sm mb-4">
+                                    "I’m not sure we’d be able to serve you there, I’m sorry. Unfortunately, I don’t have anyone I can recommend to you right now, however, I wish you the best with your project..."
+                                </p>
+                                <div className="inline-flex items-center px-2 py-1 bg-red-100 text-red-700 text-xs font-bold rounded uppercase">
+                                    End the Call ✗
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </div>
-        </div>
 
-        {/* Q6 Timeline */}
-        <div className="border-t border-gray-100 pt-8">
-            <h3 className="text-lg font-bold text-gray-900 mb-4">6. Timeline</h3>
-            <p className="font-medium text-gray-800 text-lg mb-6">"Ok and when would you potentially be looking to move in?"</p>
+                    <hr className="border-gray-100" />
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                {/* Path A */}
-                <div className="bg-green-50 border border-green-200 rounded-lg p-5">
-                    <div className="text-xs font-bold text-green-700 uppercase tracking-wide mb-2">Within Next 1-2 Years</div>
-                    <div className="flex items-center text-green-800 font-bold">
-                        Continue on <ArrowRight size={16} className="ml-2" />
-                    </div>
-                </div>
-                {/* Path B */}
-                <div className="bg-red-50 border border-red-200 rounded-lg p-5">
-                    <div className="text-xs font-bold text-red-700 uppercase tracking-wide mb-2">Further out than 2 years</div>
-                    <p className="italic text-red-900 text-sm mb-4">
-                        "Ok that makes sense. Unfortunately there’s not much we can do at the very moment... I’ll make a note to follow up with you..."
-                    </p>
-                    <div className="inline-flex items-center px-2 py-1 bg-red-100 text-red-700 text-xs font-bold rounded uppercase">
-                        End the Call ✗
-                    </div>
-                </div>
-            </div>
-        </div>
+                    {/* Q3 Land */}
+                    <div className="space-y-3">
+                        <h4 className={s.sectionTitle}>3. Land Ownership</h4>
+                        <p className={s.p}>"Have you decided on a piece of land yet or purchased one?"</p>
 
-        {/* Q7 Partners */}
-        <div className="border-t border-gray-100 pt-8">
-            <h3 className="text-lg font-bold text-gray-900 mb-4">7. Partners</h3>
-            <p className="font-medium text-gray-800 text-lg mb-6">"Are there any partners or spouses that would be involved in the process?"</p>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                {/* Path A */}
-                <div className="bg-green-50 border border-green-200 rounded-lg p-5">
-                    <div className="text-xs font-bold text-green-700 uppercase tracking-wide mb-2">Yes</div>
-                    <p className="italic text-green-900 text-sm mb-2">
-                        "Ok can I have (his/her/their) name so that I can make a note of that?"
-                    </p>
-                </div>
-                {/* Path B */}
-                <div className="bg-green-50 border border-green-200 rounded-lg p-5">
-                    <div className="text-xs font-bold text-green-700 uppercase tracking-wide mb-2">No</div>
-                    <div className="flex items-center text-green-800 font-bold">
-                        Continue on <ArrowRight size={16} className="ml-2" />
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        {/* Closing */}
-        <div className="border-t border-gray-100 pt-8 pb-12">
-            <div className="bg-blue-50 border border-blue-200 rounded-xl p-8">
-                <h3 className="text-2xl font-bold text-blue-900 mb-6">Book The Discovery Call</h3>
-                <div className="space-y-4 text-blue-900/80">
-                    <p>"From what you’ve gone over… it sounds like we could potentially help you out."</p>
-                    <p>"If you would like… I could get you on a phone call with <strong>[Business Owner/ Sales Rep]</strong>… over the next few days depending on our availability..."</p>
-                    <p>"Ok, I’m pulling up his calendar now to see what times he may have available for you. Does tomorrow (morning/ afternoon) work for you?"</p>
-
-                    <div className="py-4 font-bold text-blue-900 uppercase tracking-widest text-sm text-center border-y border-blue-200 my-4">
-                        Confirm Time & Book Meeting
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+                            {/* Path A */}
+                            <div className="bg-green-50 border border-green-200 rounded-lg p-5">
+                                <div className="text-xs font-bold text-green-700 uppercase tracking-wide mb-2">Owns Land / Buying</div>
+                                <p className="italic text-green-900 text-sm mb-4">
+                                    "Ok and do you have the address of the lot so that I can double check that? Are there any slopes or additional dwellings..."
+                                </p>
+                                <div className="flex items-center text-green-800 font-bold">
+                                    Continue on <ArrowRight size={16} className="ml-2" />
+                                </div>
+                            </div>
+                            {/* Path B */}
+                            <div className="bg-red-50 border border-red-200 rounded-lg p-5">
+                                <div className="text-xs font-bold text-red-700 uppercase tracking-wide mb-2">No Land</div>
+                                <p className="italic text-red-900 text-sm mb-4">
+                                    "Oh ok that’s alright. I don’t think we’d be able to do very much for you at this moment because you’d need a plot of land for us to help you get started..."
+                                </p>
+                                <div className="inline-flex items-center px-2 py-1 bg-red-100 text-red-700 text-xs font-bold rounded uppercase">
+                                    End the Call ✗
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
-                    <p>"One more thing before I confirm that phone call, if you need to reschedule—please let him know in advance. I’m sure you would anyways (playful tone)..."</p>
-                    <p className="font-bold">"Have a good rest of your day!"</p>
-                </div>
-            </div>
-        </div>
+                    <hr className="border-gray-100" />
 
-    </div>
-);
+                    {/* Q4 Project Type */}
+                    <div className="space-y-3">
+                        <h4 className={s.sectionTitle}>4. Project Type</h4>
+                        <p className={s.p}>"Ok and what type of home are you looking to build?"</p>
+
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+                            {/* Path A */}
+                            <div className="bg-green-50 border border-green-200 rounded-lg p-5">
+                                <div className="text-xs font-bold text-green-700 uppercase tracking-wide mb-2">Within your niche</div>
+                                <div className="flex items-center text-green-800 font-bold">
+                                    Continue on <ArrowRight size={16} className="ml-2" />
+                                </div>
+                            </div>
+                            {/* Path B */}
+                            <div className="bg-red-50 border border-red-200 rounded-lg p-5">
+                                <div className="text-xs font-bold text-red-700 uppercase tracking-wide mb-2">Not in niche</div>
+                                <p className="italic text-red-900 text-sm mb-4">
+                                    "I’m not sure we’d be able to help you with that, I’m sorry. [Their project] is not something we typically do..."
+                                </p>
+                                <div className="inline-flex items-center px-2 py-1 bg-red-100 text-red-700 text-xs font-bold rounded uppercase">
+                                    End the Call ✗
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <hr className="border-gray-100" />
+
+                    {/* Q5 Designs */}
+                    <div className="space-y-3">
+                        <h4 className={s.sectionTitle}>5. Design Stage</h4>
+                        <p className={s.p}>"Do you have any designs or sketches drawn up yet?"</p>
+
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+                            {/* Path A */}
+                            <div className="bg-green-50 border border-green-200 rounded-lg p-5">
+                                <div className="text-xs font-bold text-green-700 uppercase tracking-wide mb-2">No Designs Yet</div>
+                                <div className="flex items-center text-green-800 font-bold">
+                                    Continue on <ArrowRight size={16} className="ml-2" />
+                                </div>
+                            </div>
+                            {/* Path B */}
+                            <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-5">
+                                <div className="text-xs font-bold text-yellow-700 uppercase tracking-wide mb-2">Has Designs</div>
+                                <p className="italic text-yellow-900 text-sm mb-2">
+                                    "Oh ok. Have you reached out to any other builders for a bid or are you just researching the best builder?"
+                                </p>
+                            </div>
+                        </div>
+
+                        {/* Sub-question for Path B */}
+                        <div className="mt-4 ml-0 md:ml-8 border-l-2 border-dashed border-gray-300 pl-6 py-4">
+                            <p className="text-sm font-semibold text-gray-500 mb-4 uppercase">If they have designs...</p>
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div className="bg-green-50 border border-green-200 rounded-lg p-5">
+                                    <div className="text-xs font-bold text-green-700 uppercase tracking-wide mb-2">Looking for Best Builder</div>
+                                    <div className="flex items-center text-green-800 font-bold">
+                                        Continue on <ArrowRight size={16} className="ml-2" />
+                                    </div>
+                                </div>
+                                <div className="bg-red-50 border border-red-200 rounded-lg p-5">
+                                    <div className="text-xs font-bold text-red-700 uppercase tracking-wide mb-2">Looking for Multiple Bids</div>
+                                    <p className="italic text-red-900 text-sm mb-4">
+                                        "Got it. I’m sorry but we typically don’t do competitive bidding..."
+                                    </p>
+                                    <div className="inline-flex items-center px-2 py-1 bg-red-100 text-red-700 text-xs font-bold rounded uppercase">
+                                        End the Call ✗
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <hr className="border-gray-100" />
+
+                    {/* Q6 Timeline */}
+                    <div className="space-y-3">
+                        <h4 className={s.sectionTitle}>6. Timeline</h4>
+                        <p className={s.p}>"Ok and when would you potentially be looking to move in?"</p>
+
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+                            {/* Path A */}
+                            <div className="bg-green-50 border border-green-200 rounded-lg p-5">
+                                <div className="text-xs font-bold text-green-700 uppercase tracking-wide mb-2">Within Next 1-2 Years</div>
+                                <div className="flex items-center text-green-800 font-bold">
+                                    Continue on <ArrowRight size={16} className="ml-2" />
+                                </div>
+                            </div>
+                            {/* Path B */}
+                            <div className="bg-red-50 border border-red-200 rounded-lg p-5">
+                                <div className="text-xs font-bold text-red-700 uppercase tracking-wide mb-2">Further out than 2 years</div>
+                                <p className="italic text-red-900 text-sm mb-4">
+                                    "Ok that makes sense. Unfortunately there’s not much we can do at the very moment... I’ll make a note to follow up with you..."
+                                </p>
+                                <div className="inline-flex items-center px-2 py-1 bg-red-100 text-red-700 text-xs font-bold rounded uppercase">
+                                    End the Call ✗
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <hr className="border-gray-100" />
+
+                    {/* Q7 Partners */}
+                    <div className="space-y-3">
+                        <h4 className={s.sectionTitle}>7. Partners</h4>
+                        <p className={s.p}>"Are there any partners or spouses that would be involved in the process?"</p>
+
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+                            {/* Path A */}
+                            <div className="bg-green-50 border border-green-200 rounded-lg p-5">
+                                <div className="text-xs font-bold text-green-700 uppercase tracking-wide mb-2">Yes</div>
+                                <p className="italic text-green-900 text-sm mb-2">
+                                    "Ok can I have (his/her/their) name so that I can make a note of that?"
+                                </p>
+                            </div>
+                            {/* Path B */}
+                            <div className="bg-green-50 border border-green-200 rounded-lg p-5">
+                                <div className="text-xs font-bold text-green-700 uppercase tracking-wide mb-2">No</div>
+                                <div className="flex items-center text-green-800 font-bold">
+                                    Continue on <ArrowRight size={16} className="ml-2" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <hr className="border-gray-100" />
+
+                    {/* Closing */}
+                    <div className="space-y-3 bg-blue-50 border border-blue-200 rounded-xl p-8 mt-8">
+                        <h3 className="text-2xl font-bold text-blue-900 mb-6">Book The Discovery Call</h3>
+                        <div className="space-y-4 text-blue-900/80">
+                            <p>"From what you’ve gone over… it sounds like we could potentially help you out."</p>
+                            <p>"If you would like… I could get you on a phone call with <strong>[Business Owner/ Sales Rep]</strong>… over the next few days depending on our availability..."</p>
+                            <p>"Ok, I’m pulling up his calendar now to see what times he may have available for you. Does tomorrow (morning/ afternoon) work for you?"</p>
+
+                            <div className="py-4 font-bold text-blue-900 uppercase tracking-widest text-sm text-center border-y border-blue-200 my-4">
+                                Confirm Time & Book Meeting
+                            </div>
+
+                            <p>"One more thing before I confirm that phone call, if you need to reschedule—please let him know in advance. I’m sure you would anyways (playful tone)..."</p>
+                            <p className="font-bold">"Have a good rest of your day!"</p>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+        </div>
+    );
+};
 
 const VideoDetail = ({ video, onBack }: { video: Video, onBack: () => void }) => (
     <div className="animate-in fade-in zoom-in-95 duration-300 flex flex-col pb-12">
