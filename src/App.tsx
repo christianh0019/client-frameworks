@@ -976,18 +976,52 @@ const DiscoveryScriptView = () => {
                             Tone: Curious / Concerned
                         </p>
 
-                        <p className={s.p}><strong>Decision Maker Check:</strong></p>
-                        <ul className={s.bulletList}>
-                            <li>
-                                <strong>All Decision Makers Present:</strong> Great, continue on.
-                            </li>
-                            <li>
-                                <strong>Missing A Decision Maker:</strong> "Before we get started, (Team Member) mentioned (Partner Name). Are they able to make it?"
-                            </li>
-                        </ul>
-                        <p className={s.p}>
-                            <em>If No:</em> "I'd recommend we reschedule to a time that works for both of you so we're all on the same page. When are you both 100% available?" &rarr; <strong>End Call.</strong>
-                        </p>
+                        {/* Decision Maker Table */}
+                        <div className="mt-6 border border-gray-300 rounded-lg overflow-hidden">
+                            {/* Header Row */}
+                            <div className="grid grid-cols-2 border-b border-gray-300 divide-x divide-gray-300">
+                                <div className="p-3 bg-green-100 text-green-800 font-bold text-sm">
+                                    All Decision Makers Present
+                                </div>
+                                <div className="p-3 bg-red-100 text-red-800 font-bold text-sm">
+                                    Missing A Decision Maker
+                                </div>
+                            </div>
+
+                            {/* Content Row */}
+                            <div className="grid grid-cols-2 divide-x divide-gray-300">
+                                {/* Green Path */}
+                                <div className="p-4 bg-green-50 text-gray-800 text-sm">
+                                    <p className="italic mb-2">Continue on &darr;</p>
+                                </div>
+
+                                {/* Red Path */}
+                                <div className="p-4 bg-red-50 text-gray-800 text-sm space-y-4">
+                                    <p>
+                                        "Before we get started, <strong>(Team Member Name)</strong> had mentioned to me about <strong>(Other Decision Maker's Name)</strong>. Are they able to make it?"
+                                    </p>
+
+                                    {/* Nested Yes/No Table */}
+                                    <div className="border border-gray-300 rounded overflow-hidden bg-white">
+                                        <div className="grid grid-cols-2 border-b border-gray-300 divide-x divide-gray-300">
+                                            <div className="p-2 bg-green-100 text-green-800 font-bold text-xs">Yes</div>
+                                            <div className="p-2 bg-red-100 text-red-800 font-bold text-xs">No</div>
+                                        </div>
+                                        <div className="grid grid-cols-2 divide-x divide-gray-300">
+                                            <div className="p-3 text-xs">
+                                                Ok great.<br /><br />
+                                                <span className="italic">Continue on &darr;</span>
+                                            </div>
+                                            <div className="p-3 text-xs space-y-2">
+                                                <p>Ok no problem at all. What I’d recommend is that we reschedule so that we can find a time that works for both of you so that we can make sure everybody including me is on the same page with each other.</p>
+                                                <p>Do you know when both of you would 100% be available so I can check my calendar and make sure I have time for you?</p>
+                                                <p className="font-bold text-red-600">End the call ✗</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
                     <hr className="border-gray-100" />
