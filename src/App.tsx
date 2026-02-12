@@ -392,7 +392,7 @@ const HandlingDiscoveryBookedView = ({ onLinkClick }: { onLinkClick?: (title: st
 );
 
 // 4. Handling Discovery Call Completed View
-const HandlingDiscoveryCompletedView = ({ onLinkClick }: { onLinkClick?: (title: string) => void }) => (
+const HandlingDiscoveryCompletedView = () => (
     <div className="space-y-8 font-sans text-gray-800">
         <section className="text-center py-6 border-b border-gray-200">
             <h3 className="text-2xl font-bold text-gray-900">Call Completed. What happened?</h3>
@@ -429,7 +429,7 @@ const HandlingDiscoveryCompletedView = ({ onLinkClick }: { onLinkClick?: (title:
                     <div className="flex items-center justify-between p-4 bg-green-50 rounded-lg border border-green-100 shadow-sm">
                         <div>
                             <span className="font-bold text-green-900 block">3. In-Person Meeting Booked</span>
-                            <span className="text-xs text-green-700">Schedule Meeting -> Moves to "Booked" Stage</span>
+                            <span className="text-xs text-green-700">Schedule Meeting &rarr; Moves to "Booked" Stage</span>
                         </div>
                         <div className="h-3 w-3 rounded-full bg-green-500"></div>
                     </div>
