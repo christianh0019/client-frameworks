@@ -856,6 +856,15 @@ const SalesProcessTree = ({ onSelectSOP }: { onSelectSOP: (sopTitle: string) => 
 const DiscoveryScriptView = () => {
     const [showGuide, setShowGuide] = useState(true);
 
+    // Standard Styles
+    const styles = {
+        section: "space-y-6",
+        card: "bg-white border border-gray-200 rounded-xl p-6 shadow-sm",
+        scriptText: "text-lg font-medium text-gray-900 leading-relaxed",
+        helperText: "text-sm text-gray-500 mt-2 italic",
+        label: "text-xs font-bold text-gray-400 uppercase tracking-wider mb-2 block"
+    };
+
     return (
         <div className="space-y-12 font-sans text-gray-800 pb-20 max-w-4xl mx-auto">
 
@@ -983,53 +992,54 @@ const DiscoveryScriptView = () => {
             </div>
 
             {/* Connection Questions */}
-            <section>
-                <div className="flex items-center mb-6">
+            <section className={styles.section}>
+                <div className="flex items-center">
                     <div className="w-8 h-8 rounded-full bg-blue-600 text-white flex items-center justify-center font-bold mr-3 shadow-md border-2 border-white">1</div>
                     <h2 className="text-2xl font-bold text-gray-900">Connection Questions</h2>
                 </div>
 
-                <div className="bg-white border-l-4 border-blue-500 shadow-sm rounded-r-xl p-6 mb-8">
-                    <p className="text-lg text-gray-800 leading-relaxed font-medium">
+                <div className={styles.card}>
+                    <p className={styles.scriptText}>
                         "Hey <strong>(Prospect First Name)</strong>, it’s <strong>(Your First Name)</strong>… <strong>(Your Full Name)</strong> with <strong>(Business Name)</strong>… It looks like you talked to <strong>(Team Member Name)</strong> and booked a time with me to explore how we might be able to help you with your custom home idea.. does that sound right?"
                     </p>
-                    <p className="text-sm text-blue-600 font-bold mt-2 uppercase tracking-wide">Tone: Curious / Concerned</p>
+                    <p className={styles.helperText}>Tone: Curious / Concerned</p>
                 </div>
 
-                <h3 className="font-bold text-gray-900 mb-4 ml-1">Decision Maker Check</h3>
-                {/* 2-Column Layout PRESENCE NEEDED for Decision Splitting */}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    {/* Path A */}
-                    <div className="bg-green-50 border border-green-200 rounded-xl p-6 relative">
-                        <div className="absolute top-0 right-0 bg-green-100 text-green-700 text-xs font-bold px-2 py-1 rounded-bl-lg">SCENARIO A</div>
-                        <div className="font-bold text-green-900 mb-3">All Decision Makers Present</div>
-                        <div className="flex items-center text-green-800 font-bold bg-white/50 p-3 rounded border border-green-100 justify-center">
-                            Continue on &darr;
+                <div className="pt-4 space-y-4">
+                    <h3 className="font-bold text-gray-700 text-sm uppercase tracking-wide">Decision Maker Check</h3>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        {/* Path A */}
+                        <div className="bg-green-50 border border-green-200 rounded-xl p-6 relative">
+                            <div className="absolute top-0 right-0 bg-green-100 text-green-700 text-xs font-bold px-2 py-1 rounded-bl-lg">SCENARIO A</div>
+                            <div className="font-bold text-green-900 mb-3">All Decision Makers Present</div>
+                            <div className="flex items-center text-green-800 font-bold bg-white/50 p-3 rounded border border-green-100 justify-center">
+                                Continue on &darr;
+                            </div>
                         </div>
-                    </div>
 
-                    {/* Path B */}
-                    <div className="bg-yellow-50 border border-yellow-200 rounded-xl p-6 relative">
-                        <div className="absolute top-0 right-0 bg-yellow-100 text-yellow-700 text-xs font-bold px-2 py-1 rounded-bl-lg">SCENARIO B</div>
-                        <div className="font-bold text-yellow-900 mb-3">Missing A Decision Maker</div>
+                        {/* Path B */}
+                        <div className="bg-yellow-50 border border-yellow-200 rounded-xl p-6 relative">
+                            <div className="absolute top-0 right-0 bg-yellow-100 text-yellow-700 text-xs font-bold px-2 py-1 rounded-bl-lg">SCENARIO B</div>
+                            <div className="font-bold text-yellow-900 mb-3">Missing A Decision Maker</div>
 
-                        <div className="space-y-4">
-                            <p className="text-yellow-900 text-sm italic bg-white/50 p-2 rounded">
-                                "Before we get started, <strong>(Team Member Name)</strong> had mentioned to me about <strong>(Other Decision Maker’s Name)</strong>. Are they able to make it?"
-                            </p>
+                            <div className="space-y-4">
+                                <p className="text-yellow-900 text-sm italic bg-white/50 p-2 rounded">
+                                    "Before we get started, <strong>(Team Member Name)</strong> had mentioned to me about <strong>(Other Decision Maker’s Name)</strong>. Are they able to make it?"
+                                </p>
 
-                            <div className="pl-4 border-l-2 border-yellow-300 space-y-4">
-                                <div>
-                                    <span className="text-xs font-bold text-gray-500 uppercase">If Yes</span>
-                                    <div className="text-green-700 font-bold text-sm">Ok great. (Continue on &darr;)</div>
-                                </div>
-                                <div>
-                                    <span className="text-xs font-bold text-gray-500 uppercase">If No</span>
-                                    <p className="text-sm text-gray-800 italic mb-2">
-                                        "Ok no problem at all. What I'd recommend is that we reschedule so that we can find a time that works for both of you so that we can make sure everybody including me is on the same page with each other.<br /><br />
-                                        Do you know when both of you would 100% be available so I can check my calendar and make sure I have time for you?"
-                                    </p>
-                                    <div className="inline-block px-2 py-1 bg-red-100 text-red-700 text-xs font-bold rounded">End the call ✗</div>
+                                <div className="pl-4 border-l-2 border-yellow-300 space-y-4">
+                                    <div>
+                                        <span className="text-xs font-bold text-gray-500 uppercase">If Yes</span>
+                                        <div className="text-green-700 font-bold text-sm">Ok great. (Continue on &darr;)</div>
+                                    </div>
+                                    <div>
+                                        <span className="text-xs font-bold text-gray-500 uppercase">If No</span>
+                                        <p className="text-sm text-gray-800 italic mb-2">
+                                            "Ok no problem at all. What I'd recommend is that we reschedule so that we can find a time that works for both of you so that we can make sure everybody including me is on the same page with each other.<br /><br />
+                                            Do you know when both of you would 100% be available so I can check my calendar and make sure I have time for you?"
+                                        </p>
+                                        <div className="inline-block px-2 py-1 bg-red-100 text-red-700 text-xs font-bold rounded">End the call ✗</div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -1038,203 +1048,201 @@ const DiscoveryScriptView = () => {
             </section>
 
             {/* Opening / Frame */}
-            <section>
-                <div className="flex items-center mb-6">
+            <section className={styles.section}>
+                <div className="flex items-center">
                     <div className="w-8 h-8 rounded-full bg-blue-600 text-white flex items-center justify-center font-bold mr-3 shadow-md border-2 border-white">2</div>
                     <h2 className="text-2xl font-bold text-gray-900">Opening & Frame</h2>
                 </div>
 
-                <div className="space-y-6">
-                    <div className="bg-white border border-gray-200 rounded-xl p-6 shadow-sm">
-                        <div className="mb-4">
-                            <p className="text-lg text-gray-800 leading-relaxed font-medium">
-                                "What really stood out to you that caused you to want to reach out today?"
-                            </p>
-                            <p className="text-sm text-blue-600 font-bold mt-1 uppercase tracking-wide">Tone: Curious / Engaging</p>
-                        </div>
-                    </div>
+                <div className={styles.card}>
+                    <p className={styles.scriptText}>
+                        "What really stood out to you that caused you to want to reach out today?"
+                    </p>
+                    <p className={styles.helperText}>Tone: Curious / Engaging</p>
+                </div>
 
-                    <div className="bg-white border border-gray-200 rounded-xl p-6 shadow-sm">
-                        <p className="text-gray-800 italic leading-relaxed">
-                            "Oh ok… These first calls are pretty basic… It’s really more for us to understand where you’re at now… how far you’ve gotten in the process… compared to what you have in mind for your finished home … to see what the gap looks like... And then towards the end… if you feel like this… might be… what you’re looking for, and we think we can help, then we can talk about possible next steps. Would that be appropriate?"
+                <div className={styles.card}>
+                    <p className={styles.scriptText}>
+                        "Oh ok… These first calls are pretty basic… It’s really more for us to understand where you’re at now… how far you’ve gotten in the process… compared to what you have in mind for your finished home … to see what the gap looks like... And then towards the end… if you feel like this… might be… what you’re looking for, and we think we can help, then we can talk about possible next steps. Would that be appropriate?"
+                    </p>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div className={styles.card}>
+                        <span className={styles.label}>Status Frame If Needed</span>
+                        <p className={styles.scriptText}>
+                            "I’m not too sure if we can help you just yet … you might not even need us … I’d have to know a bit more about what you’re already doing for XYZ …"
                         </p>
+                        <p className={styles.helperText}>&rarr; Ask your first Situation Question</p>
                     </div>
-
-                    {/* Edge Cases - Single Column Stack */}
-                    <div className="space-y-4">
-                        <div className="bg-orange-50 border border-orange-200 rounded-xl p-6">
-                            <h4 className="font-bold text-orange-900 text-sm uppercase tracking-wide mb-2">Scenario: Status Frame If Needed</h4>
-                            <p className="text-sm text-orange-900 italic">
-                                "I’m not too sure if we can help you just yet … you might not even need us … I’d have to know a bit more about what you’re already doing for XYZ …"
-                            </p>
-                            <p className="text-xs text-orange-700 mt-2 font-bold">&rarr; Ask your first Situation Question</p>
-                        </div>
-                        <div className="bg-blue-50 border border-blue-200 rounded-xl p-6">
-                            <h4 className="font-bold text-blue-900 text-sm uppercase tracking-wide mb-2">Scenario: If Asked For Pricing</h4>
-                            <p className="text-sm text-blue-900 italic">
-                                "Ohhh yeah, totally… it really depends on a few things — like the level of finishes, the specific lot you’re building on, and what steps you’ve already taken. Once we’ve gone through that a bit more… I can give you a ballpark range just so you know what’s realistic."
-                            </p>
-                            <p className="text-xs text-blue-700 mt-2 font-bold">&rarr; Ask your next question immediately</p>
-                        </div>
+                    <div className={styles.card}>
+                        <span className={styles.label}>If Asked For Pricing</span>
+                        <p className={styles.scriptText}>
+                            "Ohhh yeah, totally… it really depends on a few things — like the level of finishes, the specific lot you’re building on, and what steps you’ve already taken. Once we’ve gone through that a bit more… I can give you a ballpark range just so you know what’s realistic."
+                        </p>
+                        <p className={styles.helperText}>&rarr; Ask your next question immediately</p>
                     </div>
                 </div>
             </section>
 
 
             {/* Situation Questions */}
-            <section>
-                <div className="flex items-center mb-6">
+            <section className={styles.section}>
+                <div className="flex items-center">
                     <div className="w-8 h-8 rounded-full bg-blue-600 text-white flex items-center justify-center font-bold mr-3 shadow-md border-2 border-white">3</div>
                     <h2 className="text-2xl font-bold text-gray-900">Situation Questions</h2>
                 </div>
 
-                <div className="bg-white border border-gray-200 rounded-xl p-8 shadow-sm space-y-8">
-                    <p className="text-gray-600 italic border-l-4 border-gray-300 pl-4 py-2">
-                        "So I know <strong>(Team Member Name)</strong> already went over some of the basics — things like your land, where you’re building, general timing — I won’t make you repeat all that again. What I’d love to understand though… is more about why you’re doing this because that’s really important to us here."
-                    </p>
-
+                <div className={styles.card}>
                     <div className="space-y-8">
                         <div>
-                            <p className="font-medium text-gray-900 text-lg mb-1">"So how long have you been thinking about building a home?"</p>
-                            <span className="text-xs text-gray-500 font-bold uppercase">Tone: Curious</span>
+                            <p className="text-gray-600 italic border-l-4 border-gray-300 pl-4 py-2 mb-6">
+                                "So I know <strong>(Team Member Name)</strong> already went over some of the basics — things like your land, where you’re building, general timing — I won’t make you repeat all that again. What I’d love to understand though… is more about why you’re doing this because that’s really important to us here."
+                            </p>
+                        </div>
+
+                        <div>
+                            <p className={styles.scriptText}>"So how long have you been thinking about building a home?"</p>
+                            <p className={styles.helperText}>Tone: Curious</p>
                         </div>
                         <div className="border-t border-gray-100 pt-6">
-                            <p className="font-medium text-gray-900 text-lg mb-1">"Ok… and what made you decide you wanted to build rather than just buy something that’s already out there?"</p>
-                            <span className="text-xs text-gray-500 font-bold uppercase">Tone: Neutral / Curious</span>
+                            <p className={styles.scriptText}>"Ok… and what made you decide you wanted to build rather than just buy something that’s already out there?"</p>
+                            <p className={styles.helperText}>Tone: Neutral / Curious</p>
                         </div>
                         <div className="border-t border-gray-100 pt-6">
-                            <p className="font-medium text-gray-900 text-lg">"And what have you really done so far in the process except for you know… buy land?"</p>
-                            <p className="font-medium text-gray-900 mt-2 mb-1">"Just (whatever they mention)? Or anything else you’ve tried so I have a bit more context?"</p>
-                            <span className="text-xs text-gray-500 font-bold uppercase">Tone: Curious / Skeptical</span>
+                            <p className={styles.scriptText}>"And what have you really done so far in the process except for you know… buy land?"</p>
+                            <p className={`${styles.scriptText} mt-2`}>"Just (whatever they mention)? Or anything else you’ve tried so I have a bit more context?"</p>
+                            <p className={styles.helperText}>Tone: Curious / Skeptical</p>
                         </div>
                         <div className="border-t border-gray-100 pt-6">
-                            <p className="font-medium text-gray-900 text-lg">"Got it. And when you think about it… what’s the main goal behind this? Like… what’s the big picture for you? Is this more of a forever home, an investment, a lifestyle change?"</p>
+                            <p className={styles.scriptText}>"Got it. And when you think about it… what’s the main goal behind this? Like… what’s the big picture for you? Is this more of a forever home, an investment, a lifestyle change?"</p>
                         </div>
                         <div className="border-t border-gray-100 pt-6">
-                            <p className="font-medium text-gray-900 text-lg">"When you picture the home being finished… what would make you feel like… “Yeah… this was completely worth it”?"</p>
+                            <p className={styles.scriptText}>"When you picture the home being finished… what would make you feel like… “Yeah… this was completely worth it”?"</p>
                         </div>
                     </div>
                 </div>
             </section>
 
             {/* Probing / Clarifying */}
-            <section>
-                <div className="flex items-center mb-6">
+            <section className={styles.section}>
+                <div className="flex items-center">
                     <div className="w-8 h-8 rounded-full bg-blue-600 text-white flex items-center justify-center font-bold mr-3 shadow-md border-2 border-white">4</div>
                     <h2 className="text-2xl font-bold text-gray-900">Probing / Clarifying Questions</h2>
                 </div>
 
-                <div className="space-y-6">
-                    <div className="bg-gray-50 p-6 rounded-lg border border-gray-200">
-                        <h4 className="font-bold text-gray-900 text-lg mb-4">Digging Deeper</h4>
-                        <ul className="space-y-3 text-base text-gray-800 list-disc list-inside">
-                            <li>"How long has that been going on for?"</li>
-                            <li>"Has that had an impact on you?"</li>
-                            <li>"Well, in what way?"</li>
-                            <li>"What bothers you the most about this?"</li>
-                            <li>"Okay, well, why now though?"</li>
-                            <li>"Why is that so important to you now… why not just push it down the road?"</li>
-                            <li className="text-blue-600 italic">"(Repeat back emotional words)?"</li>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div className={styles.card}>
+                        <span className={styles.label}>Digging Deeper</span>
+                        <ul className="space-y-4">
+                            <li className={styles.scriptText}>"How long has that been going on for?"</li>
+                            <li className={styles.scriptText}>"Has that had an impact on you?"</li>
+                            <li className={styles.scriptText}>"Well, in what way?"</li>
+                            <li className={styles.scriptText}>"What bothers you the most about this?"</li>
+                            <li className={styles.scriptText}>"Okay, well, why now though?"</li>
+                            <li className={styles.scriptText}>"Why is that so important to you now… why not just push it down the road?"</li>
+                            <li className={`${styles.scriptText} text-blue-600`}>"(Repeat back emotional words)?"</li>
                         </ul>
                     </div>
-                    <div className="bg-gray-50 p-6 rounded-lg border border-gray-200">
-                        <h4 className="font-bold text-gray-900 text-lg mb-4">Understanding Nuance</h4>
-                        <ul className="space-y-3 text-base text-gray-800 list-disc list-inside">
-                            <li>"Can I ask why you said (blank)?"</li>
-                            <li>"Can I ask what you meant when you said (blank)?"</li>
-                            <li>"How do you mean by (blank)?"</li>
-                            <li>"Can you walk me through how (blank) happened exactly?"</li>
-                            <li>"When you say (blank), what did you mean by that exactly?"</li>
-                            <li>"Can I ask why you want (blank) though?"</li>
-                            <li>"How did you feel when (blank) happened?"</li>
-                            <li>"What’s causing (blank) to happen?"</li>
-                            <li>"What’s prompting you to look into possibly changing (blank) though?"</li>
-                            <li>"How does (blank) feel about (blank)?"</li>
+                    <div className={styles.card}>
+                        <span className={styles.label}>Understanding Nuance</span>
+                        <ul className="space-y-4">
+                            <li className={styles.scriptText}>"Can I ask why you said (blank)?"</li>
+                            <li className={styles.scriptText}>"Can I ask what you meant when you said (blank)?"</li>
+                            <li className={styles.scriptText}>"How do you mean by (blank)?"</li>
+                            <li className={styles.scriptText}>"Can you walk me through how (blank) happened exactly?"</li>
+                            <li className={styles.scriptText}>"When you say (blank), what did you mean by that exactly?"</li>
+                            <li className={styles.scriptText}>"Can I ask why you want (blank) though?"</li>
+                            <li className={styles.scriptText}>"How did you feel when (blank) happened?"</li>
+                            <li className={styles.scriptText}>"What’s causing (blank) to happen?"</li>
+                            <li className={styles.scriptText}>"What’s prompting you to look into possibly changing (blank) though?"</li>
+                            <li className={styles.scriptText}>"How does (blank) feel about (blank)?"</li>
                         </ul>
                     </div>
                 </div>
             </section>
 
             {/* Problem Awareness */}
-            <section>
-                <div className="flex items-center mb-6">
+            <section className={styles.section}>
+                <div className="flex items-center">
                     <div className="w-8 h-8 rounded-full bg-blue-600 text-white flex items-center justify-center font-bold mr-3 shadow-md border-2 border-white">5</div>
                     <h2 className="text-2xl font-bold text-gray-900">Problem Awareness Questions</h2>
                 </div>
 
-                <div className="bg-white border border-gray-200 rounded-xl p-8 shadow-sm space-y-10">
-                    <div>
-                        <p className="font-medium text-gray-900 leading-relaxed text-lg">
-                            "Ok so, besides (Insert any problems you’re aware of if applicable), from what you’ve told me about your project so far (insert situation), which seems like a fairly decent starting point… but if you don’t mind me asking though… are you… 100%... satisfied with how things are progressing so far?"
-                        </p>
-                        <span className="text-xs text-indigo-500 font-bold uppercase mt-2 block">Tone: Curious / Slightly Skeptical</span>
-                    </div>
-                    <div className="border-t border-gray-100 pt-8">
-                        <p className="font-medium text-gray-900 leading-relaxed text-lg">
-                            "Why haven’t you actually (blank) yet?"
-                        </p>
-                        <span className="text-xs text-indigo-500 font-bold uppercase mt-2 block">Tone: Confused / Skeptical</span>
-                    </div>
-                    <div className="border-t border-gray-100 pt-8">
-                        <p className="font-medium text-gray-900 leading-relaxed text-lg">
-                            "So what is it do you think about (blank) that’s causing you to not hit, say (ideal outcome)?"
-                        </p>
-                    </div>
-                    <div className="border-t border-gray-100 pt-8">
-                        <p className="font-medium text-gray-900 leading-relaxed text-lg">
-                            "Just so I can understand the rationale behind why you might be looking, besides just wanting to build your dream home… because everybody says that… what's the main reason you’re looking for outside help rather than (what they’re already doing or an alternative)?"
-                        </p>
+                <div className={styles.card}>
+                    <div className="space-y-8">
+                        <div>
+                            <p className={styles.scriptText}>
+                                "Ok so, besides (Insert any problems you’re aware of if applicable), from what you’ve told me about your project so far (insert situation), which seems like a fairly decent starting point… but if you don’t mind me asking though… are you… 100%... satisfied with how things are progressing so far?"
+                            </p>
+                            <span className={styles.helperText}>Tone: Curious / Slightly Skeptical</span>
+                        </div>
+                        <div className="border-t border-gray-100 pt-6">
+                            <p className={styles.scriptText}>
+                                "Why haven’t you actually (blank) yet?"
+                            </p>
+                            <span className={styles.helperText}>Tone: Confused / Skeptical</span>
+                        </div>
+                        <div className="border-t border-gray-100 pt-6">
+                            <p className={styles.scriptText}>
+                                "So what is it do you think about (blank) that’s causing you to not hit, say (ideal outcome)?"
+                            </p>
+                        </div>
+                        <div className="border-t border-gray-100 pt-6">
+                            <p className={styles.scriptText}>
+                                "Just so I can understand the rationale behind why you might be looking, besides just wanting to build your dream home… because everybody says that… what's the main reason you’re looking for outside help rather than (what they’re already doing or an alternative)?"
+                            </p>
+                        </div>
                     </div>
                 </div>
             </section>
 
             {/* Book The Meeting */}
-            <section>
-                <div className="flex items-center mb-6">
+            <section className={styles.section}>
+                <div className="flex items-center">
                     <div className="w-8 h-8 rounded-full bg-blue-600 text-white flex items-center justify-center font-bold mr-3 shadow-md border-2 border-white">6</div>
                     <h2 className="text-2xl font-bold text-gray-900">Book The In-Person Meeting</h2>
                 </div>
 
-                <div className="bg-blue-50 border border-blue-200 rounded-xl p-8 space-y-8">
-                    <div className="bg-white p-6 rounded-lg border border-blue-100 shadow-sm">
-                        <p className="font-medium text-gray-900 italic mb-4">
+                <div className={styles.card}>
+                    <div className="space-y-6">
+                        <p className={styles.scriptText}>
                             "Based on what you’ve shared with me so far … what we do here could work for you …"
                         </p>
-                        <p className="font-medium text-gray-900 italic">
+                        <p className={styles.scriptText}>
                             "What I can do from here if you’d like … is let you (and your partner/spouse if applicable) book a more formal meeting with me at my office… over the next few days depending on our availability … where we’d talk a bit more about what you might be looking for … and then some possible … next steps … would that help you?"
                         </p>
-                    </div>
-
-                    <div className="bg-white p-6 rounded-lg border border-blue-100 shadow-sm">
-                        <p className="font-medium text-gray-900 italic mb-4">
+                        <p className={styles.scriptText}>
                             "Ok, I’m pulling up my calendar now to see what times I may have available for you. Does tomorrow (morning/ afternoon) work for you?"
                         </p>
+
                         <div className="flex items-center justify-center py-4">
-                            <div className="bg-blue-600 text-white px-6 py-2 rounded-full font-bold text-sm uppercase tracking-widest shadow-lg transform hover:scale-105 transition-transform cursor-default">
+                            <div className="bg-blue-600 text-white px-8 py-3 rounded-full font-bold text-sm uppercase tracking-widest shadow-lg hover:shadow-xl transform hover:scale-105 transition-all cursor-default">
                                 Confirm Time & Book Meeting
                             </div>
                         </div>
-                    </div>
 
-                    <div className="bg-white p-6 rounded-lg border border-blue-100 shadow-sm">
-                        <p className="font-medium text-gray-900 italic mb-1">
-                            "Now just real quick… and I’m sure this isn’t you … however sometimes people ask us to help them with their project, we let them book some more time with us and then they don’t show up … you know those kinds of people … I’m sure that isn’t you … right?"
-                        </p>
-                        <span className="text-xs text-blue-500 font-bold uppercase mt-1 block">Tone: Playful</span>
-                    </div>
+                        <div className="border-t border-gray-100 pt-6">
+                            <p className={styles.scriptText}>
+                                "Now just real quick… and I’m sure this isn’t you … however sometimes people ask us to help them with their project, we let them book some more time with us and then they don’t show up … you know those kinds of people … I’m sure that isn’t you … right?"
+                            </p>
+                            <span className={styles.helperText}>Tone: Playful</span>
+                        </div>
 
-                    <div className="bg-white p-6 rounded-lg border border-blue-100 shadow-sm">
-                        <p className="font-medium text-gray-900 italic mb-4">
-                            "Great… I also wanted to bring up real quick about our pre-meeting page. It has a couple different things to make sure you know everything that we do, so that during our meeting, we can focus more on how it could possibly help, rather than doing a boring lecture on our process. There’s a video on there, some frequently asked questions, and some projects we’ve done in the past."
-                        </p>
-                        <span className="text-xs text-blue-500 font-bold uppercase mt-1 block mb-4">Tone: Playful</span>
-                        <p className="font-medium text-gray-900 italic">
-                            "Would it help if I sent that page over to you?"
-                        </p>
-                    </div>
+                        <div className="border-t border-gray-100 pt-6">
+                            <p className={styles.scriptText}>
+                                "Great… I also wanted to bring up real quick about our pre-meeting page. It has a couple different things to make sure you know everything that we do, so that during our meeting, we can focus more on how it could possibly help, rather than doing a boring lecture on our process. There’s a video on there, some frequently asked questions, and some projects we’ve done in the past."
+                            </p>
+                            <p className={`${styles.scriptText} mt-4`}>
+                                "Would it help if I sent that page over to you?"
+                            </p>
+                        </div>
 
-                    <div className="text-center font-bold text-blue-900 pt-4">
-                        "Awesome, I’ll ask you about it at our meeting at (Time and Date of Sales Call). Anything else for me before I go?"
+                        <div className="border-t border-gray-100 pt-6 text-center">
+                            <p className="text-xl font-bold text-blue-600">
+                                "Awesome, I’ll ask you about it at our meeting at (Time and Date of Sales Call). Anything else for me before I go?"
+                            </p>
+                        </div>
                     </div>
                 </div>
             </section>
