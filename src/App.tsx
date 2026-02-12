@@ -177,6 +177,8 @@ const SOPDetail = ({ sop, onBack, onSOPClick }: { sop: SOP, onBack: () => void, 
                                     return <HandlingInPersonMeetingCompletedView />;
                                 case "Handling Not Closed Follow Ups Stage":
                                     return <HandlingNotClosedFollowUpsView />;
+                                case "Handling Agreements Signed Stage":
+                                    return <HandlingAgreementsSignedView />;
                                 default:
                                     return (
                                         <div className="prose prose-slate max-w-none prose-headings:font-bold prose-h1:text-3xl prose-h2:text-2xl prose-h3:text-xl prose-a:text-indigo-600 prose-a:no-underline hover:prose-a:underline prose-strong:font-bold prose-strong:text-slate-900 prose-li:marker:text-gray-400">
@@ -2055,6 +2057,213 @@ const HandlingNotClosedFollowUpsView = () => {
                         </ul>
                         <p className={s.p}>High-performing sales teams convert a significant percentage of revenue from this stage.</p>
                         <p className={s.p}>Consistent, strategic follow-up is required.</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+    );
+};
+
+// 9. Handling Agreements Signed View
+const HandlingAgreementsSignedView = () => {
+    // Standard Styles
+    const s = {
+        container: "space-y-8 font-sans text-gray-800 pb-20 max-w-4xl mx-auto",
+        paper: "bg-white border border-gray-200 rounded-xl shadow-sm overflow-hidden",
+        header: "p-6 bg-gray-50 border-b border-gray-200",
+        headerTitle: "font-bold text-gray-900 flex items-center",
+        body: "p-8 md:p-12 max-w-none space-y-8",
+        sectionTitle: "text-xl font-bold text-indigo-700",
+        p: "text-base text-gray-800 leading-relaxed",
+        list: "list-decimal list-inside space-y-2 text-base text-gray-800 leading-relaxed ml-2",
+        bulletList: "list-disc list-inside space-y-2 text-base text-gray-800 leading-relaxed ml-2",
+        callout: "bg-gray-50 p-4 border-l-4 border-gray-300 text-gray-700 italic"
+    };
+
+    return (
+        <div className={s.container}>
+            <section className={s.paper}>
+                <div className={s.header}>
+                    <div className="text-center mb-4">
+                        <h1 className="text-2xl font-bold text-gray-900">Pipeline Stage: Agreements</h1>
+                        <p className="text-xs text-gray-400 mt-2">BuilderProject LLC © Copyright 2025. All Rights Reserved. ®</p>
+                    </div>
+                    <h3 className={s.headerTitle}>
+                        <FileText size={18} className="mr-2 text-gray-500" />
+                        Standard Operating Procedure
+                    </h3>
+                </div>
+
+                <div className={s.body}>
+                    {/* 1. Location in CRM */}
+                    <div className="space-y-3">
+                        <h4 className={s.sectionTitle}>1. Location in CRM</h4>
+                        <p className={s.p}>This procedure applies to all Agreement stages within the Sales Pipeline.</p>
+                        <p className={s.p}>Depending on your sales structure, you may have multiple agreement stages, such as:</p>
+                        <ul className={s.bulletList}>
+                            <li>Concept Design Agreement</li>
+                            <li>Pre-Construction Agreement</li>
+                            <li>Construction Contract</li>
+                            <li>Change Order Agreement</li>
+                            <li>Additional Services Agreement</li>
+                        </ul>
+                        <p className={s.p}>You can locate these stages by navigating to:</p>
+                        <p className="font-medium text-gray-900 bg-gray-50 p-2 rounded inline-block text-sm">Opportunities &rarr; Sales Pipeline &rarr; [Agreement Stage Name]</p>
+                        <p className={s.p}>These stages are accessible on both desktop and mobile versions of the CRM.</p>
+                    </div>
+
+                    <hr className="border-gray-100" />
+
+                    {/* 2. Definition of Agreement Stages */}
+                    <div className="space-y-3">
+                        <h4 className={s.sectionTitle}>2. Definition of Agreement Stages</h4>
+                        <p className={s.p}>An Agreement stage represents a formal commitment from the prospect.</p>
+                        <p className={s.p}>When an opportunity enters an Agreement stage:</p>
+                        <ul className={s.bulletList}>
+                            <li>Revenue has been secured.</li>
+                            <li>A contract has been executed.</li>
+                            <li>The prospect has transitioned into an active client (for that phase of work).</li>
+                        </ul>
+                        <div className="bg-green-50 border-l-4 border-green-500 p-4 mt-2">
+                            <p className="font-bold text-green-900">Agreement stages signal that revenue has been won and must be tracked accurately.</p>
+                        </div>
+                    </div>
+
+                    <hr className="border-gray-100" />
+
+                    {/* 3. Multiple Agreement Stages */}
+                    <div className="space-y-3">
+                        <h4 className={s.sectionTitle}>3. Multiple Agreement Stages</h4>
+                        <p className={s.p}>Depending on your sales process, you may structure your pipeline with multiple agreement stages to reflect different phases of the project.</p>
+                        <p className={s.p}>Examples include:</p>
+                        <ul className={s.bulletList}>
+                            <li>Design phase agreements</li>
+                            <li>Pre-construction agreements</li>
+                            <li>Construction contracts</li>
+                            <li>Add-on services</li>
+                        </ul>
+                        <p className={s.p}>Each agreement stage should clearly represent a defined revenue milestone in your process.</p>
+                        <p className={s.p}>This allows:</p>
+                        <ul className={s.bulletList}>
+                            <li>Accurate revenue forecasting</li>
+                            <li>Phase-by-phase tracking</li>
+                            <li>Clear handoff to operations</li>
+                            <li>Better reporting and accountability</li>
+                        </ul>
+                    </div>
+
+                    <hr className="border-gray-100" />
+
+                    {/* 4. Movement Into Agreement Stage */}
+                    <div className="space-y-3">
+                        <h4 className={s.sectionTitle}>4. Movement Into Agreement Stage</h4>
+                        <p className={s.p}>Movement into an Agreement stage must be done manually unless automation has been specifically configured.</p>
+                        <p className={s.p}>Before moving an opportunity into an Agreement stage, confirm:</p>
+                        <ul className={s.bulletList}>
+                            <li>The agreement has been fully executed.</li>
+                            <li>Required signatures have been obtained.</li>
+                            <li>Any required deposit or payment has been received (if applicable).</li>
+                            <li>Documentation is properly stored.</li>
+                        </ul>
+                        <div className="bg-red-50 border-l-4 border-red-500 p-4 mt-2">
+                            <p className="font-bold text-red-900">Do not move an opportunity into an Agreement stage based on verbal commitment alone.</p>
+                        </div>
+                        <p className={s.p}>Only executed agreements qualify.</p>
+                    </div>
+
+                    <hr className="border-gray-100" />
+
+                    {/* 5. Required Actions When an Agreement Is Signed */}
+                    <div className="space-y-3">
+                        <h4 className={s.sectionTitle}>5. Required Actions When an Agreement Is Signed</h4>
+                        <p className={s.p}>When an agreement is finalized:</p>
+                        <p className={s.p}>Move the opportunity to the appropriate Agreement stage.</p>
+                        <p className={s.p}>Confirm and document:</p>
+                        <ul className={s.bulletList}>
+                            <li>Contract value</li>
+                            <li>Payment amount received</li>
+                            <li>Remaining balance</li>
+                            <li>Start timeline (if applicable)</li>
+                        </ul>
+                        <p className={s.p}>Add structured notes summarizing:</p>
+                        <ul className={s.bulletList}>
+                            <li>Scope covered under this agreement</li>
+                            <li>Any special conditions</li>
+                            <li>Key expectations discussed</li>
+                        </ul>
+                        <p className={s.p}>This ensures financial accuracy and operational clarity.</p>
+                    </div>
+
+                    <hr className="border-gray-100" />
+
+                    {/* 6. Revenue Tracking */}
+                    <div className="space-y-3">
+                        <h4 className={s.sectionTitle}>6. Revenue Tracking</h4>
+                        <p className={s.p}>Agreement stages are used to:</p>
+                        <ul className={s.bulletList}>
+                            <li>Track secured revenue</li>
+                            <li>Monitor sales performance</li>
+                            <li>Measure close rates</li>
+                            <li>Forecast upcoming work</li>
+                        </ul>
+                        <p className={s.p}>Accurate stage movement directly impacts reporting.</p>
+                        <p className={s.p}>Incorrect categorization distorts:</p>
+                        <ul className={s.bulletList}>
+                            <li>Revenue projections</li>
+                            <li>Cash flow planning</li>
+                            <li>Sales performance metrics</li>
+                        </ul>
+                        <div className="bg-red-50 border-l-4 border-red-500 p-4 mt-2">
+                            <p className="font-bold text-red-900">Strict accuracy is required.</p>
+                        </div>
+                    </div>
+
+                    <hr className="border-gray-100" />
+
+                    {/* 7. Handoff to Operations */}
+                    <div className="space-y-3">
+                        <h4 className={s.sectionTitle}>7. Handoff to Operations</h4>
+                        <p className={s.p}>After moving an opportunity into an Agreement stage:</p>
+                        <ul className={s.bulletList}>
+                            <li>Notify the appropriate operations team member (if required).</li>
+                            <li>Ensure all documents are accessible.</li>
+                            <li>Confirm next operational steps are clear.</li>
+                        </ul>
+                        <p className={s.p}>Sales and operations alignment begins at this stage.</p>
+                        <p className={s.p}>Improper documentation at this point creates downstream execution issues.</p>
+                    </div>
+
+                    <hr className="border-gray-100" />
+
+                    {/* 8. Completion Criteria */}
+                    <div className="space-y-3">
+                        <h4 className={s.sectionTitle}>8. Completion Criteria</h4>
+                        <p className={s.p}>An opportunity belongs in an Agreement stage only when:</p>
+                        <ul className={s.bulletList}>
+                            <li>The agreement has been fully executed.</li>
+                            <li>Required payments (if applicable) have been received.</li>
+                            <li>Documentation is complete.</li>
+                            <li>Notes are accurate and detailed.</li>
+                        </ul>
+                        <div className="bg-red-50 border-l-4 border-red-500 p-4 mt-2">
+                            <p className="font-bold text-red-900">No exceptions.</p>
+                        </div>
+                    </div>
+
+                    <hr className="border-gray-100" />
+
+                    {/* 9. Accountability */}
+                    <div className="space-y-3">
+                        <h4 className={s.sectionTitle}>9. Accountability</h4>
+                        <p className={s.p}>Agreement stages directly impact:</p>
+                        <ul className={s.bulletList}>
+                            <li>Revenue reporting</li>
+                            <li>Cash flow forecasting</li>
+                            <li>Sales performance tracking</li>
+                            <li>Operational planning</li>
+                        </ul>
+                        <p className={s.p}>This stage marks the transition from opportunity to secured revenue.</p>
+                        <p className={s.p}>Precision and documentation discipline are mandatory.</p>
                     </div>
                 </div>
             </section>
