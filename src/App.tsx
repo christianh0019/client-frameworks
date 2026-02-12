@@ -464,7 +464,7 @@ const HandlingQualifiedLeadView = () => {
             <section className={s.paper}>
                 <div className={s.header}>
                     <div className="text-center mb-4">
-                        <h1 className="text-2xl font-bold text-gray-900">Handling Qualified Lead Stage (SOP)</h1>
+                        <h1 className="text-2xl font-bold text-gray-900">Pipeline Stage: Qualified Lead</h1>
                         <p className="text-xs text-gray-400 mt-2">BuilderProject LLC © Copyright 2025. All Rights Reserved. ®</p>
                     </div>
                     <h3 className={s.headerTitle}>
@@ -474,60 +474,160 @@ const HandlingQualifiedLeadView = () => {
                 </div>
 
                 <div className={s.body}>
-                    {/* Goal */}
+                    {/* 1. Location in CRM */}
                     <div className="space-y-3">
-                        <h4 className={s.sectionTitle}>Goal:</h4>
-                        <p className={s.p}>Book a Discovery Call.</p>
+                        <h4 className={s.sectionTitle}>1. Location in CRM</h4>
+                        <p className={s.p}>This procedure applies to the “Qualified Lead” stage within the Sales Pipeline.</p>
+                        <p className={s.p}>You can locate this stage in the CRM by navigating to:</p>
+                        <p className="font-medium text-gray-900 bg-gray-50 p-2 rounded inline-block text-sm">Opportunities &rarr; Sales Pipeline &rarr; Qualified Lead</p>
+                        <p className={s.p}>This stage is accessible on both the desktop and mobile versions of the CRM.</p>
                     </div>
 
-                    {/* Timeline */}
+                    <hr className="border-gray-100" />
+
+                    {/* 2. Definition of a Qualified Lead */}
                     <div className="space-y-3">
-                        <h4 className={s.sectionTitle}>Timeline:</h4>
-                        <div className="flex items-center space-x-2 text-gray-700 bg-gray-50 p-3 rounded-lg border border-gray-200 w-fit">
-                            <Clock size={20} className="text-gray-500" />
-                            <span>Max Time in Stage: <strong>3-5 Days</strong></span>
+                        <h4 className={s.sectionTitle}>2. Definition of a Qualified Lead</h4>
+                        <p className={s.p}>A lead is placed in the Qualified Lead stage when they have met all minimum qualification criteria through one of the following methods:</p>
+                        <ul className={s.bulletList}>
+                            <li><strong>Manual Qualification Call:</strong> The sales representative completed a Qualification Call and confirmed the lead meets required standards.</li>
+                            <li><strong>Website Application:</strong> The lead completed an application form and met the automated qualification criteria.</li>
+                        </ul>
+                        <p className={s.p}>Both the Qualification Call and the Application Form evaluate the same core criteria (project type, location, budget, timeline, and decision-making authority).</p>
+                        <p className={s.p}>At this stage, the lead has been verified as eligible to proceed to the next step in the sales process.</p>
+                    </div>
+
+                    <hr className="border-gray-100" />
+
+                    {/* 3. Purpose of the Qualified Lead Stage */}
+                    <div className="space-y-3">
+                        <h4 className={s.sectionTitle}>3. Purpose of the Qualified Lead Stage</h4>
+                        <p className={s.p}>The sole purpose of this stage is to:</p>
+                        <div className="bg-indigo-50 border-l-4 border-indigo-500 p-4">
+                            <p className="font-bold text-indigo-900 text-lg">Book a Discovery Call.</p>
                         </div>
+                        <p className={s.p}>This stage is not for ongoing nurturing, extended conversations, or repeated re-qualification.</p>
+                        <p className={s.p}>Qualified leads should not remain in this stage longer than <strong>3–5 days</strong>.</p>
+                        <p className={s.p}>Within that timeframe, the outcome must be one of the following:</p>
+                        <ul className={s.bulletList}>
+                            <li>A Discovery Call is booked, or</li>
+                            <li>The lead is marked as Lost (Uninterested).</li>
+                        </ul>
                     </div>
 
                     <hr className="border-gray-100" />
 
-                    {/* Action Plan */}
+                    {/* 4. Required Outreach Activity */}
                     <div className="space-y-3">
-                        <h4 className={s.sectionTitle}>Action Plan:</h4>
-                        <p className={s.p}>Reach out mainly via <strong>Text Message</strong> or <strong>Phone Call</strong>.</p>
-                        <p className={s.callout}>
-                            "Would you like to set up a time to talk so we can learn more about your project?"
-                        </p>
+                        <h4 className={s.sectionTitle}>4. Required Outreach Activity</h4>
+                        <p className={s.p}>Primary outreach methods at this stage:</p>
+                        <ul className={s.bulletList}>
+                            <li>Text message</li>
+                            <li>Phone call</li>
+                        </ul>
+                        <p className={s.p}>The objective of outreach is simple and direct: Determine whether the lead would like to schedule a time to discuss their project in more detail.</p>
+                        <p className={s.p}>Messaging should be concise and professional.</p>
+
+                        <div className="mt-4 border border-gray-200 rounded-lg p-4 bg-gray-50">
+                            <h5 className="font-bold text-gray-900 mb-2">Example Approach:</h5>
+                            <ul className={s.bulletList}>
+                                <li>Confirm interest in moving forward.</li>
+                                <li>Offer to schedule a time to discuss their project in more depth.</li>
+                                <li>Provide availability or guide them toward booking.</li>
+                            </ul>
+                        </div>
+                        <p className={s.p + " mt-4"}>Avoid long back-and-forth conversations at this stage. The objective is to secure a scheduled Discovery Call.</p>
                     </div>
 
                     <hr className="border-gray-100" />
 
-                    {/* Scenarios */}
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pt-4">
-                        {/* Outcome 1 */}
-                        <div className="bg-red-50 border border-red-200 rounded-xl p-6">
-                            <h3 className="font-bold text-red-900 mb-2 text-lg">Outcome 1: Not Interested</h3>
-                            <div className="space-y-2 text-red-800 text-sm">
-                                <p className="font-medium">Move to "Lost" stage.</p>
-                                <p>Select Reason: "Uninterested".</p>
+                    {/* 5. Decision Outcomes */}
+                    <div className="space-y-3">
+                        <h4 className={s.sectionTitle}>5. Decision Outcomes</h4>
+                        <p className={s.p}>There are only two acceptable outcomes in the Qualified Lead stage.</p>
+
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-4">
+                            <div className="bg-green-50 border border-green-100 rounded-xl p-6">
+                                <h5 className="font-bold text-green-800 text-lg mb-2">A. Lead Is Interested</h5>
+                                <p className="text-sm text-green-700 mb-2">If the lead confirms they would like to move forward:</p>
+                                <ol className="list-decimal list-inside text-sm text-green-700 space-y-1">
+                                    <li>Navigate to the contact record.</li>
+                                    <li>Click on Appointments.</li>
+                                    <li>Schedule a “Discovery Call.”</li>
+                                </ol>
+                                <p className="text-xs text-green-600 mt-2 italic">Once booked, opportunity automatically moves to Discovery Call Booked stage.</p>
+                                <div className="mt-3 pt-3 border-t border-green-200">
+                                    <p className="font-bold text-green-800 text-xs uppercase mb-1">Confirm:</p>
+                                    <ul className="list-disc list-inside text-xs text-green-700">
+                                        <li>Date and time</li>
+                                        <li>Correct contact information</li>
+                                        <li>All relevant notes are documented</li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div className="bg-red-50 border border-red-100 rounded-xl p-6">
+                                <h5 className="font-bold text-red-800 text-lg mb-2">B. Lead Is Not Interested</h5>
+                                <p className="text-sm text-red-700 mb-2">If the lead explicitly states they are not interested in proceeding:</p>
+                                <ol className="list-decimal list-inside text-sm text-red-700 space-y-1">
+                                    <li>Move the opportunity to <strong>Lost</strong>.</li>
+                                    <li>Select the reason: <strong>Uninterested</strong>.</li>
+                                    <li>Add a brief note summarizing the interaction.</li>
+                                </ol>
+                                <p className="text-xs text-red-600 mt-2 italic">This ensures accurate reporting and prevents unnecessary follow-up.</p>
                             </div>
                         </div>
+                    </div>
 
-                        {/* Outcome 2 */}
-                        <div className="bg-green-50 border border-green-200 rounded-xl p-6">
-                            <h3 className="font-bold text-green-900 mb-2 text-lg">Outcome 2: Interested (Booking)</h3>
-                            <ol className="list-decimal list-inside space-y-2 text-green-800 text-sm">
-                                <li>Click on <strong>Appointments</strong>.</li>
-                                <li>Schedule a "Discovery Call".</li>
-                                <li className="italic text-green-700 opacity-80 mt-2 block">System automatically moves them to "Discovery Call Booked".</li>
-                            </ol>
+                    <hr className="border-gray-100" />
+
+                    {/* 6. Time-in-Stage Standard */}
+                    <div className="space-y-3">
+                        <h4 className={s.sectionTitle}>6. Time-in-Stage Standard</h4>
+                        <div className="bg-yellow-50 border-l-4 border-yellow-400 p-4">
+                            <p className="font-bold text-yellow-900">No Qualified Lead should remain in this stage beyond 3–5 days without active engagement.</p>
                         </div>
+                        <p className={s.p}>If no response is received after reasonable outreach attempts:</p>
+                        <ul className={s.bulletList}>
+                            <li>Continue short-term follow-up according to team standards.</li>
+                            <li>If interest is clearly absent, move to Lost with appropriate documentation.</li>
+                        </ul>
+                        <p className={s.p}>Allowing leads to sit indefinitely in this stage disrupts forecasting and pipeline clarity.</p>
+                    </div>
+
+                    <hr className="border-gray-100" />
+
+                    {/* 7. Completion Criteria */}
+                    <div className="space-y-3">
+                        <h4 className={s.sectionTitle}>7. Completion Criteria</h4>
+                        <p className={s.p}>The Qualified Lead stage is complete when:</p>
+                        <ul className={s.bulletList}>
+                            <li>A Discovery Call has been scheduled, or</li>
+                            <li>The opportunity has been moved to Lost with reason “Uninterested.”</li>
+                        </ul>
+                        <p className={s.p}>There should be no ambiguity in status.</p>
+                    </div>
+
+                    <hr className="border-gray-100" />
+
+                    {/* 8. Accountability */}
+                    <div className="space-y-3">
+                        <h4 className={s.sectionTitle}>8. Accountability</h4>
+                        <p className={s.p}>This stage directly impacts:</p>
+                        <ul className={s.bulletList}>
+                            <li>Show rates</li>
+                            <li>Sales cycle length</li>
+                            <li>Close rates</li>
+                            <li>Revenue predictability</li>
+                        </ul>
+                        <p className={s.p}>Timely booking of Discovery Calls is essential to maintaining pipeline velocity and operational alignment.</p>
                     </div>
                 </div>
             </section>
         </div>
     );
 };
+
 
 // 3. Handling Discovery Call Booked View
 const HandlingDiscoveryBookedView = ({ onLinkClick }: { onLinkClick?: (title: string) => void }) => {
