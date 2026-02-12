@@ -850,7 +850,7 @@ const HandlingDiscoveryCompletedView = () => {
             <section className={s.paper}>
                 <div className={s.header}>
                     <div className="text-center mb-4">
-                        <h1 className="text-2xl font-bold text-gray-900">Handling Discovery Call Completed Stage (SOP)</h1>
+                        <h1 className="text-2xl font-bold text-gray-900">Pipeline Stage: Discovery Call Completed</h1>
                         <p className="text-xs text-gray-400 mt-2">BuilderProject LLC © Copyright 2025. All Rights Reserved. ®</p>
                     </div>
                     <h3 className={s.headerTitle}>
@@ -860,48 +860,184 @@ const HandlingDiscoveryCompletedView = () => {
                 </div>
 
                 <div className={s.body}>
-                    {/* Goal */}
-                    <div className="text-center py-2 mb-6">
-                        <h3 className="text-2xl font-bold text-gray-900">Call Completed. What happened?</h3>
-                        <p className="text-gray-500 mt-2 text-lg">Update the appointment outcome in the CRM.</p>
+                    {/* 1. Location in CRM */}
+                    <div className="space-y-3">
+                        <h4 className={s.sectionTitle}>1. Location in CRM</h4>
+                        <p className={s.p}>This procedure applies to the "Discovery Call Completed" stage within the Sales Pipeline.</p>
+                        <p className={s.p}>You can locate this stage by navigating to:</p>
+                        <p className="font-medium text-gray-900 bg-gray-50 p-2 rounded inline-block text-sm">Opportunities &rarr; Sales Pipeline &rarr; Discovery Call Completed</p>
+                        <p className={s.p}>This stage is accessible on both desktop and mobile versions of the CRM.</p>
                     </div>
 
-                    <div className="grid grid-cols-1 gap-8">
-                        {/* Option A */}
-                        <div className="bg-gray-50 border border-gray-200 rounded-xl p-8 hover:bg-gray-100 transition-colors">
-                            <h3 className="text-xl font-bold text-gray-800 mb-2">Option A: No Show</h3>
-                            <p className="text-gray-600">Select "No Show". Automation will follow up to reschedule.</p>
-                        </div>
+                    <hr className="border-gray-100" />
 
-                        {/* Option B */}
-                        <div className="border-2 border-blue-100 bg-white rounded-xl p-8 shadow-sm">
-                            <h3 className="text-xl font-bold text-blue-900 mb-6 border-b border-blue-50 pb-4">Option B: Showed</h3>
-                            <div className="space-y-4">
-                                <div className="flex items-center justify-between p-4 bg-red-50 rounded-lg border border-red-100">
-                                    <div>
-                                        <span className="font-bold text-red-900 block text-lg">1. Uninterested / Disqualified</span>
-                                        <span className="text-sm text-red-700">Move to "Lost"</span>
-                                    </div>
-                                    <div className="h-4 w-4 rounded-full bg-red-500"></div>
-                                </div>
+                    {/* 2. Definition of This Stage */}
+                    <div className="space-y-3">
+                        <h4 className={s.sectionTitle}>2. Definition of This Stage</h4>
+                        <p className={s.p}>An opportunity automatically moves to Discovery Call Completed once a scheduled Discovery Call has been marked complete in the CRM.</p>
+                        <p className={s.p}>This stage serves two primary purposes:</p>
+                        <ul className={s.bulletList}>
+                            <li>To confirm the call outcome has been properly recorded.</li>
+                            <li>To determine and execute the correct next step in the sales process.</li>
+                        </ul>
+                        <p className={s.p}>No opportunity should remain in this stage without a clearly defined next action.</p>
+                    </div>
 
-                                <div className="flex items-center justify-between p-4 bg-yellow-50 rounded-lg border border-yellow-100">
-                                    <div>
-                                        <span className="font-bold text-yellow-900 block text-lg">2. Good Conversation (No Booking)</span>
-                                        <span className="text-sm text-yellow-700">Move to "Not Booked Follow Ups"</span>
-                                    </div>
-                                    <div className="h-4 w-4 rounded-full bg-yellow-500"></div>
-                                </div>
+                    <hr className="border-gray-100" />
 
-                                <div className="flex items-center justify-between p-4 bg-green-50 rounded-lg border border-green-100 shadow-sm transform scale-[1.02]">
-                                    <div>
-                                        <span className="font-bold text-green-900 block text-lg">3. In-Person Meeting Booked</span>
-                                        <span className="text-sm text-green-700">Schedule Meeting &rarr; Moves to "Booked" Stage</span>
-                                    </div>
-                                    <div className="h-4 w-4 rounded-full bg-green-500"></div>
-                                </div>
+                    {/* 3. Required Immediate Action: Update Call Outcome */}
+                    <div className="space-y-3">
+                        <h4 className={s.sectionTitle}>3. Required Immediate Action: Update Call Outcome</h4>
+                        <p className={s.p}>Immediately after the scheduled call time, you must update the call status in the Calendar.</p>
+                        <p className={s.p}>Navigate to:</p>
+                        <p className="font-medium text-gray-900 bg-gray-50 p-2 rounded inline-block text-sm">Calendars &rarr; Appointments &rarr; Select the Appointment</p>
+                        <p className={s.p}>You must select one of the following outcomes:</p>
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-2">
+                            <div className="bg-green-50 border border-green-100 rounded-xl p-4 text-center">
+                                <p className="font-bold text-green-800 text-lg">Showed</p>
+                            </div>
+                            <div className="bg-red-50 border border-red-100 rounded-xl p-4 text-center">
+                                <p className="font-bold text-red-800 text-lg">No Show</p>
                             </div>
                         </div>
+                        <div className="bg-red-50 border-l-4 border-red-500 p-4 mt-3">
+                            <p className="font-bold text-red-900">Updating this field is mandatory.</p>
+                        </div>
+                        <p className={s.p}>Failure to update the appointment outcome will disrupt reporting, automation, and follow-up sequences.</p>
+                    </div>
+
+                    <hr className="border-gray-100" />
+
+                    {/* 4. If the Prospect Is a No Show */}
+                    <div className="space-y-3">
+                        <h4 className={s.sectionTitle}>4. If the Prospect Is a No Show</h4>
+                        <p className={s.p}>If the prospect does not attend the call at the scheduled time or does not answer:</p>
+                        <ul className={s.bulletList}>
+                            <li>Mark the appointment outcome as <strong>No Show</strong>.</li>
+                            <li>Ensure the opportunity remains in the appropriate follow-up path.</li>
+                        </ul>
+                        <p className={s.p}>An automated follow-up sequence will initiate to:</p>
+                        <ul className={s.bulletList}>
+                            <li>Re-engage the prospect</li>
+                            <li>Encourage rescheduling</li>
+                            <li>Provide booking options</li>
+                        </ul>
+                        <p className={s.p}>Do not manually override this process unless directed.</p>
+                        <p className={s.p}>Continue monitoring engagement and rescheduling activity.</p>
+                    </div>
+
+                    <hr className="border-gray-100" />
+
+                    {/* 5. If the Prospect Showed */}
+                    <div className="space-y-3">
+                        <h4 className={s.sectionTitle}>5. If the Prospect Showed</h4>
+                        <p className={s.p}>If the prospect attended the Discovery Call, mark the appointment as <strong>Showed</strong> and determine the correct next-stage outcome.</p>
+                        <p className={s.p}>There are only four acceptable next steps:</p>
+
+                        {/* A. Lost – Uninterested */}
+                        <div className="bg-red-50 border border-red-100 rounded-xl p-6 mt-4">
+                            <h5 className="font-bold text-red-800 text-lg mb-2">A. Lost – Uninterested</h5>
+                            <p className="text-sm text-red-700 mb-2">If the prospect clearly states they are not interested in moving forward:</p>
+                            <ul className="list-disc list-inside text-sm text-red-700 space-y-1">
+                                <li>Move the opportunity to <strong>Lost</strong>.</li>
+                                <li>Select the reason: <strong>Uninterested</strong>.</li>
+                                <li>Add summary notes explaining the outcome.</li>
+                            </ul>
+                        </div>
+
+                        {/* B. Lost – Disqualified */}
+                        <div className="bg-red-50 border border-red-100 rounded-xl p-6">
+                            <h5 className="font-bold text-red-800 text-lg mb-2">B. Lost – Disqualified</h5>
+                            <p className="text-sm text-red-700 mb-2">If, during the Discovery Call, it becomes clear that the prospect does not meet qualification standards:</p>
+                            <ul className="list-disc list-inside text-sm text-red-700 space-y-1">
+                                <li>Move the opportunity to <strong>Lost</strong>.</li>
+                                <li>Select the reason: <strong>Disqualified</strong>.</li>
+                                <li>Add summary notes explaining why.</li>
+                            </ul>
+                            <p className="text-xs text-red-600 mt-2 italic">Accurate categorization ensures reliable reporting and marketing feedback.</p>
+                        </div>
+
+                        {/* C. Not Booked Follow Ups */}
+                        <div className="bg-yellow-50 border border-yellow-100 rounded-xl p-6">
+                            <h5 className="font-bold text-yellow-800 text-lg mb-2">C. Not Booked Follow Ups</h5>
+                            <p className="text-sm text-yellow-700 mb-2">If the Discovery Call was positive but you were unable to secure an in-person meeting:</p>
+                            <ul className="list-disc list-inside text-sm text-yellow-700 space-y-1">
+                                <li>Move the opportunity to <strong>Not Booked Follow Ups</strong>.</li>
+                            </ul>
+                            <p className="text-sm text-yellow-700 mt-2">This stage is used when:</p>
+                            <ul className="list-disc list-inside text-sm text-yellow-700 space-y-1">
+                                <li>The conversation went well.</li>
+                                <li>The prospect expressed interest.</li>
+                                <li>An in-person meeting was not scheduled during the call.</li>
+                            </ul>
+                            <p className="text-sm text-yellow-700 mt-2">Add detailed notes summarizing:</p>
+                            <ul className="list-disc list-inside text-sm text-yellow-700 space-y-1">
+                                <li>Objections</li>
+                                <li>Concerns</li>
+                                <li>Timeline hesitations</li>
+                                <li>Agreed next steps</li>
+                            </ul>
+                            <p className="text-xs text-yellow-600 mt-2 italic">This stage requires structured follow-up.</p>
+                        </div>
+
+                        {/* D. In-Person Meeting Booked */}
+                        <div className="bg-green-50 border border-green-100 rounded-xl p-6">
+                            <h5 className="font-bold text-green-800 text-lg mb-2">D. In-Person Meeting Booked</h5>
+                            <p className="text-sm text-green-700 mb-2">If an in-person meeting was scheduled during the Discovery Call:</p>
+                            <ul className="list-disc list-inside text-sm text-green-700 space-y-1">
+                                <li>Schedule the appointment in the CRM.</li>
+                                <li>Once scheduled, the opportunity will automatically move to <strong>In-Person Meeting Booked</strong>.</li>
+                            </ul>
+                            <p className="text-xs text-green-600 mt-2 italic">No manual stage movement is required.</p>
+                        </div>
+                    </div>
+
+                    <hr className="border-gray-100" />
+
+                    {/* 6. Documentation Requirements */}
+                    <div className="space-y-3">
+                        <h4 className={s.sectionTitle}>6. Documentation Requirements</h4>
+                        <p className={s.p}>After every Discovery Call (Showed only):</p>
+                        <ul className={s.bulletList}>
+                            <li>Review the call recording, transcript, and AI summary in the Notes section of the opportunity.</li>
+                            <li>Add any additional context or clarifications not captured automatically.</li>
+                            <li>Ensure all required CRM fields are completed.</li>
+                        </ul>
+                        <p className={s.p}>Documentation ensures:</p>
+                        <ul className={s.bulletList}>
+                            <li>Coaching visibility</li>
+                            <li>Accurate forecasting</li>
+                            <li>Process integrity</li>
+                        </ul>
+                    </div>
+
+                    <hr className="border-gray-100" />
+
+                    {/* 7. Completion Criteria */}
+                    <div className="space-y-3">
+                        <h4 className={s.sectionTitle}>7. Completion Criteria</h4>
+                        <p className={s.p}>An opportunity should not remain in the Discovery Call Completed stage without:</p>
+                        <ul className={s.bulletList}>
+                            <li>Appointment outcome updated, and</li>
+                            <li>A clearly defined next pipeline stage selected.</li>
+                        </ul>
+                        <p className={s.p}>This stage is a transition checkpoint, not a holding area.</p>
+                    </div>
+
+                    <hr className="border-gray-100" />
+
+                    {/* 8. Accountability */}
+                    <div className="space-y-3">
+                        <h4 className={s.sectionTitle}>8. Accountability</h4>
+                        <p className={s.p}>This stage directly impacts:</p>
+                        <ul className={s.bulletList}>
+                            <li>Close rate accuracy</li>
+                            <li>Forecast reliability</li>
+                            <li>Follow-up effectiveness</li>
+                            <li>Marketing feedback loops</li>
+                        </ul>
+                        <p className={s.p}>Failure to properly categorize outcomes creates pipeline distortion and unreliable reporting.</p>
+                        <p className={s.p}>Strict adherence to this procedure is required.</p>
                     </div>
                 </div>
             </section>
