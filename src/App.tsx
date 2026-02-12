@@ -854,385 +854,265 @@ const SalesProcessTree = ({ onSelectSOP }: { onSelectSOP: (sopTitle: string) => 
 
 // Custom View for Discovery Script
 // Custom View for Discovery Script
+// Custom View for Discovery Script
 const DiscoveryScriptView = () => {
-    const [showGuide, setShowGuide] = useState(true);
-
-    // Strict Standard Styles
+    // Standard Styles for the "Document" look
     const s = {
-        card: "bg-white border border-gray-200 rounded-xl p-8 shadow-sm space-y-8",
-        spoken: "text-lg font-medium text-gray-900 leading-relaxed",
-        helper: "text-sm text-gray-500 mt-2 italic",
-        subHeader: "text-xs font-bold text-gray-400 uppercase tracking-wider mb-2 block",
-        callout: "bg-gray-50 p-6 rounded-lg border border-gray-100"
+        container: "space-y-8 font-sans text-gray-800 pb-20 max-w-4xl mx-auto",
+        paper: "bg-white border border-gray-200 rounded-xl shadow-sm overflow-hidden",
+        header: "p-6 bg-gray-50 border-b border-gray-200",
+        headerTitle: "font-bold text-gray-900 flex items-center",
+        body: "p-8 md:p-12 max-w-none space-y-8",
+        sectionTitle: "text-xl font-bold text-indigo-700",
+        p: "text-base text-gray-800 leading-relaxed",
+        list: "list-decimal list-inside space-y-2 text-base text-gray-800 leading-relaxed ml-2",
+        bulletList: "list-disc list-inside space-y-2 text-base text-gray-800 leading-relaxed ml-2",
+        callout: "bg-gray-50 p-4 border-l-4 border-gray-300 text-gray-700 italic"
     };
 
     return (
-        <div className="space-y-12 font-sans text-gray-800 pb-20 max-w-4xl mx-auto">
+        <div className={s.container}>
 
-            {/* Header / Toggle */}
-            <div className="flex items-center justify-between border-b border-gray-200 pb-6">
-                <div>
-                    <h2 className="text-3xl font-bold text-gray-900">Discovery Call</h2>
-                    <p className="text-gray-500 mt-1">Standard Operating Procedure & Script</p>
-                </div>
-                <button
-                    onClick={() => setShowGuide(!showGuide)}
-                    className="flex items-center space-x-2 text-sm font-medium text-indigo-600 hover:text-indigo-800 transition-colors"
-                >
-                    {showGuide ? <Search size={16} /> : <FileText size={16} />}
-                    <span>{showGuide ? 'Hide Guidelines' : 'Show Guidelines'}</span>
-                </button>
-            </div>
-
-            {/* Part 1: SOP / Guidelines (Collapsible) */}
-            {showGuide && (
-                <section className="bg-white border border-gray-200 rounded-xl shadow-sm overflow-hidden animate-in fade-in slide-in-from-top-2">
-                    <div className="p-6 bg-gray-50 border-b border-gray-200">
-                        <h3 className="font-bold text-gray-900 flex items-center">
-                            <FileText size={18} className="mr-2 text-gray-500" />
-                            Standard Operating Procedure
-                        </h3>
-                    </div>
-
-                    {/* Document Body - Simple Single Column */}
-                    <div className="p-8 md:p-12 max-w-none space-y-8">
-
-                        {/* 1. When To Conduct */}
-                        <div className="space-y-3">
-                            <h4 className="text-xl font-bold text-indigo-700">When To Conduct Discovery Calls:</h4>
-                            <p className="text-base text-gray-800 leading-relaxed">
-                                Discovery Calls are only for qualified leads who’ve already completed a Qualification Call and meet the basic criteria: they’re in your service area, own or are purchasing land, have a realistic timeline and budget, and fit your niche.
-                            </p>
-                            <p className="text-base text-gray-800 leading-relaxed">
-                                This is the salesperson’s call — it’s meant for the business owner, sales rep, or whoever will be making the actual sale. The goal here isn’t to “close” the deal yet, but to collect deep insight into the client’s situation, motivations, pain points, and goals. You’re building emotional context that will later drive your in-person presentation or proposal.
-                            </p>
-                            <p className="text-base text-gray-800 leading-relaxed">
-                                The main focus is to understand the gap between where they are now and where they want to be — and to make them feel that gap.
-                            </p>
-                        </div>
-
-                        {/* 2. How To Prepare */}
-                        <div className="space-y-3">
-                            <h4 className="text-xl font-bold text-indigo-700">How To Prepare For Discovery Calls:</h4>
-                            <p className="text-base text-gray-800 leading-relaxed">
-                                Before each Discovery Call, review all notes from the Qualification Call and CRM record. Know their land details, project type, and any prior communications so you can skip the surface-level questions and sound informed.
-                            </p>
-                            <p className="text-base text-gray-800 leading-relaxed">
-                                Have their form submission or call notes open during the conversation. You should be able to reference past answers naturally ("Last time you mentioned you were still finalizing the land purchase — how's that going?").
-                            </p>
-                            <p className="text-base text-gray-800 leading-relaxed">
-                                Always take this call in a quiet, private setting where you can focus 100%. These conversations often reveal financial details, family plans, and emotional motivations — so you need to listen carefully and take notes.
-                            </p>
-                        </div>
-
-                        {/* 3. Purpose */}
-                        <div className="space-y-3">
-                            <h4 className="text-xl font-bold text-indigo-700">Purpose Of The Discovery Call:</h4>
-                            <p className="text-base text-gray-800 leading-relaxed">
-                                The Discovery Call has two purposes:
-                            </p>
-                            <ol className="list-decimal list-inside space-y-2 text-base text-gray-800 leading-relaxed ml-2">
-                                <li>
-                                    <strong>Data Collection</strong> — to understand their situation, goals, obstacles, and timeline so you can prepare an informed proposal or in-person meeting.
-                                </li>
-                                <li>
-                                    <strong>Emotional Discovery</strong> — to help them surface and relive the frustrations or fears behind their current situation, then visualize how much better life will be when they solve it with your help.
-                                </li>
-                            </ol>
-                            <p className="text-base text-gray-800 leading-relaxed">
-                                Think of this call as connecting logic to emotion — you’re finding both the “reason” and the “feeling” behind their decision to build so that you can provide the best in-person meeting possible and make the sale.
-                            </p>
-                        </div>
-
-                        {/* 4. How To Conduct */}
-                        <div className="space-y-3">
-                            <h4 className="text-xl font-bold text-indigo-700">How To Conduct:</h4>
-                            <p className="text-base text-gray-800 leading-relaxed">
-                                Start with casual rapport and tone-setting — you want them relaxed and conversational.
-                            </p>
-                            <ol className="list-decimal list-inside space-y-2 text-base text-gray-800 leading-relaxed ml-2">
-                                <li><strong>Connection Questions:</strong> Warm up, set context, reinforce authority. Confirm alignment and if spouse is present.</li>
-                                <li><strong>Situation Questions:</strong> Gather hard data. Establish facts and uncover the "gap". Tone: Curious and slightly skeptical.</li>
-                                <li><strong>Problem Awareness:</strong> Sales psychology. Help them feel the problem. Trigger self-reflection.</li>
-                                <li><strong>Booking The Meeting:</strong> Invite serious prospects to the in-person meeting. Book on the spot. Send Pre-Meeting Page.</li>
-                            </ol>
-                            <p className="text-base text-gray-800 leading-relaxed font-bold text-red-700 mt-2">
-                                WARNING: NEVER UNDER ANY CIRCUMSTANCES should you give into the temptation to “just send them an email with more information”. You will lose the sale 99% of the time.
-                            </p>
-                        </div>
-
-                        {/* 5. Post-Call */}
-                        <div className="space-y-3">
-                            <h4 className="text-xl font-bold text-indigo-700">What To Do After:</h4>
-                            <ul className="list-disc list-inside space-y-2 text-base text-gray-800 leading-relaxed ml-2">
-                                <li><strong>Log Detailed Notes:</strong> Log every frustration, goal, and quote-worthy line in your CRM.</li>
-                                <li><strong>Confirm Meeting:</strong> Send a quick text/email within 10 mins to lock it in.</li>
-                                <li><strong>Follow Up:</strong> If they didn't commit, follow up within 24 hours.</li>
-                            </ul>
-                        </div>
-                    </div>
-                </section>
-            )}
-
-            {/* Part 2: The Script - UNIFIED VISUAL STYLE */}
-            <div className="flex items-center justify-center py-6">
-                <div className="h-px bg-gray-200 flex-1"></div>
-                <span className="px-4 text-xs font-bold text-gray-400 uppercase tracking-widest bg-saas-bg">Discovery Call Script</span>
-                <div className="h-px bg-gray-200 flex-1"></div>
-            </div>
-
-            {/* 1. Connection Questions */}
-            <section className="space-y-4">
-                <div className="flex items-center gap-3">
-                    <div className="w-8 h-8 rounded-full bg-blue-600 text-white flex items-center justify-center font-bold shadow-md border-2 border-white">1</div>
-                    <h2 className="text-2xl font-bold text-gray-900">Connection Questions</h2>
+            {/* Part 1: SOP / Guidelines */}
+            <section className={s.paper}>
+                <div className={s.header}>
+                    <h3 className={s.headerTitle}>
+                        <FileText size={18} className="mr-2 text-gray-500" />
+                        Standard Operating Procedure
+                    </h3>
                 </div>
 
-                <div className={s.card}>
-                    <div>
-                        <p className={s.spoken}>
-                            "Hey <strong>(Prospect First Name)</strong>, it’s <strong>(Your First Name)</strong>… <strong>(Your Full Name)</strong> with <strong>(Business Name)</strong>… It looks like you talked to <strong>(Team Member Name)</strong> and booked a time with me to explore how we might be able to help you with your custom home idea.. does that sound right?"
+                {/* Document Body */}
+                <div className={s.body}>
+
+                    {/* 1. When To Conduct */}
+                    <div className="space-y-3">
+                        <h4 className={s.sectionTitle}>When To Conduct Discovery Calls:</h4>
+                        <p className={s.p}>
+                            Discovery Calls are only for qualified leads who’ve already completed a Qualification Call and meet the basic criteria: they’re in your service area, own or are purchasing land, have a realistic timeline and budget, and fit your niche.
                         </p>
-                        <p className={s.helper}>Tone: Curious / Concerned</p>
+                        <p className={s.p}>
+                            This is the salesperson’s call — it’s meant for the business owner, sales rep, or whoever will be making the actual sale. The goal here isn’t to “close” the deal yet, but to collect deep insight into the client’s situation, motivations, pain points, and goals. You’re building emotional context that will later drive your in-person presentation or proposal.
+                        </p>
                     </div>
 
-                    <div className="pt-4 border-t border-gray-100">
-                        <span className={s.subHeader}>Decision Maker Check</span>
-                        {/* Decision Logic - Kept as Split for Clarity */}
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-4">
-                            <div className="bg-green-50/50 border border-green-200 rounded-lg p-5">
-                                <div className="text-xs font-bold text-green-700 uppercase mb-2">Decision Makers Present</div>
-                                <div className="text-green-900 font-bold flex items-center gap-2">
-                                    <CheckSquare size={16} /> Continue on &darr;
-                                </div>
-                            </div>
+                    {/* 2. How To Prepare */}
+                    <div className="space-y-3">
+                        <h4 className={s.sectionTitle}>How To Prepare For Discovery Calls:</h4>
+                        <p className={s.p}>
+                            Before each Discovery Call, review all notes from the Qualification Call and CRM record. Know their land details, project type, and any prior communications so you can skip the surface-level questions and sound informed.
+                        </p>
+                        <p className={s.p}>
+                            Have their form submission or call notes open during the conversation. You should be able to reference past answers naturally.
+                        </p>
+                        <p className={s.p}>
+                            Always take this call in a quiet, private setting where you can focus 100%. These conversations often reveal financial details, family plans, and emotional motivations — so you need to listen carefully and take notes.
+                        </p>
+                    </div>
 
-                            <div className="bg-yellow-50/50 border border-yellow-200 rounded-lg p-5">
-                                <div className="text-xs font-bold text-yellow-700 uppercase mb-2">Missing Decision Maker</div>
-                                <p className="text-yellow-900 text-sm font-medium italic mb-3">
-                                    "Before we get started, <strong>(Name)</strong> mentioned <strong>(Partner)</strong>. Are they able to make it?"
-                                </p>
-                                <div className="space-y-2 text-sm">
-                                    <div className="flex items-start gap-2">
-                                        <span className="font-bold text-gray-500 w-8">Yes:</span>
-                                        <span className="text-green-700 font-bold">Great, continue &darr;</span>
-                                    </div>
-                                    <div className="flex items-start gap-2">
-                                        <span className="font-bold text-gray-500 w-8">No:</span>
-                                        <div className="flex-1">
-                                            <p className="text-gray-800 italic mb-1">
-                                                "Ok no problem. I'd recommend we reschedule to a time that works for both of you so we're all on the same page. When are you both 100% available?"
-                                            </p>
-                                            <span className="text-red-600 font-bold text-xs uppercase bg-red-50 px-2 py-1 rounded inline-block">End Call ✗</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                    {/* 3. Purpose */}
+                    <div className="space-y-3">
+                        <h4 className={s.sectionTitle}>Purpose Of The Discovery Call:</h4>
+                        <p className={s.p}>
+                            The Discovery Call has two purposes:
+                        </p>
+                        <ol className={s.list}>
+                            <li>
+                                <strong>Data Collection</strong> — to understand their situation, goals, obstacles, and timeline so you can prepare an informed proposal or in-person meeting.
+                            </li>
+                            <li>
+                                <strong>Emotional Discovery</strong> — to help them surface and relive the frustrations or fears behind their current situation, then visualize how much better life will be when they solve it with your help.
+                            </li>
+                        </ol>
+                    </div>
+
+                    {/* 4. How To Conduct */}
+                    <div className="space-y-3">
+                        <h4 className={s.sectionTitle}>How To Conduct:</h4>
+                        <p className={s.p}>
+                            Start with casual rapport and tone-setting — you want them relaxed and conversational.
+                        </p>
+                        <ol className={s.list}>
+                            <li><strong>Connection Questions:</strong> Warm up, set context, reinforce authority. Confirm alignment and if spouse is present.</li>
+                            <li><strong>Situation Questions:</strong> Gather hard data. Establish facts and uncover the "gap". Tone: Curious and slightly skeptical.</li>
+                            <li><strong>Problem Awareness:</strong> Sales psychology. Help them feel the problem. Trigger self-reflection.</li>
+                            <li><strong>Booking The Meeting:</strong> Invite serious prospects to the in-person meeting. Book on the spot. Send Pre-Meeting Page.</li>
+                        </ol>
+                        <p className="text-base text-red-700 font-bold mt-2">
+                            WARNING: NEVER give into the temptation to “just send them an email”. You will lose the sale 99% of the time.
+                        </p>
+                    </div>
+
+                    {/* 5. Post-Call */}
+                    <div className="space-y-3">
+                        <h4 className={s.sectionTitle}>What To Do After:</h4>
+                        <ul className={s.bulletList}>
+                            <li><strong>Log Detailed Notes:</strong> Log every frustration, goal, and quote-worthy line in your CRM.</li>
+                            <li><strong>Confirm Meeting:</strong> Send a quick text/email within 10 mins to lock it in.</li>
+                            <li><strong>Follow Up:</strong> If they didn't commit, follow up within 24 hours.</li>
+                        </ul>
                     </div>
                 </div>
             </section>
 
-            {/* 2. Opening & Frame */}
-            <section className="space-y-4">
-                <div className="flex items-center gap-3">
-                    <div className="w-8 h-8 rounded-full bg-blue-600 text-white flex items-center justify-center font-bold shadow-md border-2 border-white">2</div>
-                    <h2 className="text-2xl font-bold text-gray-900">Opening & Frame</h2>
+            {/* Part 2: The Script */}
+            <section className={s.paper}>
+                <div className={s.header}>
+                    <h3 className={s.headerTitle}>
+                        <MessageSquare size={18} className="mr-2 text-gray-500" />
+                        Discovery Call Script
+                    </h3>
                 </div>
 
-                <div className={s.card}>
-                    <div>
-                        <p className={s.spoken}>
-                            "What really stood out to you that caused you to want to reach out today?"
+                <div className={s.body}>
+
+                    {/* 1. Connection Questions */}
+                    <div className="space-y-3">
+                        <h4 className={s.sectionTitle}>1. Connection Questions</h4>
+                        <p className={s.p}>
+                            "Hey <strong>(Prospect First Name)</strong>, it’s <strong>(Your First Name)</strong>… <strong>(Your Full Name)</strong> with <strong>(Business Name)</strong>… It looks like you talked to <strong>(Team Member Name)</strong> and booked a time with me to explore how we might be able to help you with your custom home idea.. does that sound right?"
                         </p>
-                        <p className={s.helper}>Tone: Curious / Engaging</p>
+                        <p className={s.callout}>
+                            Tone: Curious / Concerned
+                        </p>
+
+                        <p className={s.p}><strong>Decision Maker Check:</strong></p>
+                        <ul className={s.bulletList}>
+                            <li>
+                                <strong>All Decision Makers Present:</strong> Great, continue on.
+                            </li>
+                            <li>
+                                <strong>Missing A Decision Maker:</strong> "Before we get started, (Team Member) mentioned (Partner Name). Are they able to make it?"
+                            </li>
+                        </ul>
+                        <p className={s.p}>
+                            <em>If No:</em> "I'd recommend we reschedule to a time that works for both of you so we're all on the same page. When are you both 100% available?" -> <strong>End Call.</strong>
+                        </p>
                     </div>
 
-                    <div className="border-t border-gray-100 pt-6">
-                        <p className={s.spoken}>
+                    <hr className="border-gray-100" />
+
+                    {/* 2. Opening & Frame */}
+                    <div className="space-y-3">
+                        <h4 className={s.sectionTitle}>2. Opening & Frame</h4>
+                        <p className={s.p}>
+                            "What really stood out to you that caused you to want to reach out today?"
+                        </p>
+                        <p className={s.callout}>
+                            Tone: Curious / Engaging
+                        </p>
+                        <p className={s.p}>
                             "Oh ok… These first calls are pretty basic… It’s really more for us to understand where you’re at now… how far you’ve gotten in the process… compared to what you have in mind for your finished home … to see what the gap looks like... And then towards the end… if you feel like this… might be… what you’re looking for, and we think we can help, then we can talk about possible next steps. Would that be appropriate?"
                         </p>
                     </div>
 
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pt-2">
-                        <div className={s.callout}>
-                            <span className={s.subHeader}>Scenario: Status Frame</span>
-                            <p className={s.spoken}>
-                                "I’m not too sure if we can help you just yet … you might not even need us … I’d have to know a bit more about what you’re already doing for XYZ …"
-                            </p>
-                            <p className={s.helper}>&rarr; Ask Situation Question</p>
-                        </div>
-                        <div className={s.callout}>
-                            <span className={s.subHeader}>Scenario: Asked For Pricing</span>
-                            <p className={s.spoken}>
-                                "Ohhh yeah, totally… it really depends... Once we’ve gone through it a bit more… I can give you a ballpark range just so you know what’s realistic."
-                            </p>
-                            <p className={s.helper}>&rarr; Ask next question immediately</p>
-                        </div>
-                    </div>
-                </div>
-            </section>
+                    <hr className="border-gray-100" />
 
-            {/* 3. Situation Questions */}
-            <section className="space-y-4">
-                <div className="flex items-center gap-3">
-                    <div className="w-8 h-8 rounded-full bg-blue-600 text-white flex items-center justify-center font-bold shadow-md border-2 border-white">3</div>
-                    <h2 className="text-2xl font-bold text-gray-900">Situation Questions</h2>
-                </div>
-
-                <div className={s.card}>
-                    {/* Updated: Spoken text style for the intro */}
-                    <div className="border-l-4 border-gray-200 pl-4 py-1">
-                        <p className={s.spoken}>
+                    {/* 3. Situation Questions */}
+                    <div className="space-y-3">
+                        <h4 className={s.sectionTitle}>3. Situation Questions</h4>
+                        <p className={s.p}>
                             "So I know <strong>(Team Member Name)</strong> already went over some of the basics — things like your land, where you’re building, general timing — I won’t make you repeat all that again. What I’d love to understand though… is more about why you’re doing this because that’s really important to us here."
                         </p>
+
+                        <ul className="space-y-4 py-2">
+                            <li>
+                                <p className={s.p}>"So how long have you been thinking about building a home?"</p>
+                            </li>
+                            <li>
+                                <p className={s.p}>"Ok… and what made you decide you wanted to build rather than just buy something that’s already out there?"</p>
+                            </li>
+                            <li>
+                                <p className={s.p}>"And what have you really done so far in the process except for you know… buy land?"</p>
+                                <p className="text-gray-500 italic text-sm mt-1">"Just (whatever they mention)? Or anything else you’ve tried?"</p>
+                            </li>
+                            <li>
+                                <p className={s.p}>"Got it. And when you think about it… what’s the main goal behind this? Like… what’s the big picture for you? Is this more of a forever home, an investment, a lifestyle change?"</p>
+                            </li>
+                            <li>
+                                <p className={s.p}>"When you picture the home being finished… what would make you feel like… “Yeah… this was completely worth it”?"</p>
+                            </li>
+                        </ul>
                     </div>
 
-                    <div className="space-y-8 pt-4">
-                        <div>
-                            <p className={s.spoken}>"So how long have you been thinking about building a home?"</p>
-                            <p className={s.helper}>Tone: Curious</p>
-                        </div>
-                        <div className="border-t border-gray-100 pt-6">
-                            <p className={s.spoken}>"Ok… and what made you decide you wanted to build rather than just buy something that’s already out there?"</p>
-                            <p className={s.helper}>Tone: Neutral / Curious</p>
-                        </div>
-                        <div className="border-t border-gray-100 pt-6">
-                            <p className={s.spoken}>"And what have you really done so far in the process except for you know… buy land?"</p>
-                            <p className={`${s.spoken} mt-2`}>"Just (whatever they mention)? Or anything else you’ve tried so I have a bit more context?"</p>
-                            <p className={s.helper}>Tone: Curious / Skeptical</p>
-                        </div>
-                        <div className="border-t border-gray-100 pt-6">
-                            <p className={s.spoken}>"Got it. And when you think about it… what’s the main goal behind this? Like… what’s the big picture for you? Is this more of a forever home, an investment, a lifestyle change?"</p>
-                        </div>
-                        <div className="border-t border-gray-100 pt-6">
-                            <p className={s.spoken}>"When you picture the home being finished… what would make you feel like… “Yeah… this was completely worth it”?"</p>
-                        </div>
-                    </div>
-                </div>
-            </section>
+                    <hr className="border-gray-100" />
 
-            {/* 4. Probing / Clarifying Questions */}
-            <section className="space-y-4">
-                <div className="flex items-center gap-3">
-                    <div className="w-8 h-8 rounded-full bg-blue-600 text-white flex items-center justify-center font-bold shadow-md border-2 border-white">4</div>
-                    <h2 className="text-2xl font-bold text-gray-900">Probing / Clarifying Questions</h2>
-                </div>
+                    {/* 4. Probing / Clarifying */}
+                    <div className="space-y-6">
+                        <h4 className={s.sectionTitle}>4. Probing / Clarifying Questions</h4>
 
-                {/* UNIFIED SINGLE CARD for Probing */}
-                <div className={s.card}>
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
                         <div>
-                            <span className={s.subHeader}>Digging Deeper</span>
-                            <ul className="space-y-4">
-                                <li className={s.spoken}>"How long has that been going on for?"</li>
-                                <li className={s.spoken}>"Has that had an impact on you?"</li>
-                                <li className={s.spoken}>"Well, in what way?"</li>
-                                <li className={s.spoken}>"What bothers you the most about this?"</li>
-                                <li className={s.spoken}>"Okay, well, why now though?"</li>
-                                <li className={s.spoken}>"Why is that so important to you now… why not just push it down the road?"</li>
-                                <li className={`${s.spoken} text-blue-600`}>"(Repeat back emotional words)?"</li>
+                            <strong className="block mb-2 text-gray-900">Digging Deeper:</strong>
+                            <ul className={s.bulletList}>
+                                <li>"How long has that been going on for?"</li>
+                                <li>"Has that had an impact on you?"</li>
+                                <li>"Well, in what way?"</li>
+                                <li>"What bothers you the most about this?"</li>
+                                <li>"Okay, well, why now though?"</li>
+                                <li>"Why is that so important to you now… why not just push it down the road?"</li>
                             </ul>
                         </div>
+
                         <div>
-                            <span className={s.subHeader}>Understanding Nuance</span>
-                            <ul className="space-y-4">
-                                <li className={s.spoken}>"Can I ask why you said (blank)?"</li>
-                                <li className={s.spoken}>"Can I ask what you meant when you said (blank)?"</li>
-                                <li className={s.spoken}>"How do you mean by (blank)?"</li>
-                                <li className={s.spoken}>"Can you walk me through how (blank) happened exactly?"</li>
-                                <li className={s.spoken}>"When you say (blank), what did you mean by that exactly?"</li>
-                                <li className={s.spoken}>"Can I ask why you want (blank) though?"</li>
-                                <li className={s.spoken}>"How did you feel when (blank) happened?"</li>
-                                <li className={s.spoken}>"What’s causing (blank) to happen?"</li>
-                                <li className={s.spoken}>"What’s prompting you to look into possibly changing (blank) though?"</li>
-                                <li className={s.spoken}>"How does (blank) feel about (blank)?"</li>
+                            <strong className="block mb-2 text-gray-900">Understanding Nuance:</strong>
+                            <ul className={s.bulletList}>
+                                <li>"Can I ask why you said (blank)?"</li>
+                                <li>"Can I ask what you meant when you said (blank)?"</li>
+                                <li>"How do you mean by (blank)?"</li>
+                                <li>"Can you walk me through how (blank) happened exactly?"</li>
+                                <li>"When you say (blank), what did you mean by that exactly?"</li>
+                                <li>"How did you feel when (blank) happened?"</li>
                             </ul>
                         </div>
                     </div>
-                </div>
-            </section>
 
-            {/* 5. Problem Awareness */}
-            <section className="space-y-4">
-                <div className="flex items-center gap-3">
-                    <div className="w-8 h-8 rounded-full bg-blue-600 text-white flex items-center justify-center font-bold shadow-md border-2 border-white">5</div>
-                    <h2 className="text-2xl font-bold text-gray-900">Problem Awareness Questions</h2>
-                </div>
+                    <hr className="border-gray-100" />
 
-                <div className={s.card}>
-                    <div>
-                        <p className={s.spoken}>
+                    {/* 5. Problem Awareness */}
+                    <div className="space-y-3">
+                        <h4 className={s.sectionTitle}>5. Problem Awareness Questions</h4>
+                        <p className={s.p}>
                             "Ok so, besides (Insert any problems you’re aware of if applicable), from what you’ve told me about your project so far (insert situation), which seems like a fairly decent starting point… but if you don’t mind me asking though… are you… 100%... satisfied with how things are progressing so far?"
                         </p>
-                        <p className={s.helper}>Tone: Curious / Slightly Skeptical</p>
+                        <ul className="space-y-4 py-2">
+                            <li><p className={s.p}>"Why haven’t you actually (blank) yet?"</p></li>
+                            <li><p className={s.p}>"So what is it do you think about (blank) that’s causing you to not hit, say (ideal outcome)?"</p></li>
+                            <li><p className={s.p}>"Just so I can understand the rationale behind why you might be looking, besides just wanting to build your dream home… because everybody says that… what's the main reason you’re looking for outside help rather than (what they’re already doing)?"</p></li>
+                        </ul>
                     </div>
-                    <div className="border-t border-gray-100 pt-6">
-                        <p className={s.spoken}>
-                            "Why haven’t you actually (blank) yet?"
+
+                    <hr className="border-gray-100" />
+
+                    {/* 6. Book The Meeting */}
+                    <div className="space-y-3">
+                        <h4 className={s.sectionTitle}>6. Book The In-Person Meeting</h4>
+                        <p className={s.p}>
+                            "Based on what you’ve shared with me so far … what we do here could work for you …"
                         </p>
-                        <p className={s.helper}>Tone: Confused / Skeptical</p>
-                    </div>
-                    <div className="border-t border-gray-100 pt-6">
-                        <p className={s.spoken}>
-                            "So what is it do you think about (blank) that’s causing you to not hit, say (ideal outcome)?"
+                        <p className={s.p}>
+                            "What I can do from here if you’d like … is let you (and your partner/spouse if applicable) book a more formal meeting with me at my office… over the next few days depending on our availability … where we’d talk a bit more about what you might be looking for … and then some possible … next steps … would that help you?"
                         </p>
-                    </div>
-                    <div className="border-t border-gray-100 pt-6">
-                        <p className={s.spoken}>
-                            "Just so I can understand the rationale behind why you might be looking, besides just wanting to build your dream home… because everybody says that… what's the main reason you’re looking for outside help rather than (what they’re already doing or an alternative)?"
+                        <p className={s.p}>
+                            "Ok, I’m pulling up my calendar now to see what times I may have available for you. Does tomorrow (morning/ afternoon) work for you?"
                         </p>
-                    </div>
-                </div>
-            </section>
 
-            {/* 6. Book The Meeting */}
-            <section className="space-y-4">
-                <div className="flex items-center gap-3">
-                    <div className="w-8 h-8 rounded-full bg-blue-600 text-white flex items-center justify-center font-bold shadow-md border-2 border-white">6</div>
-                    <h2 className="text-2xl font-bold text-gray-900">Book The In-Person Meeting</h2>
-                </div>
-
-                <div className={s.card}>
-                    <div className="space-y-2">
-                        <p className={s.spoken}>"Based on what you’ve shared with me so far … what we do here could work for you …"</p>
-                        <p className={s.spoken}>"What I can do from here if you’d like … is let you (and your partner/spouse if applicable) book a more formal meeting with me at my office… over the next few days depending on our availability … where we’d talk a bit more about what you might be looking for … and then some possible … next steps … would that help you?"</p>
-                    </div>
-
-                    <div className="border-t border-gray-100 pt-6">
-                        <p className={s.spoken}>"Ok, I’m pulling up my calendar now to see what times I may have available for you. Does tomorrow (morning/ afternoon) work for you?"</p>
-
-                        <div className="flex items-center justify-center py-6">
-                            <div className="bg-blue-600 text-white px-8 py-3 rounded-full font-bold text-sm uppercase tracking-widest shadow-lg hover:shadow-xl transform hover:scale-105 transition-all cursor-default flex items-center gap-2">
-                                <CheckSquare size={18} /> Confirm Time & Book Meeting
-                            </div>
+                        <div className="bg-blue-50 border border-blue-100 p-4 rounded text-center my-4">
+                            <strong className="text-blue-900 block">ACTION: Confirm Time & Book Meeting</strong>
                         </div>
-                    </div>
 
-                    <div className="border-t border-gray-100 pt-6">
-                        <p className={s.spoken}>
+                        <p className={s.p}>
                             "Now just real quick… and I’m sure this isn’t you … however sometimes people ask us to help them with their project, we let them book some more time with us and then they don’t show up … you know those kinds of people … I’m sure that isn’t you … right?"
                         </p>
-                        <p className={s.helper}>Tone: Playful</p>
-                    </div>
-
-                    <div className="border-t border-gray-100 pt-6">
-                        <p className={s.spoken}>
-                            "Great… I also wanted to bring up real quick about our pre-meeting page. It has a couple different things to make sure you know everything that we do, so that during our meeting, we can focus more on how it could possibly help, rather than doing a boring lecture on our process. There’s a video on there, some frequently asked questions, and some projects we’ve done in the past."
+                        <p className={s.p}>
+                            "Great… I also wanted to bring up real quick about our pre-meeting page. It has a couple different things to make sure you know everything that we do... Would it help if I sent that page over to you?"
                         </p>
-                        <p className={`${s.spoken} mt-4`}>
-                            "Would it help if I sent that page over to you?"
-                        </p>
-                    </div>
-
-                    <div className="border-t border-gray-100 pt-6 text-center">
-                        <p className="text-xl font-bold text-blue-600">
+                        <p className={s.p}>
                             "Awesome, I’ll ask you about it at our meeting at (Time and Date of Sales Call). Anything else for me before I go?"
                         </p>
                     </div>
+
                 </div>
             </section>
-
         </div>
     );
 };
