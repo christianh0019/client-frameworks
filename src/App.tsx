@@ -175,6 +175,8 @@ const SOPDetail = ({ sop, onBack, onSOPClick }: { sop: SOP, onBack: () => void, 
                                     return <HandlingInPersonMeetingBookedView />;
                                 case "Handling In-Person Meeting Completed Stage":
                                     return <HandlingInPersonMeetingCompletedView />;
+                                case "Handling Not Closed Follow Ups Stage":
+                                    return <HandlingNotClosedFollowUpsView />;
                                 default:
                                     return (
                                         <div className="prose prose-slate max-w-none prose-headings:font-bold prose-h1:text-3xl prose-h2:text-2xl prose-h3:text-xl prose-a:text-indigo-600 prose-a:no-underline hover:prose-a:underline prose-strong:font-bold prose-strong:text-slate-900 prose-li:marker:text-gray-400">
@@ -1779,6 +1781,280 @@ const HandlingInPersonMeetingCompletedView = () => {
                         </ul>
                         <p className={s.p}>Delays or unclear categorization at this stage distort forecasting and reduce operational clarity.</p>
                         <p className={s.p}>Strict adherence to this procedure is required.</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+    );
+};
+
+// 8. Handling Not Closed Follow Ups View
+const HandlingNotClosedFollowUpsView = () => {
+    // Standard Styles
+    const s = {
+        container: "space-y-8 font-sans text-gray-800 pb-20 max-w-4xl mx-auto",
+        paper: "bg-white border border-gray-200 rounded-xl shadow-sm overflow-hidden",
+        header: "p-6 bg-gray-50 border-b border-gray-200",
+        headerTitle: "font-bold text-gray-900 flex items-center",
+        body: "p-8 md:p-12 max-w-none space-y-8",
+        sectionTitle: "text-xl font-bold text-indigo-700",
+        p: "text-base text-gray-800 leading-relaxed",
+        list: "list-decimal list-inside space-y-2 text-base text-gray-800 leading-relaxed ml-2",
+        bulletList: "list-disc list-inside space-y-2 text-base text-gray-800 leading-relaxed ml-2",
+        callout: "bg-gray-50 p-4 border-l-4 border-gray-300 text-gray-700 italic"
+    };
+
+    return (
+        <div className={s.container}>
+            <section className={s.paper}>
+                <div className={s.header}>
+                    <div className="text-center mb-4">
+                        <h1 className="text-2xl font-bold text-gray-900">Pipeline Stage: Not Closed Follow Ups</h1>
+                        <p className="text-xs text-gray-400 mt-2">BuilderProject LLC © Copyright 2025. All Rights Reserved. ®</p>
+                    </div>
+                    <h3 className={s.headerTitle}>
+                        <FileText size={18} className="mr-2 text-gray-500" />
+                        Standard Operating Procedure
+                    </h3>
+                </div>
+
+                <div className={s.body}>
+                    {/* 1. Location in CRM */}
+                    <div className="space-y-3">
+                        <h4 className={s.sectionTitle}>1. Location in CRM</h4>
+                        <p className={s.p}>This procedure applies to the "Not Closed Follow Ups" stage within the Sales Pipeline.</p>
+                        <p className={s.p}>You can locate this stage by navigating to:</p>
+                        <p className="font-medium text-gray-900 bg-gray-50 p-2 rounded inline-block text-sm">Opportunities &rarr; Sales Pipeline &rarr; Not Closed Follow Ups</p>
+                        <p className={s.p}>This stage is accessible on both desktop and mobile versions of the CRM.</p>
+                    </div>
+
+                    <hr className="border-gray-100" />
+
+                    {/* 2. Definition of This Stage */}
+                    <div className="space-y-3">
+                        <h4 className={s.sectionTitle}>2. Definition of This Stage</h4>
+                        <p className={s.p}>An opportunity enters Not Closed Follow Ups when:</p>
+                        <ul className={s.bulletList}>
+                            <li>An in-person meeting has been completed, and</li>
+                            <li>The prospect did not sign or commit to the next agreement, but</li>
+                            <li>The opportunity remains viable.</li>
+                        </ul>
+                        <p className={s.p}>These prospects are:</p>
+                        <ul className={s.bulletList}>
+                            <li>Qualified</li>
+                            <li>Engaged</li>
+                            <li>Aware of the process</li>
+                            <li>Considering moving forward</li>
+                        </ul>
+                        <div className="bg-indigo-50 border-l-4 border-indigo-500 p-4 mt-2">
+                            <p className="font-bold text-indigo-900">They have not said no.</p>
+                            <p className="font-bold text-indigo-900">They have not been disqualified.</p>
+                            <p className="font-bold text-indigo-900">They simply have not committed yet.</p>
+                        </div>
+                        <p className={s.p}>This is an active, revenue-potential stage.</p>
+                    </div>
+
+                    <hr className="border-gray-100" />
+
+                    {/* 3. Purpose of This Stage */}
+                    <div className="space-y-3">
+                        <h4 className={s.sectionTitle}>3. Purpose of This Stage</h4>
+                        <p className={s.p}>The purpose of this stage is to:</p>
+                        <div className="bg-indigo-50 border-l-4 border-indigo-500 p-4">
+                            <p className="font-bold text-indigo-900">Maintain structured, strategic follow-up until a clear decision is reached.</p>
+                        </div>
+                        <p className={s.p}>This stage exists to:</p>
+                        <ul className={s.bulletList}>
+                            <li>Resolve objections</li>
+                            <li>Clarify concerns</li>
+                            <li>Reinforce value</li>
+                            <li>Regain momentum</li>
+                            <li>Secure commitment</li>
+                        </ul>
+                        <p className={s.p}>Opportunities in this stage must be actively managed.</p>
+                    </div>
+
+                    <hr className="border-gray-100" />
+
+                    {/* 4. Documentation Requirement (Before Follow-Up) */}
+                    <div className="space-y-3">
+                        <h4 className={s.sectionTitle}>4. Documentation Requirement (Before Follow-Up)</h4>
+                        <p className={s.p}>Before initiating any follow-up:</p>
+                        <ul className={s.bulletList}>
+                            <li>Review opportunity notes.</li>
+                            <li>Review call transcripts and summaries.</li>
+                        </ul>
+                        <p className={s.p}>Identify:</p>
+                        <ul className={s.bulletList}>
+                            <li>Primary objection(s)</li>
+                            <li>Emotional hesitation points</li>
+                            <li>Financial concerns</li>
+                            <li>Decision-maker dynamics</li>
+                            <li>Timeline constraints</li>
+                        </ul>
+                        <div className="bg-red-50 border-l-4 border-red-500 p-4 mt-2">
+                            <p className="font-bold text-red-900">Do not follow up generically.</p>
+                        </div>
+                        <p className={s.p}>Follow-up must address the specific reason the deal did not close.</p>
+                    </div>
+
+                    <hr className="border-gray-100" />
+
+                    {/* 5. Follow-Up Standards */}
+                    <div className="space-y-3">
+                        <h4 className={s.sectionTitle}>5. Follow-Up Standards</h4>
+                        <p className={s.p}>All outreach in this stage must be:</p>
+                        <ul className={s.bulletList}>
+                            <li>Manual</li>
+                            <li>Personalized</li>
+                            <li>Context-driven</li>
+                            <li>Intentional</li>
+                        </ul>
+                        <div className="bg-red-50 border-l-4 border-red-500 p-4 mt-2">
+                            <p className="font-bold text-red-900">Avoid automated nurture sequences replacing direct engagement.</p>
+                        </div>
+                        <p className={s.p}>Follow-up methods may include:</p>
+                        <ul className={s.bulletList}>
+                            <li>Phone calls</li>
+                            <li>Personalized text messages</li>
+                            <li>Targeted emails</li>
+                        </ul>
+                        <p className={s.p}>The tone should be professional and solution-oriented, not pressured.</p>
+                    </div>
+
+                    <hr className="border-gray-100" />
+
+                    {/* 6. Follow-Up Cadence */}
+                    <div className="space-y-3">
+                        <h4 className={s.sectionTitle}>6. Follow-Up Cadence</h4>
+                        <p className={s.p}>Follow-up cadence should be aligned with the prospect's stated timing.</p>
+
+                        {/* If a Specific Date Was Given */}
+                        <div className="bg-blue-50 border border-blue-100 rounded-xl p-6 mt-4">
+                            <h5 className="font-bold text-blue-800 text-lg mb-2">If a Specific Date Was Given:</h5>
+                            <ul className="list-disc list-inside text-sm text-blue-700 space-y-1">
+                                <li>Schedule a task for that date.</li>
+                                <li>Follow up exactly as agreed.</li>
+                                <li>Reference the previous conversation.</li>
+                            </ul>
+                            <p className="text-xs text-blue-600 mt-2 italic">This maintains credibility and trust.</p>
+                        </div>
+
+                        {/* If No Specific Date Was Given */}
+                        <div className="bg-gray-50 border border-gray-200 rounded-xl p-6">
+                            <h5 className="font-bold text-gray-800 text-lg mb-2">If No Specific Date Was Given:</h5>
+                            <ul className="list-disc list-inside text-sm text-gray-700 space-y-1">
+                                <li>Follow up every 1–2 weeks.</li>
+                                <li>Keep communication purposeful and relevant.</li>
+                                <li>Avoid excessive contact.</li>
+                            </ul>
+                            <p className="text-xs text-gray-600 mt-2 italic">Each interaction should move the conversation toward resolution.</p>
+                        </div>
+                    </div>
+
+                    <hr className="border-gray-100" />
+
+                    {/* 7. Objective of Follow-Up */}
+                    <div className="space-y-3">
+                        <h4 className={s.sectionTitle}>7. Objective of Follow-Up</h4>
+                        <p className={s.p}>The objective at this stage is clear:</p>
+                        <div className="bg-indigo-50 border-l-4 border-indigo-500 p-4">
+                            <p className="font-bold text-indigo-900">Secure commitment to the next agreement.</p>
+                        </div>
+                        <p className={s.p}>This may include:</p>
+                        <ul className={s.bulletList}>
+                            <li>Concept Design Agreement</li>
+                            <li>Pre-Construction Agreement</li>
+                            <li>Construction Contract</li>
+                        </ul>
+                        <p className={s.p}>All follow-up should aim to:</p>
+                        <ul className={s.bulletList}>
+                            <li>Rebuild urgency</li>
+                            <li>Re-establish authority</li>
+                            <li>Clarify value</li>
+                            <li>Remove uncertainty</li>
+                        </ul>
+                        <p className={s.p}>Momentum must be intentionally recreated.</p>
+                    </div>
+
+                    <hr className="border-gray-100" />
+
+                    {/* 8. Possible Outcomes */}
+                    <div className="space-y-3">
+                        <h4 className={s.sectionTitle}>8. Possible Outcomes</h4>
+                        <p className={s.p}>There are three acceptable outcomes from this stage.</p>
+
+                        {/* A. Agreement Signed */}
+                        <div className="bg-green-50 border border-green-100 rounded-xl p-6 mt-4">
+                            <h5 className="font-bold text-green-800 text-lg mb-2">A. Agreement Signed</h5>
+                            <p className="text-sm text-green-700 mb-2">If the prospect commits:</p>
+                            <ul className="list-disc list-inside text-sm text-green-700 space-y-1">
+                                <li>Execute the agreement.</li>
+                                <li>Confirm payment if applicable.</li>
+                                <li>Move the opportunity to the appropriate agreement stage.</li>
+                                <li>Ensure all documentation is completed.</li>
+                            </ul>
+                        </div>
+
+                        {/* B. Lost – Uninterested */}
+                        <div className="bg-red-50 border border-red-100 rounded-xl p-6">
+                            <h5 className="font-bold text-red-800 text-lg mb-2">B. Lost – Uninterested</h5>
+                            <p className="text-sm text-red-700 mb-2">If the prospect clearly declines to move forward:</p>
+                            <ul className="list-disc list-inside text-sm text-red-700 space-y-1">
+                                <li>Move the opportunity to <strong>Lost</strong>.</li>
+                                <li>Select the appropriate reason.</li>
+                                <li>Add detailed notes.</li>
+                            </ul>
+                            <p className="text-xs text-red-600 mt-2 italic">This ensures reporting accuracy and protects forecast integrity.</p>
+                        </div>
+
+                        {/* C. Abandoned */}
+                        <div className="bg-gray-100 border border-gray-200 rounded-xl p-6">
+                            <h5 className="font-bold text-gray-800 text-lg mb-2">C. Abandoned</h5>
+                            <p className="text-sm text-gray-700 mb-2">If the prospect becomes unresponsive after:</p>
+                            <ul className="list-disc list-inside text-sm text-gray-700 space-y-1">
+                                <li>Multiple follow-up attempts, and</li>
+                                <li>An extended period of inactivity (typically several months),</li>
+                            </ul>
+                            <p className="text-sm text-gray-700 mt-2">Move the opportunity to <strong>Abandoned</strong>.</p>
+                            <p className="text-sm text-gray-700 mt-2">Document:</p>
+                            <ul className="list-disc list-inside text-sm text-gray-700 space-y-1">
+                                <li>Date of last contact</li>
+                                <li>Number of attempts made</li>
+                                <li>Summary of previous objections</li>
+                            </ul>
+                            <p className="text-xs text-gray-600 mt-2 italic">This keeps the pipeline clean and realistic.</p>
+                        </div>
+                    </div>
+
+                    <hr className="border-gray-100" />
+
+                    {/* 9. Performance Standard */}
+                    <div className="space-y-3">
+                        <h4 className={s.sectionTitle}>9. Performance Standard</h4>
+                        <p className={s.p}>Opportunities in Not Closed Follow Ups must:</p>
+                        <ul className={s.bulletList}>
+                            <li>Have a documented next action.</li>
+                            <li>Have a scheduled follow-up date.</li>
+                            <li>Not remain idle without activity.</li>
+                        </ul>
+                        <p className={s.p}>Stalled deals distort forecasting and reduce accountability.</p>
+                    </div>
+
+                    <hr className="border-gray-100" />
+
+                    {/* 10. Accountability */}
+                    <div className="space-y-3">
+                        <h4 className={s.sectionTitle}>10. Accountability</h4>
+                        <p className={s.p}>This stage directly impacts:</p>
+                        <ul className={s.bulletList}>
+                            <li>Close rate</li>
+                            <li>Revenue recovery</li>
+                            <li>Sales cycle length</li>
+                            <li>Forecast reliability</li>
+                        </ul>
+                        <p className={s.p}>High-performing sales teams convert a significant percentage of revenue from this stage.</p>
+                        <p className={s.p}>Consistent, strategic follow-up is required.</p>
                     </div>
                 </div>
             </section>
