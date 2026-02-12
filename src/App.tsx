@@ -3966,7 +3966,7 @@ Briefly explain your 3-step process: Design -> Pre-Construction -> Build.
 
                         {activeTab === "SOP's" && (
                             <div className={`grid ${viewMode === 'grid' ? 'grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4' : 'grid-cols-1'} gap-6`}>
-                                {allSops.map((sop, idx) => (
+                                {sops.map((sop, idx) => (
                                     <SOPCard key={idx} sop={sop} onClick={() => handleSOPClick(sop)} />
                                 ))}
                             </div>
