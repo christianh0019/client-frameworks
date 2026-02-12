@@ -25,7 +25,7 @@ interface Video {
 
 const TabNav = ({ active, onChange }: { active: string, onChange: (val: string) => void }) => (
     <div className="flex items-center space-x-6 border-b border-saas-border mb-6">
-        {['Process Library', 'Video Tutorials', 'Tree', 'Resources'].map((tab) => (
+        {["Sales Process", "SOP's", 'Resources'].map((tab) => (
             <button
                 key={tab}
                 onClick={() => onChange(tab)}
@@ -58,29 +58,6 @@ const SOPCard = ({ sop, onClick }: { sop: SOP, onClick: () => void }) => (
                 Read SOP
                 <ArrowRight size={14} className="ml-1" />
             </div>
-        </div>
-    </div>
-);
-
-const VideoCard = ({ video, onClick }: { video: Video, onClick: () => void }) => (
-    <div onClick={onClick} className="bg-white border border-saas-border rounded-lg overflow-hidden hover:shadow-card hover:border-gray-300 transition-all cursor-pointer group">
-        <div className="relative aspect-video bg-gray-100 flex items-center justify-center overflow-hidden">
-            <div className="absolute inset-0 bg-gray-200"></div> {/* Placeholder for thumbnail */}
-            <div className="absolute inset-0 flex items-center justify-center">
-                <div className="w-10 h-10 rounded-full bg-white/90 shadow-sm flex items-center justify-center group-hover:scale-110 transition-transform">
-                    <Play size={16} className="text-saas-blue ml-0.5 fill-saas-blue" />
-                </div>
-            </div>
-            <div className="absolute bottom-2 right-2 px-1.5 py-0.5 bg-black/60 rounded text-[10px] font-medium text-white flex items-center">
-                <Clock size={10} className="mr-1" />
-                {video.duration}
-            </div>
-        </div>
-        <div className="p-4">
-            <div className="flex items-center mb-1">
-                <span className="text-[10px] font-medium text-saas-text-secondary uppercase tracking-wider border border-gray-200 px-1 rounded">{video.category}</span>
-            </div>
-            <h3 className="font-medium text-saas-text-primary group-hover:text-saas-blue transition-colors line-clamp-2">{video.title}</h3>
         </div>
     </div>
 );
@@ -3523,7 +3500,7 @@ const PresentationPillarExamplesView = () => {
 };
 
 const App = () => {
-    const [activeTab, setActiveTab] = useState('Process Library');
+    const [activeTab, setActiveTab] = useState("Sales Process");
     const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
     const [activeView, setActiveView] = useState<ViewState>('library');
     const [selectedSOP, setSelectedSOP] = useState<SOP | null>(null);
@@ -3923,23 +3900,6 @@ Briefly explain your 3-step process: Design -> Pre-Construction -> Build.
 
     const allSops = [...sops, ...stageSops, ...scripts];
 
-    const videos: Video[] = [
-        // Core System Walkthroughs
-        { title: "How the Growth System Works (big picture)", duration: "05:00", category: "Core System" },
-        { title: "How New Leads Flow Through the CRM", duration: "05:00", category: "Core System" },
-        { title: "How Automations Handle Follow-Up", duration: "05:00", category: "Core System" },
-        { title: "How to Update Pipeline Stages Properly", duration: "05:00", category: "Core System" },
-
-        // Daily & Weekly Operations
-        { title: "Daily Lead Management Routine", duration: "05:00", category: "Operations" },
-        { title: "Weekly Pipeline Review Process", duration: "05:00", category: "Operations" },
-        { title: "How to Qualify Leads Correctly", duration: "05:00", category: "Operations" },
-
-        // Revenue & Scaling
-        { title: "How to Pitch Design Agreements & Pre-Con", duration: "05:00", category: "Revenue" },
-        { title: "When to Increase Lead Volume", duration: "05:00", category: "Revenue" },
-        { title: "When & How to Hire Your First Sales Help", duration: "05:00", category: "Revenue" },
-    ];
 
     // Logic to handle view switching
     const handleSOPClick = (sop: SOP) => {
@@ -3947,10 +3907,6 @@ Briefly explain your 3-step process: Design -> Pre-Construction -> Build.
         setActiveView('sop-detail');
     };
 
-    const handleVideoClick = (video: Video) => {
-        setSelectedVideo(video);
-        setActiveView('video-detail');
-    };
 
     const goBack = () => {
         setActiveView('library');
@@ -4004,24 +3960,16 @@ Briefly explain your 3-step process: Design -> Pre-Construction -> Build.
                         </div>
 
                         {/* Content Grids */}
-                        {activeTab === 'Process Library' && (
+                        {activeTab === 'Sales Process' && (
+                            <SalesProcessTree onSelectSOP={handleTreeSelection} />
+                        )}
+
+                        {activeTab === "SOP's" && (
                             <div className={`grid ${viewMode === 'grid' ? 'grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4' : 'grid-cols-1'} gap-6`}>
                                 {allSops.map((sop, idx) => (
                                     <SOPCard key={idx} sop={sop} onClick={() => handleSOPClick(sop)} />
                                 ))}
                             </div>
-                        )}
-
-                        {activeTab === 'Video Tutorials' && (
-                            <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6">
-                                {videos.map((video, idx) => (
-                                    <VideoCard key={idx} video={video} onClick={() => handleVideoClick(video)} />
-                                ))}
-                            </div>
-                        )}
-
-                        {activeTab === 'Tree' && (
-                            <SalesProcessTree onSelectSOP={handleTreeSelection} />
                         )}
 
                         {activeTab === 'Resources' && (
