@@ -173,6 +173,8 @@ const SOPDetail = ({ sop, onBack, onSOPClick }: { sop: SOP, onBack: () => void, 
                                     return <HandlingNotBookedFollowUpsView />;
                                 case "Handling In-Person Meeting Booked Stage":
                                     return <HandlingInPersonMeetingBookedView />;
+                                case "Handling In-Person Meeting Completed Stage":
+                                    return <HandlingInPersonMeetingCompletedView />;
                                 default:
                                     return (
                                         <div className="prose prose-slate max-w-none prose-headings:font-bold prose-h1:text-3xl prose-h2:text-2xl prose-h3:text-xl prose-a:text-indigo-600 prose-a:no-underline hover:prose-a:underline prose-strong:font-bold prose-strong:text-slate-900 prose-li:marker:text-gray-400">
@@ -1561,6 +1563,222 @@ const HandlingInPersonMeetingBookedView = () => {
                             <li>Revenue predictability</li>
                         </ul>
                         <p className={s.p}>Preparation, professionalism, and system compliance are mandatory.</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+    );
+};
+
+// 7. Handling In-Person Meeting Completed View
+const HandlingInPersonMeetingCompletedView = () => {
+    // Standard Styles
+    const s = {
+        container: "space-y-8 font-sans text-gray-800 pb-20 max-w-4xl mx-auto",
+        paper: "bg-white border border-gray-200 rounded-xl shadow-sm overflow-hidden",
+        header: "p-6 bg-gray-50 border-b border-gray-200",
+        headerTitle: "font-bold text-gray-900 flex items-center",
+        body: "p-8 md:p-12 max-w-none space-y-8",
+        sectionTitle: "text-xl font-bold text-indigo-700",
+        p: "text-base text-gray-800 leading-relaxed",
+        list: "list-decimal list-inside space-y-2 text-base text-gray-800 leading-relaxed ml-2",
+        bulletList: "list-disc list-inside space-y-2 text-base text-gray-800 leading-relaxed ml-2",
+        callout: "bg-gray-50 p-4 border-l-4 border-gray-300 text-gray-700 italic"
+    };
+
+    return (
+        <div className={s.container}>
+            <section className={s.paper}>
+                <div className={s.header}>
+                    <div className="text-center mb-4">
+                        <h1 className="text-2xl font-bold text-gray-900">Pipeline Stage: In-Person Meeting Completed</h1>
+                        <p className="text-xs text-gray-400 mt-2">BuilderProject LLC © Copyright 2025. All Rights Reserved. ®</p>
+                    </div>
+                    <h3 className={s.headerTitle}>
+                        <FileText size={18} className="mr-2 text-gray-500" />
+                        Standard Operating Procedure
+                    </h3>
+                </div>
+
+                <div className={s.body}>
+                    {/* 1. Location in CRM */}
+                    <div className="space-y-3">
+                        <h4 className={s.sectionTitle}>1. Location in CRM</h4>
+                        <p className={s.p}>This procedure applies to the "In-Person Meeting Completed" stage within the Sales Pipeline.</p>
+                        <p className={s.p}>You can locate this stage by navigating to:</p>
+                        <p className="font-medium text-gray-900 bg-gray-50 p-2 rounded inline-block text-sm">Opportunities &rarr; Sales Pipeline &rarr; In-Person Meeting Completed</p>
+                        <p className={s.p}>This stage is accessible on both desktop and mobile versions of the CRM.</p>
+                    </div>
+
+                    <hr className="border-gray-100" />
+
+                    {/* 2. Definition of This Stage */}
+                    <div className="space-y-3">
+                        <h4 className={s.sectionTitle}>2. Definition of This Stage</h4>
+                        <p className={s.p}>An opportunity moves to In-Person Meeting Completed after the scheduled in-person meeting has occurred and the appointment outcome has been marked accordingly in the CRM.</p>
+                        <p className={s.p}>This stage serves as a decision checkpoint.</p>
+                        <p className={s.p}>Its purpose is to:</p>
+                        <ul className={s.bulletList}>
+                            <li>Finalize the meeting outcome</li>
+                            <li>Determine the correct next pipeline stage</li>
+                            <li>Ensure documentation and forecasting accuracy</li>
+                        </ul>
+                        <p className={s.p}>No opportunity should remain in this stage without a defined next action.</p>
+                    </div>
+
+                    <hr className="border-gray-100" />
+
+                    {/* 3. Required Immediate Action */}
+                    <div className="space-y-3">
+                        <h4 className={s.sectionTitle}>3. Required Immediate Action: Update Appointment Outcome</h4>
+                        <p className={s.p}>Immediately following the meeting:</p>
+                        <p className={s.p}>Navigate to <span className="font-medium text-gray-900 bg-gray-50 p-1 rounded text-sm">Calendars &rarr; Appointments</span>.</p>
+                        <p className={s.p}>Select the appointment.</p>
+                        <p className={s.p}>Mark the outcome as:</p>
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-2">
+                            <div className="bg-green-50 border border-green-100 rounded-xl p-4 text-center">
+                                <p className="font-bold text-green-800 text-lg">Showed</p>
+                            </div>
+                            <div className="bg-red-50 border border-red-100 rounded-xl p-4 text-center">
+                                <p className="font-bold text-red-800 text-lg">No Show</p>
+                            </div>
+                        </div>
+                        <div className="bg-red-50 border-l-4 border-red-500 p-4 mt-3">
+                            <p className="font-bold text-red-900">This step is mandatory for automation and reporting accuracy.</p>
+                        </div>
+                        <p className={s.p}>Failure to update the appointment outcome will create pipeline inconsistencies.</p>
+                    </div>
+
+                    <hr className="border-gray-100" />
+
+                    {/* 4. If the Prospect Was a No Show */}
+                    <div className="space-y-3">
+                        <h4 className={s.sectionTitle}>4. If the Prospect Was a No Show</h4>
+                        <p className={s.p}>If the prospect did not attend the meeting:</p>
+                        <ul className={s.bulletList}>
+                            <li>Mark the appointment as <strong>No Show</strong>.</li>
+                            <li>Initiate follow-up to reschedule.</li>
+                            <li>Document the situation in the opportunity notes.</li>
+                        </ul>
+                        <p className={s.p}>If the prospect becomes unresponsive after multiple follow-up attempts, move according to internal abandonment procedures.</p>
+                    </div>
+
+                    <hr className="border-gray-100" />
+
+                    {/* 5. If the Prospect Showed */}
+                    <div className="space-y-3">
+                        <h4 className={s.sectionTitle}>5. If the Prospect Showed</h4>
+                        <p className={s.p}>If the meeting occurred, you must determine the appropriate next stage immediately.</p>
+                        <p className={s.p}>There are only four acceptable outcomes.</p>
+
+                        {/* A. Agreement Signed */}
+                        <div className="bg-green-50 border border-green-100 rounded-xl p-6 mt-4">
+                            <h5 className="font-bold text-green-800 text-lg mb-2">A. Agreement Signed</h5>
+                            <p className="text-sm text-green-700 mb-2">If the prospect committed and signed the next agreement (Concept Design Agreement, Pre-Construction Agreement, etc.):</p>
+                            <ul className="list-disc list-inside text-sm text-green-700 space-y-1">
+                                <li>Ensure the agreement is properly documented.</li>
+                                <li>Confirm payment (if applicable).</li>
+                                <li>Move the opportunity to the appropriate agreement stage.</li>
+                            </ul>
+                            <p className="text-xs text-green-600 mt-2 italic">If automation is configured correctly, the stage may move automatically once the agreement is executed.</p>
+                        </div>
+
+                        {/* B. Not Closed Follow Ups */}
+                        <div className="bg-yellow-50 border border-yellow-100 rounded-xl p-6">
+                            <h5 className="font-bold text-yellow-800 text-lg mb-2">B. Not Closed Follow Ups</h5>
+                            <p className="text-sm text-yellow-700 mb-2">If the meeting was productive but the prospect did not commit:</p>
+                            <ul className="list-disc list-inside text-sm text-yellow-700 space-y-1">
+                                <li>Move the opportunity to <strong>Not Closed Follow Ups</strong>.</li>
+                            </ul>
+                            <p className="text-sm text-yellow-700 mt-2">This applies when:</p>
+                            <ul className="list-disc list-inside text-sm text-yellow-700 space-y-1">
+                                <li>Objections remain</li>
+                                <li>Pricing requires consideration</li>
+                                <li>Financing is pending</li>
+                                <li>Internal discussions are required</li>
+                            </ul>
+                            <p className="text-sm text-yellow-700 mt-2">Add detailed notes outlining:</p>
+                            <ul className="list-disc list-inside text-sm text-yellow-700 space-y-1">
+                                <li>Key objections</li>
+                                <li>Emotional drivers</li>
+                                <li>Decision dynamics</li>
+                                <li>Specific next follow-up date</li>
+                            </ul>
+                            <p className="text-xs text-yellow-600 mt-2 italic">This stage requires structured follow-up and active management.</p>
+                        </div>
+
+                        {/* C. Lost – Uninterested */}
+                        <div className="bg-red-50 border border-red-100 rounded-xl p-6">
+                            <h5 className="font-bold text-red-800 text-lg mb-2">C. Lost – Uninterested</h5>
+                            <p className="text-sm text-red-700 mb-2">If the prospect clearly declines to move forward:</p>
+                            <ul className="list-disc list-inside text-sm text-red-700 space-y-1">
+                                <li>Move the opportunity to <strong>Lost</strong>.</li>
+                                <li>Select the reason: <strong>Uninterested</strong>.</li>
+                                <li>Add summary notes explaining the decision.</li>
+                            </ul>
+                        </div>
+
+                        {/* D. Lost – Disqualified */}
+                        <div className="bg-red-50 border border-red-100 rounded-xl p-6">
+                            <h5 className="font-bold text-red-800 text-lg mb-2">D. Lost – Disqualified</h5>
+                            <p className="text-sm text-red-700 mb-2">If new information reveals the prospect does not meet required criteria:</p>
+                            <ul className="list-disc list-inside text-sm text-red-700 space-y-1">
+                                <li>Move the opportunity to <strong>Lost</strong>.</li>
+                                <li>Select the reason: <strong>Disqualified</strong>.</li>
+                                <li>Add detailed notes documenting the reason.</li>
+                            </ul>
+                            <p className="text-xs text-red-600 mt-2 italic">Accurate categorization ensures reliable reporting and marketing feedback.</p>
+                        </div>
+                    </div>
+
+                    <hr className="border-gray-100" />
+
+                    {/* 6. Documentation Requirements */}
+                    <div className="space-y-3">
+                        <h4 className={s.sectionTitle}>6. Documentation Requirements</h4>
+                        <p className={s.p}>After every in-person meeting (Showed only):</p>
+                        <p className={s.p}>Add structured notes summarizing:</p>
+                        <ul className={s.bulletList}>
+                            <li>Project scope</li>
+                            <li>Budget alignment</li>
+                            <li>Timeline clarity</li>
+                            <li>Decision-maker dynamics</li>
+                            <li>Objections and concerns</li>
+                            <li>Emotional indicators</li>
+                            <li>Agreed next steps</li>
+                        </ul>
+                        <p className={s.p}>Confirm all required CRM fields are completed.</p>
+                        <p className={s.p}>Documentation at this stage directly impacts forecasting and coaching quality.</p>
+                    </div>
+
+                    <hr className="border-gray-100" />
+
+                    {/* 7. Completion Criteria */}
+                    <div className="space-y-3">
+                        <h4 className={s.sectionTitle}>7. Completion Criteria</h4>
+                        <p className={s.p}>An opportunity should not remain in In-Person Meeting Completed without:</p>
+                        <ul className={s.bulletList}>
+                            <li>Appointment outcome updated</li>
+                            <li>Detailed notes added</li>
+                            <li>A clearly defined next pipeline stage</li>
+                        </ul>
+                        <p className={s.p}>This stage is a transition point, not a holding area.</p>
+                    </div>
+
+                    <hr className="border-gray-100" />
+
+                    {/* 8. Accountability */}
+                    <div className="space-y-3">
+                        <h4 className={s.sectionTitle}>8. Accountability</h4>
+                        <p className={s.p}>This stage directly affects:</p>
+                        <ul className={s.bulletList}>
+                            <li>Close rate</li>
+                            <li>Average contract value</li>
+                            <li>Revenue predictability</li>
+                            <li>Sales cycle duration</li>
+                        </ul>
+                        <p className={s.p}>Delays or unclear categorization at this stage distort forecasting and reduce operational clarity.</p>
+                        <p className={s.p}>Strict adherence to this procedure is required.</p>
                     </div>
                 </div>
             </section>
