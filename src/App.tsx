@@ -162,7 +162,7 @@ const SOPDetail = ({ sop, onBack, onSOPClick }: { sop: SOP, onBack: () => void, 
                                 case "Handling Discovery Call Booked Stage":
                                     return <HandlingDiscoveryBookedView onLinkClick={onSOPClick} />;
                                 case "Handling Discovery Call Completed Stage":
-                                    return <HandlingDiscoveryCompletedView onLinkClick={onSOPClick} />;
+                                    return <HandlingDiscoveryCompletedView />;
                                 case "Handling Not Booked Follow Ups Stage":
                                     return <HandlingNotBookedFollowUpsView />;
                                 default:
