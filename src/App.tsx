@@ -151,51 +151,341 @@ const SOPDetail = ({ sop, onBack, onSOPClick }: { sop: SOP, onBack: () => void, 
                         </div>
 
                         {/* Main Content Area */}
-                        {sop.title === "Qualification Call Script" ? (
-                            <QualificationScriptView />
-                        ) : (
-                            <div className="prose prose-slate max-w-none prose-headings:font-bold prose-h1:text-3xl prose-h2:text-2xl prose-h3:text-xl prose-a:text-indigo-600 prose-a:no-underline hover:prose-a:underline prose-strong:font-bold prose-strong:text-slate-900 prose-li:marker:text-gray-400">
-                                <ReactMarkdown
-                                    remarkPlugins={[remarkGfm]}
-                                    components={{
-                                        a: ({ node, ...props }) => {
-                                            const href = props.href || '';
-                                            if (href.startsWith('#sop-')) {
-                                                return (
-                                                    <a
-                                                        {...props}
-                                                        href="#"
-                                                        onClick={(e) => {
-                                                            e.preventDefault();
-                                                            // Decode the title back from the URL
-                                                            const title = decodeURIComponent(href.replace('#sop-', ''));
-                                                            if (onSOPClick) {
-                                                                onSOPClick(title);
-                                                            }
-                                                        }}
-                                                        className="text-indigo-600 font-medium hover:text-indigo-800 transition-colors cursor-pointer bg-indigo-50 px-1 py-0.5 rounded hover:bg-indigo-100 no-underline"
-                                                    >
-                                                        <span className="inline-flex items-center">
-                                                            <FileText size={14} className="mr-1" />
-                                                            {props.children}
-                                                        </span>
-                                                    </a>
-                                                );
-                                            }
-                                            return <a {...props} target="_blank" rel="noopener noreferrer" className="text-indigo-600 hover:underline">{props.children}</a>;
-                                        }
-                                    }}
-                                >
-                                    {processContent(sop.detailedContent || '')}
-                                </ReactMarkdown>
-                            </div>
-                        )}
+                        {(() => {
+                            switch (sop.title) {
+                                case "Qualification Call Script":
+                                    return <QualificationScriptView />;
+                                case "Handling New Lead Stage":
+                                    return <HandlingNewLeadView onLinkClick={onSOPClick} />;
+                                case "Handling Qualified Lead Stage":
+                                    return <HandlingQualifiedLeadView />;
+                                case "Handling Discovery Call Booked Stage":
+                                    return <HandlingDiscoveryBookedView onLinkClick={onSOPClick} />;
+                                case "Handling Discovery Call Completed Stage":
+                                    return <HandlingDiscoveryCompletedView onLinkClick={onSOPClick} />;
+                                case "Handling Not Booked Follow Ups Stage":
+                                    return <HandlingNotBookedFollowUpsView />;
+                                default:
+                                    return (
+                                        <div className="prose prose-slate max-w-none prose-headings:font-bold prose-h1:text-3xl prose-h2:text-2xl prose-h3:text-xl prose-a:text-indigo-600 prose-a:no-underline hover:prose-a:underline prose-strong:font-bold prose-strong:text-slate-900 prose-li:marker:text-gray-400">
+                                            <ReactMarkdown
+                                                remarkPlugins={[remarkGfm]}
+                                                components={{
+                                                    a: ({ node, ...props }) => {
+                                                        const href = props.href || '';
+                                                        if (href.startsWith('#sop-')) {
+                                                            return (
+                                                                <a
+                                                                    {...props}
+                                                                    href="#"
+                                                                    onClick={(e) => {
+                                                                        e.preventDefault();
+                                                                        // Decode the title back from the URL
+                                                                        const title = decodeURIComponent(href.replace('#sop-', ''));
+                                                                        if (onSOPClick) {
+                                                                            onSOPClick(title);
+                                                                        }
+                                                                    }}
+                                                                    className="text-indigo-600 font-medium hover:text-indigo-800 transition-colors cursor-pointer bg-indigo-50 px-1 py-0.5 rounded hover:bg-indigo-100 no-underline"
+                                                                >
+                                                                    <span className="inline-flex items-center">
+                                                                        <FileText size={14} className="mr-1" />
+                                                                        {props.children}
+                                                                    </span>
+                                                                </a>
+                                                            );
+                                                        }
+                                                        return <a {...props} target="_blank" rel="noopener noreferrer" className="text-indigo-600 hover:underline">{props.children}</a>;
+                                                    }
+                                                }}
+                                            >
+                                                {processContent(sop.detailedContent || '')}
+                                            </ReactMarkdown>
+                                        </div>
+                                    );
+                            }
+                        })()}
                     </article>
                 </div>
             </div>
         </div>
     );
 };
+
+// 1. Handling New Lead View
+const HandlingNewLeadView = ({ onLinkClick }: { onLinkClick?: (title: string) => void }) => (
+    <div className="space-y-8 font-sans text-gray-800">
+        <div className="bg-yellow-50 border-l-4 border-yellow-400 p-4">
+            <div className="flex">
+                <div className="ml-3">
+                    <h3 className="text-sm font-medium text-yellow-800">Where to Find This</h3>
+                    <div className="mt-2 text-sm text-yellow-700">
+                        <p>Desktop & Mobile CRM &gt; Opportunities &gt; <strong>"New Lead" Stage</strong></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <section>
+            <h3 className="text-xl font-bold text-gray-900 mb-3">Goal</h3>
+            <p className="text-lg">Qualify or disqualify as fast as possible.</p>
+        </section>
+
+        <section className="bg-red-50 border border-red-100 rounded-xl p-6">
+            <div className="flex items-start">
+                <div className="flex-shrink-0">
+                    <Clock className="h-6 w-6 text-red-600" />
+                </div>
+                <div className="ml-4">
+                    <h3 className="text-lg font-bold text-red-900">Important Rule: 5-Minute Response</h3>
+                    <p className="mt-2 text-red-800">
+                        All leads should be contacted in <strong>under 5 minutes</strong>.
+                        Why? Conversion rates increase by <strong>300%</strong> when this is done.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h3 className="text-xl font-bold text-gray-900 mb-3">Action Plan</h3>
+            <ol className="list-decimal list-inside space-y-4 text-gray-700">
+                <li className="p-4 bg-white border border-gray-200 rounded-lg shadow-sm">
+                    <strong>Call them immediately</strong> (immediately after the automated text triggers).
+                </li>
+                <li className="p-4 bg-white border border-gray-200 rounded-lg shadow-sm">
+                    If they answer:
+                    <button
+                        onClick={() => onLinkClick && onLinkClick("Qualification Call Script")}
+                        className="ml-2 inline-flex items-center text-indigo-600 font-medium hover:text-indigo-800"
+                    >
+                        Use Qualification Call Script <ArrowRight size={14} className="ml-1" />
+                    </button>
+                </li>
+            </ol>
+        </section>
+
+        <section className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="border border-gray-200 rounded-xl p-6">
+                <h3 className="font-bold text-gray-900 mb-4">If No Answer</h3>
+                <p className="text-sm text-gray-500 mb-4">Cadence: Call once every day for 4 days.</p>
+                <ul className="space-y-2 text-sm">
+                    <li className="flex items-center"><CheckSquare size={14} className="mr-2 text-blue-500" /> Send a quick text</li>
+                    <li className="flex items-center"><CheckSquare size={14} className="mr-2 text-blue-500" /> Leave a voicemail</li>
+                    <li className="bg-gray-50 p-3 rounded text-gray-600 italic mt-2">
+                        "Just tried to give you a ring John. Did you have a moment?"
+                    </li>
+                </ul>
+            </div>
+            <div className="border border-gray-200 rounded-xl p-6">
+                <h3 className="font-bold text-gray-900 mb-4">If They Answer</h3>
+                <p className="mb-4">Follow the <button onClick={() => onLinkClick && onLinkClick("Qualification Call Script")} className="text-indigo-600 font-medium hover:underline">Qualification Call Script</button></p>
+                <div className="space-y-3">
+                    <div className="flex items-center justify-between p-3 bg-green-50 rounded border border-green-100">
+                        <span className="font-medium text-green-800">Qualified</span>
+                        <ArrowRight size={14} className="text-green-600" />
+                        <span className="text-sm">Move to "Qualified Lead"</span>
+                    </div>
+                    <div className="flex items-center justify-between p-3 bg-red-50 rounded border border-red-100">
+                        <span className="font-medium text-red-800">Disqualified</span>
+                        <ArrowRight size={14} className="text-red-600" />
+                        <span className="text-sm">Move to "Lost"</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+);
+
+// 2. Handling Qualified Lead View
+const HandlingQualifiedLeadView = () => (
+    <div className="space-y-8 font-sans text-gray-800">
+        <div className="bg-blue-50 p-6 rounded-xl border border-blue-100">
+            <h3 className="text-xl font-bold text-blue-900 mb-2">Goal</h3>
+            <p className="text-blue-800 text-lg">Book a Discovery Call.</p>
+        </div>
+
+        <section>
+            <h3 className="text-lg font-bold text-gray-900 mb-2">Timeline</h3>
+            <div className="flex items-center space-x-2 text-gray-600">
+                <Clock size={20} />
+                <span>Max Time in Stage: <strong>3-5 Days</strong></span>
+            </div>
+        </section>
+
+        <section>
+            <h3 className="text-lg font-bold text-gray-900 mb-4">Action Plan</h3>
+            <div className="bg-white border border-gray-200 rounded-lg p-6 shadow-sm">
+                <p className="mb-4">Reach out mainly via <strong>Text Message</strong> or <strong>Phone Call</strong>.</p>
+                <div className="bg-gray-100 p-4 rounded-lg italic text-gray-700 border-l-4 border-gray-400">
+                    "Would you like to set up a time to talk so we can learn more about your project?"
+                </div>
+            </div>
+        </section>
+
+        <section className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="bg-red-50 border border-red-200 rounded-xl p-6">
+                <h3 className="font-bold text-red-900 mb-2">Outcome 1: Not Interested</h3>
+                <ol className="list-decimal list-inside space-y-2 text-red-800">
+                    <li>Move to "Lost" stage.</li>
+                    <li>Select Reason: "Uninterested".</li>
+                </ol>
+            </div>
+            <div className="bg-green-50 border border-green-200 rounded-xl p-6">
+                <h3 className="font-bold text-green-900 mb-2">Outcome 2: Interested (Booking)</h3>
+                <ol className="list-decimal list-inside space-y-2 text-green-800">
+                    <li>Click on <strong>Appointments</strong>.</li>
+                    <li>Schedule a "Discovery Call".</li>
+                    <li className="text-sm mt-2 font-normal italic">System automatically moves them to "Discovery Call Booked".</li>
+                </ol>
+            </div>
+        </section>
+    </div>
+);
+
+// 3. Handling Discovery Call Booked View
+const HandlingDiscoveryBookedView = ({ onLinkClick }: { onLinkClick?: (title: string) => void }) => (
+    <div className="space-y-8 font-sans text-gray-800">
+        <div className="bg-indigo-50 border border-indigo-100 rounded-xl p-6 flex flex-col items-center text-center">
+            <div className="p-3 bg-white rounded-full shadow-sm mb-4">
+                <Clock size={32} className="text-indigo-600" />
+            </div>
+            <h3 className="text-xl font-bold text-indigo-900 mb-2">Automated Pipeline Stage</h3>
+            <p className="text-indigo-700">Tracks all leads with a scheduled Discovery Call.</p>
+        </div>
+
+        <section>
+            <h3 className="text-lg font-bold text-gray-900 mb-4">Pre-Call Automations (Lead Perspective)</h3>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div className="border border-gray-200 p-4 rounded-lg">
+                    <h4 className="font-semibold mb-2">Reminders</h4>
+                    <p className="text-sm text-gray-600">Automated text/email notifications to prevent no-shows.</p>
+                </div>
+                <div className="border border-gray-200 p-4 rounded-lg">
+                    <h4 className="font-semibold mb-2">Company Info</h4>
+                    <p className="text-sm text-gray-600">Helpful content to build trust before the call.</p>
+                </div>
+            </div>
+        </section>
+
+        <section className="bg-gray-900 text-white rounded-xl p-8">
+            <h3 className="text-xl font-bold mb-6">Execution: Taking the Call</h3>
+            <div className="space-y-6">
+                <div className="flex items-start">
+                    <div className="bg-gray-700 p-2 rounded mr-4">1</div>
+                    <div>
+                        <h4 className="font-bold">Dial via CRM</h4>
+                        <p className="text-gray-400 text-sm">Always call using the CRM dialer so it's recorded and transcribed.</p>
+                    </div>
+                </div>
+                <div className="flex items-start">
+                    <div className="bg-gray-700 p-2 rounded mr-4">2</div>
+                    <div>
+                        <h4 className="font-bold">Use the Script</h4>
+                        <button onClick={() => onLinkClick && onLinkClick("Discovery Call Script")} className="text-blue-300 hover:text-white underline text-sm mt-1">
+                            Open Discovery Call Script
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+);
+
+// 4. Handling Discovery Call Completed View
+const HandlingDiscoveryCompletedView = ({ onLinkClick }: { onLinkClick?: (title: string) => void }) => (
+    <div className="space-y-8 font-sans text-gray-800">
+        <section className="text-center py-6 border-b border-gray-200">
+            <h3 className="text-2xl font-bold text-gray-900">Call Completed. What happened?</h3>
+            <p className="text-gray-500 mt-2">Update the appointment outcome in the CRM.</p>
+        </section>
+
+        <section className="grid grid-cols-1 gap-6">
+            {/* Option A */}
+            <div className="bg-gray-50 border border-gray-200 rounded-xl p-6 opacity-75 hover:opacity-100 transition-opacity">
+                <h3 className="text-lg font-bold text-gray-700 mb-2">Option A: No Show</h3>
+                <p className="text-sm text-gray-600">Select "No Show". Automation will follow up to reschedule.</p>
+            </div>
+
+            {/* Option B */}
+            <div className="border-2 border-blue-100 bg-white rounded-xl p-8 shadow-sm">
+                <h3 className="text-xl font-bold text-blue-900 mb-6">Option B: Showed</h3>
+                <div className="space-y-4">
+                    <div className="flex items-center justify-between p-4 bg-red-50 rounded-lg border border-red-100">
+                        <div>
+                            <span className="font-bold text-red-900 block">1. Uninterested / Disqualified</span>
+                            <span className="text-xs text-red-700">Move to "Lost"</span>
+                        </div>
+                        <div className="h-3 w-3 rounded-full bg-red-500"></div>
+                    </div>
+
+                    <div className="flex items-center justify-between p-4 bg-yellow-50 rounded-lg border border-yellow-100">
+                        <div>
+                            <span className="font-bold text-yellow-900 block">2. Good Conversation (No Booking)</span>
+                            <span className="text-xs text-yellow-700">Move to "Not Booked Follow Ups"</span>
+                        </div>
+                        <div className="h-3 w-3 rounded-full bg-yellow-500"></div>
+                    </div>
+
+                    <div className="flex items-center justify-between p-4 bg-green-50 rounded-lg border border-green-100 shadow-sm">
+                        <div>
+                            <span className="font-bold text-green-900 block">3. In-Person Meeting Booked</span>
+                            <span className="text-xs text-green-700">Schedule Meeting -> Moves to "Booked" Stage</span>
+                        </div>
+                        <div className="h-3 w-3 rounded-full bg-green-500"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+);
+
+// 5. Handling Not Booked Follow Ups View
+const HandlingNotBookedFollowUpsView = () => (
+    <div className="space-y-8 font-sans text-gray-800">
+        <section className="bg-orange-50 border border-orange-200 rounded-xl p-6">
+            <h3 className="text-lg font-bold text-orange-900 mb-3 flex items-center">
+                <span className="bg-orange-200 text-orange-800 text-xs px-2 py-1 rounded mr-2">HIGH PRIORITY</span>
+                Low Hanging Fruit
+            </h3>
+            <p className="text-orange-800 mb-4">
+                Qualified leads who engaged but couldn't book immediately (scheduling, spouse, land, etc.).
+            </p>
+        </section>
+
+        <section>
+            <h3 className="text-xl font-bold text-gray-900 mb-4">Rules of Engagement</h3>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div className="border border-gray-200 rounded-xl p-6 shadow-sm">
+                    <div className="bg-blue-100 w-10 h-10 rounded-full flex items-center justify-center text-blue-600 font-bold mb-4">1</div>
+                    <h4 className="font-bold text-lg mb-2">100% Manual & Personalized</h4>
+                    <p className="text-gray-600 text-sm">
+                        Do NOT use automated blasts. Reference specific details from their previous call ("How was Hawaii?", "Did you close on the lot?").
+                    </p>
+                </div>
+                <div className="border border-gray-200 rounded-xl p-6 shadow-sm">
+                    <div className="bg-blue-100 w-10 h-10 rounded-full flex items-center justify-center text-blue-600 font-bold mb-4">2</div>
+                    <h4 className="font-bold text-lg mb-2">Follow-Up Cadence</h4>
+                    <ul className="text-gray-600 text-sm space-y-2">
+                        <li><strong>Specific Date:</strong> If set, call then.</li>
+                        <li><strong>General:</strong> Every 1-2 weeks.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section className="bg-gray-100 rounded-xl p-6 flex justify-between items-center px-10">
+            <div className="text-center">
+                <div className="font-bold text-2xl text-green-600 mb-1">Success</div>
+                <div className="text-sm text-gray-500">Book In-Person Meeting</div>
+            </div>
+            <div className="h-12 w-px bg-gray-300"></div>
+            <div className="text-center">
+                <div className="font-bold text-2xl text-red-600 mb-1">Failure</div>
+                <div className="text-sm text-gray-500">Ghosted (Move to Lost)</div>
+            </div>
+        </section>
+    </div>
+);
 
 // Custom View for Qualification Script
 const QualificationScriptView = () => (
