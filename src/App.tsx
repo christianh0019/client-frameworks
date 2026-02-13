@@ -156,6 +156,8 @@ const SOPDetail = ({ sop, onBack, onSOPClick }: { sop: SOP, onBack: () => void, 
                                     return <HandlingNotClosedFollowUpsView />;
                                 case "Handling Agreements Signed Stage":
                                     return <HandlingAgreementsSignedView />;
+                                case "Sales Representative Role & Performance Standards":
+                                    return <SalesRepPerformanceStandardsView />;
                                 default:
                                     return (
                                         <div className="prose prose-slate max-w-none prose-headings:font-bold prose-h1:text-3xl prose-h2:text-2xl prose-h3:text-xl prose-a:text-indigo-600 prose-a:no-underline hover:prose-a:underline prose-strong:font-bold prose-strong:text-slate-900 prose-li:marker:text-gray-400">
@@ -2248,6 +2250,354 @@ const HandlingAgreementsSignedView = () => {
     );
 };
 
+// 10. Sales Representative Role & Performance Standards View
+const SalesRepPerformanceStandardsView = () => {
+    // Standard Styles
+    const s = {
+        container: "space-y-8 font-sans text-gray-800 pb-20 max-w-4xl mx-auto",
+        paper: "bg-white border border-gray-200 rounded-xl shadow-sm overflow-hidden",
+        header: "p-6 bg-gray-50 border-b border-gray-200",
+        headerTitle: "font-bold text-gray-900 flex items-center",
+        body: "p-8 md:p-12 max-w-none space-y-8",
+        sectionTitle: "text-xl font-bold text-indigo-700",
+        p: "text-base text-gray-800 leading-relaxed",
+        list: "list-decimal list-inside space-y-2 text-base text-gray-800 leading-relaxed ml-2",
+        bulletList: "list-disc list-inside space-y-2 text-base text-gray-800 leading-relaxed ml-2",
+        callout: "bg-gray-50 p-4 border-l-4 border-gray-300 text-gray-700 italic"
+    };
+
+    return (
+        <div className={s.container}>
+            <section className={s.paper}>
+                <div className={s.header}>
+                    <div className="text-center mb-4">
+                        <h1 className="text-2xl font-bold text-gray-900">Sales Representative Role & Performance Standards</h1>
+                        <p className="text-xs text-gray-400 mt-2">BuilderProject LLC © Copyright 2025. All Rights Reserved. ®</p>
+                    </div>
+                    <h3 className={s.headerTitle}>
+                        <FileText size={18} className="mr-2 text-gray-500" />
+                        Standard Operating Procedure
+                    </h3>
+                </div>
+
+                <div className={s.body}>
+                    {/* 1. Purpose */}
+                    <div className="space-y-3">
+                        <h4 className={s.sectionTitle}>1. Purpose</h4>
+                        <p className={s.p}>This document defines the performance standards, activity expectations, KPI benchmarks, and CRM discipline required of all Sales Representatives.</p>
+                        <div className="bg-red-50 border-l-4 border-red-500 p-4">
+                            <p className="font-bold text-red-900">These standards are mandatory.</p>
+                        </div>
+                        <p className={s.p}>The purpose of this SOP is to:</p>
+                        <ul className={s.bulletList}>
+                            <li>Create measurable accountability</li>
+                            <li>Protect pipeline integrity</li>
+                            <li>Maintain consistent performance</li>
+                            <li>Align sales activity with revenue targets</li>
+                            <li>Ensure operational predictability</li>
+                        </ul>
+                        <p className={s.p}>Without defined standards, process adherence declines and performance becomes inconsistent.</p>
+                    </div>
+
+                    <hr className="border-gray-100" />
+
+                    {/* 2. Role Definition */}
+                    <div className="space-y-3">
+                        <h4 className={s.sectionTitle}>2. Role Definition</h4>
+                        <p className={s.p}>The Sales Representative is responsible for:</p>
+                        <ul className={s.bulletList}>
+                            <li>Converting qualified leads into signed agreements</li>
+                            <li>Maintaining accurate CRM records</li>
+                            <li>Executing follow-up with discipline</li>
+                            <li>Advancing opportunities efficiently through the pipeline</li>
+                            <li>Protecting revenue opportunities</li>
+                        </ul>
+                        <div className="bg-indigo-50 border-l-4 border-indigo-500 p-4 mt-2">
+                            <p className="font-bold text-indigo-900">Sales is not measured by effort.</p>
+                            <p className="font-bold text-indigo-900">Sales is measured by outcomes and adherence to system standards.</p>
+                        </div>
+                    </div>
+
+                    <hr className="border-gray-100" />
+
+                    {/* 3. Daily Activity Minimums */}
+                    <div className="space-y-3">
+                        <h4 className={s.sectionTitle}>3. Daily Activity Minimums</h4>
+                        <p className={s.p}>Minimum daily standards (unless otherwise approved):</p>
+
+                        <div className="bg-blue-50 border border-blue-100 rounded-xl p-6 mt-4">
+                            <h5 className="font-bold text-blue-800 text-lg mb-2">New Leads</h5>
+                            <ul className="list-disc list-inside text-sm text-blue-700 space-y-1">
+                                <li>Contact 100% of new leads within SLA (see Speed-to-Lead below)</li>
+                                <li>Minimum of 4 call attempts per new lead over 4 days if no answer</li>
+                            </ul>
+                        </div>
+
+                        <div className="bg-blue-50 border border-blue-100 rounded-xl p-6">
+                            <h5 className="font-bold text-blue-800 text-lg mb-2">Active Opportunities</h5>
+                            <p className="text-sm text-blue-700 mb-2">Review all opportunities in:</p>
+                            <ul className="list-disc list-inside text-sm text-blue-700 space-y-1">
+                                <li>Qualified Lead</li>
+                                <li>Not Booked Follow Ups</li>
+                                <li>Not Closed Follow Ups</li>
+                            </ul>
+                            <p className="text-sm text-blue-700 mt-2">Ensure each has a next action scheduled</p>
+                        </div>
+
+                        <div className="bg-blue-50 border border-blue-100 rounded-xl p-6">
+                            <h5 className="font-bold text-blue-800 text-lg mb-2">Outbound Activity (if applicable)</h5>
+                            <ul className="list-disc list-inside text-sm text-blue-700 space-y-1">
+                                <li>Minimum outbound calls: [Define number based on structure]</li>
+                                <li>Follow-up messages: As required per stage SOP</li>
+                            </ul>
+                        </div>
+
+                        <p className={s.p}>Daily activity must be visible in the CRM.</p>
+                        <div className="bg-red-50 border-l-4 border-red-500 p-4">
+                            <p className="font-bold text-red-900">If activity is not logged, it did not happen.</p>
+                        </div>
+                    </div>
+
+                    <hr className="border-gray-100" />
+
+                    {/* 4. Speed-to-Lead Standard */}
+                    <div className="space-y-3">
+                        <h4 className={s.sectionTitle}>4. Speed-to-Lead Standard</h4>
+                        <p className={s.p}>All New Leads must be contacted within:</p>
+                        <div className="bg-indigo-50 border-l-4 border-indigo-500 p-4">
+                            <p className="font-bold text-indigo-900 text-lg">5 minutes of entry into the CRM</p>
+                        </div>
+                        <p className={s.p}>Performance expectation:</p>
+                        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-2">
+                            <div className="bg-green-50 border border-green-100 rounded-xl p-4 text-center">
+                                <p className="text-xs text-green-600 uppercase font-medium mb-1">Target</p>
+                                <p className="font-bold text-green-800 text-lg">Under 5 minutes</p>
+                            </div>
+                            <div className="bg-yellow-50 border border-yellow-100 rounded-xl p-4 text-center">
+                                <p className="text-xs text-yellow-600 uppercase font-medium mb-1">Acceptable Maximum</p>
+                                <p className="font-bold text-yellow-800 text-lg">10 minutes</p>
+                            </div>
+                            <div className="bg-red-50 border border-red-100 rounded-xl p-4 text-center">
+                                <p className="text-xs text-red-600 uppercase font-medium mb-1">Unacceptable</p>
+                                <p className="font-bold text-red-800 text-lg">Over 10 minutes</p>
+                            </div>
+                        </div>
+                        <p className={s.p}>Speed-to-lead directly impacts:</p>
+                        <ul className={s.bulletList}>
+                            <li>Contact rate</li>
+                            <li>Show rate</li>
+                            <li>Close rate</li>
+                            <li>Revenue per lead</li>
+                        </ul>
+                        <p className={s.p}>Failure to meet this standard reduces marketing ROI.</p>
+                    </div>
+
+                    <hr className="border-gray-100" />
+
+                    {/* 5. Required CRM Hygiene */}
+                    <div className="space-y-3">
+                        <h4 className={s.sectionTitle}>5. Required CRM Hygiene</h4>
+                        <div className="bg-red-50 border-l-4 border-red-500 p-4">
+                            <p className="font-bold text-red-900">CRM discipline is mandatory.</p>
+                        </div>
+                        <p className={s.p}>Each Sales Representative must:</p>
+                        <ul className={s.bulletList}>
+                            <li>Log all calls through the CRM</li>
+                            <li>Use CRM dialing system for recorded calls</li>
+                            <li>Add structured notes after:
+                                <ul className="list-disc list-inside ml-4 mt-1 space-y-1">
+                                    <li>Qualification Calls</li>
+                                    <li>Discovery Calls</li>
+                                    <li>In-Person Meetings</li>
+                                </ul>
+                            </li>
+                            <li>Select correct Lost reasons</li>
+                            <li>Update appointment outcomes (Showed / No Show)</li>
+                            <li>Ensure all required fields are completed before stage movement</li>
+                        </ul>
+                        <div className="bg-indigo-50 border-l-4 border-indigo-500 p-4 mt-2">
+                            <p className="font-bold text-indigo-900">Pipeline integrity is non-negotiable.</p>
+                        </div>
+                        <p className={s.p}>Inaccurate or incomplete data results in unreliable forecasting and performance tracking.</p>
+                    </div>
+
+                    <hr className="border-gray-100" />
+
+                    {/* 6. Required Follow-Up Cadence */}
+                    <div className="space-y-3">
+                        <h4 className={s.sectionTitle}>6. Required Follow-Up Cadence</h4>
+                        <p className={s.p}>All follow-up must comply with stage-specific SOPs.</p>
+                        <p className={s.p}>Minimum standards:</p>
+
+                        <div className="bg-blue-50 border border-blue-100 rounded-xl p-6 mt-4">
+                            <h5 className="font-bold text-blue-800 text-lg mb-2">New Leads</h5>
+                            <ul className="list-disc list-inside text-sm text-blue-700 space-y-1">
+                                <li>Immediate call</li>
+                                <li>Daily call attempts for 4 days if no response</li>
+                            </ul>
+                        </div>
+
+                        <div className="bg-blue-50 border border-blue-100 rounded-xl p-6">
+                            <h5 className="font-bold text-blue-800 text-lg mb-2">Qualified Leads</h5>
+                            <ul className="list-disc list-inside text-sm text-blue-700 space-y-1">
+                                <li>Active outreach until Discovery is booked</li>
+                                <li>No lead remains in stage longer than 3–5 days without resolution</li>
+                            </ul>
+                        </div>
+
+                        <div className="bg-blue-50 border border-blue-100 rounded-xl p-6">
+                            <h5 className="font-bold text-blue-800 text-lg mb-2">Not Booked Follow Ups</h5>
+                            <ul className="list-disc list-inside text-sm text-blue-700 space-y-1">
+                                <li>Follow up on agreed date</li>
+                                <li>Otherwise every 1–2 weeks</li>
+                                <li>Personalized only</li>
+                            </ul>
+                        </div>
+
+                        <div className="bg-blue-50 border border-blue-100 rounded-xl p-6">
+                            <h5 className="font-bold text-blue-800 text-lg mb-2">Not Closed Follow Ups</h5>
+                            <ul className="list-disc list-inside text-sm text-blue-700 space-y-1">
+                                <li>Follow up based on objection timing</li>
+                                <li>No opportunity remains idle without next action</li>
+                            </ul>
+                        </div>
+
+                        <div className="bg-red-50 border-l-4 border-red-500 p-4 mt-2">
+                            <p className="font-bold text-red-900">Stalled pipeline entries are unacceptable.</p>
+                        </div>
+                    </div>
+
+                    <hr className="border-gray-100" />
+
+                    {/* 7. KPI Performance Targets */}
+                    <div className="space-y-3">
+                        <h4 className={s.sectionTitle}>7. KPI Performance Targets</h4>
+                        <p className={s.p}>The following KPIs are monitored weekly and monthly.</p>
+
+                        <div className="bg-gray-50 border border-gray-200 rounded-xl p-6 mt-4">
+                            <h5 className="font-bold text-gray-800 text-lg mb-2">1. Contact Rate</h5>
+                            <p className="text-sm text-gray-700 mb-1">Percentage of leads successfully contacted.</p>
+                            <p className="text-sm text-gray-700">Target: <strong>60–80%+</strong></p>
+                            <p className="text-xs text-gray-500 mt-1 italic">Below 50% requires review.</p>
+                        </div>
+
+                        <div className="bg-gray-50 border border-gray-200 rounded-xl p-6">
+                            <h5 className="font-bold text-gray-800 text-lg mb-2">2. Show Rate</h5>
+                            <p className="text-sm text-gray-700 mb-1">Percentage of booked Discovery Calls that show.</p>
+                            <p className="text-sm text-gray-700">Target: <strong>70–85%+</strong></p>
+                            <p className="text-xs text-gray-500 mt-1 italic">Below 65% requires improvement plan.</p>
+                        </div>
+
+                        <div className="bg-gray-50 border border-gray-200 rounded-xl p-6">
+                            <h5 className="font-bold text-gray-800 text-lg mb-2">3. Close Rate</h5>
+                            <p className="text-sm text-gray-700 mb-1">Percentage of qualified opportunities that convert to signed agreement.</p>
+                            <p className="text-sm text-gray-700">Target: <strong>[Define based on business model]</strong></p>
+                            <p className="text-xs text-gray-500 mt-1 italic">Typically 20–40% for high-ticket custom work.</p>
+                        </div>
+
+                        <div className="bg-gray-50 border border-gray-200 rounded-xl p-6">
+                            <h5 className="font-bold text-gray-800 text-lg mb-2">4. Revenue Per Representative</h5>
+                            <p className="text-sm text-gray-700 mb-1">Total revenue generated per rep per month.</p>
+                            <p className="text-sm text-gray-700">Target: <strong>Defined by company revenue goals and capacity.</strong></p>
+                            <p className="text-xs text-gray-500 mt-1 italic">Tracked monthly.</p>
+                        </div>
+
+                        <div className="bg-gray-50 border border-gray-200 rounded-xl p-6">
+                            <h5 className="font-bold text-gray-800 text-lg mb-2">5. Time in Stage</h5>
+                            <p className="text-sm text-gray-700 mb-2">Maximum acceptable stage durations:</p>
+                            <ul className="list-disc list-inside text-sm text-gray-700 space-y-1">
+                                <li>New Lead: <strong>4 days maximum</strong></li>
+                                <li>Qualified Lead: <strong>3–5 days maximum</strong></li>
+                                <li>Discovery Completed: <strong>Immediate next-stage movement</strong></li>
+                                <li>Not Booked Follow Ups: <strong>Active cadence required</strong></li>
+                                <li>Not Closed Follow Ups: <strong>Active cadence required</strong></li>
+                            </ul>
+                            <p className="text-xs text-gray-500 mt-2 italic">Extended stage aging without activity requires intervention.</p>
+                        </div>
+                    </div>
+
+                    <hr className="border-gray-100" />
+
+                    {/* 8. Weekly Performance Review */}
+                    <div className="space-y-3">
+                        <h4 className={s.sectionTitle}>8. Weekly Performance Review</h4>
+                        <p className={s.p}>Each Sales Representative will participate in a weekly review including:</p>
+                        <ul className={s.bulletList}>
+                            <li>Pipeline overview</li>
+                            <li>Stage aging analysis</li>
+                            <li>KPI tracking</li>
+                            <li>Call review (selected recordings)</li>
+                            <li>Objection patterns</li>
+                            <li>Forecast discussion</li>
+                        </ul>
+                        <p className={s.p}>The objective is performance improvement and revenue growth.</p>
+                    </div>
+
+                    <hr className="border-gray-100" />
+
+                    {/* 9. Accountability Standards */}
+                    <div className="space-y-3">
+                        <h4 className={s.sectionTitle}>9. Accountability Standards</h4>
+                        <p className={s.p}>Failure to meet standards may result in:</p>
+                        <div className="bg-red-50 border border-red-100 rounded-xl p-6">
+                            <ul className="list-disc list-inside text-sm text-red-700 space-y-1">
+                                <li>Performance coaching</li>
+                                <li>Improvement plan</li>
+                                <li>Reduced lead flow</li>
+                                <li>Reassignment of opportunities</li>
+                            </ul>
+                        </div>
+                        <p className={s.p}>Top performers receive:</p>
+                        <div className="bg-green-50 border border-green-100 rounded-xl p-6">
+                            <ul className="list-disc list-inside text-sm text-green-700 space-y-1">
+                                <li>Priority lead distribution</li>
+                                <li>Growth opportunities</li>
+                                <li>Performance-based incentives</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <hr className="border-gray-100" />
+
+                    {/* 10. Forecasting Responsibility */}
+                    <div className="space-y-3">
+                        <h4 className={s.sectionTitle}>10. Forecasting Responsibility</h4>
+                        <p className={s.p}>Sales Representatives are responsible for:</p>
+                        <ul className={s.bulletList}>
+                            <li>Maintaining realistic deal stages</li>
+                            <li>Accurately categorizing Lost and Abandoned opportunities</li>
+                            <li>Providing honest revenue forecasts</li>
+                        </ul>
+                        <p className={s.p}>Overstating pipeline strength damages operational planning and credibility.</p>
+                        <div className="bg-red-50 border-l-4 border-red-500 p-4 mt-2">
+                            <p className="font-bold text-red-900">Accuracy is required.</p>
+                        </div>
+                    </div>
+
+                    <hr className="border-gray-100" />
+
+                    {/* 11. Definition of Done */}
+                    <div className="space-y-3">
+                        <h4 className={s.sectionTitle}>11. Definition of Done</h4>
+                        <p className={s.p}>A Sales Representative is performing at standard when:</p>
+                        <ul className={s.bulletList}>
+                            <li>Speed-to-lead is consistently under 5 minutes</li>
+                            <li>CRM records are complete and clean</li>
+                            <li>Follow-ups are active and personalized</li>
+                            <li>KPIs meet or exceed targets</li>
+                            <li>Pipeline movement is consistent</li>
+                            <li>Revenue targets are met</li>
+                        </ul>
+                        <div className="bg-indigo-50 border-l-4 border-indigo-500 p-4 mt-2">
+                            <p className="font-bold text-indigo-900">This SOP defines professional performance.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    );
+};
+
 // Custom View for Qualification Script
 const QualificationScriptView = () => {
     // Standard Styles for the "Document" look (Matching DiscoveryScriptView)
@@ -3552,6 +3902,11 @@ const App = () => {
             title: "Capacity & Scaling SOP",
             description: "How many leads per month you can handle\n• When to increase spend\n• When to add team\n• How to avoid overbooking",
             category: "Growth"
+        },
+        {
+            title: "Sales Representative Role & Performance Standards",
+            description: "Activity minimums\n• Speed-to-lead standard\n• CRM hygiene\n• KPI targets\n• Weekly review\n• Accountability",
+            category: "Sales"
         },
     ];
 
