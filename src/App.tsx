@@ -158,6 +158,8 @@ const SOPDetail = ({ sop, onBack, onSOPClick }: { sop: SOP, onBack: () => void, 
                                     return <HandlingAgreementsSignedView />;
                                 case "Sales Representative Role & Performance Standards":
                                     return <SalesRepPerformanceStandardsView />;
+                                case "CRM Data Integrity & Pipeline Governance":
+                                    return <CRMDataIntegrityView />;
                                 default:
                                     return (
                                         <div className="prose prose-slate max-w-none prose-headings:font-bold prose-h1:text-3xl prose-h2:text-2xl prose-h3:text-xl prose-a:text-indigo-600 prose-a:no-underline hover:prose-a:underline prose-strong:font-bold prose-strong:text-slate-900 prose-li:marker:text-gray-400">
@@ -2598,6 +2600,395 @@ const SalesRepPerformanceStandardsView = () => {
     );
 };
 
+// 11. CRM Data Integrity & Pipeline Governance View
+const CRMDataIntegrityView = () => {
+    const s = {
+        container: "space-y-8 font-sans text-gray-800 pb-20 max-w-4xl mx-auto",
+        paper: "bg-white border border-gray-200 rounded-xl shadow-sm overflow-hidden",
+        header: "p-6 bg-gray-50 border-b border-gray-200",
+        headerTitle: "font-bold text-gray-900 flex items-center",
+        body: "p-8 md:p-12 max-w-none space-y-8",
+        sectionTitle: "text-xl font-bold text-indigo-700",
+        p: "text-base text-gray-800 leading-relaxed",
+        list: "list-decimal list-inside space-y-2 text-base text-gray-800 leading-relaxed ml-2",
+        bulletList: "list-disc list-inside space-y-2 text-base text-gray-800 leading-relaxed ml-2",
+        callout: "bg-gray-50 p-4 border-l-4 border-gray-300 text-gray-700 italic"
+    };
+
+    return (
+        <div className={s.container}>
+            <section className={s.paper}>
+                <div className={s.header}>
+                    <div className="text-center mb-4">
+                        <h1 className="text-2xl font-bold text-gray-900">CRM Data Integrity & Pipeline Governance</h1>
+                        <p className="text-xs text-gray-400 mt-2">BuilderProject LLC © Copyright 2025. All Rights Reserved. ®</p>
+                    </div>
+                    <h3 className={s.headerTitle}>
+                        <FileText size={18} className="mr-2 text-gray-500" />
+                        Standard Operating Procedure
+                    </h3>
+                </div>
+
+                <div className={s.body}>
+                    {/* 1. Purpose */}
+                    <div className="space-y-3">
+                        <h4 className={s.sectionTitle}>1. Purpose</h4>
+                        <p className={s.p}>This SOP defines the required standards for CRM data accuracy, pipeline hygiene, conversation management, and opportunity governance.</p>
+                        <p className={s.p}>The objective is to:</p>
+                        <ul className={s.bulletList}>
+                            <li>Maintain clean, reliable pipeline data</li>
+                            <li>Ensure accurate forecasting</li>
+                            <li>Protect marketing feedback loops</li>
+                            <li>Prevent stage inflation</li>
+                            <li>Maintain fast response times</li>
+                            <li>Enable scalable growth</li>
+                        </ul>
+                        <p className={s.p}>If CRM data or conversations are disorganized, decision-making becomes unreliable and revenue is impacted.</p>
+                    </div>
+
+                    <hr className="border-gray-100" />
+
+                    {/* 2. Core Principle */}
+                    <div className="space-y-3">
+                        <h4 className={s.sectionTitle}>2. Core Principle</h4>
+                        <div className="bg-red-50 border-l-4 border-red-500 p-4">
+                            <p className="font-bold text-red-900">If it is not logged correctly in the CRM:</p>
+                            <ul className="list-disc list-inside text-sm text-red-700 mt-2 space-y-1">
+                                <li>It did not happen.</li>
+                                <li>It does not count.</li>
+                                <li>It cannot be forecasted.</li>
+                            </ul>
+                        </div>
+                        <div className="bg-red-50 border-l-4 border-red-500 p-4">
+                            <p className="font-bold text-red-900">If a message is not handled:</p>
+                            <ul className="list-disc list-inside text-sm text-red-700 mt-2 space-y-1">
+                                <li>The lead is not being managed.</li>
+                                <li>Revenue is being risked.</li>
+                            </ul>
+                        </div>
+                        <div className="bg-indigo-50 border-l-4 border-indigo-500 p-4">
+                            <p className="font-bold text-indigo-900">System integrity is mandatory.</p>
+                        </div>
+                    </div>
+
+                    <hr className="border-gray-100" />
+
+                    {/* 3. Required Fields Per Stage */}
+                    <div className="space-y-3">
+                        <h4 className={s.sectionTitle}>3. Required Fields Per Stage</h4>
+                        <p className={s.p}>No opportunity may move stages without completing the required fields for that stage.</p>
+
+                        <div className="bg-blue-50 border border-blue-100 rounded-xl p-6 mt-4">
+                            <h5 className="font-bold text-blue-800 text-lg mb-2">New Lead – Required Fields</h5>
+                            <p className="text-sm text-blue-700 mb-2">Before moving out of New Lead:</p>
+                            <ul className="list-disc list-inside text-sm text-blue-700 space-y-1">
+                                <li>Lead Source (required)</li>
+                                <li>Contact Attempt Logged</li>
+                                <li>Qualification Fields Completed:
+                                    <ul className="list-disc list-inside ml-4 mt-1 space-y-1">
+                                        <li>Project Type</li>
+                                        <li>Location</li>
+                                        <li>Budget Range</li>
+                                        <li>Timeline</li>
+                                        <li>Decision Maker Confirmed (Yes/No)</li>
+                                    </ul>
+                                </li>
+                            </ul>
+                            <p className="text-sm text-blue-700 mt-2">If disqualified:</p>
+                            <ul className="list-disc list-inside text-sm text-blue-700 space-y-1">
+                                <li>Lost Reason selected</li>
+                                <li>Brief explanatory note added</li>
+                            </ul>
+                        </div>
+
+                        <div className="bg-blue-50 border border-blue-100 rounded-xl p-6">
+                            <h5 className="font-bold text-blue-800 text-lg mb-2">Qualified Lead – Required Fields</h5>
+                            <p className="text-sm text-blue-700 mb-2">Before booking Discovery:</p>
+                            <ul className="list-disc list-inside text-sm text-blue-700 space-y-1">
+                                <li>Qualification confirmed</li>
+                                <li>Budget verified</li>
+                                <li>Timeline confirmed</li>
+                                <li>Decision maker status documented</li>
+                                <li>Summary note added</li>
+                            </ul>
+                        </div>
+
+                        <div className="bg-blue-50 border border-blue-100 rounded-xl p-6">
+                            <h5 className="font-bold text-blue-800 text-lg mb-2">Discovery Call Completed – Required Fields</h5>
+                            <p className="text-sm text-blue-700 mb-2">Before stage movement:</p>
+                            <ul className="list-disc list-inside text-sm text-blue-700 space-y-1">
+                                <li>Appointment outcome marked (Showed / No Show)</li>
+                                <li>Discovery summary note added</li>
+                                <li>Objections documented</li>
+                                <li>Clear next step defined</li>
+                            </ul>
+                        </div>
+
+                        <div className="bg-blue-50 border border-blue-100 rounded-xl p-6">
+                            <h5 className="font-bold text-blue-800 text-lg mb-2">In-Person Meeting Completed – Required Fields</h5>
+                            <p className="text-sm text-blue-700 mb-2">Before stage movement:</p>
+                            <ul className="list-disc list-inside text-sm text-blue-700 space-y-1">
+                                <li>Appointment outcome marked</li>
+                                <li>Budget alignment confirmed</li>
+                                <li>Objections logged</li>
+                                <li>Next action documented</li>
+                            </ul>
+                        </div>
+
+                        <div className="bg-blue-50 border border-blue-100 rounded-xl p-6">
+                            <h5 className="font-bold text-blue-800 text-lg mb-2">Agreement Stage – Required Fields</h5>
+                            <p className="text-sm text-blue-700 mb-2">Before moving into Agreement stage:</p>
+                            <ul className="list-disc list-inside text-sm text-blue-700 space-y-1">
+                                <li>Agreement executed</li>
+                                <li>Contract value entered</li>
+                                <li>Payment status recorded</li>
+                                <li>Agreement type selected</li>
+                                <li>Scope summary note added</li>
+                            </ul>
+                            <div className="bg-red-50 border-l-4 border-red-500 p-3 mt-3">
+                                <p className="font-bold text-red-900 text-sm">Verbal agreements do not qualify.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <hr className="border-gray-100" />
+
+                    {/* 4. Mandatory Note Requirements */}
+                    <div className="space-y-3">
+                        <h4 className={s.sectionTitle}>4. Mandatory Note Requirements</h4>
+                        <p className={s.p}>Notes are required after:</p>
+                        <ul className={s.bulletList}>
+                            <li>Qualification Calls</li>
+                            <li>Discovery Calls</li>
+                            <li>In-Person Meetings</li>
+                            <li>Agreement Signings</li>
+                            <li>Objection Discussions</li>
+                            <li>Timeline Changes</li>
+                            <li>Budget Changes</li>
+                            <li>Major Status Changes</li>
+                        </ul>
+                        <p className={s.p}>Notes must include:</p>
+                        <ul className={s.bulletList}>
+                            <li>Summary of discussion</li>
+                            <li>Key concerns</li>
+                            <li>Objections</li>
+                            <li>Decision dynamics</li>
+                            <li>Clear next step</li>
+                        </ul>
+                        <div className="bg-red-50 border-l-4 border-red-500 p-4 mt-2">
+                            <p className="font-bold text-red-900">Generic notes such as "Good call" are not acceptable.</p>
+                        </div>
+                    </div>
+
+                    <hr className="border-gray-100" />
+
+                    {/* 5. Objection Logging Standards */}
+                    <div className="space-y-3">
+                        <h4 className={s.sectionTitle}>5. Objection Logging Standards</h4>
+                        <div className="bg-indigo-50 border-l-4 border-indigo-500 p-4">
+                            <p className="font-bold text-indigo-900">All objections must be categorized.</p>
+                        </div>
+                        <p className={s.p}>When an objection arises:</p>
+                        <ol className={s.list}>
+                            <li>Document it in Notes.</li>
+                            <li>Apply appropriate Objection Tag (if configured).</li>
+                            <li>Categorize as:</li>
+                        </ol>
+                        <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mt-2">
+                            {["Price", "Timing", "Financing", "Comparison", "Spouse/Partner", "Scope", "Other (with explanation)"].map((item, i) => (
+                                <div key={i} className="bg-gray-50 border border-gray-200 rounded-lg p-3 text-center">
+                                    <p className="text-sm font-medium text-gray-700">{item}</p>
+                                </div>
+                            ))}
+                        </div>
+                        <p className={s.p}>Uncategorized objections eliminate valuable pattern tracking.</p>
+                    </div>
+
+                    <hr className="border-gray-100" />
+
+                    {/* 6. Lost Reason Categorization */}
+                    <div className="space-y-3">
+                        <h4 className={s.sectionTitle}>6. Lost Reason Categorization</h4>
+                        <p className={s.p}>When moving an opportunity to Lost:</p>
+                        <ul className={s.bulletList}>
+                            <li>A Lost Reason must be selected.</li>
+                            <li>A supporting note must be added.</li>
+                        </ul>
+                        <p className={s.p}>Approved Lost Reasons include:</p>
+                        <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mt-2">
+                            {["Uninterested", "Disqualified", "Budget Too Low", "Timeline Too Far Out", "Chose Competitor", "Financing Denied", "Internal Decision Change", "Other (with explanation)"].map((item, i) => (
+                                <div key={i} className="bg-red-50 border border-red-100 rounded-lg p-3 text-center">
+                                    <p className="text-sm font-medium text-red-700">{item}</p>
+                                </div>
+                            ))}
+                        </div>
+                        <p className={s.p}>Incorrect categorization distorts close-rate metrics.</p>
+                    </div>
+
+                    <hr className="border-gray-100" />
+
+                    {/* 7. Abandoned Movement Criteria */}
+                    <div className="space-y-3">
+                        <h4 className={s.sectionTitle}>7. Abandoned Movement Criteria</h4>
+                        <p className={s.p}>An opportunity may be moved to Abandoned when:</p>
+                        <ul className={s.bulletList}>
+                            <li>Multiple follow-up attempts have been made</li>
+                            <li>60–90 days of inactivity have passed</li>
+                            <li>The prospect is unresponsive</li>
+                            <li>No future tasks are scheduled</li>
+                        </ul>
+                        <p className={s.p}>Before moving to Abandoned:</p>
+                        <ul className={s.bulletList}>
+                            <li>Confirm follow-up attempts are logged.</li>
+                            <li>Add summary note with last contact date.</li>
+                            <li>Confirm no pending tasks remain.</li>
+                        </ul>
+                        <p className={s.p}>This keeps the pipeline realistic and forecastable.</p>
+                    </div>
+
+                    <hr className="border-gray-100" />
+
+                    {/* 8. Duplicate Contact Handling */}
+                    <div className="space-y-3">
+                        <h4 className={s.sectionTitle}>8. Duplicate Contact Handling</h4>
+                        <p className={s.p}>Duplicate records distort reporting.</p>
+                        <p className={s.p}>If a duplicate is identified:</p>
+                        <ol className={s.list}>
+                            <li>Identify the most complete contact record.</li>
+                            <li>Merge records (if CRM allows).</li>
+                            <li>Confirm opportunity history remains intact.</li>
+                            <li>Ensure no duplicate active opportunities exist.</li>
+                        </ol>
+                        <div className="bg-red-50 border-l-4 border-red-500 p-4 mt-2">
+                            <p className="font-bold text-red-900">Never allow two active opportunities for the same prospect.</p>
+                        </div>
+                    </div>
+
+                    <hr className="border-gray-100" />
+
+                    {/* 9. Conversations Tab Management Standards */}
+                    <div className="space-y-3">
+                        <h4 className={s.sectionTitle}>9. Conversations Tab Management Standards</h4>
+                        <p className={s.p}>The Conversations tab must remain clean and actively managed.</p>
+                        <p className={s.p}>Failure to manage Conversations results in:</p>
+                        <ul className={s.bulletList}>
+                            <li>Missed messages</li>
+                            <li>Slow response times</li>
+                            <li>Lost deals</li>
+                            <li>Decreased show rates</li>
+                        </ul>
+                        <p className={s.p}>The following standards apply:</p>
+
+                        <div className="bg-blue-50 border border-blue-100 rounded-xl p-6 mt-4">
+                            <h5 className="font-bold text-blue-800 text-lg mb-2">A. Mark as Read</h5>
+                            <p className="text-sm text-blue-700 mb-2">All conversations must be marked as Read once:</p>
+                            <ul className="list-disc list-inside text-sm text-blue-700 space-y-1">
+                                <li>The message has been reviewed.</li>
+                                <li>A response has been sent (if required).</li>
+                                <li>The next action has been scheduled.</li>
+                            </ul>
+                            <p className="text-sm text-blue-700 mt-2">Unread conversations should only exist when immediate action is required.</p>
+                            <div className="bg-red-50 border-l-4 border-red-500 p-3 mt-3">
+                                <p className="font-bold text-red-900 text-sm">Unread inboxes are unacceptable.</p>
+                            </div>
+                        </div>
+
+                        <div className="bg-blue-50 border border-blue-100 rounded-xl p-6">
+                            <h5 className="font-bold text-blue-800 text-lg mb-2">B. Star Priority Conversations</h5>
+                            <p className="text-sm text-blue-700 mb-2">Star conversations that are:</p>
+                            <ul className="list-disc list-inside text-sm text-blue-700 space-y-1">
+                                <li>High-value opportunities</li>
+                                <li>Active negotiations</li>
+                                <li>Objection-sensitive deals</li>
+                                <li>Time-sensitive follow-ups</li>
+                                <li>Agreement-stage prospects</li>
+                            </ul>
+                            <p className="text-sm text-blue-700 mt-2">Starring helps prioritize revenue-critical conversations.</p>
+                            <p className="text-sm text-blue-700 mt-1">Priority conversations should be reviewed daily.</p>
+                        </div>
+
+                        <div className="bg-blue-50 border border-blue-100 rounded-xl p-6">
+                            <h5 className="font-bold text-blue-800 text-lg mb-2">C. No Open Loops</h5>
+                            <p className="text-sm text-blue-700 mb-2">No conversation should remain without:</p>
+                            <ul className="list-disc list-inside text-sm text-blue-700 space-y-1">
+                                <li>A reply, or</li>
+                                <li>A scheduled follow-up task.</li>
+                            </ul>
+                            <p className="text-sm text-blue-700 mt-2">Conversations must always tie back to a pipeline stage and next action.</p>
+                        </div>
+                    </div>
+
+                    <hr className="border-gray-100" />
+
+                    {/* 10. Stage Aging Governance */}
+                    <div className="space-y-3">
+                        <h4 className={s.sectionTitle}>10. Stage Aging Governance</h4>
+                        <p className={s.p}>Maximum stage durations:</p>
+                        <div className="bg-gray-50 border border-gray-200 rounded-xl p-6 mt-2">
+                            <ul className="list-disc list-inside text-sm text-gray-700 space-y-2">
+                                <li>New Lead: <strong>4 days</strong></li>
+                                <li>Qualified Lead: <strong>3–5 days</strong></li>
+                                <li>Discovery Completed: <strong>Immediate movement</strong></li>
+                                <li>Not Booked Follow Ups: <strong>Must have scheduled next touch</strong></li>
+                                <li>Not Closed Follow Ups: <strong>Must have scheduled next touch</strong></li>
+                                <li>Agreement Stages: <strong>Move promptly to operational phase</strong></li>
+                            </ul>
+                        </div>
+                        <p className={s.p}>Stage aging violations must be reviewed weekly.</p>
+                    </div>
+
+                    <hr className="border-gray-100" />
+
+                    {/* 11. Weekly Pipeline & Data Review */}
+                    <div className="space-y-3">
+                        <h4 className={s.sectionTitle}>11. Weekly Pipeline & Data Review</h4>
+                        <p className={s.p}>Each week, management must review:</p>
+                        <ul className={s.bulletList}>
+                            <li>Opportunities with no activity in 14+ days</li>
+                            <li>Missing required fields</li>
+                            <li>Missing Lost reasons</li>
+                            <li>Stage aging violations</li>
+                            <li>Duplicate records</li>
+                            <li>Unread Conversations</li>
+                            <li>Starred priority conversations</li>
+                        </ul>
+                        <div className="bg-red-50 border-l-4 border-red-500 p-4 mt-2">
+                            <p className="font-bold text-red-900">Corrections must be made immediately.</p>
+                        </div>
+                    </div>
+
+                    <hr className="border-gray-100" />
+
+                    {/* 12. Definition of a Clean CRM */}
+                    <div className="space-y-3">
+                        <h4 className={s.sectionTitle}>12. Definition of a Clean CRM</h4>
+                        <p className={s.p}>A clean CRM means:</p>
+                        <ul className={s.bulletList}>
+                            <li>All required fields completed</li>
+                            <li>All appointment outcomes updated</li>
+                            <li>All objections logged</li>
+                            <li>Lost reasons accurate</li>
+                            <li>No duplicate contacts</li>
+                            <li>No stage-aging violations</li>
+                            <li>No unread critical messages</li>
+                            <li>All priority conversations starred and monitored</li>
+                        </ul>
+                        <div className="bg-green-50 border-l-4 border-green-500 p-4 mt-2">
+                            <p className="font-bold text-green-900">If this standard is maintained:</p>
+                            <ul className="list-disc list-inside text-sm text-green-700 mt-2 space-y-1">
+                                <li>Forecasting becomes reliable</li>
+                                <li>Close rates improve</li>
+                                <li>Marketing optimization becomes accurate</li>
+                                <li>Scaling becomes controlled</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    );
+};
+
 // Custom View for Qualification Script
 const QualificationScriptView = () => {
     // Standard Styles for the "Document" look (Matching DiscoveryScriptView)
@@ -3907,6 +4298,11 @@ const App = () => {
             title: "Sales Representative Role & Performance Standards",
             description: "Activity minimums\n• Speed-to-lead standard\n• CRM hygiene\n• KPI targets\n• Weekly review\n• Accountability",
             category: "Sales"
+        },
+        {
+            title: "CRM Data Integrity & Pipeline Governance",
+            description: "Required fields per stage\n• Note requirements\n• Objection logging\n• Lost reasons\n• Conversations management\n• Stage aging",
+            category: "Operations"
         },
     ];
 
