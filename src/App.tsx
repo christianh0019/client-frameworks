@@ -4250,51 +4250,6 @@ const App = () => {
 
     const sops: SOP[] = [
         {
-            title: "Qualification & Discovery SOP",
-            description: "Budget filters\n• Timeline filters\n• Decision maker logic\n• Serious buyer signals\n• When to disqualify",
-            category: "Sales"
-        },
-        {
-            title: "Sales Pipeline Management SOP",
-            description: "Pipeline stages explained\n• What “next action” always means\n• Forecasting future work\n• How nothing falls through cracks",
-            category: "Sales"
-        },
-        {
-            title: "Long-Cycle Follow-Up & Nurture SOP",
-            description: "90 day cadence\n• 6–12 month nurture rhythm\n• Reactivation process\n• How automation + human touches combine",
-            category: "Nurture"
-        },
-        {
-            title: "Early Monetization SOP",
-            description: "Paid consultations\n• Design agreements\n• Pre-construction packages\n• How to pitch and price them",
-            category: "Finance"
-        },
-        {
-            title: "CRM Daily Operations SOP",
-            description: "Morning routine\n• Lead check process\n• Pipeline update rules\n• Task management",
-            category: "Operations"
-        },
-        {
-            title: "Weekly Growth Review SOP",
-            description: "KPIs to review\n• Pipeline health\n• Lead quality checks\n• Bottleneck identification",
-            category: "Management"
-        },
-        {
-            title: "Lead Quality Feedback Loop SOP",
-            description: "How to flag bad leads\n• Adjust targeting\n• Improve campaigns\n• Tighten qualification over time",
-            category: "Marketing"
-        },
-        {
-            title: "First Hire Playbook SOP",
-            description: "When to hire\n• Who to hire first\n• Role responsibilities\n• Hand-off process from owner",
-            category: "HR"
-        },
-        {
-            title: "Capacity & Scaling SOP",
-            description: "How many leads per month you can handle\n• When to increase spend\n• When to add team\n• How to avoid overbooking",
-            category: "Growth"
-        },
-        {
             title: "Sales Representative Role & Performance Standards",
             description: "Activity minimums\n• Speed-to-lead standard\n• CRM hygiene\n• KPI targets\n• Weekly review\n• Accountability",
             category: "Sales"
