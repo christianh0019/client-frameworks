@@ -160,6 +160,8 @@ const SOPDetail = ({ sop, onBack, onSOPClick }: { sop: SOP, onBack: () => void, 
                                     return <SalesRepPerformanceStandardsView />;
                                 case "CRM Data Integrity & Pipeline Governance":
                                     return <CRMDataIntegrityView />;
+                                case "No-Show & Reschedule Management":
+                                    return <NoShowRescheduleView />;
                                 default:
                                     return (
                                         <div className="prose prose-slate max-w-none prose-headings:font-bold prose-h1:text-3xl prose-h2:text-2xl prose-h3:text-xl prose-a:text-indigo-600 prose-a:no-underline hover:prose-a:underline prose-strong:font-bold prose-strong:text-slate-900 prose-li:marker:text-gray-400">
@@ -2600,6 +2602,287 @@ const SalesRepPerformanceStandardsView = () => {
     );
 };
 
+// 12. No-Show & Reschedule Management View
+const NoShowRescheduleView = () => {
+    const s = {
+        container: "space-y-8 font-sans text-gray-800 pb-20 max-w-4xl mx-auto",
+        paper: "bg-white border border-gray-200 rounded-xl shadow-sm overflow-hidden",
+        header: "p-6 bg-gray-50 border-b border-gray-200",
+        headerTitle: "font-bold text-gray-900 flex items-center",
+        body: "p-8 md:p-12 max-w-none space-y-8",
+        sectionTitle: "text-xl font-bold text-indigo-700",
+        p: "text-base text-gray-800 leading-relaxed",
+        list: "list-decimal list-inside space-y-2 text-base text-gray-800 leading-relaxed ml-2",
+        bulletList: "list-disc list-inside space-y-2 text-base text-gray-800 leading-relaxed ml-2",
+    };
+
+    return (
+        <div className={s.container}>
+            <section className={s.paper}>
+                <div className={s.header}>
+                    <div className="text-center mb-4">
+                        <h1 className="text-2xl font-bold text-gray-900">No-Show & Reschedule Management</h1>
+                        <p className="text-xs text-gray-400 mt-2">BuilderProject LLC © Copyright 2025. All Rights Reserved. ®</p>
+                    </div>
+                    <h3 className={s.headerTitle}>
+                        <FileText size={18} className="mr-2 text-gray-500" />
+                        Standard Operating Procedure
+                    </h3>
+                </div>
+
+                <div className={s.body}>
+                    {/* 1. Purpose */}
+                    <div className="space-y-3">
+                        <h4 className={s.sectionTitle}>1. Purpose</h4>
+                        <p className={s.p}>This SOP defines the required process for handling missed appointments and rescheduling opportunities.</p>
+                        <p className={s.p}>The objective is to:</p>
+                        <ul className={s.bulletList}>
+                            <li>Recover missed Discovery Calls and In-Person Meetings</li>
+                            <li>Maintain momentum with qualified prospects</li>
+                            <li>Prevent silent pipeline leakage</li>
+                            <li>Protect 10–20% of potential revenue</li>
+                        </ul>
+                        <div className="bg-indigo-50 border-l-4 border-indigo-500 p-4">
+                            <p className="font-bold text-indigo-900">Missed appointments must be actively managed.</p>
+                            <p className="text-sm text-indigo-700 mt-1">They are not automatic losses.</p>
+                        </div>
+                    </div>
+
+                    <hr className="border-gray-100" />
+
+                    {/* 2. Scope */}
+                    <div className="space-y-3">
+                        <h4 className={s.sectionTitle}>2. Scope</h4>
+                        <p className={s.p}>This SOP applies to:</p>
+                        <ul className={s.bulletList}>
+                            <li>Discovery Calls</li>
+                            <li>In-Person Meetings</li>
+                        </ul>
+                        <p className={s.p}>It applies whenever a prospect:</p>
+                        <ul className={s.bulletList}>
+                            <li>Does not attend at the scheduled time</li>
+                            <li>Does not answer the call</li>
+                            <li>Cancels last minute</li>
+                            <li>Fails to confirm attendance</li>
+                        </ul>
+                    </div>
+
+                    <hr className="border-gray-100" />
+
+                    {/* 3. Immediate Action When a No-Show Occurs */}
+                    <div className="space-y-3">
+                        <h4 className={s.sectionTitle}>3. Immediate Action When a No-Show Occurs</h4>
+                        <p className={s.p}>At the scheduled time:</p>
+                        <ol className={s.list}>
+                            <li>Attempt to call immediately (if virtual).</li>
+                            <li>Wait 5–10 minutes.</li>
+                            <li>Send a brief follow-up text.</li>
+                            <li>Mark the appointment outcome in the Calendar as No Show.</li>
+                        </ol>
+                        <div className="bg-red-50 border-l-4 border-red-500 p-4 mt-2">
+                            <p className="font-bold text-red-900">Updating the appointment outcome is mandatory.</p>
+                            <p className="text-sm text-red-700 mt-1">Failure to mark No Show will disrupt automation and reporting.</p>
+                        </div>
+                    </div>
+
+                    <hr className="border-gray-100" />
+
+                    {/* 4. Automated Sequence (System Action) */}
+                    <div className="space-y-3">
+                        <h4 className={s.sectionTitle}>4. Automated Sequence (System Action)</h4>
+                        <p className={s.p}>Once marked as No Show:</p>
+                        <p className={s.p}>An automated follow-up sequence will initiate.</p>
+                        <p className={s.p}>The sequence will:</p>
+                        <ul className={s.bulletList}>
+                            <li>Acknowledge the missed appointment</li>
+                            <li>Provide a link to reschedule</li>
+                            <li>Encourage rebooking</li>
+                        </ul>
+                        <div className="bg-indigo-50 border-l-4 border-indigo-500 p-4">
+                            <p className="font-bold text-indigo-900">Automation handles initial re-engagement.</p>
+                            <p className="text-sm text-indigo-700 mt-1">Manual follow-up is still required.</p>
+                        </div>
+                    </div>
+
+                    <hr className="border-gray-100" />
+
+                    {/* 5. Manual Follow-Up Expectations */}
+                    <div className="space-y-3">
+                        <h4 className={s.sectionTitle}>5. Manual Follow-Up Expectations</h4>
+                        <p className={s.p}>Automation does not replace personal outreach.</p>
+                        <p className={s.p}>The assigned Sales Representative must:</p>
+                        <div className="bg-blue-50 border border-blue-100 rounded-xl p-6 mt-2">
+                            <h5 className="font-bold text-blue-800 text-lg mb-2">Within 24 hours:</h5>
+                            <ul className="list-disc list-inside text-sm text-blue-700 space-y-1">
+                                <li>Make one direct phone call.</li>
+                                <li>Send a personalized text referencing the missed meeting.</li>
+                                <li>Leave a voicemail if no answer.</li>
+                            </ul>
+                        </div>
+                        <p className={s.p}>Example tone:</p>
+                        <ul className={s.bulletList}>
+                            <li>Professional</li>
+                            <li>Assumptive of positive intent</li>
+                            <li>Focused on rescheduling</li>
+                        </ul>
+                        <div className="bg-red-50 border-l-4 border-red-500 p-4 mt-2">
+                            <p className="font-bold text-red-900">Avoid accusatory language.</p>
+                        </div>
+                    </div>
+
+                    <hr className="border-gray-100" />
+
+                    {/* 6. Rebooking Cadence */}
+                    <div className="space-y-3">
+                        <h4 className={s.sectionTitle}>6. Rebooking Cadence</h4>
+                        <p className={s.p}>If no response after Day 1:</p>
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-2">
+                            <div className="bg-blue-50 border border-blue-100 rounded-xl p-6">
+                                <h5 className="font-bold text-blue-800 text-lg mb-2">Days 2–5:</h5>
+                                <ul className="list-disc list-inside text-sm text-blue-700 space-y-1">
+                                    <li>Attempt one call per day.</li>
+                                    <li>Send one follow-up message referencing rescheduling.</li>
+                                </ul>
+                            </div>
+                            <div className="bg-blue-50 border border-blue-100 rounded-xl p-6">
+                                <h5 className="font-bold text-blue-800 text-lg mb-2">After Day 5:</h5>
+                                <ul className="list-disc list-inside text-sm text-blue-700 space-y-1">
+                                    <li>Continue outreach every 3–5 days for the next 2–3 weeks.</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div className="bg-gray-50 border border-gray-200 rounded-xl p-4 mt-2 text-center">
+                            <p className="font-bold text-gray-800">Total rebooking attempt window:</p>
+                            <p className="text-2xl font-bold text-indigo-700 mt-1">Approximately 30 days</p>
+                        </div>
+                        <p className={s.p}>All outreach must be logged in the CRM.</p>
+                    </div>
+
+                    <hr className="border-gray-100" />
+
+                    {/* 7. Maximum Rebooking Attempts */}
+                    <div className="space-y-3">
+                        <h4 className={s.sectionTitle}>7. Maximum Rebooking Attempts</h4>
+                        <p className={s.p}>Minimum standard:</p>
+                        <ul className={s.bulletList}>
+                            <li>5 direct call attempts</li>
+                            <li>Multiple personalized texts</li>
+                            <li>Voicemails where appropriate</li>
+                            <li>Automated sequence active</li>
+                        </ul>
+                        <div className="bg-red-50 border-l-4 border-red-500 p-4 mt-2">
+                            <p className="font-bold text-red-900">No opportunity should be abandoned without documented rebooking effort.</p>
+                        </div>
+                    </div>
+
+                    <hr className="border-gray-100" />
+
+                    {/* 8. When to Move to Abandoned */}
+                    <div className="space-y-3">
+                        <h4 className={s.sectionTitle}>8. When to Move to Abandoned</h4>
+                        <p className={s.p}>An opportunity may be moved to Abandoned when:</p>
+                        <ul className={s.bulletList}>
+                            <li>At least 30 days have passed since the no-show.</li>
+                            <li>Multiple documented outreach attempts have been made.</li>
+                            <li>No response has been received.</li>
+                            <li>No future appointment is scheduled.</li>
+                        </ul>
+                        <p className={s.p}>Before moving to Abandoned:</p>
+                        <ul className={s.bulletList}>
+                            <li>Confirm follow-up attempts are logged.</li>
+                            <li>Add summary note of outreach history.</li>
+                            <li>Confirm no pending automation remains active.</li>
+                        </ul>
+                        <div className="bg-indigo-50 border-l-4 border-indigo-500 p-4 mt-2">
+                            <p className="font-bold text-indigo-900">Do not prematurely abandon.</p>
+                            <p className="text-sm text-indigo-700 mt-1">No-shows are often timing issues, not rejection.</p>
+                        </div>
+                    </div>
+
+                    <hr className="border-gray-100" />
+
+                    {/* 9. If Prospect Re-Engages */}
+                    <div className="space-y-3">
+                        <h4 className={s.sectionTitle}>9. If Prospect Re-Engages</h4>
+                        <p className={s.p}>If the prospect responds:</p>
+                        <ol className={s.list}>
+                            <li>Reschedule immediately.</li>
+                            <li>Confirm attendance expectations clearly.</li>
+                            <li>Move opportunity to the appropriate Booked stage.</li>
+                            <li>Reset internal preparation workflow.</li>
+                        </ol>
+                        <div className="bg-green-50 border-l-4 border-green-500 p-4 mt-2">
+                            <p className="font-bold text-green-900">Recovered no-shows should be treated as high-priority opportunities.</p>
+                        </div>
+                    </div>
+
+                    <hr className="border-gray-100" />
+
+                    {/* 10. Performance Standards */}
+                    <div className="space-y-3">
+                        <h4 className={s.sectionTitle}>10. Performance Standards</h4>
+                        <p className={s.p}>No-show recovery is measured by:</p>
+                        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-2">
+                            <div className="bg-gray-50 border border-gray-200 rounded-xl p-4 text-center">
+                                <p className="text-sm text-gray-500">Rebooking Rate</p>
+                                <p className="text-xl font-bold text-indigo-700 mt-1">25–40%</p>
+                            </div>
+                            <div className="bg-gray-50 border border-gray-200 rounded-xl p-4 text-center">
+                                <p className="text-sm text-gray-500">Show Rate after Rebooking</p>
+                                <p className="text-xl font-bold text-indigo-700 mt-1">Tracked</p>
+                            </div>
+                            <div className="bg-gray-50 border border-gray-200 rounded-xl p-4 text-center">
+                                <p className="text-sm text-gray-500">Time to Reschedule</p>
+                                <p className="text-xl font-bold text-indigo-700 mt-1">Tracked</p>
+                            </div>
+                        </div>
+                        <div className="bg-green-50 border-l-4 border-green-500 p-4 mt-2">
+                            <p className="font-bold text-green-900">Strong recovery systems can increase revenue by 10–20% without increasing lead volume.</p>
+                        </div>
+                    </div>
+
+                    <hr className="border-gray-100" />
+
+                    {/* 11. CRM Hygiene Requirements */}
+                    <div className="space-y-3">
+                        <h4 className={s.sectionTitle}>11. CRM Hygiene Requirements</h4>
+                        <p className={s.p}>All no-show actions must include:</p>
+                        <ul className={s.bulletList}>
+                            <li>Appointment outcome updated</li>
+                            <li>Notes summarizing outreach attempts</li>
+                            <li>Clear next follow-up task scheduled</li>
+                            <li>Accurate pipeline stage</li>
+                        </ul>
+                        <div className="bg-red-50 border-l-4 border-red-500 p-4 mt-2">
+                            <p className="font-bold text-red-900">No opportunity should remain stagnant without documentation.</p>
+                        </div>
+                    </div>
+
+                    <hr className="border-gray-100" />
+
+                    {/* 12. Accountability */}
+                    <div className="space-y-3">
+                        <h4 className={s.sectionTitle}>12. Accountability</h4>
+                        <p className={s.p}>Failure to follow no-show recovery procedures results in:</p>
+                        <ul className={s.bulletList}>
+                            <li>Missed revenue</li>
+                            <li>Inflated lost rates</li>
+                            <li>Reduced marketing ROI</li>
+                            <li>Inaccurate forecasting</li>
+                        </ul>
+                        <div className="bg-red-50 border-l-4 border-red-500 p-4 mt-2">
+                            <p className="font-bold text-red-900">Strict adherence is required.</p>
+                        </div>
+                        <div className="bg-green-50 border-l-4 border-green-500 p-4">
+                            <p className="font-bold text-green-900">Recovered no-shows are among the highest-ROI opportunities in the pipeline.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    );
+};
+
 // 11. CRM Data Integrity & Pipeline Governance View
 const CRMDataIntegrityView = () => {
     const s = {
@@ -4258,6 +4541,11 @@ const App = () => {
             title: "CRM Data Integrity & Pipeline Governance",
             description: "Required fields per stage\n• Note requirements\n• Objection logging\n• Lost reasons\n• Conversations management\n• Stage aging",
             category: "Operations"
+        },
+        {
+            title: "No-Show & Reschedule Management",
+            description: "No-show recovery process\n• Rebooking cadence\n• Automated sequences\n• Manual follow-up\n• Performance standards\n• CRM hygiene",
+            category: "Sales"
         },
     ];
 
